@@ -28,7 +28,7 @@
   .lang-btn:not(.active) { background: transparent; color: #94a3b8; }
   .lang-btn:not(.active):hover { border-color: #3b82f6; color: #e2e8f0; }
 </style>
-<script>const I18N = {"ko":{"title":"OhMyHotel Global SnM","subtitle":"주간 보고서","generated":"생성일","dataBasis":"DATA BASIS","basisThisWeek":"이번 주 · WoW","basisMoM":"MoM","basisYoY":"YoY","basisNote":"※ MoM·YoY는 비교 기준이 다르므로 참고용","tab1":"① 주간 실적","tab2":"② API·채널 파이프라인","tab3":"③ 계약 변경·SG Flip","tab4":"④ 프로모션·단체","tab5":"⑤ Exception Report","tab6":"⑥ 시장·채널 동향","tab7":"⑦ 의사결정 요청","tab8":"⑧ Action Item","totalBookings":"총 예약건수","roomNights":"Room Nights","ttv":"TTV (JPY)","ctripDep":"Ctrip 의존도","target":"목표","channelTop10":"채널 Top 10 — TTV","channelDetails":"채널 상세","channel":"채널명","bookings":"예약건수","rn":"RN(박)","ttvJpy":"수탁고(¥)","total":"합계","countryMix":"국가별 비중","countryDetails":"국가별 상세","country":"호텔 국가","japan":"일본","korea":"한국","vietnam":"베트남","others":"기타","crosstabTitle":"채널 × 국가 크로스탭","marginTitle":"채널별 마진 현황","marginRate":"마진율","margin":"마진(¥)","topHotelsTitle":"채널별 Top 호텔","guestOrigin":"고객 국적 분석","guestOriginDesc":"투숙객 이름 기반 국적 추정 (Last Name 패턴 분석)","guestNationality":"추정 국적","ctripMonitor":"Ctrip / China 의존도 모니터링","prevWeek":"전주","prevMonth":"전월","pipelineFunnel":"Pipeline Funnel","pipelineStatus":"Pipeline Status","devSchedule":"API Integration Dev Schedule (Gantt)","devDetails":"Dev Schedule 상세","category":"카테고리","project":"프로젝트","handlingTeam":"Handling Team","devOwner":"Dev Owner","workload":"Workload","status":"상태","start":"시작","end":"종료","note":"비고","contractExist":"기존 업체 — 계약 변경 진행 현황","contractNew":"신규 업체 — SG HoldCo 직접 계약","contractNote":"※ Flip 100% 완료 시 본 섹션 삭제. Ctrip·Agoda 5/1 SG 이전 포함.","progressSummary":"진행률 요약","company":"업체명","settlement":"Settlement","contractDate":"Contract Date","followUp":"Follow Up","currency":"Currency","citiBank":"Citi Bank","all":"전체","done":"완료","inProgress":"진행 중","completionRate":"완료율","promoTitle":"진행 중 프로모션","promoName":"프로모션명","channelPartner":"채널/파트너","period":"기간","condition":"조건","expectedEffect":"예상 효과","currentResult":"현재 실적","nextAction":"다음 액션","groupTitle":"단체 건 진행 현황","caseName":"건명","client":"고객/단체","schedule":"일정","pax":"인원","hotel":"호텔","noPromo":"등록된 프로모션 없음","noGroup":"등록된 단체 건 없음","exceptionTitle":"이번 주 이슈 현황","exceptionRule":"⚑ $500 이상 → 24h 보고 | $2,000 이상 → 즉시 보고 + Jackie 직보","exceptionType":"유형","content":"내용","amount":"금액($)","date":"발생일","pic":"담당자","statusAction":"상태/조치","noException":"이상 없음","opTeam":"OP팀 Vicky 관리","typeGuide":"유형: 미수금 | 채널분쟁 | 고객클레임 | 금전사고 | 시스템장애 | 기타","macroTitle":"매크로 이슈 — 아시아 여행업계 (자동 수집)","macroDesc":"한국·일본·중국·베트남 위주 | Google News 기반 최근 7일 | 최대 5건","otaTitle":"경쟁 OTA 동향 (자동 수집)","otaDesc":"Agoda · Trip.com · Booking.com · Expedia · MakeMyTrip · Traveloka | 최근 7일","channelIssueTitle":"채널별 특이사항","noNews":"수집된 이슈 없음","noOta":"없음","noChannelIssue":"등록된 특이사항 없음","channelName":"채널명","action":"대응/액션","type":"유형","decisionTitle":"이번 주 의사결정 요청 사항","decisionRule":"⚑ 요청사항 없을 경우에도 \"요청사항 없음\" 명시 필수","requestType":"요청 유형","issue":"사안 내용","background":"배경·사유","requester":"요청자","urgency":"긴급도","dueDate":"결정 필요일","currentStatus":"현재 상태","noDecision":"요청사항 없음","decisionTypeGuide":"요청 유형: 승인 필요(예산·계약조건·인력) | 전략 판단(채널·지역·모델) | 기타","urgencyGuide":"긴급도: 긴급 | 보통 | 여유","prevActionTitle":"전주 Action Item — 완료 여부","prevActionNote":"※ 전주 미완료 건은 자동 이월. 3주 연속 미완료 시 에스컬레이션.","newActionTitle":"이번 주 신규 Action Item","weekNo":"발생 주차","actionContent":"Action 내용","deadline":"기한","statusGuide":"상태: ✅ 완료 | 🔄 진행 중 | ⚠️ 지연 | ❌ 취소","addRow":"+ 행 추가","author":"작성자","tab9":"⑨ 월간 통계","monthlyStatsTitle":"월간 인바운드·아웃바운드 통계","monthlyStatsDesc":"한국·일본·베트남 | 전년대비 증감 | 최근 12개월","inbound":"인바운드","outbound":"아웃바운드","yoyChange":"전년대비 증감","month":"월","dataSource":"데이터 출처","footer":"OhMyHotel Global SnM Weekly Report"},"en":{"title":"OhMyHotel Global SnM","subtitle":"Weekly Report","generated":"Generated","dataBasis":"DATA BASIS","basisThisWeek":"This Week · WoW","basisMoM":"MoM","basisYoY":"YoY","basisNote":"※ MoM·YoY use different data basis — for reference only","tab1":"① Weekly Performance","tab2":"② API · Channel Pipeline","tab3":"③ Contract Change · SG Flip","tab4":"④ Promotion · Group","tab5":"⑤ Exception Report","tab6":"⑥ Market · Channel Trends","tab7":"⑦ Decision Request","tab8":"⑧ Action Item","totalBookings":"Total Bookings","roomNights":"Room Nights","ttv":"TTV (JPY)","ctripDep":"Ctrip Dependency","target":"Target","channelTop10":"Channel Top 10 — TTV","channelDetails":"Channel Details","channel":"Channel","bookings":"Bookings","rn":"RN","ttvJpy":"TTV (JPY)","total":"Total","countryMix":"Country Mix","countryDetails":"Country Details","country":"Country","japan":"Japan","korea":"Korea","vietnam":"Vietnam","others":"Others","crosstabTitle":"Channel × Country Crosstab","marginTitle":"Channel Margin Summary","marginRate":"Margin %","margin":"Margin (¥)","topHotelsTitle":"Top Hotels by Channel","guestOrigin":"Guest Origin Analysis","guestOriginDesc":"Estimated guest nationality based on last name patterns","guestNationality":"Est. Nationality","ctripMonitor":"Ctrip / China Dependency Monitor","prevWeek":"Prev Week","prevMonth":"Prev Month","pipelineFunnel":"Pipeline Funnel","pipelineStatus":"Pipeline Status","devSchedule":"API Integration Dev Schedule (Gantt)","devDetails":"Dev Schedule Details","category":"Category","project":"Project","handlingTeam":"Handling Team","devOwner":"Dev Owner","workload":"Workload","status":"Status","start":"Start","end":"End","note":"Note","contractExist":"Existing Partners — Contract Change Status","contractNew":"New Partners — SG HoldCo Direct Contract","contractNote":"※ Remove this section when Flip reaches 100%. Includes Ctrip·Agoda 5/1 SG migration.","progressSummary":"Progress Summary","company":"Company","settlement":"Settlement","contractDate":"Contract Date","followUp":"Follow Up","currency":"Currency","citiBank":"Citi Bank","all":"Total","done":"Done","inProgress":"In Progress","completionRate":"Completion","promoTitle":"Active Promotions","promoName":"Promotion","channelPartner":"Channel/Partner","period":"Period","condition":"Conditions","expectedEffect":"Expected Effect","currentResult":"Current Result","nextAction":"Next Action","groupTitle":"Group Booking Status","caseName":"Case","client":"Client/Group","schedule":"Schedule","pax":"Pax","hotel":"Hotel","noPromo":"No promotions registered","noGroup":"No group bookings registered","exceptionTitle":"This Week's Issues","exceptionRule":"⚑ $500+ → Report within 24h | $2,000+ → Immediate report + Jackie direct","exceptionType":"Type","content":"Content","amount":"Amount($)","date":"Date","pic":"PIC","statusAction":"Status/Action","noException":"No issues","opTeam":"Managed by OP Team Vicky","typeGuide":"Type: Unpaid | Channel Dispute | Customer Claim | Financial Incident | System Failure | Other","macroTitle":"Macro Issues — Asia Travel Industry (Auto)","macroDesc":"Korea · Japan · China · Vietnam | Google News last 7 days | Max 5","otaTitle":"Competitor OTA Trends (Auto)","otaDesc":"Agoda · Trip.com · Booking.com · Expedia · MakeMyTrip · Traveloka | Last 7 days","channelIssueTitle":"Channel Issues","noNews":"No issues collected","noOta":"None","noChannelIssue":"No issues registered","channelName":"Channel","action":"Action","type":"Type","decisionTitle":"Decision Requests This Week","decisionRule":"⚑ Must state \"No requests\" even when there are none","requestType":"Request Type","issue":"Issue","background":"Background","requester":"Requester","urgency":"Urgency","dueDate":"Due Date","currentStatus":"Current Status","noDecision":"No requests","decisionTypeGuide":"Type: Approval (Budget/Contract/HR) | Strategy (Channel/Region/Model) | Other","urgencyGuide":"Urgency: Urgent | Normal | Flexible","prevActionTitle":"Previous Week Action Items — Status","prevActionNote":"※ Incomplete items auto-carried over. Escalation after 3 consecutive weeks incomplete.","newActionTitle":"This Week New Action Items","weekNo":"Week","actionContent":"Action","deadline":"Deadline","statusGuide":"Status: ✅ Done | 🔄 In Progress | ⚠️ Delayed | ❌ Cancelled","addRow":"+ Add Row","author":"Author","tab9":"⑨ Monthly Stats","monthlyStatsTitle":"Monthly Inbound · Outbound Statistics","monthlyStatsDesc":"Korea · Japan · Vietnam | YoY Change | Last 12 months","inbound":"Inbound","outbound":"Outbound","yoyChange":"YoY Change","month":"Month","dataSource":"Data Source","footer":"OhMyHotel Global SnM Weekly Report"}};</script>
+<script>const I18N = {"ko":{"title":"OhMyHotel Global SnM","subtitle":"주간 보고서","generated":"생성일","dataBasis":"DATA BASIS","basisThisWeek":"이번 주 · WoW","basisMoM":"MoM","basisYoY":"YoY","basisNote":"※ MoM·YoY는 비교 기준이 다르므로 참고용","tab1":"① 주간 실적","tab2":"② API·채널 파이프라인","tab3":"③ 계약 변경·SG Flip","tab4":"④ 프로모션·단체","tab5":"⑤ Exception Report","tab6":"⑥ 시장·채널 동향","tab7":"⑦ 의사결정 요청","tab8":"⑧ Action Item","totalBookings":"총 예약건수","roomNights":"Room Nights","ttv":"TTV (JPY)","ctripDep":"Ctrip 의존도","target":"목표","channelTop10":"채널 Top 10 — TTV","channelDetails":"채널 상세","channel":"채널명","bookings":"예약건수","rn":"RN(박)","ttvJpy":"수탁고(¥)","total":"합계","countryMix":"국가별 비중","countryDetails":"국가별 상세","country":"호텔 국가","japan":"일본","korea":"한국","vietnam":"베트남","others":"기타","tab10":"⑩ 데이터","crosstabTitle":"채널 × 국가 크로스탭","marginTitle":"채널별 마진 현황","marginRate":"마진율","margin":"마진(¥)","topHotelsTitle":"채널별 Top 호텔","guestOrigin":"고객 국적 분석","guestOriginDesc":"투숙객 이름 기반 국적 추정 (Last Name 패턴 분석)","guestNationality":"추정 국적","ctripMonitor":"Ctrip / China 의존도 모니터링","prevWeek":"전주","prevMonth":"전월","pipelineFunnel":"Pipeline Funnel","pipelineStatus":"Pipeline Status","devSchedule":"API Integration Dev Schedule (Gantt)","devDetails":"Dev Schedule 상세","category":"카테고리","project":"프로젝트","handlingTeam":"Handling Team","devOwner":"Dev Owner","workload":"Workload","status":"상태","start":"시작","end":"종료","note":"비고","contractExist":"기존 업체 — 계약 변경 진행 현황","contractNew":"신규 업체 — SG HoldCo 직접 계약","contractNote":"※ Flip 100% 완료 시 본 섹션 삭제. Ctrip·Agoda 5/1 SG 이전 포함.","progressSummary":"진행률 요약","company":"업체명","settlement":"Settlement","contractDate":"Contract Date","followUp":"Follow Up","currency":"Currency","citiBank":"Citi Bank","all":"전체","done":"완료","inProgress":"진행 중","completionRate":"완료율","promoTitle":"진행 중 프로모션","promoName":"프로모션명","channelPartner":"채널/파트너","period":"기간","condition":"조건","expectedEffect":"예상 효과","currentResult":"현재 실적","nextAction":"다음 액션","groupTitle":"단체 건 진행 현황","caseName":"건명","client":"고객/단체","schedule":"일정","pax":"인원","hotel":"호텔","noPromo":"등록된 프로모션 없음","noGroup":"등록된 단체 건 없음","exceptionTitle":"이번 주 이슈 현황","exceptionRule":"⚑ $500 이상 → 24h 보고 | $2,000 이상 → 즉시 보고 + Jackie 직보","exceptionType":"유형","content":"내용","amount":"금액($)","date":"발생일","pic":"담당자","statusAction":"상태/조치","noException":"이상 없음","opTeam":"OP팀 Vicky 관리","typeGuide":"유형: 미수금 | 채널분쟁 | 고객클레임 | 금전사고 | 시스템장애 | 기타","macroTitle":"매크로 이슈 — 아시아 여행업계 (자동 수집)","macroDesc":"한국·일본·중국·베트남 위주 | Google News 기반 최근 7일 | 최대 5건","otaTitle":"경쟁 OTA 동향 (자동 수집)","otaDesc":"Agoda · Trip.com · Booking.com · Expedia · MakeMyTrip · Traveloka | 최근 7일","channelIssueTitle":"채널별 특이사항","noNews":"수집된 이슈 없음","noOta":"없음","noChannelIssue":"등록된 특이사항 없음","channelName":"채널명","action":"대응/액션","type":"유형","decisionTitle":"이번 주 의사결정 요청 사항","decisionRule":"⚑ 요청사항 없을 경우에도 \"요청사항 없음\" 명시 필수","requestType":"요청 유형","issue":"사안 내용","background":"배경·사유","requester":"요청자","urgency":"긴급도","dueDate":"결정 필요일","currentStatus":"현재 상태","noDecision":"요청사항 없음","decisionTypeGuide":"요청 유형: 승인 필요(예산·계약조건·인력) | 전략 판단(채널·지역·모델) | 기타","urgencyGuide":"긴급도: 긴급 | 보통 | 여유","prevActionTitle":"전주 Action Item — 완료 여부","prevActionNote":"※ 전주 미완료 건은 자동 이월. 3주 연속 미완료 시 에스컬레이션.","newActionTitle":"이번 주 신규 Action Item","weekNo":"발생 주차","actionContent":"Action 내용","deadline":"기한","statusGuide":"상태: ✅ 완료 | 🔄 진행 중 | ⚠️ 지연 | ❌ 취소","addRow":"+ 행 추가","author":"작성자","tab9":"⑨ 월간 통계","monthlyStatsTitle":"월간 인바운드·아웃바운드 통계","monthlyStatsDesc":"한국·일본·베트남 | 전년대비 증감 | 최근 12개월","inbound":"인바운드","outbound":"아웃바운드","yoyChange":"전년대비 증감","month":"월","dataSource":"데이터 출처","footer":"OhMyHotel Global SnM Weekly Report"},"en":{"title":"OhMyHotel Global SnM","subtitle":"Weekly Report","generated":"Generated","dataBasis":"DATA BASIS","basisThisWeek":"This Week · WoW","basisMoM":"MoM","basisYoY":"YoY","basisNote":"※ MoM·YoY use different data basis — for reference only","tab1":"① Weekly Performance","tab2":"② API · Channel Pipeline","tab3":"③ Contract Change · SG Flip","tab4":"④ Promotion · Group","tab5":"⑤ Exception Report","tab6":"⑥ Market · Channel Trends","tab7":"⑦ Decision Request","tab8":"⑧ Action Item","totalBookings":"Total Bookings","roomNights":"Room Nights","ttv":"TTV (JPY)","ctripDep":"Ctrip Dependency","target":"Target","channelTop10":"Channel Top 10 — TTV","channelDetails":"Channel Details","channel":"Channel","bookings":"Bookings","rn":"RN","ttvJpy":"TTV (JPY)","total":"Total","countryMix":"Country Mix","countryDetails":"Country Details","country":"Country","japan":"Japan","korea":"Korea","vietnam":"Vietnam","others":"Others","tab10":"⑩ Data","crosstabTitle":"Channel × Country Crosstab","marginTitle":"Channel Margin Summary","marginRate":"Margin %","margin":"Margin (¥)","topHotelsTitle":"Top Hotels by Channel","guestOrigin":"Guest Origin Analysis","guestOriginDesc":"Estimated guest nationality based on last name patterns","guestNationality":"Est. Nationality","ctripMonitor":"Ctrip / China Dependency Monitor","prevWeek":"Prev Week","prevMonth":"Prev Month","pipelineFunnel":"Pipeline Funnel","pipelineStatus":"Pipeline Status","devSchedule":"API Integration Dev Schedule (Gantt)","devDetails":"Dev Schedule Details","category":"Category","project":"Project","handlingTeam":"Handling Team","devOwner":"Dev Owner","workload":"Workload","status":"Status","start":"Start","end":"End","note":"Note","contractExist":"Existing Partners — Contract Change Status","contractNew":"New Partners — SG HoldCo Direct Contract","contractNote":"※ Remove this section when Flip reaches 100%. Includes Ctrip·Agoda 5/1 SG migration.","progressSummary":"Progress Summary","company":"Company","settlement":"Settlement","contractDate":"Contract Date","followUp":"Follow Up","currency":"Currency","citiBank":"Citi Bank","all":"Total","done":"Done","inProgress":"In Progress","completionRate":"Completion","promoTitle":"Active Promotions","promoName":"Promotion","channelPartner":"Channel/Partner","period":"Period","condition":"Conditions","expectedEffect":"Expected Effect","currentResult":"Current Result","nextAction":"Next Action","groupTitle":"Group Booking Status","caseName":"Case","client":"Client/Group","schedule":"Schedule","pax":"Pax","hotel":"Hotel","noPromo":"No promotions registered","noGroup":"No group bookings registered","exceptionTitle":"This Week's Issues","exceptionRule":"⚑ $500+ → Report within 24h | $2,000+ → Immediate report + Jackie direct","exceptionType":"Type","content":"Content","amount":"Amount($)","date":"Date","pic":"PIC","statusAction":"Status/Action","noException":"No issues","opTeam":"Managed by OP Team Vicky","typeGuide":"Type: Unpaid | Channel Dispute | Customer Claim | Financial Incident | System Failure | Other","macroTitle":"Macro Issues — Asia Travel Industry (Auto)","macroDesc":"Korea · Japan · China · Vietnam | Google News last 7 days | Max 5","otaTitle":"Competitor OTA Trends (Auto)","otaDesc":"Agoda · Trip.com · Booking.com · Expedia · MakeMyTrip · Traveloka | Last 7 days","channelIssueTitle":"Channel Issues","noNews":"No issues collected","noOta":"None","noChannelIssue":"No issues registered","channelName":"Channel","action":"Action","type":"Type","decisionTitle":"Decision Requests This Week","decisionRule":"⚑ Must state \"No requests\" even when there are none","requestType":"Request Type","issue":"Issue","background":"Background","requester":"Requester","urgency":"Urgency","dueDate":"Due Date","currentStatus":"Current Status","noDecision":"No requests","decisionTypeGuide":"Type: Approval (Budget/Contract/HR) | Strategy (Channel/Region/Model) | Other","urgencyGuide":"Urgency: Urgent | Normal | Flexible","prevActionTitle":"Previous Week Action Items — Status","prevActionNote":"※ Incomplete items auto-carried over. Escalation after 3 consecutive weeks incomplete.","newActionTitle":"This Week New Action Items","weekNo":"Week","actionContent":"Action","deadline":"Deadline","statusGuide":"Status: ✅ Done | 🔄 In Progress | ⚠️ Delayed | ❌ Cancelled","addRow":"+ Add Row","author":"Author","tab9":"⑨ Monthly Stats","monthlyStatsTitle":"Monthly Inbound · Outbound Statistics","monthlyStatsDesc":"Korea · Japan · Vietnam | YoY Change | Last 12 months","inbound":"Inbound","outbound":"Outbound","yoyChange":"YoY Change","month":"Month","dataSource":"Data Source","footer":"OhMyHotel Global SnM Weekly Report"}};</script>
 </head>
 <body class="min-h-screen">
 <div class="max-w-7xl mx-auto">
@@ -68,6 +68,7 @@
     <div class="tab-btn" data-tab="tab7"><span data-i18n="tab7">⑦ 의사결정 요청</span></div>
     <div class="tab-btn" data-tab="tab8"><span data-i18n="tab8">⑧ Action Item</span></div>
     <div class="tab-btn" data-tab="tab9"><span data-i18n="tab9">⑨ 월간 통계</span></div>
+    <div class="tab-btn" data-tab="tab10"><span data-i18n="tab10">⑩ 데이터</span></div>
   </div>
 
   <!-- ═══════ TAB 1: 주간 실적 ═══════ -->
@@ -282,697 +283,6 @@
       <td class="py-2 px-3 text-right"><span class="text-red-400">-15.8%</span><span class="text-gray-600 text-[9px]">*</span></td>
       <td class="py-2 px-3 text-right"><span class="text-emerald-400">+3.8%</span><span class="text-gray-600 text-[9px]">*</span></td>
     </tr></tbody></table>
-      </div>
-    </div>
-
-    <!-- Channel Margin -->
-    <div class="card p-5">
-      <div class="section-title"><span data-i18n="marginTitle">채널별 마진 현황</span> <span class="text-[10px] px-1.5 py-0.5 rounded bg-blue-500/15 text-blue-400 border border-blue-500/30 font-normal ml-2">Booking Date</span></div>
-      <div class="grid grid-cols-2 gap-4">
-        <div id="marginChart" style="height: 300px;"></div>
-        <div class="overflow-x-auto">
-          <table>
-            <thead><tr><th>#</th><th><span data-i18n="channel">채널명</span></th><th class="text-right"><span data-i18n="ttvJpy">수탁고(¥)</span></th><th class="text-right"><span data-i18n="margin">마진(¥)</span></th><th class="text-right"><span data-i18n="marginRate">마진율</span></th></tr></thead>
-            <tbody>
-              <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
-                <td class="py-1.5 px-2 text-center text-gray-400">1</td>
-                <td class="py-1.5 px-2 font-medium">Ctrip Korea</td>
-                <td class="py-1.5 px-2 text-right font-mono text-xs">¥154,855,662</td>
-                <td class="py-1.5 px-2 text-right font-mono text-xs">¥10,622,287</td>
-                <td class="py-1.5 px-2 text-right text-xs text-blue-400">6.9%</td>
-              </tr>
-              <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
-                <td class="py-1.5 px-2 text-center text-gray-400">2</td>
-                <td class="py-1.5 px-2 font-medium">Agoda</td>
-                <td class="py-1.5 px-2 text-right font-mono text-xs">¥94,346,497</td>
-                <td class="py-1.5 px-2 text-right font-mono text-xs">¥9,277,339</td>
-                <td class="py-1.5 px-2 text-right text-xs text-emerald-400">9.8%</td>
-              </tr>
-              <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
-                <td class="py-1.5 px-2 text-center text-gray-400">3</td>
-                <td class="py-1.5 px-2 font-medium">Dida</td>
-                <td class="py-1.5 px-2 text-right font-mono text-xs">¥29,344,778</td>
-                <td class="py-1.5 px-2 text-right font-mono text-xs">¥1,905,353</td>
-                <td class="py-1.5 px-2 text-right text-xs text-blue-400">6.5%</td>
-              </tr>
-              <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
-                <td class="py-1.5 px-2 text-center text-gray-400">4</td>
-                <td class="py-1.5 px-2 font-medium">Meituan</td>
-                <td class="py-1.5 px-2 text-right font-mono text-xs">¥25,738,682</td>
-                <td class="py-1.5 px-2 text-right font-mono text-xs">¥1,807,045</td>
-                <td class="py-1.5 px-2 text-right text-xs text-blue-400">7.0%</td>
-              </tr>
-              <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
-                <td class="py-1.5 px-2 text-center text-gray-400">5</td>
-                <td class="py-1.5 px-2 font-medium">PKFARE API</td>
-                <td class="py-1.5 px-2 text-right font-mono text-xs">¥21,296,190</td>
-                <td class="py-1.5 px-2 text-right font-mono text-xs">¥1,810,828</td>
-                <td class="py-1.5 px-2 text-right text-xs text-emerald-400">8.5%</td>
-              </tr>
-              <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
-                <td class="py-1.5 px-2 text-center text-gray-400">6</td>
-                <td class="py-1.5 px-2 font-medium">Convergent API</td>
-                <td class="py-1.5 px-2 text-right font-mono text-xs">¥15,792,739</td>
-                <td class="py-1.5 px-2 text-right font-mono text-xs">¥1,115,863</td>
-                <td class="py-1.5 px-2 text-right text-xs text-blue-400">7.1%</td>
-              </tr>
-              <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
-                <td class="py-1.5 px-2 text-center text-gray-400">7</td>
-                <td class="py-1.5 px-2 font-medium">Elong</td>
-                <td class="py-1.5 px-2 text-right font-mono text-xs">¥15,308,970</td>
-                <td class="py-1.5 px-2 text-right font-mono text-xs">¥1,236,505</td>
-                <td class="py-1.5 px-2 text-right text-xs text-emerald-400">8.1%</td>
-              </tr>
-              <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
-                <td class="py-1.5 px-2 text-center text-gray-400">8</td>
-                <td class="py-1.5 px-2 font-medium">Ctrip Vietnam</td>
-                <td class="py-1.5 px-2 text-right font-mono text-xs">¥10,492,297</td>
-                <td class="py-1.5 px-2 text-right font-mono text-xs">¥369,214</td>
-                <td class="py-1.5 px-2 text-right text-xs text-amber-400">3.5%</td>
-              </tr>
-              <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
-                <td class="py-1.5 px-2 text-center text-gray-400">9</td>
-                <td class="py-1.5 px-2 font-medium">HeyTrip</td>
-                <td class="py-1.5 px-2 text-right font-mono text-xs">¥7,357,674</td>
-                <td class="py-1.5 px-2 text-right font-mono text-xs">¥482,586</td>
-                <td class="py-1.5 px-2 text-right text-xs text-blue-400">6.6%</td>
-              </tr>
-              <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
-                <td class="py-1.5 px-2 text-center text-gray-400">10</td>
-                <td class="py-1.5 px-2 font-medium">Qunar</td>
-                <td class="py-1.5 px-2 text-right font-mono text-xs">¥7,029,101</td>
-                <td class="py-1.5 px-2 text-right font-mono text-xs">¥324,997</td>
-                <td class="py-1.5 px-2 text-right text-xs text-amber-400">4.6%</td>
-              </tr></tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-
-    <!-- Channel × Country Crosstab -->
-    <div class="card p-5">
-      <div class="section-title"><span data-i18n="crosstabTitle">채널 × 국가 크로스탭</span> <span class="text-[10px] px-1.5 py-0.5 rounded bg-blue-500/15 text-blue-400 border border-blue-500/30 font-normal ml-2">Booking Date</span></div>
-      <div class="overflow-x-auto" style="max-height: 400px; overflow-y: auto;">
-        <table>
-          <thead><tr><th>#</th><th><span data-i18n="channel">채널명</span></th><th class="text-center"><span data-i18n="country">호텔 국가</span></th><th class="text-right"><span data-i18n="bookings">예약건수</span></th><th class="text-right"><span data-i18n="rn">RN(박)</span></th><th class="text-right"><span data-i18n="ttvJpy">수탁고(¥)</span></th><th class="text-right"><span data-i18n="margin">마진(¥)</span></th><th class="text-right"><span data-i18n="marginRate">마진율</span></th></tr></thead>
-          <tbody>
-            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
-              <td class="py-1 px-2 text-center text-gray-500 text-xs">1</td>
-              <td class="py-1 px-2 text-sm font-medium">Ctrip Korea</td>
-              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-blue-500/20 text-blue-400">JP</span></td>
-              <td class="py-1 px-2 text-right text-xs">2,930</td>
-              <td class="py-1 px-2 text-right text-xs">6,923</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥111,743,500</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥7,306,170</td>
-              <td class="py-1 px-2 text-right text-xs text-blue-400">6.5%</td>
-            </tr>
-            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
-              <td class="py-1 px-2 text-center text-gray-500 text-xs">2</td>
-              <td class="py-1 px-2 text-sm font-medium">Agoda</td>
-              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-blue-500/20 text-blue-400">JP</span></td>
-              <td class="py-1 px-2 text-right text-xs">1,861</td>
-              <td class="py-1 px-2 text-right text-xs">4,584</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥83,868,119</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥8,203,223</td>
-              <td class="py-1 px-2 text-right text-xs text-emerald-400">9.8%</td>
-            </tr>
-            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
-              <td class="py-1 px-2 text-center text-gray-500 text-xs">3</td>
-              <td class="py-1 px-2 text-sm font-medium">Ctrip Korea</td>
-              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-cyan-500/20 text-cyan-400">KR</span></td>
-              <td class="py-1 px-2 text-right text-xs">1,196</td>
-              <td class="py-1 px-2 text-right text-xs">2,406</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥42,442,218</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥3,212,909</td>
-              <td class="py-1 px-2 text-right text-xs text-blue-400">7.6%</td>
-            </tr>
-            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
-              <td class="py-1 px-2 text-center text-gray-500 text-xs">4</td>
-              <td class="py-1 px-2 text-sm font-medium">Dida</td>
-              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-blue-500/20 text-blue-400">JP</span></td>
-              <td class="py-1 px-2 text-right text-xs">458</td>
-              <td class="py-1 px-2 text-right text-xs">1,143</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥22,285,600</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥1,500,426</td>
-              <td class="py-1 px-2 text-right text-xs text-blue-400">6.7%</td>
-            </tr>
-            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
-              <td class="py-1 px-2 text-center text-gray-500 text-xs">5</td>
-              <td class="py-1 px-2 text-sm font-medium">Meituan</td>
-              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-blue-500/20 text-blue-400">JP</span></td>
-              <td class="py-1 px-2 text-right text-xs">666</td>
-              <td class="py-1 px-2 text-right text-xs">1,469</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥21,107,110</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥1,134,587</td>
-              <td class="py-1 px-2 text-right text-xs text-blue-400">5.4%</td>
-            </tr>
-            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
-              <td class="py-1 px-2 text-center text-gray-500 text-xs">6</td>
-              <td class="py-1 px-2 text-sm font-medium">PKFARE API</td>
-              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-blue-500/20 text-blue-400">JP</span></td>
-              <td class="py-1 px-2 text-right text-xs">670</td>
-              <td class="py-1 px-2 text-right text-xs">1,131</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥17,778,067</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥1,595,992</td>
-              <td class="py-1 px-2 text-right text-xs text-emerald-400">9.0%</td>
-            </tr>
-            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
-              <td class="py-1 px-2 text-center text-gray-500 text-xs">7</td>
-              <td class="py-1 px-2 text-sm font-medium">Convergent API</td>
-              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-blue-500/20 text-blue-400">JP</span></td>
-              <td class="py-1 px-2 text-right text-xs">392</td>
-              <td class="py-1 px-2 text-right text-xs">749</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥11,724,187</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥925,765</td>
-              <td class="py-1 px-2 text-right text-xs text-blue-400">7.9%</td>
-            </tr>
-            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
-              <td class="py-1 px-2 text-center text-gray-500 text-xs">8</td>
-              <td class="py-1 px-2 text-sm font-medium">Ctrip Vietnam</td>
-              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-purple-500/20 text-purple-400">VN</span></td>
-              <td class="py-1 px-2 text-right text-xs">400</td>
-              <td class="py-1 px-2 text-right text-xs">914</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥10,492,297</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥369,214</td>
-              <td class="py-1 px-2 text-right text-xs text-amber-400">3.5%</td>
-            </tr>
-            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
-              <td class="py-1 px-2 text-center text-gray-500 text-xs">9</td>
-              <td class="py-1 px-2 text-sm font-medium">Elong</td>
-              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-blue-500/20 text-blue-400">JP</span></td>
-              <td class="py-1 px-2 text-right text-xs">254</td>
-              <td class="py-1 px-2 text-right text-xs">562</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥9,579,398</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥894,064</td>
-              <td class="py-1 px-2 text-right text-xs text-emerald-400">9.3%</td>
-            </tr>
-            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
-              <td class="py-1 px-2 text-center text-gray-500 text-xs">10</td>
-              <td class="py-1 px-2 text-sm font-medium">HeyTrip</td>
-              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-blue-500/20 text-blue-400">JP</span></td>
-              <td class="py-1 px-2 text-right text-xs">147</td>
-              <td class="py-1 px-2 text-right text-xs">324</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥5,985,082</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥421,390</td>
-              <td class="py-1 px-2 text-right text-xs text-blue-400">7.0%</td>
-            </tr>
-            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
-              <td class="py-1 px-2 text-center text-gray-500 text-xs">11</td>
-              <td class="py-1 px-2 text-sm font-medium">Agoda</td>
-              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-cyan-500/20 text-cyan-400">KR</span></td>
-              <td class="py-1 px-2 text-right text-xs">209</td>
-              <td class="py-1 px-2 text-right text-xs">362</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥5,757,719</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥645,816</td>
-              <td class="py-1 px-2 text-right text-xs text-emerald-400">11.2%</td>
-            </tr>
-            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
-              <td class="py-1 px-2 text-center text-gray-500 text-xs">12</td>
-              <td class="py-1 px-2 text-sm font-medium">Qunar</td>
-              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-blue-500/20 text-blue-400">JP</span></td>
-              <td class="py-1 px-2 text-right text-xs">170</td>
-              <td class="py-1 px-2 text-right text-xs">451</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥5,229,908</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥234,533</td>
-              <td class="py-1 px-2 text-right text-xs text-amber-400">4.5%</td>
-            </tr>
-            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
-              <td class="py-1 px-2 text-center text-gray-500 text-xs">13</td>
-              <td class="py-1 px-2 text-sm font-medium">Elong</td>
-              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-cyan-500/20 text-cyan-400">KR</span></td>
-              <td class="py-1 px-2 text-right text-xs">196</td>
-              <td class="py-1 px-2 text-right text-xs">324</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥5,102,625</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥313,711</td>
-              <td class="py-1 px-2 text-right text-xs text-blue-400">6.1%</td>
-            </tr>
-            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
-              <td class="py-1 px-2 text-center text-gray-500 text-xs">14</td>
-              <td class="py-1 px-2 text-sm font-medium">Agoda</td>
-              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-purple-500/20 text-purple-400">VN</span></td>
-              <td class="py-1 px-2 text-right text-xs">161</td>
-              <td class="py-1 px-2 text-right text-xs">370</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥4,720,659</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥428,300</td>
-              <td class="py-1 px-2 text-right text-xs text-emerald-400">9.1%</td>
-            </tr>
-            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
-              <td class="py-1 px-2 text-center text-gray-500 text-xs">15</td>
-              <td class="py-1 px-2 text-sm font-medium">Tourmind</td>
-              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-blue-500/20 text-blue-400">JP</span></td>
-              <td class="py-1 px-2 text-right text-xs">143</td>
-              <td class="py-1 px-2 text-right text-xs">242</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥4,178,678</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥339,881</td>
-              <td class="py-1 px-2 text-right text-xs text-emerald-400">8.1%</td>
-            </tr>
-            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
-              <td class="py-1 px-2 text-center text-gray-500 text-xs">16</td>
-              <td class="py-1 px-2 text-sm font-medium">Meituan</td>
-              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-cyan-500/20 text-cyan-400">KR</span></td>
-              <td class="py-1 px-2 text-right text-xs">131</td>
-              <td class="py-1 px-2 text-right text-xs">231</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥3,639,775</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥612,967</td>
-              <td class="py-1 px-2 text-right text-xs text-emerald-400">16.8%</td>
-            </tr>
-            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
-              <td class="py-1 px-2 text-center text-gray-500 text-xs">17</td>
-              <td class="py-1 px-2 text-sm font-medium">Dida</td>
-              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-cyan-500/20 text-cyan-400">KR</span></td>
-              <td class="py-1 px-2 text-right text-xs">130</td>
-              <td class="py-1 px-2 text-right text-xs">221</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥3,543,771</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥178,604</td>
-              <td class="py-1 px-2 text-right text-xs text-blue-400">5.0%</td>
-            </tr>
-            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
-              <td class="py-1 px-2 text-center text-gray-500 text-xs">18</td>
-              <td class="py-1 px-2 text-sm font-medium">Dida</td>
-              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-purple-500/20 text-purple-400">VN</span></td>
-              <td class="py-1 px-2 text-right text-xs">101</td>
-              <td class="py-1 px-2 text-right text-xs">211</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥3,415,791</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥222,108</td>
-              <td class="py-1 px-2 text-right text-xs text-blue-400">6.5%</td>
-            </tr>
-            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
-              <td class="py-1 px-2 text-center text-gray-500 text-xs">19</td>
-              <td class="py-1 px-2 text-sm font-medium">Convergent API</td>
-              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-cyan-500/20 text-cyan-400">KR</span></td>
-              <td class="py-1 px-2 text-right text-xs">143</td>
-              <td class="py-1 px-2 text-right text-xs">225</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥2,836,439</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥120,112</td>
-              <td class="py-1 px-2 text-right text-xs text-amber-400">4.2%</td>
-            </tr>
-            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
-              <td class="py-1 px-2 text-center text-gray-500 text-xs">20</td>
-              <td class="py-1 px-2 text-sm font-medium">Traveloka</td>
-              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-blue-500/20 text-blue-400">JP</span></td>
-              <td class="py-1 px-2 text-right text-xs">50</td>
-              <td class="py-1 px-2 text-right text-xs">161</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥2,543,862</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥129,342</td>
-              <td class="py-1 px-2 text-right text-xs text-blue-400">5.1%</td>
-            </tr>
-            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
-              <td class="py-1 px-2 text-center text-gray-500 text-xs">21</td>
-              <td class="py-1 px-2 text-sm font-medium">SS Booking</td>
-              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-blue-500/20 text-blue-400">JP</span></td>
-              <td class="py-1 px-2 text-right text-xs">46</td>
-              <td class="py-1 px-2 text-right text-xs">157</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥2,271,219</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥127,162</td>
-              <td class="py-1 px-2 text-right text-xs text-blue-400">5.6%</td>
-            </tr>
-            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
-              <td class="py-1 px-2 text-center text-gray-500 text-xs">22</td>
-              <td class="py-1 px-2 text-sm font-medium">PKFARE API</td>
-              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-cyan-500/20 text-cyan-400">KR</span></td>
-              <td class="py-1 px-2 text-right text-xs">131</td>
-              <td class="py-1 px-2 text-right text-xs">162</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥2,107,441</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥151,809</td>
-              <td class="py-1 px-2 text-right text-xs text-blue-400">7.2%</td>
-            </tr>
-            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
-              <td class="py-1 px-2 text-center text-gray-500 text-xs">23</td>
-              <td class="py-1 px-2 text-sm font-medium">RTX (Seller API)</td>
-              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-blue-500/20 text-blue-400">JP</span></td>
-              <td class="py-1 px-2 text-right text-xs">23</td>
-              <td class="py-1 px-2 text-right text-xs">92</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥1,949,082</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥93,496</td>
-              <td class="py-1 px-2 text-right text-xs text-amber-400">4.8%</td>
-            </tr>
-            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
-              <td class="py-1 px-2 text-center text-gray-500 text-xs">24</td>
-              <td class="py-1 px-2 text-sm font-medium">Alitrip</td>
-              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-blue-500/20 text-blue-400">JP</span></td>
-              <td class="py-1 px-2 text-right text-xs">37</td>
-              <td class="py-1 px-2 text-right text-xs">108</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥1,698,621</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥100,093</td>
-              <td class="py-1 px-2 text-right text-xs text-blue-400">5.9%</td>
-            </tr>
-            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
-              <td class="py-1 px-2 text-center text-gray-500 text-xs">25</td>
-              <td class="py-1 px-2 text-sm font-medium">PKFARE API</td>
-              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-purple-500/20 text-purple-400">VN</span></td>
-              <td class="py-1 px-2 text-right text-xs">89</td>
-              <td class="py-1 px-2 text-right text-xs">148</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥1,351,207</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥60,510</td>
-              <td class="py-1 px-2 text-right text-xs text-amber-400">4.5%</td>
-            </tr>
-            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
-              <td class="py-1 px-2 text-center text-gray-500 text-xs">26</td>
-              <td class="py-1 px-2 text-sm font-medium">triptopaz</td>
-              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-blue-500/20 text-blue-400">JP</span></td>
-              <td class="py-1 px-2 text-right text-xs">25</td>
-              <td class="py-1 px-2 text-right text-xs">55</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥1,289,929</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥212,457</td>
-              <td class="py-1 px-2 text-right text-xs text-emerald-400">16.5%</td>
-            </tr>
-            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
-              <td class="py-1 px-2 text-center text-gray-500 text-xs">27</td>
-              <td class="py-1 px-2 text-sm font-medium">Traveloka</td>
-              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-purple-500/20 text-purple-400">VN</span></td>
-              <td class="py-1 px-2 text-right text-xs">88</td>
-              <td class="py-1 px-2 text-right text-xs">136</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥1,215,027</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥41,727</td>
-              <td class="py-1 px-2 text-right text-xs text-amber-400">3.4%</td>
-            </tr>
-            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
-              <td class="py-1 px-2 text-center text-gray-500 text-xs">28</td>
-              <td class="py-1 px-2 text-sm font-medium">Convergent API</td>
-              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-purple-500/20 text-purple-400">VN</span></td>
-              <td class="py-1 px-2 text-right text-xs">44</td>
-              <td class="py-1 px-2 text-right text-xs">80</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥1,118,925</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥65,198</td>
-              <td class="py-1 px-2 text-right text-xs text-blue-400">5.8%</td>
-            </tr>
-            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
-              <td class="py-1 px-2 text-center text-gray-500 text-xs">29</td>
-              <td class="py-1 px-2 text-sm font-medium">Hotelpass</td>
-              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-blue-500/20 text-blue-400">JP</span></td>
-              <td class="py-1 px-2 text-right text-xs">25</td>
-              <td class="py-1 px-2 text-right text-xs">43</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥1,101,226</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥71,574</td>
-              <td class="py-1 px-2 text-right text-xs text-blue-400">6.5%</td>
-            </tr>
-            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
-              <td class="py-1 px-2 text-center text-gray-500 text-xs">30</td>
-              <td class="py-1 px-2 text-sm font-medium">Tourmind</td>
-              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-cyan-500/20 text-cyan-400">KR</span></td>
-              <td class="py-1 px-2 text-right text-xs">46</td>
-              <td class="py-1 px-2 text-right text-xs">70</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥1,025,891</td>
-              <td class="py-1 px-2 text-right text-xs font-mono">¥222,810</td>
-              <td class="py-1 px-2 text-right text-xs text-emerald-400">21.7%</td>
-            </tr></tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- Top Hotels by Channel -->
-    <div class="card p-5">
-      <div class="section-title"><span data-i18n="topHotelsTitle">채널별 Top 호텔</span> <span class="text-[10px] px-1.5 py-0.5 rounded bg-blue-500/15 text-blue-400 border border-blue-500/30 font-normal ml-2">Booking Date</span></div>
-      <div class="grid grid-cols-1 gap-4">
-        
-          <div class="border-b border-gray-700/30 pb-3">
-            <div class="font-medium text-sm mb-2 text-gray-300">Ctrip Korea</div>
-            <table>
-              <thead><tr><th>#</th><th><span data-i18n="hotel">호텔</span></th><th class="text-right"><span data-i18n="bookings">예약건수</span></th><th class="text-right"><span data-i18n="rn">RN(박)</span></th><th class="text-right"><span data-i18n="ttvJpy">수탁고(¥)</span></th></tr></thead>
-              <tbody>
-                <tr class="hover:bg-gray-800/30">
-                  <td class="py-1 px-2 text-center text-gray-500 text-xs">1</td>
-                  <td class="py-1 px-2 text-xs">The OneFive Osaka Shinsekai</td>
-                  <td class="py-1 px-2 text-right text-xs">114</td>
-                  <td class="py-1 px-2 text-right text-xs">343</td>
-                  <td class="py-1 px-2 text-right text-xs font-mono">¥2,600,117</td>
-                </tr>
-                <tr class="hover:bg-gray-800/30">
-                  <td class="py-1 px-2 text-center text-gray-500 text-xs">2</td>
-                  <td class="py-1 px-2 text-xs">Smile Hotel Sugamo</td>
-                  <td class="py-1 px-2 text-right text-xs">82</td>
-                  <td class="py-1 px-2 text-right text-xs">282</td>
-                  <td class="py-1 px-2 text-right text-xs font-mono">¥2,764,260</td>
-                </tr>
-                <tr class="hover:bg-gray-800/30">
-                  <td class="py-1 px-2 text-center text-gray-500 text-xs">3</td>
-                  <td class="py-1 px-2 text-xs">The OneFive Osaka Namba Dotonbori</td>
-                  <td class="py-1 px-2 text-right text-xs">97</td>
-                  <td class="py-1 px-2 text-right text-xs">267</td>
-                  <td class="py-1 px-2 text-right text-xs font-mono">¥3,013,325</td>
-                </tr>
-                <tr class="hover:bg-gray-800/30">
-                  <td class="py-1 px-2 text-center text-gray-500 text-xs">4</td>
-                  <td class="py-1 px-2 text-xs">Sotetsu Fresa Inn Tokyo Kinshicho</td>
-                  <td class="py-1 px-2 text-right text-xs">67</td>
-                  <td class="py-1 px-2 text-right text-xs">227</td>
-                  <td class="py-1 px-2 text-right text-xs font-mono">¥3,050,440</td>
-                </tr>
-                <tr class="hover:bg-gray-800/30">
-                  <td class="py-1 px-2 text-center text-gray-500 text-xs">5</td>
-                  <td class="py-1 px-2 text-xs">Sollago Myeongdong Hotel & Residence</td>
-                  <td class="py-1 px-2 text-right text-xs">76</td>
-                  <td class="py-1 px-2 text-right text-xs">226</td>
-                  <td class="py-1 px-2 text-right text-xs font-mono">¥3,391,370</td>
-                </tr></tbody>
-            </table>
-          </div>
-          <div class="border-b border-gray-700/30 pb-3">
-            <div class="font-medium text-sm mb-2 text-gray-300">Agoda</div>
-            <table>
-              <thead><tr><th>#</th><th><span data-i18n="hotel">호텔</span></th><th class="text-right"><span data-i18n="bookings">예약건수</span></th><th class="text-right"><span data-i18n="rn">RN(박)</span></th><th class="text-right"><span data-i18n="ttvJpy">수탁고(¥)</span></th></tr></thead>
-              <tbody>
-                <tr class="hover:bg-gray-800/30">
-                  <td class="py-1 px-2 text-center text-gray-500 text-xs">1</td>
-                  <td class="py-1 px-2 text-xs">The OneFive Osaka Namba Dotonbori</td>
-                  <td class="py-1 px-2 text-right text-xs">134</td>
-                  <td class="py-1 px-2 text-right text-xs">393</td>
-                  <td class="py-1 px-2 text-right text-xs font-mono">¥5,389,215</td>
-                </tr>
-                <tr class="hover:bg-gray-800/30">
-                  <td class="py-1 px-2 text-center text-gray-500 text-xs">2</td>
-                  <td class="py-1 px-2 text-xs">SOTETSU GRAND FRESA TAKADANOBABA</td>
-                  <td class="py-1 px-2 text-right text-xs">67</td>
-                  <td class="py-1 px-2 text-right text-xs">249</td>
-                  <td class="py-1 px-2 text-right text-xs font-mono">¥5,464,291</td>
-                </tr>
-                <tr class="hover:bg-gray-800/30">
-                  <td class="py-1 px-2 text-center text-gray-500 text-xs">3</td>
-                  <td class="py-1 px-2 text-xs">Smile Hotel Sugamo</td>
-                  <td class="py-1 px-2 text-right text-xs">40</td>
-                  <td class="py-1 px-2 text-right text-xs">205</td>
-                  <td class="py-1 px-2 text-right text-xs font-mono">¥2,340,946</td>
-                </tr>
-                <tr class="hover:bg-gray-800/30">
-                  <td class="py-1 px-2 text-center text-gray-500 text-xs">4</td>
-                  <td class="py-1 px-2 text-xs">Sotetsu Fresa Inn Tokyo Roppongi</td>
-                  <td class="py-1 px-2 text-right text-xs">50</td>
-                  <td class="py-1 px-2 text-right text-xs">185</td>
-                  <td class="py-1 px-2 text-right text-xs font-mono">¥3,517,835</td>
-                </tr>
-                <tr class="hover:bg-gray-800/30">
-                  <td class="py-1 px-2 text-center text-gray-500 text-xs">5</td>
-                  <td class="py-1 px-2 text-xs">THE KNOT FUKUOKA Tenjin</td>
-                  <td class="py-1 px-2 text-right text-xs">46</td>
-                  <td class="py-1 px-2 text-right text-xs">149</td>
-                  <td class="py-1 px-2 text-right text-xs font-mono">¥2,334,730</td>
-                </tr></tbody>
-            </table>
-          </div>
-          <div class="border-b border-gray-700/30 pb-3">
-            <div class="font-medium text-sm mb-2 text-gray-300">Dida</div>
-            <table>
-              <thead><tr><th>#</th><th><span data-i18n="hotel">호텔</span></th><th class="text-right"><span data-i18n="bookings">예약건수</span></th><th class="text-right"><span data-i18n="rn">RN(박)</span></th><th class="text-right"><span data-i18n="ttvJpy">수탁고(¥)</span></th></tr></thead>
-              <tbody>
-                <tr class="hover:bg-gray-800/30">
-                  <td class="py-1 px-2 text-center text-gray-500 text-xs">1</td>
-                  <td class="py-1 px-2 text-xs">KOKO HOTEL Osaka Namba Sennichimae</td>
-                  <td class="py-1 px-2 text-right text-xs">18</td>
-                  <td class="py-1 px-2 text-right text-xs">67</td>
-                  <td class="py-1 px-2 text-right text-xs font-mono">¥1,325,660</td>
-                </tr>
-                <tr class="hover:bg-gray-800/30">
-                  <td class="py-1 px-2 text-center text-gray-500 text-xs">2</td>
-                  <td class="py-1 px-2 text-xs">88 Hotel</td>
-                  <td class="py-1 px-2 text-right text-xs">27</td>
-                  <td class="py-1 px-2 text-right text-xs">54</td>
-                  <td class="py-1 px-2 text-right text-xs font-mono">¥604,162</td>
-                </tr>
-                <tr class="hover:bg-gray-800/30">
-                  <td class="py-1 px-2 text-center text-gray-500 text-xs">3</td>
-                  <td class="py-1 px-2 text-xs">Resol Poshtel Tokyo Asakusa</td>
-                  <td class="py-1 px-2 text-right text-xs">14</td>
-                  <td class="py-1 px-2 text-right text-xs">50</td>
-                  <td class="py-1 px-2 text-right text-xs font-mono">¥316,585</td>
-                </tr>
-                <tr class="hover:bg-gray-800/30">
-                  <td class="py-1 px-2 text-center text-gray-500 text-xs">4</td>
-                  <td class="py-1 px-2 text-xs">Sotetsu Fresa Inn Higashi Shinjuku</td>
-                  <td class="py-1 px-2 text-right text-xs">11</td>
-                  <td class="py-1 px-2 text-right text-xs">43</td>
-                  <td class="py-1 px-2 text-right text-xs font-mono">¥797,055</td>
-                </tr>
-                <tr class="hover:bg-gray-800/30">
-                  <td class="py-1 px-2 text-center text-gray-500 text-xs">5</td>
-                  <td class="py-1 px-2 text-xs">Sotetsu Fresa Inn Tokyo Tamachi</td>
-                  <td class="py-1 px-2 text-right text-xs">7</td>
-                  <td class="py-1 px-2 text-right text-xs">23</td>
-                  <td class="py-1 px-2 text-right text-xs font-mono">¥316,090</td>
-                </tr></tbody>
-            </table>
-          </div>
-          <div class="border-b border-gray-700/30 pb-3">
-            <div class="font-medium text-sm mb-2 text-gray-300">Meituan</div>
-            <table>
-              <thead><tr><th>#</th><th><span data-i18n="hotel">호텔</span></th><th class="text-right"><span data-i18n="bookings">예약건수</span></th><th class="text-right"><span data-i18n="rn">RN(박)</span></th><th class="text-right"><span data-i18n="ttvJpy">수탁고(¥)</span></th></tr></thead>
-              <tbody>
-                <tr class="hover:bg-gray-800/30">
-                  <td class="py-1 px-2 text-center text-gray-500 text-xs">1</td>
-                  <td class="py-1 px-2 text-xs">The OneFive Osaka Namba Dotonbori</td>
-                  <td class="py-1 px-2 text-right text-xs">57</td>
-                  <td class="py-1 px-2 text-right text-xs">166</td>
-                  <td class="py-1 px-2 text-right text-xs font-mono">¥1,810,477</td>
-                </tr>
-                <tr class="hover:bg-gray-800/30">
-                  <td class="py-1 px-2 text-center text-gray-500 text-xs">2</td>
-                  <td class="py-1 px-2 text-xs">The OneFive Osaka Namba Kuromon</td>
-                  <td class="py-1 px-2 text-right text-xs">40</td>
-                  <td class="py-1 px-2 text-right text-xs">97</td>
-                  <td class="py-1 px-2 text-right text-xs font-mono">¥1,564,400</td>
-                </tr>
-                <tr class="hover:bg-gray-800/30">
-                  <td class="py-1 px-2 text-center text-gray-500 text-xs">3</td>
-                  <td class="py-1 px-2 text-xs">The OneFive Osaka Shinsekai</td>
-                  <td class="py-1 px-2 text-right text-xs">27</td>
-                  <td class="py-1 px-2 text-right text-xs">79</td>
-                  <td class="py-1 px-2 text-right text-xs font-mono">¥465,814</td>
-                </tr>
-                <tr class="hover:bg-gray-800/30">
-                  <td class="py-1 px-2 text-center text-gray-500 text-xs">4</td>
-                  <td class="py-1 px-2 text-xs">The Stay Classic Myeongdong</td>
-                  <td class="py-1 px-2 text-right text-xs">23</td>
-                  <td class="py-1 px-2 text-right text-xs">54</td>
-                  <td class="py-1 px-2 text-right text-xs font-mono">¥1,115,082</td>
-                </tr>
-                <tr class="hover:bg-gray-800/30">
-                  <td class="py-1 px-2 text-center text-gray-500 text-xs">5</td>
-                  <td class="py-1 px-2 text-xs">Sotetsu Fresa Inn Daimon</td>
-                  <td class="py-1 px-2 text-right text-xs">11</td>
-                  <td class="py-1 px-2 text-right text-xs">48</td>
-                  <td class="py-1 px-2 text-right text-xs font-mono">¥722,938</td>
-                </tr></tbody>
-            </table>
-          </div>
-          <div class="border-b border-gray-700/30 pb-3">
-            <div class="font-medium text-sm mb-2 text-gray-300">PKFARE API</div>
-            <table>
-              <thead><tr><th>#</th><th><span data-i18n="hotel">호텔</span></th><th class="text-right"><span data-i18n="bookings">예약건수</span></th><th class="text-right"><span data-i18n="rn">RN(박)</span></th><th class="text-right"><span data-i18n="ttvJpy">수탁고(¥)</span></th></tr></thead>
-              <tbody>
-                <tr class="hover:bg-gray-800/30">
-                  <td class="py-1 px-2 text-center text-gray-500 text-xs">1</td>
-                  <td class="py-1 px-2 text-xs">Smile Hotel Sugamo</td>
-                  <td class="py-1 px-2 text-right text-xs">11</td>
-                  <td class="py-1 px-2 text-right text-xs">47</td>
-                  <td class="py-1 px-2 text-right text-xs font-mono">¥518,781</td>
-                </tr>
-                <tr class="hover:bg-gray-800/30">
-                  <td class="py-1 px-2 text-center text-gray-500 text-xs">2</td>
-                  <td class="py-1 px-2 text-xs">The OneFive Osaka Namba Kuromon</td>
-                  <td class="py-1 px-2 text-right text-xs">17</td>
-                  <td class="py-1 px-2 text-right text-xs">43</td>
-                  <td class="py-1 px-2 text-right text-xs font-mono">¥505,654</td>
-                </tr>
-                <tr class="hover:bg-gray-800/30">
-                  <td class="py-1 px-2 text-center text-gray-500 text-xs">3</td>
-                  <td class="py-1 px-2 text-xs">Namba Oriental Hotel</td>
-                  <td class="py-1 px-2 text-right text-xs">19</td>
-                  <td class="py-1 px-2 text-right text-xs">40</td>
-                  <td class="py-1 px-2 text-right text-xs font-mono">¥794,190</td>
-                </tr>
-                <tr class="hover:bg-gray-800/30">
-                  <td class="py-1 px-2 text-center text-gray-500 text-xs">4</td>
-                  <td class="py-1 px-2 text-xs">Hotel Oriental Express Fukuoka Tenjin</td>
-                  <td class="py-1 px-2 text-right text-xs">19</td>
-                  <td class="py-1 px-2 text-right text-xs">38</td>
-                  <td class="py-1 px-2 text-right text-xs font-mono">¥686,846</td>
-                </tr>
-                <tr class="hover:bg-gray-800/30">
-                  <td class="py-1 px-2 text-center text-gray-500 text-xs">5</td>
-                  <td class="py-1 px-2 text-xs">Hotel Forza Osaka Kitahama</td>
-                  <td class="py-1 px-2 text-right text-xs">16</td>
-                  <td class="py-1 px-2 text-right text-xs">32</td>
-                  <td class="py-1 px-2 text-right text-xs font-mono">¥367,807</td>
-                </tr></tbody>
-            </table>
-          </div>
-      </div>
-    </div>
-
-    <!-- Guest Origin -->
-    <div class="card p-5">
-      <div class="section-title"><span data-i18n="guestOrigin">고객 국적 분석</span> <span class="text-[10px] px-1.5 py-0.5 rounded bg-blue-500/15 text-blue-400 border border-blue-500/30 font-normal ml-2">Booking Date</span></div>
-      <p class="text-xs text-gray-500 mb-3"><span data-i18n="guestOriginDesc">투숙객 이름 기반 국적 추정 (Last Name 패턴 분석)</span></p>
-      <div class="grid grid-cols-2 gap-4">
-        <div id="guestOriginChart" style="height: 280px;"></div>
-        <div class="overflow-x-auto">
-          <table>
-            <thead><tr><th>#</th><th><span data-i18n="guestNationality">추정 국적</span></th><th class="text-right"><span data-i18n="bookings">예약건수</span></th><th class="text-right"><span data-i18n="rn">RN(박)</span></th><th class="text-right"><span data-i18n="ttvJpy">수탁고(¥)</span></th><th class="text-right">Share</th></tr></thead>
-            <tbody><tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
-                <td class="py-1.5 px-2 text-center text-gray-400">1</td>
-                <td class="py-1.5 px-2 font-medium">Others</td>
-                <td class="py-1.5 px-2 text-right">5,505</td>
-                <td class="py-1.5 px-2 text-right">11,703</td>
-                <td class="py-1.5 px-2 text-right font-mono">¥190,706,925</td>
-                <td class="py-1.5 px-2 text-right">46.7%</td>
-              </tr><tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
-                <td class="py-1.5 px-2 text-center text-gray-400">2</td>
-                <td class="py-1.5 px-2 font-medium">Chinese</td>
-                <td class="py-1.5 px-2 text-right">2,516</td>
-                <td class="py-1.5 px-2 text-right">6,525</td>
-                <td class="py-1.5 px-2 text-right font-mono">¥107,737,316</td>
-                <td class="py-1.5 px-2 text-right">26.4%</td>
-              </tr><tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
-                <td class="py-1.5 px-2 text-center text-gray-400">3</td>
-                <td class="py-1.5 px-2 font-medium">Korean</td>
-                <td class="py-1.5 px-2 text-right">2,537</td>
-                <td class="py-1.5 px-2 text-right">5,102</td>
-                <td class="py-1.5 px-2 text-right font-mono">¥83,380,006</td>
-                <td class="py-1.5 px-2 text-right">20.4%</td>
-              </tr><tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
-                <td class="py-1.5 px-2 text-center text-gray-400">4</td>
-                <td class="py-1.5 px-2 font-medium">Japanese</td>
-                <td class="py-1.5 px-2 text-right">554</td>
-                <td class="py-1.5 px-2 text-right">824</td>
-                <td class="py-1.5 px-2 text-right font-mono">¥11,979,120</td>
-                <td class="py-1.5 px-2 text-right">2.9%</td>
-              </tr><tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
-                <td class="py-1.5 px-2 text-center text-gray-400">5</td>
-                <td class="py-1.5 px-2 font-medium">Vietnamese</td>
-                <td class="py-1.5 px-2 text-right">289</td>
-                <td class="py-1.5 px-2 text-right">577</td>
-                <td class="py-1.5 px-2 text-right font-mono">¥8,436,060</td>
-                <td class="py-1.5 px-2 text-right">2.1%</td>
-              </tr><tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
-                <td class="py-1.5 px-2 text-center text-gray-400">6</td>
-                <td class="py-1.5 px-2 font-medium">Thai</td>
-                <td class="py-1.5 px-2 text-right">59</td>
-                <td class="py-1.5 px-2 text-right">164</td>
-                <td class="py-1.5 px-2 text-right font-mono">¥2,499,308</td>
-                <td class="py-1.5 px-2 text-right">0.6%</td>
-              </tr><tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
-                <td class="py-1.5 px-2 text-center text-gray-400">7</td>
-                <td class="py-1.5 px-2 font-medium">Unknown</td>
-                <td class="py-1.5 px-2 text-right">69</td>
-                <td class="py-1.5 px-2 text-right">85</td>
-                <td class="py-1.5 px-2 text-right font-mono">¥1,235,773</td>
-                <td class="py-1.5 px-2 text-right">0.3%</td>
-              </tr><tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
-                <td class="py-1.5 px-2 text-center text-gray-400">8</td>
-                <td class="py-1.5 px-2 font-medium">Indian</td>
-                <td class="py-1.5 px-2 text-right">25</td>
-                <td class="py-1.5 px-2 text-right">67</td>
-                <td class="py-1.5 px-2 text-right font-mono">¥1,150,645</td>
-                <td class="py-1.5 px-2 text-right">0.3%</td>
-              </tr><tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
-                <td class="py-1.5 px-2 text-center text-gray-400">9</td>
-                <td class="py-1.5 px-2 font-medium">SEA</td>
-                <td class="py-1.5 px-2 text-right">20</td>
-                <td class="py-1.5 px-2 text-right">52</td>
-                <td class="py-1.5 px-2 text-right font-mono">¥1,037,908</td>
-                <td class="py-1.5 px-2 text-right">0.3%</td>
-              </tr></tbody>
-          </table>
-        </div>
       </div>
     </div>
 
@@ -1784,11 +1094,11 @@
             <div class="flex items-start gap-3">
               <span class="text-blue-400 font-bold text-sm mt-0.5">2</span>
               <div class="flex-1">
-                <a href="https://news.google.com/rss/articles/CBMidEFVX3lxTE1jQzNRUXlBOWlpMVVZUmZTdDlCTFlOcU0wMV9QaHFXTjlrV3ZZYUtRR2FTWDh2SUcweDVsR1R2cVBXLTRmME5TRXlENnM1cmpHRnBlSUxhVzJsSTM5SEtNRjZjbVdTQm1SOXpLQ1pPanFNcGp0?oc=5" target="_blank" class="text-sm font-medium text-gray-200 hover:text-blue-400 transition">Travel Tourism Russia 2026: Uzbekistan's Outbound Surge Reshapes Central Asia - Nomad Lawyer</a>
+                <a href="https://news.google.com/rss/articles/CBMinAFBVV95cUxOcWU5eFZJZUJ5Zk14aU52U3pCUXhRNDZWN0l1dVkwNEdiTkNleVZiX3ZZRW91VGs0UWhYRFlfaTIxaV9jRkU3TkN6UXdzYlNkNDdhZ3dCanV6YThJd1ZBTzZ3TFJuUl9La01ST1hLR0dxeDRXTjBXMERqRDczQ3ZhU0stckZhdk93RlZlUzY5NmU4cTRBMEtQNWMwZ3g?oc=5" target="_blank" class="text-sm font-medium text-gray-200 hover:text-blue-400 transition">Travel Japan Sees 36% Growth Surge: Last-Minute Cherry Blossom Bookings Reshape Asia Tourism - Nomad Lawyer</a>
                 
                 <div class="flex gap-3 mt-1 text-xs text-gray-500">
                   <span>Nomad Lawyer</span>
-                  <span>2026. 3. 25.</span>
+                  <span>2026. 3. 30.</span>
                 </div>
               </div>
             </div>
@@ -1922,9 +1232,9 @@
                 
                 <span class="text-xs text-gray-600 ml-2">PhocusWire · 2026. 2. 4.</span>
               </div><div class="ml-4 mb-1.5">
-                <a href="https://news.google.com/rss/articles/CBMi_wFBVV95cUxQMGpBaDVyOWtXLWlhNlp4TGs3RlBiSXMyNnlwREpXdm9keDF0RjhmZVVRMGdvS0pGRHZ5WUZIN1RSYTNJMjNkM2c2dEp4SHBqSVpFWHZiTV9DSWlQLU5mUTJWS1MtTGJHSzF0SWpPYW84S0g4QTJmYXBWMzNnUHRyTWt6WTFBUHBRNkI0OG9NU0poV2o1TWI4cmhiWkFxeHFnakxNQkIxcjdPTzM0ZXJGUmxCY2FfMFRlUWdoX0VwLTJWV0VhZWREcGNDNkszVGFUbjRTZEZwaS0zaG9ka3JsTGpTa2pIYkswWlFhS0ZVXzU1MWtzYzJweXBlSHRmOUk?oc=5" target="_blank" class="text-xs text-gray-400 hover:text-blue-400 transition">HBX Group and Traveloka expand strategic partnership to deepen APAC supply and accelerate global distribution - PR Newswire</a>
+                <a href="https://news.google.com/rss/articles/CBMimgFBVV95cUxOMkNwMUpTZHBrTW43UmR6aGNCRU1HdGJwU0d0elRzV0RjNzN3VGtJTTlCQ1N6OXdoZmZ3UE1CWkdhRGdCSldxMG11M1FXci1HdG4xeE9LSkluRndaaWFHS2NqZ0NHdE84X3h4cjZIeENVcDI0VzlzOEl5M01FazdIQnYtay1KTnFZQmlTbWpkbUZHZUFoRUVYSXFR?oc=5" target="_blank" class="text-xs text-gray-400 hover:text-blue-400 transition">How the Trip.com-Traveloka Deal Fits the Wider Asian OTA Picture - Skift</a>
                 
-                <span class="text-xs text-gray-600 ml-2">PR Newswire · 2026. 2. 26.</span>
+                <span class="text-xs text-gray-600 ml-2">Skift · 2025. 9. 18.</span>
               </div>
           </div></div>
     </div>
@@ -1992,6 +1302,701 @@
     <div class="card p-5"><div class="section-title">🇰🇷 Korea</div><div class="grid grid-cols-2 gap-4"><div id="chart_Korea" style="height:250px;"></div><div class="overflow-y-auto" style="max-height:250px;"><table><thead><tr><th><span data-i18n="month">월</span></th><th class="text-right"><span data-i18n="inbound">인바운드</span></th><th class="text-right"><span data-i18n="outbound">아웃바운드</span></th><th class="text-right">In YoY</th><th class="text-right">Out YoY</th></tr></thead><tbody><tr class="border-b border-gray-700/50 hover:bg-gray-800/50"><td class="py-1 px-2 text-xs text-gray-400">Mar 2025</td><td class="py-1 px-2 text-right text-xs">1,614,596</td><td class="py-1 px-2 text-right text-xs">2,197,971</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+8.2%</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+2.6%</td></tr><tr class="border-b border-gray-700/50 hover:bg-gray-800/50"><td class="py-1 px-2 text-xs text-gray-400">Apr 2025</td><td class="py-1 px-2 text-right text-xs">1,707,113</td><td class="py-1 px-2 text-right text-xs">2,149,577</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+16.7%</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+1.8%</td></tr><tr class="border-b border-gray-700/50 hover:bg-gray-800/50"><td class="py-1 px-2 text-xs text-gray-400">May 2025</td><td class="py-1 px-2 text-right text-xs">1,629,387</td><td class="py-1 px-2 text-right text-xs">2,391,130</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+14.9%</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+5.4%</td></tr><tr class="border-b border-gray-700/50 hover:bg-gray-800/50"><td class="py-1 px-2 text-xs text-gray-400">Jun 2025</td><td class="py-1 px-2 text-right text-xs">1,619,220</td><td class="py-1 px-2 text-right text-xs">2,226,396</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+14.2%</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+0.3%</td></tr><tr class="border-b border-gray-700/50 hover:bg-gray-800/50"><td class="py-1 px-2 text-xs text-gray-400">Jul 2025</td><td class="py-1 px-2 text-right text-xs">1,733,199</td><td class="py-1 px-2 text-right text-xs">2,434,291</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+23.1%</td><td class="py-1 px-2 text-right text-xs text-red-400">-2.7%</td></tr><tr class="border-b border-gray-700/50 hover:bg-gray-800/50"><td class="py-1 px-2 text-xs text-gray-400">Aug 2025</td><td class="py-1 px-2 text-right text-xs">1,820,199</td><td class="py-1 px-2 text-right text-xs">2,424,074</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+16.4%</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+2.7%</td></tr><tr class="border-b border-gray-700/50 hover:bg-gray-800/50"><td class="py-1 px-2 text-xs text-gray-400">Sep 2025</td><td class="py-1 px-2 text-right text-xs">1,702,813</td><td class="py-1 px-2 text-right text-xs">2,235,874</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+16.3%</td><td class="py-1 px-2 text-right text-xs text-red-400">-3.3%</td></tr><tr class="border-b border-gray-700/50 hover:bg-gray-800/50"><td class="py-1 px-2 text-xs text-gray-400">Oct 2025</td><td class="py-1 px-2 text-right text-xs">1,739,020</td><td class="py-1 px-2 text-right text-xs">2,678,376</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+8.7%</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+12.4%</td></tr><tr class="border-b border-gray-700/50 hover:bg-gray-800/50"><td class="py-1 px-2 text-xs text-gray-400">Nov 2025</td><td class="py-1 px-2 text-right text-xs">1,596,939</td><td class="py-1 px-2 text-right text-xs">2,467,701</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+17.3%</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+3.2%</td></tr><tr class="border-b border-gray-700/50 hover:bg-gray-800/50"><td class="py-1 px-2 text-xs text-gray-400">Dec 2025</td><td class="py-1 px-2 text-right text-xs">1,560,003</td><td class="py-1 px-2 text-right text-xs">2,748,794</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+22.8%</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+1.2%</td></tr><tr class="border-b border-gray-700/50 hover:bg-gray-800/50"><td class="py-1 px-2 text-xs text-gray-400">Jan 2026</td><td class="py-1 px-2 text-right text-xs">1,265,658</td><td class="py-1 px-2 text-right text-xs">3,267,988</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+13.3%</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+9.9%</td></tr><tr class="border-b border-gray-700/50 hover:bg-gray-800/50"><td class="py-1 px-2 text-xs text-gray-400">Feb 2026</td><td class="py-1 px-2 text-right text-xs">1,431,472</td><td class="py-1 px-2 text-right text-xs">2,769,295</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+25.7%</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+5.5%</td></tr></tbody></table></div></div><div class="mt-2 text-xs text-gray-500"><span data-i18n="dataSource">데이터 출처</span>: <a href="https://datalab.visitkorea.or.kr/datalab/portal/nat/getForTourForm.do" target="_blank" class="text-blue-400 hover:underline text-xs mr-3">inbound</a><a href="https://datalab.visitkorea.or.kr/datalab/portal/ts/getDtrmcNatiCust2Form.do" target="_blank" class="text-blue-400 hover:underline text-xs mr-3">outbound</a></div></div><div class="card p-5"><div class="section-title">🇯🇵 Japan</div><div class="grid grid-cols-2 gap-4"><div id="chart_Japan" style="height:250px;"></div><div class="overflow-y-auto" style="max-height:250px;"><table><thead><tr><th><span data-i18n="month">월</span></th><th class="text-right"><span data-i18n="inbound">인바운드</span></th><th class="text-right"><span data-i18n="outbound">아웃바운드</span></th><th class="text-right">In YoY</th><th class="text-right">Out YoY</th></tr></thead><tbody><tr class="border-b border-gray-700/50 hover:bg-gray-800/50"><td class="py-1 px-2 text-xs text-gray-400">Mar 2025</td><td class="py-1 px-2 text-right text-xs">3,497,600</td><td class="py-1 px-2 text-right text-xs">1,423,400</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+13.5%</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+16.7%</td></tr><tr class="border-b border-gray-700/50 hover:bg-gray-800/50"><td class="py-1 px-2 text-xs text-gray-400">Apr 2025</td><td class="py-1 px-2 text-right text-xs">3,908,900</td><td class="py-1 px-2 text-right text-xs">961,382</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+28.5%</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+8.2%</td></tr><tr class="border-b border-gray-700/50 hover:bg-gray-800/50"><td class="py-1 px-2 text-xs text-gray-400">May 2025</td><td class="py-1 px-2 text-right text-xs">3,693,300</td><td class="py-1 px-2 text-right text-xs">1,076,800</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+21.5%</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+14.3%</td></tr><tr class="border-b border-gray-700/50 hover:bg-gray-800/50"><td class="py-1 px-2 text-xs text-gray-400">Jun 2025</td><td class="py-1 px-2 text-right text-xs">3,377,800</td><td class="py-1 px-2 text-right text-xs">1,054,000</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+7.6%</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+13.3%</td></tr><tr class="border-b border-gray-700/50 hover:bg-gray-800/50"><td class="py-1 px-2 text-xs text-gray-400">Jul 2025</td><td class="py-1 px-2 text-right text-xs">3,437,000</td><td class="py-1 px-2 text-right text-xs">1,205,500</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+4.4%</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+14.9%</td></tr><tr class="border-b border-gray-700/50 hover:bg-gray-800/50"><td class="py-1 px-2 text-xs text-gray-400">Aug 2025</td><td class="py-1 px-2 text-right text-xs">3,428,000</td><td class="py-1 px-2 text-right text-xs">1,648,300</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+16.9%</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+14.7%</td></tr><tr class="border-b border-gray-700/50 hover:bg-gray-800/50"><td class="py-1 px-2 text-xs text-gray-400">Sep 2025</td><td class="py-1 px-2 text-right text-xs">3,266,800</td><td class="py-1 px-2 text-right text-xs">1,394,500</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+13.7%</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+15.0%</td></tr><tr class="border-b border-gray-700/50 hover:bg-gray-800/50"><td class="py-1 px-2 text-xs text-gray-400">Oct 2025</td><td class="py-1 px-2 text-right text-xs">3,896,300</td><td class="py-1 px-2 text-right text-xs">1,243,600</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+17.6%</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+8.3%</td></tr><tr class="border-b border-gray-700/50 hover:bg-gray-800/50"><td class="py-1 px-2 text-xs text-gray-400">Nov 2025</td><td class="py-1 px-2 text-right text-xs">3,518,000</td><td class="py-1 px-2 text-right text-xs">1,330,000</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+10.4%</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+13.2%</td></tr><tr class="border-b border-gray-700/50 hover:bg-gray-800/50"><td class="py-1 px-2 text-xs text-gray-400">Dec 2025</td><td class="py-1 px-2 text-right text-xs">3,617,700</td><td class="py-1 px-2 text-right text-xs">1,300,700</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+45.3%</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+9.6%</td></tr><tr class="border-b border-gray-700/50 hover:bg-gray-800/50"><td class="py-1 px-2 text-xs text-gray-400">Jan 2026</td><td class="py-1 px-2 text-right text-xs">3,597,500</td><td class="py-1 px-2 text-right text-xs">1,072,600</td><td class="py-1 px-2 text-right text-xs text-red-400">-4.9%</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+17.6%</td></tr><tr class="border-b border-gray-700/50 hover:bg-gray-800/50"><td class="py-1 px-2 text-xs text-gray-400">Feb 2026</td><td class="py-1 px-2 text-right text-xs">3,466,700</td><td class="py-1 px-2 text-right text-xs">1,093,300</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+6.4%</td><td class="py-1 px-2 text-right text-xs text-red-400">-7.4%</td></tr></tbody></table></div></div><div class="mt-2 text-xs text-gray-500"><span data-i18n="dataSource">데이터 출처</span>: <a href="https://www.jnto.go.jp/statistics/data/visitors-statistics/" target="_blank" class="text-blue-400 hover:underline text-xs mr-3">JNTO</a></div></div><div class="card p-5"><div class="section-title">🇻🇳 Vietnam</div><div class="grid grid-cols-2 gap-4"><div id="chart_Vietnam" style="height:250px;"></div><div class="overflow-y-auto" style="max-height:250px;"><table><thead><tr><th><span data-i18n="month">월</span></th><th class="text-right"><span data-i18n="inbound">인바운드</span></th><th class="text-right">In YoY</th></tr></thead><tbody><tr class="border-b border-gray-700/50 hover:bg-gray-800/50"><td class="py-1 px-2 text-xs text-gray-400">Mar 2025</td><td class="py-1 px-2 text-right text-xs">2,050,000</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+28.1%</td></tr><tr class="border-b border-gray-700/50 hover:bg-gray-800/50"><td class="py-1 px-2 text-xs text-gray-400">Apr 2025</td><td class="py-1 px-2 text-right text-xs">1,650,000</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+5.8%</td></tr><tr class="border-b border-gray-700/50 hover:bg-gray-800/50"><td class="py-1 px-2 text-xs text-gray-400">May 2025</td><td class="py-1 px-2 text-right text-xs">1,530,000</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+10.9%</td></tr><tr class="border-b border-gray-700/50 hover:bg-gray-800/50"><td class="py-1 px-2 text-xs text-gray-400">Jun 2025</td><td class="py-1 px-2 text-right text-xs">1,462,000</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+17.0%</td></tr><tr class="border-b border-gray-700/50 hover:bg-gray-800/50"><td class="py-1 px-2 text-xs text-gray-400">Jul 2025</td><td class="py-1 px-2 text-right text-xs">1,560,000</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+35.7%</td></tr><tr class="border-b border-gray-700/50 hover:bg-gray-800/50"><td class="py-1 px-2 text-xs text-gray-400">Aug 2025</td><td class="py-1 px-2 text-right text-xs">1,680,000</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+17.5%</td></tr><tr class="border-b border-gray-700/50 hover:bg-gray-800/50"><td class="py-1 px-2 text-xs text-gray-400">Sep 2025</td><td class="py-1 px-2 text-right text-xs">1,520,000</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+19.7%</td></tr><tr class="border-b border-gray-700/50 hover:bg-gray-800/50"><td class="py-1 px-2 text-xs text-gray-400">Oct 2025</td><td class="py-1 px-2 text-right text-xs">1,730,000</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+21.8%</td></tr><tr class="border-b border-gray-700/50 hover:bg-gray-800/50"><td class="py-1 px-2 text-xs text-gray-400">Nov 2025</td><td class="py-1 px-2 text-right text-xs">1,980,000</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+15.8%</td></tr><tr class="border-b border-gray-700/50 hover:bg-gray-800/50"><td class="py-1 px-2 text-xs text-gray-400">Dec 2025</td><td class="py-1 px-2 text-right text-xs">2,020,000</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+15.4%</td></tr><tr class="border-b border-gray-700/50 hover:bg-gray-800/50"><td class="py-1 px-2 text-xs text-gray-400">Jan 2026</td><td class="py-1 px-2 text-right text-xs">2,450,000</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+16.7%</td></tr><tr class="border-b border-gray-700/50 hover:bg-gray-800/50"><td class="py-1 px-2 text-xs text-gray-400">Feb 2026</td><td class="py-1 px-2 text-right text-xs">2,228,372</td><td class="py-1 px-2 text-right text-xs text-emerald-400">+17.9%</td></tr></tbody></table></div></div><div class="mt-2 text-xs text-gray-500"><span data-i18n="dataSource">데이터 출처</span>: <a href="https://ko.tradingeconomics.com/vietnam/tourist-arrivals" target="_blank" class="text-blue-400 hover:underline text-xs mr-3">TradingEconomics</a><a href="https://vietnamtourism.gov.vn/en/statistic/international" target="_blank" class="text-blue-400 hover:underline text-xs mr-3">VietnamTourism</a></div></div>
   </div>
 
+  <!-- ═══════ TAB 10: 데이터 ═══════ -->
+  <div id="tab10" class="tab-panel p-6 space-y-4">
+
+    <!-- Channel Margin -->
+    <div class="card p-5">
+      <div class="section-title"><span data-i18n="marginTitle">채널별 마진 현황</span> <span class="text-[10px] px-1.5 py-0.5 rounded bg-blue-500/15 text-blue-400 border border-blue-500/30 font-normal ml-2">Booking Date</span></div>
+      <div class="grid grid-cols-2 gap-4">
+        <div id="marginChart" style="height: 300px;"></div>
+        <div class="overflow-x-auto">
+          <table>
+            <thead><tr><th>#</th><th><span data-i18n="channel">채널명</span></th><th class="text-right"><span data-i18n="ttvJpy">수탁고(¥)</span></th><th class="text-right"><span data-i18n="margin">마진(¥)</span></th><th class="text-right"><span data-i18n="marginRate">마진율</span></th></tr></thead>
+            <tbody>
+              <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
+                <td class="py-1.5 px-2 text-center text-gray-400">1</td>
+                <td class="py-1.5 px-2 font-medium">Ctrip Korea</td>
+                <td class="py-1.5 px-2 text-right font-mono text-xs">¥154,855,662</td>
+                <td class="py-1.5 px-2 text-right font-mono text-xs">¥10,622,287</td>
+                <td class="py-1.5 px-2 text-right text-xs text-blue-400">6.9%</td>
+              </tr>
+              <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
+                <td class="py-1.5 px-2 text-center text-gray-400">2</td>
+                <td class="py-1.5 px-2 font-medium">Agoda</td>
+                <td class="py-1.5 px-2 text-right font-mono text-xs">¥94,346,497</td>
+                <td class="py-1.5 px-2 text-right font-mono text-xs">¥9,277,339</td>
+                <td class="py-1.5 px-2 text-right text-xs text-emerald-400">9.8%</td>
+              </tr>
+              <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
+                <td class="py-1.5 px-2 text-center text-gray-400">3</td>
+                <td class="py-1.5 px-2 font-medium">Dida</td>
+                <td class="py-1.5 px-2 text-right font-mono text-xs">¥29,344,778</td>
+                <td class="py-1.5 px-2 text-right font-mono text-xs">¥1,905,353</td>
+                <td class="py-1.5 px-2 text-right text-xs text-blue-400">6.5%</td>
+              </tr>
+              <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
+                <td class="py-1.5 px-2 text-center text-gray-400">4</td>
+                <td class="py-1.5 px-2 font-medium">Meituan</td>
+                <td class="py-1.5 px-2 text-right font-mono text-xs">¥25,738,682</td>
+                <td class="py-1.5 px-2 text-right font-mono text-xs">¥1,807,045</td>
+                <td class="py-1.5 px-2 text-right text-xs text-blue-400">7.0%</td>
+              </tr>
+              <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
+                <td class="py-1.5 px-2 text-center text-gray-400">5</td>
+                <td class="py-1.5 px-2 font-medium">PKFARE API</td>
+                <td class="py-1.5 px-2 text-right font-mono text-xs">¥21,296,190</td>
+                <td class="py-1.5 px-2 text-right font-mono text-xs">¥1,810,828</td>
+                <td class="py-1.5 px-2 text-right text-xs text-emerald-400">8.5%</td>
+              </tr>
+              <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
+                <td class="py-1.5 px-2 text-center text-gray-400">6</td>
+                <td class="py-1.5 px-2 font-medium">Convergent API</td>
+                <td class="py-1.5 px-2 text-right font-mono text-xs">¥15,792,739</td>
+                <td class="py-1.5 px-2 text-right font-mono text-xs">¥1,115,863</td>
+                <td class="py-1.5 px-2 text-right text-xs text-blue-400">7.1%</td>
+              </tr>
+              <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
+                <td class="py-1.5 px-2 text-center text-gray-400">7</td>
+                <td class="py-1.5 px-2 font-medium">Elong</td>
+                <td class="py-1.5 px-2 text-right font-mono text-xs">¥15,308,970</td>
+                <td class="py-1.5 px-2 text-right font-mono text-xs">¥1,236,505</td>
+                <td class="py-1.5 px-2 text-right text-xs text-emerald-400">8.1%</td>
+              </tr>
+              <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
+                <td class="py-1.5 px-2 text-center text-gray-400">8</td>
+                <td class="py-1.5 px-2 font-medium">Ctrip Vietnam</td>
+                <td class="py-1.5 px-2 text-right font-mono text-xs">¥10,492,297</td>
+                <td class="py-1.5 px-2 text-right font-mono text-xs">¥369,214</td>
+                <td class="py-1.5 px-2 text-right text-xs text-amber-400">3.5%</td>
+              </tr>
+              <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
+                <td class="py-1.5 px-2 text-center text-gray-400">9</td>
+                <td class="py-1.5 px-2 font-medium">HeyTrip</td>
+                <td class="py-1.5 px-2 text-right font-mono text-xs">¥7,357,674</td>
+                <td class="py-1.5 px-2 text-right font-mono text-xs">¥482,586</td>
+                <td class="py-1.5 px-2 text-right text-xs text-blue-400">6.6%</td>
+              </tr>
+              <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
+                <td class="py-1.5 px-2 text-center text-gray-400">10</td>
+                <td class="py-1.5 px-2 font-medium">Qunar</td>
+                <td class="py-1.5 px-2 text-right font-mono text-xs">¥7,029,101</td>
+                <td class="py-1.5 px-2 text-right font-mono text-xs">¥324,997</td>
+                <td class="py-1.5 px-2 text-right text-xs text-amber-400">4.6%</td>
+              </tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Guest Origin -->
+    <div class="card p-5">
+      <div class="section-title"><span data-i18n="guestOrigin">고객 국적 분석</span> <span class="text-[10px] px-1.5 py-0.5 rounded bg-blue-500/15 text-blue-400 border border-blue-500/30 font-normal ml-2">Booking Date</span></div>
+      <p class="text-xs text-gray-500 mb-3"><span data-i18n="guestOriginDesc">투숙객 이름 기반 국적 추정 (Last Name 패턴 분석)</span></p>
+      <div class="grid grid-cols-2 gap-4">
+        <div id="guestOriginChart" style="height: 280px;"></div>
+        <div class="overflow-x-auto">
+          <table>
+            <thead><tr><th>#</th><th><span data-i18n="guestNationality">추정 국적</span></th><th class="text-right"><span data-i18n="bookings">예약건수</span></th><th class="text-right"><span data-i18n="rn">RN(박)</span></th><th class="text-right"><span data-i18n="ttvJpy">수탁고(¥)</span></th><th class="text-right">Share</th></tr></thead>
+            <tbody><tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
+                <td class="py-1.5 px-2 text-center text-gray-400">1</td>
+                <td class="py-1.5 px-2 font-medium">Others</td>
+                <td class="py-1.5 px-2 text-right">5,505</td>
+                <td class="py-1.5 px-2 text-right">11,703</td>
+                <td class="py-1.5 px-2 text-right font-mono">¥190,706,925</td>
+                <td class="py-1.5 px-2 text-right">46.7%</td>
+              </tr><tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
+                <td class="py-1.5 px-2 text-center text-gray-400">2</td>
+                <td class="py-1.5 px-2 font-medium">Chinese</td>
+                <td class="py-1.5 px-2 text-right">2,516</td>
+                <td class="py-1.5 px-2 text-right">6,525</td>
+                <td class="py-1.5 px-2 text-right font-mono">¥107,737,316</td>
+                <td class="py-1.5 px-2 text-right">26.4%</td>
+              </tr><tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
+                <td class="py-1.5 px-2 text-center text-gray-400">3</td>
+                <td class="py-1.5 px-2 font-medium">Korean</td>
+                <td class="py-1.5 px-2 text-right">2,537</td>
+                <td class="py-1.5 px-2 text-right">5,102</td>
+                <td class="py-1.5 px-2 text-right font-mono">¥83,380,006</td>
+                <td class="py-1.5 px-2 text-right">20.4%</td>
+              </tr><tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
+                <td class="py-1.5 px-2 text-center text-gray-400">4</td>
+                <td class="py-1.5 px-2 font-medium">Japanese</td>
+                <td class="py-1.5 px-2 text-right">554</td>
+                <td class="py-1.5 px-2 text-right">824</td>
+                <td class="py-1.5 px-2 text-right font-mono">¥11,979,120</td>
+                <td class="py-1.5 px-2 text-right">2.9%</td>
+              </tr><tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
+                <td class="py-1.5 px-2 text-center text-gray-400">5</td>
+                <td class="py-1.5 px-2 font-medium">Vietnamese</td>
+                <td class="py-1.5 px-2 text-right">289</td>
+                <td class="py-1.5 px-2 text-right">577</td>
+                <td class="py-1.5 px-2 text-right font-mono">¥8,436,060</td>
+                <td class="py-1.5 px-2 text-right">2.1%</td>
+              </tr><tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
+                <td class="py-1.5 px-2 text-center text-gray-400">6</td>
+                <td class="py-1.5 px-2 font-medium">Thai</td>
+                <td class="py-1.5 px-2 text-right">59</td>
+                <td class="py-1.5 px-2 text-right">164</td>
+                <td class="py-1.5 px-2 text-right font-mono">¥2,499,308</td>
+                <td class="py-1.5 px-2 text-right">0.6%</td>
+              </tr><tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
+                <td class="py-1.5 px-2 text-center text-gray-400">7</td>
+                <td class="py-1.5 px-2 font-medium">Unknown</td>
+                <td class="py-1.5 px-2 text-right">69</td>
+                <td class="py-1.5 px-2 text-right">85</td>
+                <td class="py-1.5 px-2 text-right font-mono">¥1,235,773</td>
+                <td class="py-1.5 px-2 text-right">0.3%</td>
+              </tr><tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
+                <td class="py-1.5 px-2 text-center text-gray-400">8</td>
+                <td class="py-1.5 px-2 font-medium">Indian</td>
+                <td class="py-1.5 px-2 text-right">25</td>
+                <td class="py-1.5 px-2 text-right">67</td>
+                <td class="py-1.5 px-2 text-right font-mono">¥1,150,645</td>
+                <td class="py-1.5 px-2 text-right">0.3%</td>
+              </tr><tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
+                <td class="py-1.5 px-2 text-center text-gray-400">9</td>
+                <td class="py-1.5 px-2 font-medium">SEA</td>
+                <td class="py-1.5 px-2 text-right">20</td>
+                <td class="py-1.5 px-2 text-right">52</td>
+                <td class="py-1.5 px-2 text-right font-mono">¥1,037,908</td>
+                <td class="py-1.5 px-2 text-right">0.3%</td>
+              </tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Channel × Country Crosstab -->
+    <div class="card p-5">
+      <div class="section-title"><span data-i18n="crosstabTitle">채널 × 국가 크로스탭</span> <span class="text-[10px] px-1.5 py-0.5 rounded bg-blue-500/15 text-blue-400 border border-blue-500/30 font-normal ml-2">Booking Date</span></div>
+      <div class="overflow-x-auto" style="max-height: 400px; overflow-y: auto;">
+        <table>
+          <thead><tr><th>#</th><th><span data-i18n="channel">채널명</span></th><th class="text-center"><span data-i18n="country">호텔 국가</span></th><th class="text-right"><span data-i18n="bookings">예약건수</span></th><th class="text-right"><span data-i18n="rn">RN(박)</span></th><th class="text-right"><span data-i18n="ttvJpy">수탁고(¥)</span></th><th class="text-right"><span data-i18n="margin">마진(¥)</span></th><th class="text-right"><span data-i18n="marginRate">마진율</span></th></tr></thead>
+          <tbody>
+            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
+              <td class="py-1 px-2 text-center text-gray-500 text-xs">1</td>
+              <td class="py-1 px-2 text-sm font-medium">Ctrip Korea</td>
+              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-blue-500/20 text-blue-400">JP</span></td>
+              <td class="py-1 px-2 text-right text-xs">2,930</td>
+              <td class="py-1 px-2 text-right text-xs">6,923</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥111,743,500</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥7,306,170</td>
+              <td class="py-1 px-2 text-right text-xs text-blue-400">6.5%</td>
+            </tr>
+            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
+              <td class="py-1 px-2 text-center text-gray-500 text-xs">2</td>
+              <td class="py-1 px-2 text-sm font-medium">Agoda</td>
+              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-blue-500/20 text-blue-400">JP</span></td>
+              <td class="py-1 px-2 text-right text-xs">1,861</td>
+              <td class="py-1 px-2 text-right text-xs">4,584</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥83,868,119</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥8,203,223</td>
+              <td class="py-1 px-2 text-right text-xs text-emerald-400">9.8%</td>
+            </tr>
+            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
+              <td class="py-1 px-2 text-center text-gray-500 text-xs">3</td>
+              <td class="py-1 px-2 text-sm font-medium">Ctrip Korea</td>
+              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-cyan-500/20 text-cyan-400">KR</span></td>
+              <td class="py-1 px-2 text-right text-xs">1,196</td>
+              <td class="py-1 px-2 text-right text-xs">2,406</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥42,442,218</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥3,212,909</td>
+              <td class="py-1 px-2 text-right text-xs text-blue-400">7.6%</td>
+            </tr>
+            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
+              <td class="py-1 px-2 text-center text-gray-500 text-xs">4</td>
+              <td class="py-1 px-2 text-sm font-medium">Dida</td>
+              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-blue-500/20 text-blue-400">JP</span></td>
+              <td class="py-1 px-2 text-right text-xs">458</td>
+              <td class="py-1 px-2 text-right text-xs">1,143</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥22,285,600</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥1,500,426</td>
+              <td class="py-1 px-2 text-right text-xs text-blue-400">6.7%</td>
+            </tr>
+            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
+              <td class="py-1 px-2 text-center text-gray-500 text-xs">5</td>
+              <td class="py-1 px-2 text-sm font-medium">Meituan</td>
+              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-blue-500/20 text-blue-400">JP</span></td>
+              <td class="py-1 px-2 text-right text-xs">666</td>
+              <td class="py-1 px-2 text-right text-xs">1,469</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥21,107,110</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥1,134,587</td>
+              <td class="py-1 px-2 text-right text-xs text-blue-400">5.4%</td>
+            </tr>
+            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
+              <td class="py-1 px-2 text-center text-gray-500 text-xs">6</td>
+              <td class="py-1 px-2 text-sm font-medium">PKFARE API</td>
+              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-blue-500/20 text-blue-400">JP</span></td>
+              <td class="py-1 px-2 text-right text-xs">670</td>
+              <td class="py-1 px-2 text-right text-xs">1,131</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥17,778,067</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥1,595,992</td>
+              <td class="py-1 px-2 text-right text-xs text-emerald-400">9.0%</td>
+            </tr>
+            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
+              <td class="py-1 px-2 text-center text-gray-500 text-xs">7</td>
+              <td class="py-1 px-2 text-sm font-medium">Convergent API</td>
+              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-blue-500/20 text-blue-400">JP</span></td>
+              <td class="py-1 px-2 text-right text-xs">392</td>
+              <td class="py-1 px-2 text-right text-xs">749</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥11,724,187</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥925,765</td>
+              <td class="py-1 px-2 text-right text-xs text-blue-400">7.9%</td>
+            </tr>
+            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
+              <td class="py-1 px-2 text-center text-gray-500 text-xs">8</td>
+              <td class="py-1 px-2 text-sm font-medium">Ctrip Vietnam</td>
+              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-purple-500/20 text-purple-400">VN</span></td>
+              <td class="py-1 px-2 text-right text-xs">400</td>
+              <td class="py-1 px-2 text-right text-xs">914</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥10,492,297</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥369,214</td>
+              <td class="py-1 px-2 text-right text-xs text-amber-400">3.5%</td>
+            </tr>
+            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
+              <td class="py-1 px-2 text-center text-gray-500 text-xs">9</td>
+              <td class="py-1 px-2 text-sm font-medium">Elong</td>
+              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-blue-500/20 text-blue-400">JP</span></td>
+              <td class="py-1 px-2 text-right text-xs">254</td>
+              <td class="py-1 px-2 text-right text-xs">562</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥9,579,398</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥894,064</td>
+              <td class="py-1 px-2 text-right text-xs text-emerald-400">9.3%</td>
+            </tr>
+            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
+              <td class="py-1 px-2 text-center text-gray-500 text-xs">10</td>
+              <td class="py-1 px-2 text-sm font-medium">HeyTrip</td>
+              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-blue-500/20 text-blue-400">JP</span></td>
+              <td class="py-1 px-2 text-right text-xs">147</td>
+              <td class="py-1 px-2 text-right text-xs">324</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥5,985,082</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥421,390</td>
+              <td class="py-1 px-2 text-right text-xs text-blue-400">7.0%</td>
+            </tr>
+            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
+              <td class="py-1 px-2 text-center text-gray-500 text-xs">11</td>
+              <td class="py-1 px-2 text-sm font-medium">Agoda</td>
+              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-cyan-500/20 text-cyan-400">KR</span></td>
+              <td class="py-1 px-2 text-right text-xs">209</td>
+              <td class="py-1 px-2 text-right text-xs">362</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥5,757,719</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥645,816</td>
+              <td class="py-1 px-2 text-right text-xs text-emerald-400">11.2%</td>
+            </tr>
+            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
+              <td class="py-1 px-2 text-center text-gray-500 text-xs">12</td>
+              <td class="py-1 px-2 text-sm font-medium">Qunar</td>
+              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-blue-500/20 text-blue-400">JP</span></td>
+              <td class="py-1 px-2 text-right text-xs">170</td>
+              <td class="py-1 px-2 text-right text-xs">451</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥5,229,908</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥234,533</td>
+              <td class="py-1 px-2 text-right text-xs text-amber-400">4.5%</td>
+            </tr>
+            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
+              <td class="py-1 px-2 text-center text-gray-500 text-xs">13</td>
+              <td class="py-1 px-2 text-sm font-medium">Elong</td>
+              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-cyan-500/20 text-cyan-400">KR</span></td>
+              <td class="py-1 px-2 text-right text-xs">196</td>
+              <td class="py-1 px-2 text-right text-xs">324</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥5,102,625</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥313,711</td>
+              <td class="py-1 px-2 text-right text-xs text-blue-400">6.1%</td>
+            </tr>
+            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
+              <td class="py-1 px-2 text-center text-gray-500 text-xs">14</td>
+              <td class="py-1 px-2 text-sm font-medium">Agoda</td>
+              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-purple-500/20 text-purple-400">VN</span></td>
+              <td class="py-1 px-2 text-right text-xs">161</td>
+              <td class="py-1 px-2 text-right text-xs">370</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥4,720,659</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥428,300</td>
+              <td class="py-1 px-2 text-right text-xs text-emerald-400">9.1%</td>
+            </tr>
+            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
+              <td class="py-1 px-2 text-center text-gray-500 text-xs">15</td>
+              <td class="py-1 px-2 text-sm font-medium">Tourmind</td>
+              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-blue-500/20 text-blue-400">JP</span></td>
+              <td class="py-1 px-2 text-right text-xs">143</td>
+              <td class="py-1 px-2 text-right text-xs">242</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥4,178,678</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥339,881</td>
+              <td class="py-1 px-2 text-right text-xs text-emerald-400">8.1%</td>
+            </tr>
+            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
+              <td class="py-1 px-2 text-center text-gray-500 text-xs">16</td>
+              <td class="py-1 px-2 text-sm font-medium">Meituan</td>
+              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-cyan-500/20 text-cyan-400">KR</span></td>
+              <td class="py-1 px-2 text-right text-xs">131</td>
+              <td class="py-1 px-2 text-right text-xs">231</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥3,639,775</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥612,967</td>
+              <td class="py-1 px-2 text-right text-xs text-emerald-400">16.8%</td>
+            </tr>
+            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
+              <td class="py-1 px-2 text-center text-gray-500 text-xs">17</td>
+              <td class="py-1 px-2 text-sm font-medium">Dida</td>
+              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-cyan-500/20 text-cyan-400">KR</span></td>
+              <td class="py-1 px-2 text-right text-xs">130</td>
+              <td class="py-1 px-2 text-right text-xs">221</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥3,543,771</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥178,604</td>
+              <td class="py-1 px-2 text-right text-xs text-blue-400">5.0%</td>
+            </tr>
+            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
+              <td class="py-1 px-2 text-center text-gray-500 text-xs">18</td>
+              <td class="py-1 px-2 text-sm font-medium">Dida</td>
+              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-purple-500/20 text-purple-400">VN</span></td>
+              <td class="py-1 px-2 text-right text-xs">101</td>
+              <td class="py-1 px-2 text-right text-xs">211</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥3,415,791</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥222,108</td>
+              <td class="py-1 px-2 text-right text-xs text-blue-400">6.5%</td>
+            </tr>
+            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
+              <td class="py-1 px-2 text-center text-gray-500 text-xs">19</td>
+              <td class="py-1 px-2 text-sm font-medium">Convergent API</td>
+              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-cyan-500/20 text-cyan-400">KR</span></td>
+              <td class="py-1 px-2 text-right text-xs">143</td>
+              <td class="py-1 px-2 text-right text-xs">225</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥2,836,439</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥120,112</td>
+              <td class="py-1 px-2 text-right text-xs text-amber-400">4.2%</td>
+            </tr>
+            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
+              <td class="py-1 px-2 text-center text-gray-500 text-xs">20</td>
+              <td class="py-1 px-2 text-sm font-medium">Traveloka</td>
+              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-blue-500/20 text-blue-400">JP</span></td>
+              <td class="py-1 px-2 text-right text-xs">50</td>
+              <td class="py-1 px-2 text-right text-xs">161</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥2,543,862</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥129,342</td>
+              <td class="py-1 px-2 text-right text-xs text-blue-400">5.1%</td>
+            </tr>
+            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
+              <td class="py-1 px-2 text-center text-gray-500 text-xs">21</td>
+              <td class="py-1 px-2 text-sm font-medium">SS Booking</td>
+              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-blue-500/20 text-blue-400">JP</span></td>
+              <td class="py-1 px-2 text-right text-xs">46</td>
+              <td class="py-1 px-2 text-right text-xs">157</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥2,271,219</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥127,162</td>
+              <td class="py-1 px-2 text-right text-xs text-blue-400">5.6%</td>
+            </tr>
+            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
+              <td class="py-1 px-2 text-center text-gray-500 text-xs">22</td>
+              <td class="py-1 px-2 text-sm font-medium">PKFARE API</td>
+              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-cyan-500/20 text-cyan-400">KR</span></td>
+              <td class="py-1 px-2 text-right text-xs">131</td>
+              <td class="py-1 px-2 text-right text-xs">162</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥2,107,441</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥151,809</td>
+              <td class="py-1 px-2 text-right text-xs text-blue-400">7.2%</td>
+            </tr>
+            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
+              <td class="py-1 px-2 text-center text-gray-500 text-xs">23</td>
+              <td class="py-1 px-2 text-sm font-medium">RTX (Seller API)</td>
+              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-blue-500/20 text-blue-400">JP</span></td>
+              <td class="py-1 px-2 text-right text-xs">23</td>
+              <td class="py-1 px-2 text-right text-xs">92</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥1,949,082</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥93,496</td>
+              <td class="py-1 px-2 text-right text-xs text-amber-400">4.8%</td>
+            </tr>
+            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
+              <td class="py-1 px-2 text-center text-gray-500 text-xs">24</td>
+              <td class="py-1 px-2 text-sm font-medium">Alitrip</td>
+              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-blue-500/20 text-blue-400">JP</span></td>
+              <td class="py-1 px-2 text-right text-xs">37</td>
+              <td class="py-1 px-2 text-right text-xs">108</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥1,698,621</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥100,093</td>
+              <td class="py-1 px-2 text-right text-xs text-blue-400">5.9%</td>
+            </tr>
+            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
+              <td class="py-1 px-2 text-center text-gray-500 text-xs">25</td>
+              <td class="py-1 px-2 text-sm font-medium">PKFARE API</td>
+              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-purple-500/20 text-purple-400">VN</span></td>
+              <td class="py-1 px-2 text-right text-xs">89</td>
+              <td class="py-1 px-2 text-right text-xs">148</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥1,351,207</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥60,510</td>
+              <td class="py-1 px-2 text-right text-xs text-amber-400">4.5%</td>
+            </tr>
+            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
+              <td class="py-1 px-2 text-center text-gray-500 text-xs">26</td>
+              <td class="py-1 px-2 text-sm font-medium">triptopaz</td>
+              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-blue-500/20 text-blue-400">JP</span></td>
+              <td class="py-1 px-2 text-right text-xs">25</td>
+              <td class="py-1 px-2 text-right text-xs">55</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥1,289,929</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥212,457</td>
+              <td class="py-1 px-2 text-right text-xs text-emerald-400">16.5%</td>
+            </tr>
+            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
+              <td class="py-1 px-2 text-center text-gray-500 text-xs">27</td>
+              <td class="py-1 px-2 text-sm font-medium">Traveloka</td>
+              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-purple-500/20 text-purple-400">VN</span></td>
+              <td class="py-1 px-2 text-right text-xs">88</td>
+              <td class="py-1 px-2 text-right text-xs">136</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥1,215,027</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥41,727</td>
+              <td class="py-1 px-2 text-right text-xs text-amber-400">3.4%</td>
+            </tr>
+            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
+              <td class="py-1 px-2 text-center text-gray-500 text-xs">28</td>
+              <td class="py-1 px-2 text-sm font-medium">Convergent API</td>
+              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-purple-500/20 text-purple-400">VN</span></td>
+              <td class="py-1 px-2 text-right text-xs">44</td>
+              <td class="py-1 px-2 text-right text-xs">80</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥1,118,925</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥65,198</td>
+              <td class="py-1 px-2 text-right text-xs text-blue-400">5.8%</td>
+            </tr>
+            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
+              <td class="py-1 px-2 text-center text-gray-500 text-xs">29</td>
+              <td class="py-1 px-2 text-sm font-medium">Hotelpass</td>
+              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-blue-500/20 text-blue-400">JP</span></td>
+              <td class="py-1 px-2 text-right text-xs">25</td>
+              <td class="py-1 px-2 text-right text-xs">43</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥1,101,226</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥71,574</td>
+              <td class="py-1 px-2 text-right text-xs text-blue-400">6.5%</td>
+            </tr>
+            <tr class="border-b border-gray-700/50 hover:bg-gray-800/50">
+              <td class="py-1 px-2 text-center text-gray-500 text-xs">30</td>
+              <td class="py-1 px-2 text-sm font-medium">Tourmind</td>
+              <td class="py-1 px-2 text-center text-xs"><span class="px-1.5 py-0.5 rounded text-[10px] bg-cyan-500/20 text-cyan-400">KR</span></td>
+              <td class="py-1 px-2 text-right text-xs">46</td>
+              <td class="py-1 px-2 text-right text-xs">70</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥1,025,891</td>
+              <td class="py-1 px-2 text-right text-xs font-mono">¥222,810</td>
+              <td class="py-1 px-2 text-right text-xs text-emerald-400">21.7%</td>
+            </tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Top Hotels by Channel -->
+    <div class="card p-5">
+      <div class="section-title"><span data-i18n="topHotelsTitle">채널별 Top 호텔</span> <span class="text-[10px] px-1.5 py-0.5 rounded bg-blue-500/15 text-blue-400 border border-blue-500/30 font-normal ml-2">Booking Date</span></div>
+      <div class="grid grid-cols-1 gap-4">
+        
+          <div class="border-b border-gray-700/30 pb-3">
+            <div class="font-medium text-sm mb-2 text-gray-300">Ctrip Korea</div>
+            <table>
+              <thead><tr><th>#</th><th><span data-i18n="hotel">호텔</span></th><th class="text-right"><span data-i18n="bookings">예약건수</span></th><th class="text-right"><span data-i18n="rn">RN(박)</span></th><th class="text-right"><span data-i18n="ttvJpy">수탁고(¥)</span></th></tr></thead>
+              <tbody>
+                <tr class="hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">1</td>
+                  <td class="py-1 px-2 text-xs">The OneFive Osaka Shinsekai</td>
+                  <td class="py-1 px-2 text-right text-xs">114</td>
+                  <td class="py-1 px-2 text-right text-xs">343</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥2,600,117</td>
+                </tr>
+                <tr class="hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">2</td>
+                  <td class="py-1 px-2 text-xs">Smile Hotel Sugamo</td>
+                  <td class="py-1 px-2 text-right text-xs">82</td>
+                  <td class="py-1 px-2 text-right text-xs">282</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥2,764,260</td>
+                </tr>
+                <tr class="hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">3</td>
+                  <td class="py-1 px-2 text-xs">The OneFive Osaka Namba Dotonbori</td>
+                  <td class="py-1 px-2 text-right text-xs">97</td>
+                  <td class="py-1 px-2 text-right text-xs">267</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥3,013,325</td>
+                </tr>
+                <tr class="hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">4</td>
+                  <td class="py-1 px-2 text-xs">Sotetsu Fresa Inn Tokyo Kinshicho</td>
+                  <td class="py-1 px-2 text-right text-xs">67</td>
+                  <td class="py-1 px-2 text-right text-xs">227</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥3,050,440</td>
+                </tr>
+                <tr class="hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">5</td>
+                  <td class="py-1 px-2 text-xs">Sollago Myeongdong Hotel & Residence</td>
+                  <td class="py-1 px-2 text-right text-xs">76</td>
+                  <td class="py-1 px-2 text-right text-xs">226</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥3,391,370</td>
+                </tr></tbody>
+            </table>
+          </div>
+          <div class="border-b border-gray-700/30 pb-3">
+            <div class="font-medium text-sm mb-2 text-gray-300">Agoda</div>
+            <table>
+              <thead><tr><th>#</th><th><span data-i18n="hotel">호텔</span></th><th class="text-right"><span data-i18n="bookings">예약건수</span></th><th class="text-right"><span data-i18n="rn">RN(박)</span></th><th class="text-right"><span data-i18n="ttvJpy">수탁고(¥)</span></th></tr></thead>
+              <tbody>
+                <tr class="hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">1</td>
+                  <td class="py-1 px-2 text-xs">The OneFive Osaka Namba Dotonbori</td>
+                  <td class="py-1 px-2 text-right text-xs">134</td>
+                  <td class="py-1 px-2 text-right text-xs">393</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥5,389,215</td>
+                </tr>
+                <tr class="hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">2</td>
+                  <td class="py-1 px-2 text-xs">SOTETSU GRAND FRESA TAKADANOBABA</td>
+                  <td class="py-1 px-2 text-right text-xs">67</td>
+                  <td class="py-1 px-2 text-right text-xs">249</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥5,464,291</td>
+                </tr>
+                <tr class="hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">3</td>
+                  <td class="py-1 px-2 text-xs">Smile Hotel Sugamo</td>
+                  <td class="py-1 px-2 text-right text-xs">40</td>
+                  <td class="py-1 px-2 text-right text-xs">205</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥2,340,946</td>
+                </tr>
+                <tr class="hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">4</td>
+                  <td class="py-1 px-2 text-xs">Sotetsu Fresa Inn Tokyo Roppongi</td>
+                  <td class="py-1 px-2 text-right text-xs">50</td>
+                  <td class="py-1 px-2 text-right text-xs">185</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥3,517,835</td>
+                </tr>
+                <tr class="hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">5</td>
+                  <td class="py-1 px-2 text-xs">THE KNOT FUKUOKA Tenjin</td>
+                  <td class="py-1 px-2 text-right text-xs">46</td>
+                  <td class="py-1 px-2 text-right text-xs">149</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥2,334,730</td>
+                </tr></tbody>
+            </table>
+          </div>
+          <div class="border-b border-gray-700/30 pb-3">
+            <div class="font-medium text-sm mb-2 text-gray-300">Dida</div>
+            <table>
+              <thead><tr><th>#</th><th><span data-i18n="hotel">호텔</span></th><th class="text-right"><span data-i18n="bookings">예약건수</span></th><th class="text-right"><span data-i18n="rn">RN(박)</span></th><th class="text-right"><span data-i18n="ttvJpy">수탁고(¥)</span></th></tr></thead>
+              <tbody>
+                <tr class="hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">1</td>
+                  <td class="py-1 px-2 text-xs">KOKO HOTEL Osaka Namba Sennichimae</td>
+                  <td class="py-1 px-2 text-right text-xs">18</td>
+                  <td class="py-1 px-2 text-right text-xs">67</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥1,325,660</td>
+                </tr>
+                <tr class="hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">2</td>
+                  <td class="py-1 px-2 text-xs">88 Hotel</td>
+                  <td class="py-1 px-2 text-right text-xs">27</td>
+                  <td class="py-1 px-2 text-right text-xs">54</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥604,162</td>
+                </tr>
+                <tr class="hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">3</td>
+                  <td class="py-1 px-2 text-xs">Resol Poshtel Tokyo Asakusa</td>
+                  <td class="py-1 px-2 text-right text-xs">14</td>
+                  <td class="py-1 px-2 text-right text-xs">50</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥316,585</td>
+                </tr>
+                <tr class="hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">4</td>
+                  <td class="py-1 px-2 text-xs">Sotetsu Fresa Inn Higashi Shinjuku</td>
+                  <td class="py-1 px-2 text-right text-xs">11</td>
+                  <td class="py-1 px-2 text-right text-xs">43</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥797,055</td>
+                </tr>
+                <tr class="hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">5</td>
+                  <td class="py-1 px-2 text-xs">Sotetsu Fresa Inn Tokyo Tamachi</td>
+                  <td class="py-1 px-2 text-right text-xs">7</td>
+                  <td class="py-1 px-2 text-right text-xs">23</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥316,090</td>
+                </tr></tbody>
+            </table>
+          </div>
+          <div class="border-b border-gray-700/30 pb-3">
+            <div class="font-medium text-sm mb-2 text-gray-300">Meituan</div>
+            <table>
+              <thead><tr><th>#</th><th><span data-i18n="hotel">호텔</span></th><th class="text-right"><span data-i18n="bookings">예약건수</span></th><th class="text-right"><span data-i18n="rn">RN(박)</span></th><th class="text-right"><span data-i18n="ttvJpy">수탁고(¥)</span></th></tr></thead>
+              <tbody>
+                <tr class="hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">1</td>
+                  <td class="py-1 px-2 text-xs">The OneFive Osaka Namba Dotonbori</td>
+                  <td class="py-1 px-2 text-right text-xs">57</td>
+                  <td class="py-1 px-2 text-right text-xs">166</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥1,810,477</td>
+                </tr>
+                <tr class="hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">2</td>
+                  <td class="py-1 px-2 text-xs">The OneFive Osaka Namba Kuromon</td>
+                  <td class="py-1 px-2 text-right text-xs">40</td>
+                  <td class="py-1 px-2 text-right text-xs">97</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥1,564,400</td>
+                </tr>
+                <tr class="hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">3</td>
+                  <td class="py-1 px-2 text-xs">The OneFive Osaka Shinsekai</td>
+                  <td class="py-1 px-2 text-right text-xs">27</td>
+                  <td class="py-1 px-2 text-right text-xs">79</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥465,814</td>
+                </tr>
+                <tr class="hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">4</td>
+                  <td class="py-1 px-2 text-xs">The Stay Classic Myeongdong</td>
+                  <td class="py-1 px-2 text-right text-xs">23</td>
+                  <td class="py-1 px-2 text-right text-xs">54</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥1,115,082</td>
+                </tr>
+                <tr class="hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">5</td>
+                  <td class="py-1 px-2 text-xs">Sotetsu Fresa Inn Daimon</td>
+                  <td class="py-1 px-2 text-right text-xs">11</td>
+                  <td class="py-1 px-2 text-right text-xs">48</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥722,938</td>
+                </tr></tbody>
+            </table>
+          </div>
+          <div class="border-b border-gray-700/30 pb-3">
+            <div class="font-medium text-sm mb-2 text-gray-300">PKFARE API</div>
+            <table>
+              <thead><tr><th>#</th><th><span data-i18n="hotel">호텔</span></th><th class="text-right"><span data-i18n="bookings">예약건수</span></th><th class="text-right"><span data-i18n="rn">RN(박)</span></th><th class="text-right"><span data-i18n="ttvJpy">수탁고(¥)</span></th></tr></thead>
+              <tbody>
+                <tr class="hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">1</td>
+                  <td class="py-1 px-2 text-xs">Smile Hotel Sugamo</td>
+                  <td class="py-1 px-2 text-right text-xs">11</td>
+                  <td class="py-1 px-2 text-right text-xs">47</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥518,781</td>
+                </tr>
+                <tr class="hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">2</td>
+                  <td class="py-1 px-2 text-xs">The OneFive Osaka Namba Kuromon</td>
+                  <td class="py-1 px-2 text-right text-xs">17</td>
+                  <td class="py-1 px-2 text-right text-xs">43</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥505,654</td>
+                </tr>
+                <tr class="hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">3</td>
+                  <td class="py-1 px-2 text-xs">Namba Oriental Hotel</td>
+                  <td class="py-1 px-2 text-right text-xs">19</td>
+                  <td class="py-1 px-2 text-right text-xs">40</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥794,190</td>
+                </tr>
+                <tr class="hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">4</td>
+                  <td class="py-1 px-2 text-xs">Hotel Oriental Express Fukuoka Tenjin</td>
+                  <td class="py-1 px-2 text-right text-xs">19</td>
+                  <td class="py-1 px-2 text-right text-xs">38</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥686,846</td>
+                </tr>
+                <tr class="hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">5</td>
+                  <td class="py-1 px-2 text-xs">Hotel Forza Osaka Kitahama</td>
+                  <td class="py-1 px-2 text-right text-xs">16</td>
+                  <td class="py-1 px-2 text-right text-xs">32</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥367,807</td>
+                </tr></tbody>
+            </table>
+          </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Footer -->
   <div class="text-center text-xs text-gray-600 py-4">
     OhMyHotel Global SnM Weekly Report &copy; 2026 | CEO OKR v9 KR6: CN dependency 79% &rarr; 65%&darr;
@@ -2044,30 +2049,6 @@ echarts.init(document.getElementById('countryChart')).setOption({
     label: { color: '#e2e8f0', formatter: '{b}\n{d}%' },
     data: [{"name":"일본","value":307162110},{"name":"한국","value":71762783},{"name":"베트남","value":27979728},{"name":"기타","value":1258440}],
     itemStyle: { color: p => ['#3b82f6','#06b6d4','#8b5cf6','#f59e0b'][p.dataIndex] }
-  }]
-});
-
-// Margin Chart
-echarts.init(document.getElementById('marginChart')).setOption({
-  tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
-  legend: { bottom: 0, textStyle: { color: '#94a3b8', fontSize: 10 } },
-  grid: { left: 120, right: 50, top: 10, bottom: 35 },
-  xAxis: { type: 'value', axisLabel: { color: '#94a3b8', fontSize: 9 }, splitLine: { lineStyle: { color: '#1e293b' } } },
-  yAxis: { type: 'category', data: ["Ctrip Korea","Agoda","Dida","Meituan","PKFARE API","Convergent API","Elong","Ctrip Vietnam","HeyTrip","Qunar"].reverse(), axisLabel: { color: '#e2e8f0', fontSize: 10 } },
-  series: [
-    { name: 'TTV', type: 'bar', stack: 'a', data: [144233375,85069158,27439425,23931637,19485362,14676876,14072465,10123083,6875088,6704104].reverse(), itemStyle: { color: '#334155' }, barWidth: '55%' },
-    { name: 'Margin', type: 'bar', stack: 'a', data: [10622287,9277339,1905353,1807045,1810828,1115863,1236505,369214,482586,324997].reverse(), itemStyle: { color: '#10b981' }, barWidth: '55%' }
-  ]
-});
-
-// Guest Origin Chart
-echarts.init(document.getElementById('guestOriginChart')).setOption({
-  tooltip: { trigger: 'item', formatter: '{b}: {d}%' },
-  legend: { bottom: 0, textStyle: { color: '#94a3b8', fontSize: 10 } },
-  series: [{ type: 'pie', radius: ['40%', '65%'], center: ['50%', '42%'],
-    label: { color: '#e2e8f0', formatter: '{b}\n{d}%', fontSize: 11 },
-    data: [{"name":"Others","value":190706925},{"name":"Chinese","value":107737316},{"name":"Korean","value":83380006},{"name":"Japanese","value":11979120},{"name":"Vietnamese","value":8436060},{"name":"Thai","value":2499308},{"name":"Unknown","value":1235773},{"name":"Indian","value":1150645},{"name":"SEA","value":1037908}],
-    itemStyle: { color: p => ['#ef4444','#f59e0b','#3b82f6','#10b981','#8b5cf6','#06b6d4','#ec4899','#64748b'][p.dataIndex % 8] }
   }]
 });
 
@@ -2235,6 +2216,39 @@ function renderTab9Charts() {
   renderCountryChart('chart_Vietnam', ms.vietnam, false);
 }
 document.querySelector('[data-tab="tab9"]').addEventListener('click', () => setTimeout(renderTab9Charts, 100));
+
+// Tab 10: Data tab charts (margin + guest origin)
+function renderTab10Charts() {
+  // Margin chart
+  const mEl = document.getElementById('marginChart');
+  if (mEl && mEl.offsetWidth > 0 && !echarts.getInstanceByDom(mEl)) {
+    echarts.init(mEl).setOption({
+      tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+      legend: { bottom: 0, textStyle: { color: '#94a3b8', fontSize: 10 } },
+      grid: { left: 120, right: 50, top: 10, bottom: 35 },
+      xAxis: { type: 'value', axisLabel: { color: '#94a3b8', fontSize: 9 }, splitLine: { lineStyle: { color: '#1e293b' } } },
+      yAxis: { type: 'category', data: ["Ctrip Korea","Agoda","Dida","Meituan","PKFARE API","Convergent API","Elong","Ctrip Vietnam","HeyTrip","Qunar"].reverse(), axisLabel: { color: '#e2e8f0', fontSize: 10 } },
+      series: [
+        { name: 'Cost', type: 'bar', stack: 'a', data: [144233375,85069158,27439425,23931637,19485362,14676876,14072465,10123083,6875088,6704104].reverse(), itemStyle: { color: '#334155' }, barWidth: '55%' },
+        { name: 'Margin', type: 'bar', stack: 'a', data: [10622287,9277339,1905353,1807045,1810828,1115863,1236505,369214,482586,324997].reverse(), itemStyle: { color: '#10b981' }, barWidth: '55%' }
+      ]
+    });
+  }
+  // Guest origin chart
+  const gEl = document.getElementById('guestOriginChart');
+  if (gEl && gEl.offsetWidth > 0 && !echarts.getInstanceByDom(gEl)) {
+    echarts.init(gEl).setOption({
+      tooltip: { trigger: 'item', formatter: '{b}: {d}%' },
+      legend: { bottom: 0, textStyle: { color: '#94a3b8', fontSize: 10 } },
+      series: [{ type: 'pie', radius: ['40%', '65%'], center: ['50%', '42%'],
+        label: { color: '#e2e8f0', formatter: '{b}\n{d}%', fontSize: 11 },
+        data: [{"name":"Others","value":190706925},{"name":"Chinese","value":107737316},{"name":"Korean","value":83380006},{"name":"Japanese","value":11979120},{"name":"Vietnamese","value":8436060},{"name":"Thai","value":2499308},{"name":"Unknown","value":1235773},{"name":"Indian","value":1150645},{"name":"SEA","value":1037908}],
+        itemStyle: { color: p => ['#ef4444','#f59e0b','#3b82f6','#10b981','#8b5cf6','#06b6d4','#ec4899','#64748b'][p.dataIndex % 8] }
+      }]
+    });
+  }
+}
+document.querySelector('[data-tab="tab10"]').addEventListener('click', () => setTimeout(renderTab10Charts, 100));
 
 // ── i18n Language Toggle ──
 let currentLang = 'ko';
