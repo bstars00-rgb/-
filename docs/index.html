@@ -546,6 +546,9 @@
   <!-- ═══════ TAB 2M: 월별 실적 (C/O) ═══════ -->
   <div id="tab2m" class="tab-panel p-6 space-y-4">
     
+      <!-- YTD Cumulative -->
+      <div class="card p-5 border-l-4 border-emerald-500"><div class="section-title">2026 YTD (Jan'26 ~ Mar'26) <span class=\"text-[10px] px-1.5 py-0.5 rounded bg-purple-500/15 text-purple-400 border border-purple-500/30 font-normal ml-2\">Check-out 확정</span></div><div class="grid grid-cols-7 gap-3"><div class="kpi-card rounded-xl p-3 text-center"><div class="text-[10px] text-gray-400 mb-1"><span data-i18n="bookings">예약건수</span></div><div class="text-xl font-bold">145,281</div></div><div class="kpi-card rounded-xl p-3 text-center"><div class="text-[10px] text-gray-400 mb-1"><span data-i18n="rn">RN(박)</span></div><div class="text-xl font-bold">286,147</div></div><div class="kpi-card rounded-xl p-3 text-center"><div class="text-[10px] text-gray-400 mb-1">TTV</div><div class="text-2xl font-bold">¥4,155,093,719</div><div class="text-xs mt-1">YoY <span class="text-emerald-400">+5.0%</span></div></div><div class="kpi-card rounded-xl p-3 text-center"><div class="text-[10px] text-gray-400 mb-1">Revenue</div><div class="text-2xl font-bold text-emerald-400">¥290,438,049</div></div><div class="kpi-card rounded-xl p-3 text-center"><div class="text-[10px] text-gray-400 mb-1">Margin</div><div class="text-xl font-bold">7.0%</div></div><div class="kpi-card rounded-xl p-3 text-center"><div class="text-[10px] text-gray-400 mb-1">Ctrip%</div><div class="text-xl font-bold text-amber-400">43.5%</div></div><div class="kpi-card rounded-xl p-3 text-center"><div class="text-[10px] text-gray-400 mb-1">China%</div><div class="text-xl font-bold text-red-400">79.1%</div></div></div></div>
+
       <!-- KPI Summary (latest month) -->
       <div class="card p-5">
           <div class="section-title">Latest: Mar'26 <span class="text-[10px] px-1.5 py-0.5 rounded bg-purple-500/15 text-purple-400 border border-purple-500/30 font-normal ml-2">Check-out</span></div>
@@ -2356,11 +2359,6 @@ Odays Osiria Residence
             </table>
           </div>
 
-          <!-- Guest Origin for this channel -->
-          <div class="card p-5">
-            <div class="section-title"><span data-i18n="guestOrigin">고객 국적 분석</span></div>
-            <div class="text-xs text-gray-500">채널 전체 기준 고객 국적 분석은 ① 주간 실적에서 확인</div>
-          </div>
         </div><div class="channel-panel space-y-4" data-channel="Agoda" style="display:none">
           <!-- KPI -->
           <div class="grid grid-cols-5 gap-3">
@@ -2470,11 +2468,6 @@ Odays Osiria Residence
             </table>
           </div>
 
-          <!-- Guest Origin for this channel -->
-          <div class="card p-5">
-            <div class="section-title"><span data-i18n="guestOrigin">고객 국적 분석</span></div>
-            <div class="text-xs text-gray-500">채널 전체 기준 고객 국적 분석은 ① 주간 실적에서 확인</div>
-          </div>
         </div><div class="channel-panel space-y-4" data-channel="Meituan" style="display:none">
           <!-- KPI -->
           <div class="grid grid-cols-5 gap-3">
@@ -2575,11 +2568,6 @@ Odays Osiria Residence
             </table>
           </div>
 
-          <!-- Guest Origin for this channel -->
-          <div class="card p-5">
-            <div class="section-title"><span data-i18n="guestOrigin">고객 국적 분석</span></div>
-            <div class="text-xs text-gray-500">채널 전체 기준 고객 국적 분석은 ① 주간 실적에서 확인</div>
-          </div>
         </div><div class="channel-panel space-y-4" data-channel="Dida" style="display:none">
           <!-- KPI -->
           <div class="grid grid-cols-5 gap-3">
@@ -2689,11 +2677,6 @@ Odays Osiria Residence
             </table>
           </div>
 
-          <!-- Guest Origin for this channel -->
-          <div class="card p-5">
-            <div class="section-title"><span data-i18n="guestOrigin">고객 국적 분석</span></div>
-            <div class="text-xs text-gray-500">채널 전체 기준 고객 국적 분석은 ① 주간 실적에서 확인</div>
-          </div>
         </div><div class="channel-panel space-y-4" data-channel="Convergent API" style="display:none">
           <!-- KPI -->
           <div class="grid grid-cols-5 gap-3">
@@ -2803,11 +2786,6 @@ Odays Osiria Residence
             </table>
           </div>
 
-          <!-- Guest Origin for this channel -->
-          <div class="card p-5">
-            <div class="section-title"><span data-i18n="guestOrigin">고객 국적 분석</span></div>
-            <div class="text-xs text-gray-500">채널 전체 기준 고객 국적 분석은 ① 주간 실적에서 확인</div>
-          </div>
         </div><div class="channel-panel space-y-4" data-channel="PKFARE API" style="display:none">
           <!-- KPI -->
           <div class="grid grid-cols-5 gap-3">
@@ -2874,13 +2852,49 @@ Odays Osiria Residence
           </div>
 
           <!-- Top Hotels -->
-          
-
-          <!-- Guest Origin for this channel -->
           <div class="card p-5">
-            <div class="section-title"><span data-i18n="guestOrigin">고객 국적 분석</span></div>
-            <div class="text-xs text-gray-500">채널 전체 기준 고객 국적 분석은 ① 주간 실적에서 확인</div>
+            <div class="section-title"><span data-i18n="topHotelsTitle">채널별 Top 호텔</span></div>
+            <table>
+              <thead><tr><th>#</th><th><span data-i18n="hotel">호텔</span></th><th class="text-right"><span data-i18n="bookings">예약건수</span></th><th class="text-right"><span data-i18n="rn">RN(박)</span></th><th class="text-right">TTV</th></tr></thead>
+              <tbody>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">1</td>
+                  <td class="py-1 px-2 text-sm">ICI HOTEL Tokyo Hatchobori</td>
+                  <td class="py-1 px-2 text-right text-xs">83</td>
+                  <td class="py-1 px-2 text-right text-xs">118</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥1,781,481</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">2</td>
+                  <td class="py-1 px-2 text-sm">Smile Hotel Sugamo</td>
+                  <td class="py-1 px-2 text-right text-xs">15</td>
+                  <td class="py-1 px-2 text-right text-xs">66</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥656,419</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">3</td>
+                  <td class="py-1 px-2 text-sm">KOKO HOTEL Osaka Namba Sennichimae</td>
+                  <td class="py-1 px-2 text-right text-xs">10</td>
+                  <td class="py-1 px-2 text-right text-xs">32</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥577,096</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">4</td>
+                  <td class="py-1 px-2 text-sm">Sotetsu Fresa Inn Tokyo Roppongi</td>
+                  <td class="py-1 px-2 text-right text-xs">12</td>
+                  <td class="py-1 px-2 text-right text-xs">30</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥542,054</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">5</td>
+                  <td class="py-1 px-2 text-sm">Sotetsu Fresa Inn Tokyo Kinshicho</td>
+                  <td class="py-1 px-2 text-right text-xs">6</td>
+                  <td class="py-1 px-2 text-right text-xs">30</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥403,403</td>
+                </tr></tbody>
+            </table>
           </div>
+
         </div><div class="channel-panel space-y-4" data-channel="Elong" style="display:none">
           <!-- KPI -->
           <div class="grid grid-cols-5 gap-3">
@@ -2938,13 +2952,49 @@ Odays Osiria Residence
           </div>
 
           <!-- Top Hotels -->
-          
-
-          <!-- Guest Origin for this channel -->
           <div class="card p-5">
-            <div class="section-title"><span data-i18n="guestOrigin">고객 국적 분석</span></div>
-            <div class="text-xs text-gray-500">채널 전체 기준 고객 국적 분석은 ① 주간 실적에서 확인</div>
+            <div class="section-title"><span data-i18n="topHotelsTitle">채널별 Top 호텔</span></div>
+            <table>
+              <thead><tr><th>#</th><th><span data-i18n="hotel">호텔</span></th><th class="text-right"><span data-i18n="bookings">예약건수</span></th><th class="text-right"><span data-i18n="rn">RN(박)</span></th><th class="text-right">TTV</th></tr></thead>
+              <tbody>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">1</td>
+                  <td class="py-1 px-2 text-sm">The OneFive Osaka Sakaisuji</td>
+                  <td class="py-1 px-2 text-right text-xs">14</td>
+                  <td class="py-1 px-2 text-right text-xs">58</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥296,434</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">2</td>
+                  <td class="py-1 px-2 text-sm">Sotetsu Fresa Inn Tokyo Kinshicho</td>
+                  <td class="py-1 px-2 text-right text-xs">9</td>
+                  <td class="py-1 px-2 text-right text-xs">42</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥498,998</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">3</td>
+                  <td class="py-1 px-2 text-sm">Smile Hotel Sugamo</td>
+                  <td class="py-1 px-2 text-right text-xs">9</td>
+                  <td class="py-1 px-2 text-right text-xs">41</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥352,167</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">4</td>
+                  <td class="py-1 px-2 text-sm">Oriental Hotel Fukuoka Hakata Station</td>
+                  <td class="py-1 px-2 text-right text-xs">16</td>
+                  <td class="py-1 px-2 text-right text-xs">37</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥997,976</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">5</td>
+                  <td class="py-1 px-2 text-sm">Vessel Hotel Campana Kyoto Gojo</td>
+                  <td class="py-1 px-2 text-right text-xs">20</td>
+                  <td class="py-1 px-2 text-right text-xs">34</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥379,145</td>
+                </tr></tbody>
+            </table>
           </div>
+
         </div><div class="channel-panel space-y-4" data-channel="Qunar" style="display:none">
           <!-- KPI -->
           <div class="grid grid-cols-5 gap-3">
@@ -2993,13 +3043,49 @@ Odays Osiria Residence
           </div>
 
           <!-- Top Hotels -->
-          
-
-          <!-- Guest Origin for this channel -->
           <div class="card p-5">
-            <div class="section-title"><span data-i18n="guestOrigin">고객 국적 분석</span></div>
-            <div class="text-xs text-gray-500">채널 전체 기준 고객 국적 분석은 ① 주간 실적에서 확인</div>
+            <div class="section-title"><span data-i18n="topHotelsTitle">채널별 Top 호텔</span></div>
+            <table>
+              <thead><tr><th>#</th><th><span data-i18n="hotel">호텔</span></th><th class="text-right"><span data-i18n="bookings">예약건수</span></th><th class="text-right"><span data-i18n="rn">RN(박)</span></th><th class="text-right">TTV</th></tr></thead>
+              <tbody>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">1</td>
+                  <td class="py-1 px-2 text-sm">Smile Hotel Sugamo</td>
+                  <td class="py-1 px-2 text-right text-xs">15</td>
+                  <td class="py-1 px-2 text-right text-xs">69</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥601,011</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">2</td>
+                  <td class="py-1 px-2 text-sm">The OneFive Osaka Sakaisuji</td>
+                  <td class="py-1 px-2 text-right text-xs">13</td>
+                  <td class="py-1 px-2 text-right text-xs">54</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥257,207</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">3</td>
+                  <td class="py-1 px-2 text-sm">Sotetsu Fresa Inn Hamamatsucho Daimon</td>
+                  <td class="py-1 px-2 text-right text-xs">10</td>
+                  <td class="py-1 px-2 text-right text-xs">41</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥483,762</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">4</td>
+                  <td class="py-1 px-2 text-sm">Resol Poshtel Tokyo Asakusa</td>
+                  <td class="py-1 px-2 text-right text-xs">10</td>
+                  <td class="py-1 px-2 text-right text-xs">27</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥175,019</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">5</td>
+                  <td class="py-1 px-2 text-sm">Smile Hotel Osaka Yotsubashi</td>
+                  <td class="py-1 px-2 text-right text-xs">9</td>
+                  <td class="py-1 px-2 text-right text-xs">23</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥191,557</td>
+                </tr></tbody>
+            </table>
           </div>
+
         </div><div class="channel-panel space-y-4" data-channel="Ctrip Vietnam" style="display:none">
           <!-- KPI -->
           <div class="grid grid-cols-5 gap-3">
@@ -3048,13 +3134,49 @@ Odays Osiria Residence
           </div>
 
           <!-- Top Hotels -->
-          
-
-          <!-- Guest Origin for this channel -->
           <div class="card p-5">
-            <div class="section-title"><span data-i18n="guestOrigin">고객 국적 분석</span></div>
-            <div class="text-xs text-gray-500">채널 전체 기준 고객 국적 분석은 ① 주간 실적에서 확인</div>
+            <div class="section-title"><span data-i18n="topHotelsTitle">채널별 Top 호텔</span></div>
+            <table>
+              <thead><tr><th>#</th><th><span data-i18n="hotel">호텔</span></th><th class="text-right"><span data-i18n="bookings">예약건수</span></th><th class="text-right"><span data-i18n="rn">RN(박)</span></th><th class="text-right">TTV</th></tr></thead>
+              <tbody>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">1</td>
+                  <td class="py-1 px-2 text-sm">Hermes Hotel Nha Trang</td>
+                  <td class="py-1 px-2 text-right text-xs">5</td>
+                  <td class="py-1 px-2 text-right text-xs">45</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥154,235</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">2</td>
+                  <td class="py-1 px-2 text-sm">Hon Chong Retreat Hotel</td>
+                  <td class="py-1 px-2 text-right text-xs">10</td>
+                  <td class="py-1 px-2 text-right text-xs">45</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥220,736</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">3</td>
+                  <td class="py-1 px-2 text-sm">Aaron Hotel Nha Trang</td>
+                  <td class="py-1 px-2 text-right text-xs">7</td>
+                  <td class="py-1 px-2 text-right text-xs">23</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥120,837</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">4</td>
+                  <td class="py-1 px-2 text-sm">Em Oi Boutique Hotel</td>
+                  <td class="py-1 px-2 text-right text-xs">7</td>
+                  <td class="py-1 px-2 text-right text-xs">18</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥79,443</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">5</td>
+                  <td class="py-1 px-2 text-sm">Maple Hotel & Apartment</td>
+                  <td class="py-1 px-2 text-right text-xs">5</td>
+                  <td class="py-1 px-2 text-right text-xs">18</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥187,698</td>
+                </tr></tbody>
+            </table>
           </div>
+
         </div><div class="channel-panel space-y-4" data-channel="HeyTrip" style="display:none">
           <!-- KPI -->
           <div class="grid grid-cols-5 gap-3">
@@ -3103,13 +3225,49 @@ Odays Osiria Residence
           </div>
 
           <!-- Top Hotels -->
-          
-
-          <!-- Guest Origin for this channel -->
           <div class="card p-5">
-            <div class="section-title"><span data-i18n="guestOrigin">고객 국적 분석</span></div>
-            <div class="text-xs text-gray-500">채널 전체 기준 고객 국적 분석은 ① 주간 실적에서 확인</div>
+            <div class="section-title"><span data-i18n="topHotelsTitle">채널별 Top 호텔</span></div>
+            <table>
+              <thead><tr><th>#</th><th><span data-i18n="hotel">호텔</span></th><th class="text-right"><span data-i18n="bookings">예약건수</span></th><th class="text-right"><span data-i18n="rn">RN(박)</span></th><th class="text-right">TTV</th></tr></thead>
+              <tbody>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">1</td>
+                  <td class="py-1 px-2 text-sm">KOKO HOTEL Osaka Namba Sennichimae</td>
+                  <td class="py-1 px-2 text-right text-xs">19</td>
+                  <td class="py-1 px-2 text-right text-xs">48</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥1,023,106</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">2</td>
+                  <td class="py-1 px-2 text-sm">The OneFive Osaka Namba Dotonbori</td>
+                  <td class="py-1 px-2 text-right text-xs">7</td>
+                  <td class="py-1 px-2 text-right text-xs">28</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥396,419</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">3</td>
+                  <td class="py-1 px-2 text-sm">The OneFive Osaka Sakaisuji</td>
+                  <td class="py-1 px-2 text-right text-xs">5</td>
+                  <td class="py-1 px-2 text-right text-xs">13</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥58,606</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">4</td>
+                  <td class="py-1 px-2 text-sm">ICI HOTEL Tokyo Hatchobori</td>
+                  <td class="py-1 px-2 text-right text-xs">4</td>
+                  <td class="py-1 px-2 text-right text-xs">11</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥174,122</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">5</td>
+                  <td class="py-1 px-2 text-sm">Odays Osiria Residence</td>
+                  <td class="py-1 px-2 text-right text-xs">5</td>
+                  <td class="py-1 px-2 text-right text-xs">10</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥135,309</td>
+                </tr></tbody>
+            </table>
           </div>
+
         </div><div class="channel-panel space-y-4" data-channel="SS Booking" style="display:none">
           <!-- KPI -->
           <div class="grid grid-cols-5 gap-3">
@@ -3158,13 +3316,49 @@ Odays Osiria Residence
           </div>
 
           <!-- Top Hotels -->
-          
-
-          <!-- Guest Origin for this channel -->
           <div class="card p-5">
-            <div class="section-title"><span data-i18n="guestOrigin">고객 국적 분석</span></div>
-            <div class="text-xs text-gray-500">채널 전체 기준 고객 국적 분석은 ① 주간 실적에서 확인</div>
+            <div class="section-title"><span data-i18n="topHotelsTitle">채널별 Top 호텔</span></div>
+            <table>
+              <thead><tr><th>#</th><th><span data-i18n="hotel">호텔</span></th><th class="text-right"><span data-i18n="bookings">예약건수</span></th><th class="text-right"><span data-i18n="rn">RN(박)</span></th><th class="text-right">TTV</th></tr></thead>
+              <tbody>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">1</td>
+                  <td class="py-1 px-2 text-sm">The OneFive Osaka Namba Dotonbori</td>
+                  <td class="py-1 px-2 text-right text-xs">45</td>
+                  <td class="py-1 px-2 text-right text-xs">141</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥1,518,684</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">2</td>
+                  <td class="py-1 px-2 text-sm">The OneFive Osaka Sakaisuji</td>
+                  <td class="py-1 px-2 text-right text-xs">10</td>
+                  <td class="py-1 px-2 text-right text-xs">34</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥197,044</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">3</td>
+                  <td class="py-1 px-2 text-sm">The OneFive Kyoto Shijo</td>
+                  <td class="py-1 px-2 text-right text-xs">7</td>
+                  <td class="py-1 px-2 text-right text-xs">33</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥419,033</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">4</td>
+                  <td class="py-1 px-2 text-sm">Smile Hotel Wakayama</td>
+                  <td class="py-1 px-2 text-right text-xs">1</td>
+                  <td class="py-1 px-2 text-right text-xs">11</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥60,069</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">5</td>
+                  <td class="py-1 px-2 text-sm">Hotel Amanek Shinjuku Kabukicho</td>
+                  <td class="py-1 px-2 text-right text-xs">2</td>
+                  <td class="py-1 px-2 text-right text-xs">9</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥430,107</td>
+                </tr></tbody>
+            </table>
           </div>
+
         </div><div class="channel-panel space-y-4" data-channel="Tourmind" style="display:none">
           <!-- KPI -->
           <div class="grid grid-cols-5 gap-3">
@@ -3213,13 +3407,49 @@ Odays Osiria Residence
           </div>
 
           <!-- Top Hotels -->
-          
-
-          <!-- Guest Origin for this channel -->
           <div class="card p-5">
-            <div class="section-title"><span data-i18n="guestOrigin">고객 국적 분석</span></div>
-            <div class="text-xs text-gray-500">채널 전체 기준 고객 국적 분석은 ① 주간 실적에서 확인</div>
+            <div class="section-title"><span data-i18n="topHotelsTitle">채널별 Top 호텔</span></div>
+            <table>
+              <thead><tr><th>#</th><th><span data-i18n="hotel">호텔</span></th><th class="text-right"><span data-i18n="bookings">예약건수</span></th><th class="text-right"><span data-i18n="rn">RN(박)</span></th><th class="text-right">TTV</th></tr></thead>
+              <tbody>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">1</td>
+                  <td class="py-1 px-2 text-sm">Sotetsu Fresa Inn Tokyo Roppongi</td>
+                  <td class="py-1 px-2 text-right text-xs">10</td>
+                  <td class="py-1 px-2 text-right text-xs">18</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥303,929</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">2</td>
+                  <td class="py-1 px-2 text-sm">hotel androoms Naha Port</td>
+                  <td class="py-1 px-2 text-right text-xs">8</td>
+                  <td class="py-1 px-2 text-right text-xs">12</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥125,676</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">3</td>
+                  <td class="py-1 px-2 text-sm">The OneFive Kyoto Shijo</td>
+                  <td class="py-1 px-2 text-right text-xs">4</td>
+                  <td class="py-1 px-2 text-right text-xs">9</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥87,119</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">4</td>
+                  <td class="py-1 px-2 text-sm">Hotel Bernoui Seoul</td>
+                  <td class="py-1 px-2 text-right text-xs">9</td>
+                  <td class="py-1 px-2 text-right text-xs">9</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥94,371</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">5</td>
+                  <td class="py-1 px-2 text-sm">Sotetsu Fresa Inn Daimon</td>
+                  <td class="py-1 px-2 text-right text-xs">3</td>
+                  <td class="py-1 px-2 text-right text-xs">8</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥139,410</td>
+                </tr></tbody>
+            </table>
           </div>
+
         </div><div class="channel-panel space-y-4" data-channel="Traveloka" style="display:none">
           <!-- KPI -->
           <div class="grid grid-cols-5 gap-3">
@@ -3277,13 +3507,49 @@ Odays Osiria Residence
           </div>
 
           <!-- Top Hotels -->
-          
-
-          <!-- Guest Origin for this channel -->
           <div class="card p-5">
-            <div class="section-title"><span data-i18n="guestOrigin">고객 국적 분석</span></div>
-            <div class="text-xs text-gray-500">채널 전체 기준 고객 국적 분석은 ① 주간 실적에서 확인</div>
+            <div class="section-title"><span data-i18n="topHotelsTitle">채널별 Top 호텔</span></div>
+            <table>
+              <thead><tr><th>#</th><th><span data-i18n="hotel">호텔</span></th><th class="text-right"><span data-i18n="bookings">예약건수</span></th><th class="text-right"><span data-i18n="rn">RN(박)</span></th><th class="text-right">TTV</th></tr></thead>
+              <tbody>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">1</td>
+                  <td class="py-1 px-2 text-sm">Smile Hotel Sugamo</td>
+                  <td class="py-1 px-2 text-right text-xs">5</td>
+                  <td class="py-1 px-2 text-right text-xs">19</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥178,286</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">2</td>
+                  <td class="py-1 px-2 text-sm">Sen Village Hoi An</td>
+                  <td class="py-1 px-2 text-right text-xs">11</td>
+                  <td class="py-1 px-2 text-right text-xs">14</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥137,805</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">3</td>
+                  <td class="py-1 px-2 text-sm">Hotel Metropolitan Tokyo Ikebukuro</td>
+                  <td class="py-1 px-2 text-right text-xs">3</td>
+                  <td class="py-1 px-2 text-right text-xs">14</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥409,995</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">4</td>
+                  <td class="py-1 px-2 text-sm">The Knot Utsunomiya</td>
+                  <td class="py-1 px-2 text-right text-xs">1</td>
+                  <td class="py-1 px-2 text-right text-xs">11</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥105,532</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">5</td>
+                  <td class="py-1 px-2 text-sm">Resol Poshtel Tokyo Asakusa</td>
+                  <td class="py-1 px-2 text-right text-xs">2</td>
+                  <td class="py-1 px-2 text-right text-xs">8</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥47,903</td>
+                </tr></tbody>
+            </table>
           </div>
+
         </div><div class="channel-panel space-y-4" data-channel="RTX (Seller API)" style="display:none">
           <!-- KPI -->
           <div class="grid grid-cols-5 gap-3">
@@ -3332,13 +3598,49 @@ Odays Osiria Residence
           </div>
 
           <!-- Top Hotels -->
-          
-
-          <!-- Guest Origin for this channel -->
           <div class="card p-5">
-            <div class="section-title"><span data-i18n="guestOrigin">고객 국적 분석</span></div>
-            <div class="text-xs text-gray-500">채널 전체 기준 고객 국적 분석은 ① 주간 실적에서 확인</div>
+            <div class="section-title"><span data-i18n="topHotelsTitle">채널별 Top 호텔</span></div>
+            <table>
+              <thead><tr><th>#</th><th><span data-i18n="hotel">호텔</span></th><th class="text-right"><span data-i18n="bookings">예약건수</span></th><th class="text-right"><span data-i18n="rn">RN(박)</span></th><th class="text-right">TTV</th></tr></thead>
+              <tbody>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">1</td>
+                  <td class="py-1 px-2 text-sm">Sotetsu Fresa Inn Higashi Shinjuku</td>
+                  <td class="py-1 px-2 text-right text-xs">5</td>
+                  <td class="py-1 px-2 text-right text-xs">19</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥360,220</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">2</td>
+                  <td class="py-1 px-2 text-sm">the b asakusa</td>
+                  <td class="py-1 px-2 text-right text-xs">3</td>
+                  <td class="py-1 px-2 text-right text-xs">12</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥206,353</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">3</td>
+                  <td class="py-1 px-2 text-sm">The Prince Park Tower Tokyo</td>
+                  <td class="py-1 px-2 text-right text-xs">1</td>
+                  <td class="py-1 px-2 text-right text-xs">9</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥539,884</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">4</td>
+                  <td class="py-1 px-2 text-sm">Sotetsu Fresa Inn Nihombashi Ningyocho</td>
+                  <td class="py-1 px-2 text-right text-xs">2</td>
+                  <td class="py-1 px-2 text-right text-xs">7</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥144,058</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">5</td>
+                  <td class="py-1 px-2 text-sm">Sotetsu Grand Fresa Osaka - Namba</td>
+                  <td class="py-1 px-2 text-right text-xs">2</td>
+                  <td class="py-1 px-2 text-right text-xs">6</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥75,086</td>
+                </tr></tbody>
+            </table>
           </div>
+
         </div><div class="channel-panel space-y-4" data-channel="Qiyouji" style="display:none">
           <!-- KPI -->
           <div class="grid grid-cols-5 gap-3">
@@ -3387,13 +3689,49 @@ Odays Osiria Residence
           </div>
 
           <!-- Top Hotels -->
-          
-
-          <!-- Guest Origin for this channel -->
           <div class="card p-5">
-            <div class="section-title"><span data-i18n="guestOrigin">고객 국적 분석</span></div>
-            <div class="text-xs text-gray-500">채널 전체 기준 고객 국적 분석은 ① 주간 실적에서 확인</div>
+            <div class="section-title"><span data-i18n="topHotelsTitle">채널별 Top 호텔</span></div>
+            <table>
+              <thead><tr><th>#</th><th><span data-i18n="hotel">호텔</span></th><th class="text-right"><span data-i18n="bookings">예약건수</span></th><th class="text-right"><span data-i18n="rn">RN(박)</span></th><th class="text-right">TTV</th></tr></thead>
+              <tbody>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">1</td>
+                  <td class="py-1 px-2 text-sm">Uni Hotel Jeju</td>
+                  <td class="py-1 px-2 text-right text-xs">13</td>
+                  <td class="py-1 px-2 text-right text-xs">19</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥199,517</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">2</td>
+                  <td class="py-1 px-2 text-sm">The OneFive Osaka Namba Dotonbori</td>
+                  <td class="py-1 px-2 text-right text-xs">4</td>
+                  <td class="py-1 px-2 text-right text-xs">13</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥124,280</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">3</td>
+                  <td class="py-1 px-2 text-sm">The OneFive Osaka Sakaisuji</td>
+                  <td class="py-1 px-2 text-right text-xs">3</td>
+                  <td class="py-1 px-2 text-right text-xs">11</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥69,354</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">4</td>
+                  <td class="py-1 px-2 text-sm">Aravelle Suites Hotel</td>
+                  <td class="py-1 px-2 text-right text-xs">2</td>
+                  <td class="py-1 px-2 text-right text-xs">8</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥129,570</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">5</td>
+                  <td class="py-1 px-2 text-sm">Hotel The Designers Jongno</td>
+                  <td class="py-1 px-2 text-right text-xs">1</td>
+                  <td class="py-1 px-2 text-right text-xs">8</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥260,244</td>
+                </tr></tbody>
+            </table>
           </div>
+
         </div><div class="channel-panel space-y-4" data-channel="triptopaz" style="display:none">
           <!-- KPI -->
           <div class="grid grid-cols-5 gap-3">
@@ -3442,13 +3780,49 @@ Odays Osiria Residence
           </div>
 
           <!-- Top Hotels -->
-          
-
-          <!-- Guest Origin for this channel -->
           <div class="card p-5">
-            <div class="section-title"><span data-i18n="guestOrigin">고객 국적 분석</span></div>
-            <div class="text-xs text-gray-500">채널 전체 기준 고객 국적 분석은 ① 주간 실적에서 확인</div>
+            <div class="section-title"><span data-i18n="topHotelsTitle">채널별 Top 호텔</span></div>
+            <table>
+              <thead><tr><th>#</th><th><span data-i18n="hotel">호텔</span></th><th class="text-right"><span data-i18n="bookings">예약건수</span></th><th class="text-right"><span data-i18n="rn">RN(박)</span></th><th class="text-right">TTV</th></tr></thead>
+              <tbody>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">1</td>
+                  <td class="py-1 px-2 text-sm">Hotel Monterey Fukuoka</td>
+                  <td class="py-1 px-2 text-right text-xs">7</td>
+                  <td class="py-1 px-2 text-right text-xs">20</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥726,118</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">2</td>
+                  <td class="py-1 px-2 text-sm">Ramada Hotel & Suites by Wyndham Gangwon Pyeongchang</td>
+                  <td class="py-1 px-2 text-right text-xs">9</td>
+                  <td class="py-1 px-2 text-right text-xs">12</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥126,430</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">3</td>
+                  <td class="py-1 px-2 text-sm">Lequ Okinawa Chatan Spa & Resort</td>
+                  <td class="py-1 px-2 text-right text-xs">3</td>
+                  <td class="py-1 px-2 text-right text-xs">6</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥108,297</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">4</td>
+                  <td class="py-1 px-2 text-sm">Grand Mer Hotel Jeju</td>
+                  <td class="py-1 px-2 text-right text-xs">3</td>
+                  <td class="py-1 px-2 text-right text-xs">4</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥24,305</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">5</td>
+                  <td class="py-1 px-2 text-sm">Utop Marina Hotel & Resort</td>
+                  <td class="py-1 px-2 text-right text-xs">2</td>
+                  <td class="py-1 px-2 text-right text-xs">4</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥34,617</td>
+                </tr></tbody>
+            </table>
           </div>
+
         </div><div class="channel-panel space-y-4" data-channel="Hotelpass" style="display:none">
           <!-- KPI -->
           <div class="grid grid-cols-5 gap-3">
@@ -3497,13 +3871,49 @@ Odays Osiria Residence
           </div>
 
           <!-- Top Hotels -->
-          
-
-          <!-- Guest Origin for this channel -->
           <div class="card p-5">
-            <div class="section-title"><span data-i18n="guestOrigin">고객 국적 분석</span></div>
-            <div class="text-xs text-gray-500">채널 전체 기준 고객 국적 분석은 ① 주간 실적에서 확인</div>
+            <div class="section-title"><span data-i18n="topHotelsTitle">채널별 Top 호텔</span></div>
+            <table>
+              <thead><tr><th>#</th><th><span data-i18n="hotel">호텔</span></th><th class="text-right"><span data-i18n="bookings">예약건수</span></th><th class="text-right"><span data-i18n="rn">RN(박)</span></th><th class="text-right">TTV</th></tr></thead>
+              <tbody>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">1</td>
+                  <td class="py-1 px-2 text-sm">The OneFive Marine Fukuoka</td>
+                  <td class="py-1 px-2 text-right text-xs">2</td>
+                  <td class="py-1 px-2 text-right text-xs">28</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥340,026</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">2</td>
+                  <td class="py-1 px-2 text-sm">Sotetsu Fresa Inn Osaka-Namba</td>
+                  <td class="py-1 px-2 text-right text-xs">8</td>
+                  <td class="py-1 px-2 text-right text-xs">16</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥190,624</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">3</td>
+                  <td class="py-1 px-2 text-sm">Diamond Bay Hotel</td>
+                  <td class="py-1 px-2 text-right text-xs">1</td>
+                  <td class="py-1 px-2 text-right text-xs">8</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥81,497</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">4</td>
+                  <td class="py-1 px-2 text-sm">Sotetsu Grand Fresa Tokyo - Bay Ariake</td>
+                  <td class="py-1 px-2 text-right text-xs">3</td>
+                  <td class="py-1 px-2 text-right text-xs">7</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥105,011</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">5</td>
+                  <td class="py-1 px-2 text-sm">Vessel Hotel Campana Okinawa</td>
+                  <td class="py-1 px-2 text-right text-xs">2</td>
+                  <td class="py-1 px-2 text-right text-xs">7</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥192,131</td>
+                </tr></tbody>
+            </table>
           </div>
+
         </div><div class="channel-panel space-y-4" data-channel="Alitrip" style="display:none">
           <!-- KPI -->
           <div class="grid grid-cols-5 gap-3">
@@ -3552,13 +3962,49 @@ Odays Osiria Residence
           </div>
 
           <!-- Top Hotels -->
-          
-
-          <!-- Guest Origin for this channel -->
           <div class="card p-5">
-            <div class="section-title"><span data-i18n="guestOrigin">고객 국적 분석</span></div>
-            <div class="text-xs text-gray-500">채널 전체 기준 고객 국적 분석은 ① 주간 실적에서 확인</div>
+            <div class="section-title"><span data-i18n="topHotelsTitle">채널별 Top 호텔</span></div>
+            <table>
+              <thead><tr><th>#</th><th><span data-i18n="hotel">호텔</span></th><th class="text-right"><span data-i18n="bookings">예약건수</span></th><th class="text-right"><span data-i18n="rn">RN(박)</span></th><th class="text-right">TTV</th></tr></thead>
+              <tbody>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">1</td>
+                  <td class="py-1 px-2 text-sm">The OneFive Osaka Sakaisuji</td>
+                  <td class="py-1 px-2 text-right text-xs">7</td>
+                  <td class="py-1 px-2 text-right text-xs">17</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥107,926</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">2</td>
+                  <td class="py-1 px-2 text-sm">Hotel The Rock</td>
+                  <td class="py-1 px-2 text-right text-xs">5</td>
+                  <td class="py-1 px-2 text-right text-xs">12</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥39,312</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">3</td>
+                  <td class="py-1 px-2 text-sm">Hotel Metropolitan Tokyo Ikebukuro</td>
+                  <td class="py-1 px-2 text-right text-xs">3</td>
+                  <td class="py-1 px-2 text-right text-xs">9</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥199,274</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">4</td>
+                  <td class="py-1 px-2 text-sm">ICI HOTEL Ueno Shin Okachimachi</td>
+                  <td class="py-1 px-2 text-right text-xs">3</td>
+                  <td class="py-1 px-2 text-right text-xs">8</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥130,845</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">5</td>
+                  <td class="py-1 px-2 text-sm">LA CASONA HOTEL</td>
+                  <td class="py-1 px-2 text-right text-xs">1</td>
+                  <td class="py-1 px-2 text-right text-xs">8</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥30,632</td>
+                </tr></tbody>
+            </table>
           </div>
+
         </div><div class="channel-panel space-y-4" data-channel="KAKE Travel" style="display:none">
           <!-- KPI -->
           <div class="grid grid-cols-5 gap-3">
@@ -3592,13 +4038,49 @@ Odays Osiria Residence
           
 
           <!-- Top Hotels -->
-          
-
-          <!-- Guest Origin for this channel -->
           <div class="card p-5">
-            <div class="section-title"><span data-i18n="guestOrigin">고객 국적 분석</span></div>
-            <div class="text-xs text-gray-500">채널 전체 기준 고객 국적 분석은 ① 주간 실적에서 확인</div>
+            <div class="section-title"><span data-i18n="topHotelsTitle">채널별 Top 호텔</span></div>
+            <table>
+              <thead><tr><th>#</th><th><span data-i18n="hotel">호텔</span></th><th class="text-right"><span data-i18n="bookings">예약건수</span></th><th class="text-right"><span data-i18n="rn">RN(박)</span></th><th class="text-right">TTV</th></tr></thead>
+              <tbody>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">1</td>
+                  <td class="py-1 px-2 text-sm">Smile Hotel Osaka Yotsubashi</td>
+                  <td class="py-1 px-2 text-right text-xs">4</td>
+                  <td class="py-1 px-2 text-right text-xs">8</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥62,005</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">2</td>
+                  <td class="py-1 px-2 text-sm">Sotetsu Hotels The Splaisir Seoul Dongdaemun</td>
+                  <td class="py-1 px-2 text-right text-xs">5</td>
+                  <td class="py-1 px-2 text-right text-xs">7</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥235,344</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">3</td>
+                  <td class="py-1 px-2 text-sm">Havana Nha Trang Hotel</td>
+                  <td class="py-1 px-2 text-right text-xs">2</td>
+                  <td class="py-1 px-2 text-right text-xs">5</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥35,994</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">4</td>
+                  <td class="py-1 px-2 text-sm">Sapa Cat Cat Hills Resort & Spa</td>
+                  <td class="py-1 px-2 text-right text-xs">2</td>
+                  <td class="py-1 px-2 text-right text-xs">4</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥58,830</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">5</td>
+                  <td class="py-1 px-2 text-sm">Seaside Boutique Resort Quy Nhon</td>
+                  <td class="py-1 px-2 text-right text-xs">2</td>
+                  <td class="py-1 px-2 text-right text-xs">4</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥21,308</td>
+                </tr></tbody>
+            </table>
           </div>
+
         </div><div class="channel-panel space-y-4" data-channel="Room Deal Pte Ltd. (MG Group)" style="display:none">
           <!-- KPI -->
           <div class="grid grid-cols-5 gap-3">
@@ -3632,13 +4114,28 @@ Odays Osiria Residence
           
 
           <!-- Top Hotels -->
-          
-
-          <!-- Guest Origin for this channel -->
           <div class="card p-5">
-            <div class="section-title"><span data-i18n="guestOrigin">고객 국적 분석</span></div>
-            <div class="text-xs text-gray-500">채널 전체 기준 고객 국적 분석은 ① 주간 실적에서 확인</div>
+            <div class="section-title"><span data-i18n="topHotelsTitle">채널별 Top 호텔</span></div>
+            <table>
+              <thead><tr><th>#</th><th><span data-i18n="hotel">호텔</span></th><th class="text-right"><span data-i18n="bookings">예약건수</span></th><th class="text-right"><span data-i18n="rn">RN(박)</span></th><th class="text-right">TTV</th></tr></thead>
+              <tbody>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">1</td>
+                  <td class="py-1 px-2 text-sm">Keio Plaza Hotel Tokyo</td>
+                  <td class="py-1 px-2 text-right text-xs">2</td>
+                  <td class="py-1 px-2 text-right text-xs">14</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥1,143,973</td>
+                </tr>
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                  <td class="py-1 px-2 text-center text-gray-500 text-xs">2</td>
+                  <td class="py-1 px-2 text-sm">Best Western Premier Gangnam</td>
+                  <td class="py-1 px-2 text-right text-xs">1</td>
+                  <td class="py-1 px-2 text-right text-xs">5</td>
+                  <td class="py-1 px-2 text-right text-xs font-mono">¥177,979</td>
+                </tr></tbody>
+            </table>
           </div>
+
         </div>
     </div>
   </div>
@@ -3944,19 +4441,6 @@ function renderTab10Charts() {
         { name: 'Cost', type: 'bar', stack: 'a', data: [161492610,88848289,31738968,31059401,21323826,20341230,15885721,7994727,8101383,6067609].reverse(), itemStyle: { color: '#334155' }, barWidth: '55%' },
         { name: 'Margin', type: 'bar', stack: 'a', data: [10674533,9785864,2214707,2027999,1758874,1644307,1503688,433426,325607,433771].reverse(), itemStyle: { color: '#10b981' }, barWidth: '55%' }
       ]
-    });
-  }
-  // Guest origin chart
-  const gEl = document.getElementById('guestOriginChart');
-  if (gEl && gEl.offsetWidth > 0 && !echarts.getInstanceByDom(gEl)) {
-    echarts.init(gEl).setOption({
-      tooltip: { trigger: 'item', formatter: '{b}: {d}%' },
-      legend: { bottom: 0, textStyle: { color: '#94a3b8', fontSize: 10 } },
-      series: [{ type: 'pie', radius: ['40%', '65%'], center: ['50%', '42%'],
-        label: { color: '#e2e8f0', formatter: '{b}\n{d}%', fontSize: 11 },
-        data: [{"name":"Others","value":210553431},{"name":"Chinese","value":119717805},{"name":"Korean","value":95400060},{"name":"Japanese","value":16322800},{"name":"Vietnamese","value":10558390},{"name":"Thai","value":2372772},{"name":"SEA","value":962258},{"name":"Indian","value":830339},{"name":"Unknown","value":700703}],
-        itemStyle: { color: p => ['#ef4444','#f59e0b','#3b82f6','#10b981','#8b5cf6','#06b6d4','#ec4899','#64748b'][p.dataIndex % 8] }
-      }]
     });
   }
 }
