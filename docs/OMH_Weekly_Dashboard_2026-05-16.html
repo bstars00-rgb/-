@@ -27,6 +27,66 @@
   .lang-btn.active { background: #3b82f6; color: #fff; border-color: #3b82f6; }
   .lang-btn:not(.active) { background: transparent; color: #94a3b8; }
   .lang-btn:not(.active):hover { border-color: #3b82f6; color: #e2e8f0; }
+
+  /* ═══════ RESPONSIVE: Tablet (≤1024px) ═══════ */
+  @media (max-width: 1024px) {
+    .grid.grid-cols-5 { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+    .grid.grid-cols-7 { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
+    .max-w-7xl { max-width: 100% !important; }
+  }
+
+  /* ═══════ RESPONSIVE: Mobile (≤768px) ═══════ */
+  @media (max-width: 768px) {
+    body { font-size: 14px; }
+    .p-6 { padding: 12px !important; }
+    .p-5 { padding: 14px !important; }
+    .px-6 { padding-left: 12px !important; padding-right: 12px !important; }
+    .gap-6 { gap: 12px !important; }
+    .gap-4 { gap: 8px !important; }
+
+    /* Stack all multi-col grids to 2 cols (or 1 for 2-col layouts) */
+    .grid.grid-cols-5 { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+    .grid.grid-cols-4 { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+    .grid.grid-cols-3 { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+    .grid.grid-cols-2 { grid-template-columns: 1fr !important; }
+    .grid.grid-cols-7 { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+
+    /* Header — stack title and lang switch */
+    .flex.items-center.justify-between { flex-wrap: wrap; gap: 8px; }
+
+    /* Typography scale down */
+    h1.text-2xl { font-size: 1.25rem !important; }
+    .text-3xl { font-size: 1.5rem !important; }
+    .text-2xl { font-size: 1.25rem !important; }
+    .section-title { font-size: 0.95rem !important; }
+
+    /* Tables — force horizontal scroll on parent .card */
+    .card table { font-size: 11px; }
+    .card th, .card td { padding: 6px 6px !important; }
+    .card { overflow-x: auto; }
+
+    /* Tab nav — sticky + scrollable */
+    #tabNav { position: sticky; top: 0; background: #0f172a; z-index: 10; }
+    .tab-btn { padding: 8px 10px !important; font-size: 12px !important; }
+
+    /* Charts — slightly smaller default heights */
+    [id$="Chart"], [id^="ddMonthlyChart"], [id^="ddCompareChart"] { min-height: 220px; }
+
+    /* Channel selector buttons wrap nicely */
+    #ddSelector button, #channelSelector button { font-size: 11px !important; padding: 5px 8px !important; }
+
+    /* Compare panel — stack 3-col side-by-side as 1 */
+    #ddComparePanel .grid.grid-cols-3 { grid-template-columns: 1fr !important; }
+  }
+
+  /* ═══════ RESPONSIVE: Small phones (≤480px) ═══════ */
+  @media (max-width: 480px) {
+    .grid.grid-cols-5,
+    .grid.grid-cols-4,
+    .grid.grid-cols-3 { grid-template-columns: 1fr 1fr !important; }
+    .text-3xl { font-size: 1.25rem !important; }
+    .card th, .card td { padding: 4px 4px !important; font-size: 10px !important; }
+  }
 </style>
 <script>const I18N = {"ko":{"title":"OhMyHotel Global SnM","subtitle":"주간 보고서","generated":"생성일","dataBasis":"DATA BASIS","basisThisWeek":"이번 주 · WoW","basisMoM":"MoM","basisYoY":"YoY","basisNote":"※ MoM·YoY는 비교 기준이 다르므로 참고용","tab1":"① 주간 실적","tab2m":"② 월별 실적 (C/O)","tab2":"③ API·채널 파이프라인","tab3":"④ 계약 변경·SG Flip","tab4":"⑤ 프로모션·단체","tab5":"⑥ Exception Report","tab6":"⑦ 시장·채널 동향","tab7":"⑧ 의사결정 요청","tab8":"⑨ Action Item","totalBookings":"총 예약건수","roomNights":"Room Nights","ttv":"TTV (JPY)","revenue":"Revenue (JPY)","ctripDep":"Ctrip 의존도","target":"목표","channelTop10":"채널 Top 10 — TTV","channelDetails":"채널 상세","channel":"채널명","bookings":"예약건수","rn":"RN(박)","ttvJpy":"수탁고(¥)","total":"합계","countryMix":"국가별 비중","countryDetails":"국가별 상세","country":"호텔 국가","japan":"일본","korea":"한국","vietnam":"베트남","others":"기타","tab10":"② 채널별 분석","ytdTitle":"YTD 월별 채널×국가 실적 (누적)","ytdDesc":"매주 자동 누적 | 채널별 CFD, Selling Rate, Margin, Margin%","crosstabTitle":"채널 × 국가 크로스탭","marginTitle":"채널별 마진 현황","marginRate":"마진율","margin":"마진(¥)","topHotelsTitle":"채널별 Top 호텔","guestOrigin":"고객 국적 분석","guestOriginDesc":"투숙객 이름 기반 국적 추정 (Last Name 패턴 분석)","guestNationality":"추정 국적","ctripMonitor":"Ctrip / China 의존도 모니터링","prevWeek":"전주","prevMonth":"전월","pipelineFunnel":"Pipeline Funnel","pipelineStatus":"Pipeline Status","devSchedule":"API Integration Dev Schedule (Gantt)","devDetails":"Dev Schedule 상세","category":"카테고리","project":"프로젝트","handlingTeam":"Handling Team","devOwner":"Dev Owner","workload":"Workload","status":"상태","start":"시작","end":"종료","note":"비고","contractExist":"기존 업체 — 계약 변경 진행 현황","contractNew":"신규 업체 — SG HoldCo 직접 계약","contractNote":"※ Flip 100% 완료 시 본 섹션 삭제. Ctrip·Agoda 5/1 SG 이전 포함.","progressSummary":"진행률 요약","company":"업체명","settlement":"Settlement","contractDate":"Contract Date","followUp":"Follow Up","currency":"Currency","citiBank":"Citi Bank","all":"전체","done":"완료","inProgress":"진행 중","completionRate":"완료율","promoTitle":"진행 중 프로모션","promoName":"프로모션명","channelPartner":"채널/파트너","period":"기간","condition":"조건","expectedEffect":"예상 효과","currentResult":"현재 실적","nextAction":"다음 액션","groupTitle":"단체 건 진행 현황","caseName":"건명","client":"고객/단체","schedule":"일정","pax":"인원","hotel":"호텔","noPromo":"등록된 프로모션 없음","noGroup":"등록된 단체 건 없음","exceptionTitle":"이번 주 이슈 현황","exceptionRule":"⚑ $500 이상 → 24h 보고 | $2,000 이상 → 즉시 보고 + Jackie 직보","exceptionType":"유형","content":"내용","amount":"금액($)","date":"발생일","pic":"담당자","statusAction":"상태/조치","noException":"이상 없음","opTeam":"OP팀 Vicky 관리","typeGuide":"유형: 미수금 | 채널분쟁 | 고객클레임 | 금전사고 | 시스템장애 | 기타","macroTitle":"매크로 이슈 — 아시아 여행업계 (자동 수집)","macroDesc":"한국·일본·중국·베트남 위주 | Google News 기반 최근 7일 | 최대 5건","otaTitle":"경쟁 OTA 동향 (자동 수집)","otaDesc":"Agoda · Trip.com · Booking.com · Expedia · MakeMyTrip · Traveloka | 최근 7일","channelIssueTitle":"채널별 특이사항","noNews":"수집된 이슈 없음","noOta":"없음","noChannelIssue":"등록된 특이사항 없음","channelName":"채널명","action":"대응/액션","type":"유형","decisionTitle":"이번 주 의사결정 요청 사항","decisionRule":"⚑ 요청사항 없을 경우에도 \"요청사항 없음\" 명시 필수","requestType":"요청 유형","issue":"사안 내용","background":"배경·사유","requester":"요청자","urgency":"긴급도","dueDate":"결정 필요일","currentStatus":"현재 상태","noDecision":"요청사항 없음","decisionTypeGuide":"요청 유형: 승인 필요(예산·계약조건·인력) | 전략 판단(채널·지역·모델) | 기타","urgencyGuide":"긴급도: 긴급 | 보통 | 여유","prevActionTitle":"전주 Action Item — 완료 여부","prevActionNote":"※ 전주 미완료 건은 자동 이월. 3주 연속 미완료 시 에스컬레이션.","newActionTitle":"이번 주 신규 Action Item","weekNo":"발생 주차","actionContent":"Action 내용","deadline":"기한","statusGuide":"상태: ✅ 완료 | 🔄 진행 중 | ⚠️ 지연 | ❌ 취소","addRow":"+ 행 추가","author":"작성자","tab9":"⑩ 월간 통계","monthlyStatsTitle":"월간 인바운드·아웃바운드 통계","monthlyStatsDesc":"한국·일본·베트남 | 전년대비 증감 | 최근 12개월","inbound":"인바운드","outbound":"아웃바운드","yoyChange":"전년대비 증감","month":"월","dataSource":"데이터 출처","footer":"OhMyHotel Global SnM Weekly Report"},"en":{"title":"OhMyHotel Global SnM","subtitle":"Weekly Report","generated":"Generated","dataBasis":"DATA BASIS","basisThisWeek":"This Week · WoW","basisMoM":"MoM","basisYoY":"YoY","basisNote":"※ MoM·YoY use different data basis — for reference only","tab1":"① Weekly Performance","tab2m":"② Monthly Performance (C/O)","tab2":"③ API · Channel Pipeline","tab3":"④ Contract Change · SG Flip","tab4":"⑤ Promotion · Group","tab5":"⑥ Exception Report","tab6":"⑦ Market · Channel Trends","tab7":"⑧ Decision Request","tab8":"⑨ Action Item","totalBookings":"Total Bookings","roomNights":"Room Nights","ttv":"TTV (JPY)","ctripDep":"Ctrip Dependency","target":"Target","channelTop10":"Channel Top 10 — TTV","channelDetails":"Channel Details","channel":"Channel","bookings":"Bookings","rn":"RN","ttvJpy":"TTV (JPY)","total":"Total","countryMix":"Country Mix","countryDetails":"Country Details","country":"Country","japan":"Japan","korea":"Korea","vietnam":"Vietnam","others":"Others","tab10":"② Channel Analysis","ytdTitle":"YTD Monthly Channel × Country Performance (Accumulated)","ytdDesc":"Auto-accumulated weekly | CFD, Selling Rate, Margin, Margin% per channel","crosstabTitle":"Channel × Country Crosstab","marginTitle":"Channel Margin Summary","marginRate":"Margin %","margin":"Margin (¥)","topHotelsTitle":"Top Hotels by Channel","guestOrigin":"Guest Origin Analysis","guestOriginDesc":"Estimated guest nationality based on last name patterns","guestNationality":"Est. Nationality","ctripMonitor":"Ctrip / China Dependency Monitor","prevWeek":"Prev Week","prevMonth":"Prev Month","pipelineFunnel":"Pipeline Funnel","pipelineStatus":"Pipeline Status","devSchedule":"API Integration Dev Schedule (Gantt)","devDetails":"Dev Schedule Details","category":"Category","project":"Project","handlingTeam":"Handling Team","devOwner":"Dev Owner","workload":"Workload","status":"Status","start":"Start","end":"End","note":"Note","contractExist":"Existing Partners — Contract Change Status","contractNew":"New Partners — SG HoldCo Direct Contract","contractNote":"※ Remove this section when Flip reaches 100%. Includes Ctrip·Agoda 5/1 SG migration.","progressSummary":"Progress Summary","company":"Company","settlement":"Settlement","contractDate":"Contract Date","followUp":"Follow Up","currency":"Currency","citiBank":"Citi Bank","all":"Total","done":"Done","inProgress":"In Progress","completionRate":"Completion","promoTitle":"Active Promotions","promoName":"Promotion","channelPartner":"Channel/Partner","period":"Period","condition":"Conditions","expectedEffect":"Expected Effect","currentResult":"Current Result","nextAction":"Next Action","groupTitle":"Group Booking Status","caseName":"Case","client":"Client/Group","schedule":"Schedule","pax":"Pax","hotel":"Hotel","noPromo":"No promotions registered","noGroup":"No group bookings registered","exceptionTitle":"This Week's Issues","exceptionRule":"⚑ $500+ → Report within 24h | $2,000+ → Immediate report + Jackie direct","exceptionType":"Type","content":"Content","amount":"Amount($)","date":"Date","pic":"PIC","statusAction":"Status/Action","noException":"No issues","opTeam":"Managed by OP Team Vicky","typeGuide":"Type: Unpaid | Channel Dispute | Customer Claim | Financial Incident | System Failure | Other","macroTitle":"Macro Issues — Asia Travel Industry (Auto)","macroDesc":"Korea · Japan · China · Vietnam | Google News last 7 days | Max 5","otaTitle":"Competitor OTA Trends (Auto)","otaDesc":"Agoda · Trip.com · Booking.com · Expedia · MakeMyTrip · Traveloka | Last 7 days","channelIssueTitle":"Channel Issues","noNews":"No issues collected","noOta":"None","noChannelIssue":"No issues registered","channelName":"Channel","action":"Action","type":"Type","decisionTitle":"Decision Requests This Week","decisionRule":"⚑ Must state \"No requests\" even when there are none","requestType":"Request Type","issue":"Issue","background":"Background","requester":"Requester","urgency":"Urgency","dueDate":"Due Date","currentStatus":"Current Status","noDecision":"No requests","decisionTypeGuide":"Type: Approval (Budget/Contract/HR) | Strategy (Channel/Region/Model) | Other","urgencyGuide":"Urgency: Urgent | Normal | Flexible","prevActionTitle":"Previous Week Action Items — Status","prevActionNote":"※ Incomplete items auto-carried over. Escalation after 3 consecutive weeks incomplete.","newActionTitle":"This Week New Action Items","weekNo":"Week","actionContent":"Action","deadline":"Deadline","statusGuide":"Status: ✅ Done | 🔄 In Progress | ⚠️ Delayed | ❌ Cancelled","addRow":"+ Add Row","author":"Author","tab9":"⑩ Monthly Stats","monthlyStatsTitle":"Monthly Inbound · Outbound Statistics","monthlyStatsDesc":"Korea · Japan · Vietnam | YoY Change | Last 12 months","inbound":"Inbound","outbound":"Outbound","yoyChange":"YoY Change","month":"Month","dataSource":"Data Source","footer":"OhMyHotel Global SnM Weekly Report"}};</script>
 </head>
@@ -1863,11 +1923,11 @@
             <div class="flex items-start gap-3">
               <span class="text-blue-400 font-bold text-sm mt-0.5">4</span>
               <div class="flex-1">
-                <a href="https://news.google.com/rss/articles/CBMi3wJBVV95cUxPS09Fd2htbTRWZWtKUUxFcGRORE9mZ0xGbjB0X2xRb2d5d3pvbXZGWXFGNkVzSktUa2xheWhyamtGM3JXSjFXdTdnWXZHNm9MMm5UU3hleG1Qb1c2UzlHNUFrNTlrdFJUYTVSZGNzQ0JUa29oREpXVU9DZXNxVVVRNmJpR2w2emt4d25KeDVYS0psb09QS0RiNGVKWXAxYWNHY0RJSmk0UDlSZXJJcGJvUTIwVmlNU2N0cUZwcVpJejRmcUQ4Z05SVy1pNWROOEJYR1lnS1dPaVRpM2xERTNicFlNcW5xUXdNZGx1WGRsMGZGZEdsNmNmVW5rZV84Y2NIX2hWV0xfTlF1N2U1ZUpNcmVubTVDRkZkcW82UjROR0k2VVhoODF1YUtkZE9UOFp4TmJmbFd5YWhYc2FyYzVqRHV5RDJsZldJRUVpRVN4QldFSG9oVXI4MTl6RFhKU0E?oc=5" target="_blank" class="text-sm font-medium text-gray-200 hover:text-blue-400 transition">Ireland Joins US, Canada, Germany, UK, Brazil, Spain, Turkey and Others as Strait of Hormuz Crisis Sends Travel Expenses Soaring for Millions of Travelers Amid Massive Inflation, Airfare Surge and Hotel Surcharges Plunging Tourism Across Europe, Middle - Travel And Tour World</a>
+                <a href="https://news.google.com/rss/articles/CBMiYEFVX3lxTE1TZ1N1bUN5RDFpbW55dHZDcnR2QUVPZS1KN1pmQkVpaC1BczRfZW52bTIybGxzNmxwcC1UajZZNVdvZC1TM1NGeUV5d2F3c25QdHdHSEtETEp3T1ZYcEstYQ?oc=5" target="_blank" class="text-sm font-medium text-gray-200 hover:text-blue-400 transition">Cheaper flights, new destinations: Israeli tourism trends for 2026 - ynetnews</a>
                 
                 <div class="flex gap-3 mt-1 text-xs text-gray-500">
-                  <span>Travel And Tour World</span>
-                  <span>2026. 5. 18.</span>
+                  <span>ynetnews</span>
+                  <span>2025. 12. 22.</span>
                 </div>
               </div>
             </div>
@@ -1892,10 +1952,6 @@
       <div class="space-y-4"><div class="border-b border-gray-700/50 pb-3">
             <div class="font-medium text-sm mb-2 text-gray-300">Agoda</div>
             <div class="ml-4 mb-1.5">
-                <a href="https://news.google.com/rss/articles/CBMihwFBVV95cUxOaDVlcmNCVFB2ZDlGX01rNGdZdlNtSnlpVnhTeWhvc29VYVpVRGZNNXBTanhYenF0ZjNQVG1PWlFDR2RUSTJwWDQtOWs4WkNLZDBueWFObm1VeDZlWXBfNElWZUhsR3g1LWNDZHVVbWZoZzI3VUtvZFM4YlRsdGZ4RkZCXzJ3eDA?oc=5" target="_blank" class="text-xs text-gray-400 hover:text-blue-400 transition">The 17 Best Websites for Booking Hotels at the Cheapest Prices [2026] - Upgraded Points</a>
-                
-                <span class="text-xs text-gray-600 ml-2">Upgraded Points · 2026. 5. 19.</span>
-              </div><div class="ml-4 mb-1.5">
                 <a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxOdnNsa0dzLXE0dGUxMHI0djRRZHF3bUttajN1a2hIbzV6YllkVWZRTW5mOUl0dUFGd0g2R3JpRVRVY05tbUprUllUaU9CVWtEUl8xWC00bmkxanYyLVRnWGhTUnoxdjRRbjFQYnlPUkI5eVYwNmxSU3hNdUNYWUZFTzZMSWpwd0FLbEtsd3JfOFhiQVVsTlEteVJpUkJvZGpqaml4dQ?oc=5" target="_blank" class="text-xs text-gray-400 hover:text-blue-400 transition">Agoda introduces single checkout for flights, hotels and activities - TTG Asia</a>
                 
                 <span class="text-xs text-gray-600 ml-2">TTG Asia · 2026. 5. 20.</span>
@@ -1903,6 +1959,10 @@
                 <a href="https://news.google.com/rss/articles/CBMiYEFVX3lxTE1WMktVMC1jU3ZLNUg5NHBscnotSkNJTU9PSFVhdzFQUkFaQXZjSW9pT1hEM1V2RkVKR2dLQXdkVVVjUWhuRWRYSVZiTEdLeVZtbWFrT1Nnd0liWkNhZ1BCYQ?oc=5" target="_blank" class="text-xs text-gray-400 hover:text-blue-400 transition">Agoda Highlights the Rise of the Perpetual Traveler and Other Travel Behaviors Creating New Opportunities for Hotels - WebWire</a>
                 
                 <span class="text-xs text-gray-600 ml-2">WebWire · 2026. 5. 14.</span>
+              </div><div class="ml-4 mb-1.5">
+                <a href="https://news.google.com/rss/articles/CBMibkFVX3lxTFBaWENIWXZZU0o3RTFsczFmUE5ldUpuLUY3dmdsSkZ2T09POWtvSEpSY0VGbi1rZGFjMTJKR1ByUDZjU3QwYWN6Tk92dWUzUVhuTDMzRFZGSXlQbklzaHJ0RVhyWmtDdXA4Szh5OV9B?oc=5" target="_blank" class="text-xs text-gray-400 hover:text-blue-400 transition">Singapore Unveils Agoda AI System to Seamlessly Connect Hotel Images and Guest Reviews for Smarter and More Insightful Travel Discovery - Travel And Tour World</a>
+                
+                <span class="text-xs text-gray-600 ml-2">Travel And Tour World · 2026. 5. 20.</span>
               </div>
           </div><div class="border-b border-gray-700/50 pb-3">
             <div class="font-medium text-sm mb-2 text-gray-300">Trip.com</div>
@@ -1967,7 +2027,7 @@
           </div><div class="border-b border-gray-700/50 pb-3">
             <div class="font-medium text-sm mb-2 text-gray-300">Traveloka</div>
             <div class="ml-4 mb-1.5">
-                <a href="https://news.google.com/rss/articles/CBMibkFVX3lxTE1tN3RDRUxtYTNjczF1STRTVVNPeUV3Y3pCMGowelk2RjJBLS1nQkRJX1o5ZzVRaUt4a3RIVlhCcGpST09zVVBha1d1QWdBT1h1RFN3RmsxcFBPQXVJaEtDRDBxaFRyMG1TYWVJWXhR?oc=5" target="_blank" class="text-xs text-gray-400 hover:text-blue-400 transition">Traveloka and Resorts World Sentosa Form Strategic Alliance to Enhance Seamless Travel Experiences in Southeast Asia - Travel And Tour World</a>
+                <a href="https://news.google.com/rss/articles/CBMibkFVX3lxTE1sblJPanhwTUxKQnVVOGlkN2ltR0VrZXdXZWR4NURDeU02anVXbUREQ1QtNExmYWdJOXlnM3N0aWZrSGdCX0paOVpCbUo2OVNtZXJIWk5jV2RESHctNWNEeGp4LW9VR1BGV0JfaGxR?oc=5" target="_blank" class="text-xs text-gray-400 hover:text-blue-400 transition">The Sentosa Traveloka Experience: How a Landmark Tech Pact Simplifies Island Getaways for Southeast Asian Travelers - Travel And Tour World</a>
                 
                 <span class="text-xs text-gray-600 ml-2">Travel And Tour World · 2026. 5. 21.</span>
               </div><div class="ml-4 mb-1.5">
@@ -12301,6 +12361,18 @@ document.querySelector('[data-tab="tab10"]').addEventListener('click', () => set
     if (firstBtn) selectDeepDive(firstBtn.dataset.ch);
   }
 }, 150));
+
+// Resize all ECharts instances when window resizes (mobile rotation, etc.)
+let _resizeT = null;
+window.addEventListener('resize', () => {
+  clearTimeout(_resizeT);
+  _resizeT = setTimeout(() => {
+    document.querySelectorAll('div').forEach(el => {
+      const inst = echarts.getInstanceByDom(el);
+      if (inst) inst.resize();
+    });
+  }, 120);
+});
 
 // ── Channel Comparison (PKFARE vs DIDA style) ──
 function _fmtYen(n) { if (n == null) return '—'; const v = Math.abs(n); if (v >= 1e9) return '¥' + (n/1e9).toFixed(2)+'B'; if (v >= 1e6) return '¥' + (n/1e6).toFixed(1)+'M'; if (v >= 1e3) return '¥' + (n/1e3).toFixed(0)+'K'; return '¥'+Math.round(n); }
