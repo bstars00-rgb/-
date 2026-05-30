@@ -2758,7 +2758,28 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
     <div class="card p-5">
       <div class="section-title">호텔별 채널 분포 — Top 50 (이번 주 RN 순) <span class="text-[10px] px-1.5 py-0.5 rounded bg-blue-500/15 text-blue-400 border border-blue-500/30 font-normal ml-2">Booking Date · 이번 주</span></div>
       <p class="text-xs text-gray-500 mb-3">행 클릭 시 전체 채널 분포 펼침 · ⓘ Top 1 채널 80%+ = 집중 리스크</p>
-      <input type="text" id="hotelSearch" placeholder="🔍 호텔명 검색..." oninput="filterHotels(this.value)" class="w-full mb-3 bg-gray-800 border border-gray-600 rounded px-3 py-2 text-sm text-gray-200 placeholder-gray-500">
+      
+        <div class="flex flex-wrap gap-2 mb-3 items-center">
+          <input type="text" id="hotelSearch" placeholder="🔍 호텔명 검색..." oninput="applyHotelFilters()" class="flex-1 min-w-[200px] bg-gray-800 border border-gray-600 rounded px-3 py-2 text-sm text-gray-200 placeholder-gray-500">
+          <select id="hotelCountryFilter" onchange="applyHotelFilters()" class="bg-gray-800 border border-gray-600 rounded px-2 py-2 text-sm text-gray-200 cursor-pointer hover:border-purple-400">
+            <option value="">🌏 전체 국가 (2)</option>
+            <option value="Japan">Japan</option><option value="Korea">Korea</option>
+          </select>
+          <select id="hotelCityFilter" onchange="applyHotelFilters()" class="bg-gray-800 border border-gray-600 rounded px-2 py-2 text-sm text-gray-200 cursor-pointer hover:border-purple-400">
+            <option value="">🏙️ 전체 도시 (12)</option>
+            <option value="Busan">Busan</option><option value="Fukuoka">Fukuoka</option><option value="Gangneung">Gangneung</option><option value="Jeju City">Jeju City</option><option value="Kyoto">Kyoto</option><option value="Nagoya">Nagoya</option><option value="Naha">Naha</option><option value="Osaka">Osaka</option><option value="Sapporo">Sapporo</option><option value="Seogwipo">Seogwipo</option><option value="Seoul">Seoul</option><option value="Tokyo">Tokyo</option>
+          </select>
+          <select id="hotelSortBy" onchange="applyHotelFilters()" class="bg-gray-800 border border-gray-600 rounded px-2 py-2 text-sm text-gray-200 cursor-pointer hover:border-purple-400">
+            <option value="rn">정렬: RN ↓</option>
+            <option value="bookings">정렬: Bookings ↓</option>
+            <option value="adr">정렬: ADR ↓</option>
+            <option value="wow">정렬: WoW 증가율 ↓</option>
+            <option value="risk">정렬: Top Ch. Share ↓</option>
+            <option value="name">정렬: 호텔명 (가나다)</option>
+          </select>
+          <button onclick="resetHotelFilters()" class="text-xs px-3 py-2 rounded border border-gray-600 text-gray-400 hover:border-red-400 hover:text-red-400">Clear</button>
+          <span id="hotelFilterCount" class="text-[11px] text-gray-500 ml-auto">50개 표시</span>
+        </div>
       <div class="overflow-x-auto">
         <table class="w-full text-sm">
           <thead>
@@ -2778,7 +2799,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
           </thead>
           <tbody id="hotelTbody">
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="the onefive osaka namba dotonbori" onclick="toggleHotelDetail(0)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="the onefive osaka namba dotonbori"
+                  data-country="Japan"
+                  data-city="Osaka"
+                  data-rn="1416" data-bookings="501" data-adr="10101"
+                  data-wow="-0.034764826175869123"
+                  data-risk="0.3043785310734463"
+                  data-name="The OneFive Osaka Namba Dotonbori"
+                  data-idx="0"
+                  onclick="toggleHotelDetail(0)">
                 <td class="py-2 px-2 text-xs text-gray-500">1</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">The OneFive Osaka Namba Dotonbori</td>
                 <td class="py-2 px-2 text-xs text-gray-400">Osaka <span class="text-gray-600">·</span> Japan</td>
@@ -2987,7 +3017,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
                 </td>
               </tr>
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="smile hotel premium osaka higashi shinsaibashi" onclick="toggleHotelDetail(1)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="smile hotel premium osaka higashi shinsaibashi"
+                  data-country="Japan"
+                  data-city="Osaka"
+                  data-rn="586" data-bookings="194" data-adr="9879"
+                  data-wow="1.8038277511961722"
+                  data-risk="0.6569965870307167"
+                  data-name="Smile Hotel Premium Osaka Higashi Shinsaibashi"
+                  data-idx="1"
+                  onclick="toggleHotelDetail(1)">
                 <td class="py-2 px-2 text-xs text-gray-500">2</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">Smile Hotel Premium Osaka Higashi Shinsaibashi</td>
                 <td class="py-2 px-2 text-xs text-gray-400">Osaka <span class="text-gray-600">·</span> Japan</td>
@@ -3192,7 +3231,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
                 </td>
               </tr>
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="the knot fukuoka tenjin" onclick="toggleHotelDetail(2)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="the knot fukuoka tenjin"
+                  data-country="Japan"
+                  data-city="Fukuoka"
+                  data-rn="577" data-bookings="222" data-adr="13963"
+                  data-wow="0.13582677165354332"
+                  data-risk="0.8058925476603119"
+                  data-name="THE KNOT FUKUOKA Tenjin"
+                  data-idx="2"
+                  onclick="toggleHotelDetail(2)">
                 <td class="py-2 px-2 text-xs text-gray-500">3</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">THE KNOT FUKUOKA Tenjin</td>
                 <td class="py-2 px-2 text-xs text-gray-400">Fukuoka <span class="text-gray-600">·</span> Japan</td>
@@ -3283,7 +3331,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
                 </td>
               </tr>
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="koko hotel osaka namba sennichimae" onclick="toggleHotelDetail(3)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="koko hotel osaka namba sennichimae"
+                  data-country="Japan"
+                  data-city="Osaka"
+                  data-rn="425" data-bookings="143" data-adr="15633"
+                  data-wow="0.011904761904761904"
+                  data-risk="0.27058823529411763"
+                  data-name="KOKO HOTEL Osaka Namba Sennichimae"
+                  data-idx="3"
+                  onclick="toggleHotelDetail(3)">
                 <td class="py-2 px-2 text-xs text-gray-500">4</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">KOKO HOTEL Osaka Namba Sennichimae</td>
                 <td class="py-2 px-2 text-xs text-gray-400">Osaka <span class="text-gray-600">·</span> Japan</td>
@@ -3442,7 +3499,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
                 </td>
               </tr>
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="the onefive osaka sakaisuji" onclick="toggleHotelDetail(4)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="the onefive osaka sakaisuji"
+                  data-country="Japan"
+                  data-city="Osaka"
+                  data-rn="366" data-bookings="105" data-adr="4779"
+                  data-wow="0.09253731343283582"
+                  data-risk="0.39617486338797814"
+                  data-name="The OneFive Osaka Sakaisuji"
+                  data-idx="4"
+                  onclick="toggleHotelDetail(4)">
                 <td class="py-2 px-2 text-xs text-gray-500">5</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">The OneFive Osaka Sakaisuji</td>
                 <td class="py-2 px-2 text-xs text-gray-400">Osaka <span class="text-gray-600">·</span> Japan</td>
@@ -3631,7 +3697,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
                 </td>
               </tr>
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="hotel metropolitan tokyo ikebukuro" onclick="toggleHotelDetail(5)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="hotel metropolitan tokyo ikebukuro"
+                  data-country="Japan"
+                  data-city="Tokyo"
+                  data-rn="360" data-bookings="102" data-adr="26256"
+                  data-wow="-0.31947069943289225"
+                  data-risk="0.6277777777777778"
+                  data-name="Hotel Metropolitan Tokyo Ikebukuro"
+                  data-idx="5"
+                  onclick="toggleHotelDetail(5)">
                 <td class="py-2 px-2 text-xs text-gray-500">6</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">Hotel Metropolitan Tokyo Ikebukuro</td>
                 <td class="py-2 px-2 text-xs text-gray-400">Tokyo <span class="text-gray-600">·</span> Japan</td>
@@ -3796,7 +3871,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
                 </td>
               </tr>
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="sotetsu fresa inn ueno okachimachi" onclick="toggleHotelDetail(6)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="sotetsu fresa inn ueno okachimachi"
+                  data-country="Japan"
+                  data-city="Tokyo"
+                  data-rn="351" data-bookings="116" data-adr="14104"
+                  data-wow="1.2215189873417722"
+                  data-risk="0.36752136752136755"
+                  data-name="Sotetsu Fresa Inn Ueno Okachimachi"
+                  data-idx="6"
+                  onclick="toggleHotelDetail(6)">
                 <td class="py-2 px-2 text-xs text-gray-500">7</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">Sotetsu Fresa Inn Ueno Okachimachi</td>
                 <td class="py-2 px-2 text-xs text-gray-400">Tokyo <span class="text-gray-600">·</span> Japan</td>
@@ -3971,7 +4055,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
                 </td>
               </tr>
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="the onefive osaka shinsekai" onclick="toggleHotelDetail(7)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="the onefive osaka shinsekai"
+                  data-country="Japan"
+                  data-city="Osaka"
+                  data-rn="328" data-bookings="122" data-adr="5470"
+                  data-wow="-0.043731778425655975"
+                  data-risk="0.725609756097561"
+                  data-name="The OneFive Osaka Shinsekai"
+                  data-idx="7"
+                  onclick="toggleHotelDetail(7)">
                 <td class="py-2 px-2 text-xs text-gray-500">8</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">The OneFive Osaka Shinsekai</td>
                 <td class="py-2 px-2 text-xs text-gray-400">Osaka <span class="text-gray-600">·</span> Japan</td>
@@ -4082,7 +4175,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
                 </td>
               </tr>
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="sotetsu fresa inn nihombashi kayabacho" onclick="toggleHotelDetail(8)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="sotetsu fresa inn nihombashi kayabacho"
+                  data-country="Japan"
+                  data-city="Tokyo"
+                  data-rn="326" data-bookings="116" data-adr="11793"
+                  data-wow="-0.3929236499068901"
+                  data-risk="0.5122699386503068"
+                  data-name="Sotetsu Fresa Inn Nihombashi Kayabacho"
+                  data-idx="8"
+                  onclick="toggleHotelDetail(8)">
                 <td class="py-2 px-2 text-xs text-gray-500">9</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">Sotetsu Fresa Inn Nihombashi Kayabacho</td>
                 <td class="py-2 px-2 text-xs text-gray-400">Tokyo <span class="text-gray-600">·</span> Japan</td>
@@ -4277,7 +4379,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
                 </td>
               </tr>
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="sotetsu fresa inn daimon" onclick="toggleHotelDetail(9)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="sotetsu fresa inn daimon"
+                  data-country="Japan"
+                  data-city="Tokyo"
+                  data-rn="320" data-bookings="102" data-adr="17833"
+                  data-wow="-0.20987654320987653"
+                  data-risk="0.453125"
+                  data-name="Sotetsu Fresa Inn Daimon"
+                  data-idx="9"
+                  onclick="toggleHotelDetail(9)">
                 <td class="py-2 px-2 text-xs text-gray-500">10</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">Sotetsu Fresa Inn Daimon</td>
                 <td class="py-2 px-2 text-xs text-gray-400">Tokyo <span class="text-gray-600">·</span> Japan</td>
@@ -4442,7 +4553,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
                 </td>
               </tr>
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="sotetsu fresa inn tokyo kinshicho" onclick="toggleHotelDetail(10)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="sotetsu fresa inn tokyo kinshicho"
+                  data-country="Japan"
+                  data-city="Tokyo"
+                  data-rn="298" data-bookings="93" data-adr="12683"
+                  data-wow="0.386046511627907"
+                  data-risk="0.540268456375839"
+                  data-name="Sotetsu Fresa Inn Tokyo Kinshicho"
+                  data-idx="10"
+                  onclick="toggleHotelDetail(10)">
                 <td class="py-2 px-2 text-xs text-gray-500">11</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">Sotetsu Fresa Inn Tokyo Kinshicho</td>
                 <td class="py-2 px-2 text-xs text-gray-400">Tokyo <span class="text-gray-600">·</span> Japan</td>
@@ -4591,7 +4711,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
                 </td>
               </tr>
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="agora kyoto karasuma" onclick="toggleHotelDetail(11)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="agora kyoto karasuma"
+                  data-country="Japan"
+                  data-city="Kyoto"
+                  data-rn="287" data-bookings="143" data-adr="9058"
+                  data-wow="0.8636363636363636"
+                  data-risk="0.578397212543554"
+                  data-name="Agora Kyoto Karasuma"
+                  data-idx="11"
+                  onclick="toggleHotelDetail(11)">
                 <td class="py-2 px-2 text-xs text-gray-500">12</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">Agora Kyoto Karasuma</td>
                 <td class="py-2 px-2 text-xs text-gray-400">Kyoto <span class="text-gray-600">·</span> Japan</td>
@@ -4780,7 +4909,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
                 </td>
               </tr>
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="hotel palm royal naha kokusai street" onclick="toggleHotelDetail(12)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="hotel palm royal naha kokusai street"
+                  data-country="Japan"
+                  data-city="Naha"
+                  data-rn="273" data-bookings="140" data-adr="16762"
+                  data-wow="0.14705882352941177"
+                  data-risk="0.36996336996337"
+                  data-name="Hotel Palm Royal Naha Kokusai Street"
+                  data-idx="12"
+                  onclick="toggleHotelDetail(12)">
                 <td class="py-2 px-2 text-xs text-gray-500">13</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">Hotel Palm Royal Naha Kokusai Street</td>
                 <td class="py-2 px-2 text-xs text-gray-400">Naha <span class="text-gray-600">·</span> Japan</td>
@@ -4921,7 +5059,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
                 </td>
               </tr>
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="sotetsu fresa inn higashi shinjuku" onclick="toggleHotelDetail(13)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="sotetsu fresa inn higashi shinjuku"
+                  data-country="Japan"
+                  data-city="Tokyo"
+                  data-rn="266" data-bookings="86" data-adr="18817"
+                  data-wow="-0.7507029053420806"
+                  data-risk="0.6654135338345865"
+                  data-name="Sotetsu Fresa Inn Higashi Shinjuku"
+                  data-idx="13"
+                  onclick="toggleHotelDetail(13)">
                 <td class="py-2 px-2 text-xs text-gray-500">14</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">Sotetsu Fresa Inn Higashi Shinjuku</td>
                 <td class="py-2 px-2 text-xs text-gray-400">Tokyo <span class="text-gray-600">·</span> Japan</td>
@@ -5090,7 +5237,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
                 </td>
               </tr>
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="sotetsu grand fresa takadanobaba" onclick="toggleHotelDetail(14)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="sotetsu grand fresa takadanobaba"
+                  data-country="Japan"
+                  data-city="Tokyo"
+                  data-rn="265" data-bookings="65" data-adr="21571"
+                  data-wow="-0.699546485260771"
+                  data-risk="0.44150943396226416"
+                  data-name="SOTETSU GRAND FRESA TAKADANOBABA"
+                  data-idx="14"
+                  onclick="toggleHotelDetail(14)">
                 <td class="py-2 px-2 text-xs text-gray-500">15</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">SOTETSU GRAND FRESA TAKADANOBABA</td>
                 <td class="py-2 px-2 text-xs text-gray-400">Tokyo <span class="text-gray-600">·</span> Japan</td>
@@ -5255,7 +5411,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
                 </td>
               </tr>
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="sotetsu fresa inn nihombashi ningyocho" onclick="toggleHotelDetail(15)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="sotetsu fresa inn nihombashi ningyocho"
+                  data-country="Japan"
+                  data-city="Tokyo"
+                  data-rn="252" data-bookings="81" data-adr="11302"
+                  data-wow="-0.14864864864864866"
+                  data-risk="0.7182539682539683"
+                  data-name="Sotetsu Fresa Inn Nihombashi Ningyocho"
+                  data-idx="15"
+                  onclick="toggleHotelDetail(15)">
                 <td class="py-2 px-2 text-xs text-gray-500">16</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">Sotetsu Fresa Inn Nihombashi Ningyocho</td>
                 <td class="py-2 px-2 text-xs text-gray-400">Tokyo <span class="text-gray-600">·</span> Japan</td>
@@ -5424,7 +5589,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
                 </td>
               </tr>
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="vessel hotel campana susukino" onclick="toggleHotelDetail(16)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="vessel hotel campana susukino"
+                  data-country="Japan"
+                  data-city="Sapporo"
+                  data-rn="242" data-bookings="117" data-adr="23156"
+                  data-wow="-0.17687074829931973"
+                  data-risk="0.3760330578512397"
+                  data-name="Vessel Hotel Campana Susukino"
+                  data-idx="16"
+                  onclick="toggleHotelDetail(16)">
                 <td class="py-2 px-2 text-xs text-gray-500">17</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">Vessel Hotel Campana Susukino</td>
                 <td class="py-2 px-2 text-xs text-gray-400">Sapporo <span class="text-gray-600">·</span> Japan</td>
@@ -5549,7 +5723,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
                 </td>
               </tr>
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="the onefive osaka namba kuromon" onclick="toggleHotelDetail(17)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="the onefive osaka namba kuromon"
+                  data-country="Japan"
+                  data-city="Osaka"
+                  data-rn="238" data-bookings="88" data-adr="12550"
+                  data-wow="0.2864864864864865"
+                  data-risk="0.31512605042016806"
+                  data-name="The OneFive Osaka Namba Kuromon"
+                  data-idx="17"
+                  onclick="toggleHotelDetail(17)">
                 <td class="py-2 px-2 text-xs text-gray-500">18</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">The OneFive Osaka Namba Kuromon</td>
                 <td class="py-2 px-2 text-xs text-gray-400">Osaka <span class="text-gray-600">·</span> Japan</td>
@@ -5694,7 +5877,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
                 </td>
               </tr>
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="roynet hotel seoul mapo" onclick="toggleHotelDetail(18)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="roynet hotel seoul mapo"
+                  data-country="Korea"
+                  data-city="Seoul"
+                  data-rn="218" data-bookings="87" data-adr="27488"
+                  data-wow="0.32926829268292684"
+                  data-risk="0.6926605504587156"
+                  data-name="Roynet Hotel Seoul Mapo"
+                  data-idx="18"
+                  onclick="toggleHotelDetail(18)">
                 <td class="py-2 px-2 text-xs text-gray-500">19</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">Roynet Hotel Seoul Mapo</td>
                 <td class="py-2 px-2 text-xs text-gray-400">Seoul <span class="text-gray-600">·</span> Korea</td>
@@ -5829,7 +6021,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
                 </td>
               </tr>
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="sapporo stream hotel" onclick="toggleHotelDetail(19)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="sapporo stream hotel"
+                  data-country="Japan"
+                  data-city="Sapporo"
+                  data-rn="186" data-bookings="72" data-adr="22865"
+                  data-wow="0.5371900826446281"
+                  data-risk="0.7903225806451613"
+                  data-name="SAPPORO STREAM HOTEL"
+                  data-idx="19"
+                  onclick="toggleHotelDetail(19)">
                 <td class="py-2 px-2 text-xs text-gray-500">20</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">SAPPORO STREAM HOTEL</td>
                 <td class="py-2 px-2 text-xs text-gray-400">Sapporo <span class="text-gray-600">·</span> Japan</td>
@@ -5964,7 +6165,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
                 </td>
               </tr>
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="hotel bernoui seoul" onclick="toggleHotelDetail(20)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="hotel bernoui seoul"
+                  data-country="Korea"
+                  data-city="Seoul"
+                  data-rn="179" data-bookings="85" data-adr="11389"
+                  data-wow="0.3875968992248062"
+                  data-risk="0.7932960893854749"
+                  data-name="Hotel Bernoui Seoul"
+                  data-idx="20"
+                  onclick="toggleHotelDetail(20)">
                 <td class="py-2 px-2 text-xs text-gray-500">21</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">Hotel Bernoui Seoul</td>
                 <td class="py-2 px-2 text-xs text-gray-400">Seoul <span class="text-gray-600">·</span> Korea</td>
@@ -6113,7 +6323,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
                 </td>
               </tr>
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="the stay classic myeongdong" onclick="toggleHotelDetail(21)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="the stay classic myeongdong"
+                  data-country="Korea"
+                  data-city="Seoul"
+                  data-rn="175" data-bookings="73" data-adr="20840"
+                  data-wow="-0.291497975708502"
+                  data-risk="0.41714285714285715"
+                  data-name="The Stay Classic Myeongdong"
+                  data-idx="21"
+                  onclick="toggleHotelDetail(21)">
                 <td class="py-2 px-2 text-xs text-gray-500">22</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">The Stay Classic Myeongdong</td>
                 <td class="py-2 px-2 text-xs text-gray-400">Seoul <span class="text-gray-600">·</span> Korea</td>
@@ -6238,7 +6457,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
                 </td>
               </tr>
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="hotel society" onclick="toggleHotelDetail(22)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="hotel society"
+                  data-country="Korea"
+                  data-city="Busan"
+                  data-rn="173" data-bookings="79" data-adr="11481"
+                  data-wow="1.0116279069767442"
+                  data-risk="0.6936416184971098"
+                  data-name="Hotel Society"
+                  data-idx="22"
+                  onclick="toggleHotelDetail(22)">
                 <td class="py-2 px-2 text-xs text-gray-500">23</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">Hotel Society</td>
                 <td class="py-2 px-2 text-xs text-gray-400">Busan <span class="text-gray-600">·</span> Korea</td>
@@ -6359,7 +6587,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
                 </td>
               </tr>
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="oriental hotel tokyo bay" onclick="toggleHotelDetail(23)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="oriental hotel tokyo bay"
+                  data-country="Japan"
+                  data-city="Tokyo"
+                  data-rn="168" data-bookings="67" data-adr="31702"
+                  data-wow="0.043478260869565216"
+                  data-risk="0.375"
+                  data-name="Oriental Hotel Tokyo Bay"
+                  data-idx="23"
+                  onclick="toggleHotelDetail(23)">
                 <td class="py-2 px-2 text-xs text-gray-500">24</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">Oriental Hotel Tokyo Bay</td>
                 <td class="py-2 px-2 text-xs text-gray-400">Tokyo <span class="text-gray-600">·</span> Japan</td>
@@ -6488,7 +6725,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
                 </td>
               </tr>
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="hotel monterey fukuoka" onclick="toggleHotelDetail(24)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="hotel monterey fukuoka"
+                  data-country="Japan"
+                  data-city="Fukuoka"
+                  data-rn="160" data-bookings="58" data-adr="31987"
+                  data-wow="-0.13978494623655913"
+                  data-risk="0.6375"
+                  data-name="Hotel Monterey Fukuoka"
+                  data-idx="24"
+                  onclick="toggleHotelDetail(24)">
                 <td class="py-2 px-2 text-xs text-gray-500">25</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">Hotel Monterey Fukuoka</td>
                 <td class="py-2 px-2 text-xs text-gray-400">Fukuoka <span class="text-gray-600">·</span> Japan</td>
@@ -6667,7 +6913,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
                 </td>
               </tr>
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="richmond hotel sapporo odori" onclick="toggleHotelDetail(25)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="richmond hotel sapporo odori"
+                  data-country="Japan"
+                  data-city="Sapporo"
+                  data-rn="152" data-bookings="57" data-adr="23782"
+                  data-wow="-999"
+                  data-risk="0.45394736842105265"
+                  data-name="Richmond Hotel Sapporo Odori"
+                  data-idx="25"
+                  onclick="toggleHotelDetail(25)">
                 <td class="py-2 px-2 text-xs text-gray-500">26</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">Richmond Hotel Sapporo Odori <span class="text-[9px] px-1 py-0.5 rounded bg-emerald-500/20 text-emerald-300">NEW</span></td>
                 <td class="py-2 px-2 text-xs text-gray-400">Sapporo <span class="text-gray-600">·</span> Japan</td>
@@ -6778,7 +7033,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
                 </td>
               </tr>
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="sotetsu hotels the splaisir seoul myeongdong" onclick="toggleHotelDetail(26)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="sotetsu hotels the splaisir seoul myeongdong"
+                  data-country="Korea"
+                  data-city="Seoul"
+                  data-rn="150" data-bookings="73" data-adr="23766"
+                  data-wow="0.04895104895104895"
+                  data-risk="0.9533333333333334"
+                  data-name="Sotetsu Hotels The Splaisir Seoul Myeongdong"
+                  data-idx="26"
+                  onclick="toggleHotelDetail(26)">
                 <td class="py-2 px-2 text-xs text-gray-500">27</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">Sotetsu Hotels The Splaisir Seoul Myeongdong</td>
                 <td class="py-2 px-2 text-xs text-gray-400">Seoul <span class="text-gray-600">·</span> Korea</td>
@@ -6845,7 +7109,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
                 </td>
               </tr>
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="red roof inn & suites osaka - namba/nippombashi" onclick="toggleHotelDetail(27)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="red roof inn & suites osaka - namba/nippombashi"
+                  data-country="Japan"
+                  data-city="Osaka"
+                  data-rn="149" data-bookings="55" data-adr="8768"
+                  data-wow="-0.42023346303501946"
+                  data-risk="0.5167785234899329"
+                  data-name="Red Roof Inn & Suites Osaka - Namba/Nippombashi"
+                  data-idx="27"
+                  onclick="toggleHotelDetail(27)">
                 <td class="py-2 px-2 text-xs text-gray-500">28</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">Red Roof Inn & Suites Osaka - Namba/Nippombashi</td>
                 <td class="py-2 px-2 text-xs text-gray-400">Osaka <span class="text-gray-600">·</span> Japan</td>
@@ -7014,7 +7287,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
                 </td>
               </tr>
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="the onefive kyoto shijo" onclick="toggleHotelDetail(28)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="the onefive kyoto shijo"
+                  data-country="Japan"
+                  data-city="Kyoto"
+                  data-rn="149" data-bookings="54" data-adr="7173"
+                  data-wow="-0.1945945945945946"
+                  data-risk="0.5033557046979866"
+                  data-name="The OneFive Kyoto Shijo"
+                  data-idx="28"
+                  onclick="toggleHotelDetail(28)">
                 <td class="py-2 px-2 text-xs text-gray-500">29</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">The OneFive Kyoto Shijo</td>
                 <td class="py-2 px-2 text-xs text-gray-400">Kyoto <span class="text-gray-600">·</span> Japan</td>
@@ -7155,7 +7437,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
                 </td>
               </tr>
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="hotel bridge seogwipo" onclick="toggleHotelDetail(29)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="hotel bridge seogwipo"
+                  data-country="Korea"
+                  data-city="Seogwipo"
+                  data-rn="142" data-bookings="51" data-adr="7942"
+                  data-wow="4.2592592592592595"
+                  data-risk="0.36619718309859156"
+                  data-name="Hotel Bridge Seogwipo"
+                  data-idx="29"
+                  onclick="toggleHotelDetail(29)">
                 <td class="py-2 px-2 text-xs text-gray-500">30</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">Hotel Bridge Seogwipo</td>
                 <td class="py-2 px-2 text-xs text-gray-400">Seogwipo <span class="text-gray-600">·</span> Korea</td>
@@ -7276,7 +7567,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
                 </td>
               </tr>
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="hotel monterey ginza" onclick="toggleHotelDetail(30)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="hotel monterey ginza"
+                  data-country="Japan"
+                  data-city="Tokyo"
+                  data-rn="137" data-bookings="55" data-adr="25921"
+                  data-wow="-0.6215469613259669"
+                  data-risk="0.26277372262773724"
+                  data-name="Hotel Monterey Ginza"
+                  data-idx="30"
+                  onclick="toggleHotelDetail(30)">
                 <td class="py-2 px-2 text-xs text-gray-500">31</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">Hotel Monterey Ginza</td>
                 <td class="py-2 px-2 text-xs text-gray-400">Tokyo <span class="text-gray-600">·</span> Japan</td>
@@ -7407,7 +7707,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
                 </td>
               </tr>
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="sapporo washington hotel plaza" onclick="toggleHotelDetail(31)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="sapporo washington hotel plaza"
+                  data-country="Japan"
+                  data-city="Sapporo"
+                  data-rn="134" data-bookings="79" data-adr="14069"
+                  data-wow="0"
+                  data-risk="0.3358208955223881"
+                  data-name="Sapporo Washington Hotel Plaza"
+                  data-idx="31"
+                  onclick="toggleHotelDetail(31)">
                 <td class="py-2 px-2 text-xs text-gray-500">32</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">Sapporo Washington Hotel Plaza</td>
                 <td class="py-2 px-2 text-xs text-gray-400">Sapporo <span class="text-gray-600">·</span> Japan</td>
@@ -7558,7 +7867,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
                 </td>
               </tr>
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="hotel androoms naha port" onclick="toggleHotelDetail(32)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="hotel androoms naha port"
+                  data-country="Japan"
+                  data-city="Naha"
+                  data-rn="132" data-bookings="70" data-adr="10800"
+                  data-wow="0.5714285714285714"
+                  data-risk="0.21212121212121213"
+                  data-name="hotel androoms Naha Port"
+                  data-idx="32"
+                  onclick="toggleHotelDetail(32)">
                 <td class="py-2 px-2 text-xs text-gray-500">33</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">hotel androoms Naha Port</td>
                 <td class="py-2 px-2 text-xs text-gray-400">Naha <span class="text-gray-600">·</span> Japan</td>
@@ -7703,7 +8021,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
                 </td>
               </tr>
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="rosana hotel" onclick="toggleHotelDetail(33)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="rosana hotel"
+                  data-country="Korea"
+                  data-city="Seoul"
+                  data-rn="132" data-bookings="56" data-adr="17218"
+                  data-wow="0.08196721311475409"
+                  data-risk="0.8560606060606061"
+                  data-name="Rosana Hotel"
+                  data-idx="33"
+                  onclick="toggleHotelDetail(33)">
                 <td class="py-2 px-2 text-xs text-gray-500">34</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">Rosana Hotel</td>
                 <td class="py-2 px-2 text-xs text-gray-400">Seoul <span class="text-gray-600">·</span> Korea</td>
@@ -7824,7 +8151,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
                 </td>
               </tr>
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="sotetsu fresa inn nagoya-shinkansenguchi" onclick="toggleHotelDetail(34)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="sotetsu fresa inn nagoya-shinkansenguchi"
+                  data-country="Japan"
+                  data-city="Nagoya"
+                  data-rn="127" data-bookings="60" data-adr="12180"
+                  data-wow="0.5487804878048781"
+                  data-risk="0.3937007874015748"
+                  data-name="Sotetsu Fresa Inn Nagoya-Shinkansenguchi"
+                  data-idx="34"
+                  onclick="toggleHotelDetail(34)">
                 <td class="py-2 px-2 text-xs text-gray-500">35</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">Sotetsu Fresa Inn Nagoya-Shinkansenguchi</td>
                 <td class="py-2 px-2 text-xs text-gray-400">Nagoya <span class="text-gray-600">·</span> Japan</td>
@@ -7969,7 +8305,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
                 </td>
               </tr>
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="ebenezer hotel" onclick="toggleHotelDetail(35)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="ebenezer hotel"
+                  data-country="Korea"
+                  data-city="Jeju City"
+                  data-rn="125" data-bookings="63" data-adr="15286"
+                  data-wow="0.059322033898305086"
+                  data-risk="0.792"
+                  data-name="Ebenezer Hotel"
+                  data-idx="35"
+                  onclick="toggleHotelDetail(35)">
                 <td class="py-2 px-2 text-xs text-gray-500">36</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">Ebenezer Hotel</td>
                 <td class="py-2 px-2 text-xs text-gray-400">Jeju City <span class="text-gray-600">·</span> Korea</td>
@@ -8070,7 +8415,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
                 </td>
               </tr>
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="shinjuku washington hotel main" onclick="toggleHotelDetail(36)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="shinjuku washington hotel main"
+                  data-country="Japan"
+                  data-city="Tokyo"
+                  data-rn="122" data-bookings="63" data-adr="19442"
+                  data-wow="0.25773195876288657"
+                  data-risk="0.29508196721311475"
+                  data-name="Shinjuku Washington Hotel Main"
+                  data-idx="36"
+                  onclick="toggleHotelDetail(36)">
                 <td class="py-2 px-2 text-xs text-gray-500">37</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">Shinjuku Washington Hotel Main</td>
                 <td class="py-2 px-2 text-xs text-gray-400">Tokyo <span class="text-gray-600">·</span> Japan</td>
@@ -8229,7 +8583,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
                 </td>
               </tr>
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="smile hotel shinosaka" onclick="toggleHotelDetail(37)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="smile hotel shinosaka"
+                  data-country="Japan"
+                  data-city="Osaka"
+                  data-rn="122" data-bookings="37" data-adr="7870"
+                  data-wow="0.38636363636363635"
+                  data-risk="0.36065573770491804"
+                  data-name="Smile Hotel Shinosaka"
+                  data-idx="37"
+                  onclick="toggleHotelDetail(37)">
                 <td class="py-2 px-2 text-xs text-gray-500">38</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">Smile Hotel Shinosaka</td>
                 <td class="py-2 px-2 text-xs text-gray-400">Osaka <span class="text-gray-600">·</span> Japan</td>
@@ -8350,7 +8713,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
                 </td>
               </tr>
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="sotetsu fresa inn hamamatsucho daimon" onclick="toggleHotelDetail(38)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="sotetsu fresa inn hamamatsucho daimon"
+                  data-country="Japan"
+                  data-city="Tokyo"
+                  data-rn="122" data-bookings="47" data-adr="12352"
+                  data-wow="-0.8734439834024896"
+                  data-risk="0.680327868852459"
+                  data-name="Sotetsu Fresa Inn Hamamatsucho Daimon"
+                  data-idx="38"
+                  onclick="toggleHotelDetail(38)">
                 <td class="py-2 px-2 text-xs text-gray-500">39</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">Sotetsu Fresa Inn Hamamatsucho Daimon</td>
                 <td class="py-2 px-2 text-xs text-gray-400">Tokyo <span class="text-gray-600">·</span> Japan</td>
@@ -8471,7 +8843,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
                 </td>
               </tr>
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="sotetsu fresa inn kitahama" onclick="toggleHotelDetail(39)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="sotetsu fresa inn kitahama"
+                  data-country="Japan"
+                  data-city="Osaka"
+                  data-rn="122" data-bookings="41" data-adr="8929"
+                  data-wow="-0.6077170418006431"
+                  data-risk="0.6311475409836066"
+                  data-name="Sotetsu Fresa Inn Kitahama"
+                  data-idx="39"
+                  onclick="toggleHotelDetail(39)">
                 <td class="py-2 px-2 text-xs text-gray-500">40</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">Sotetsu Fresa Inn Kitahama</td>
                 <td class="py-2 px-2 text-xs text-gray-400">Osaka <span class="text-gray-600">·</span> Japan</td>
@@ -8588,7 +8969,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
                 </td>
               </tr>
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="busan connect ocean hotel" onclick="toggleHotelDetail(40)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="busan connect ocean hotel"
+                  data-country="Korea"
+                  data-city="Busan"
+                  data-rn="115" data-bookings="48" data-adr="8991"
+                  data-wow="-0.12213740458015267"
+                  data-risk="0.2782608695652174"
+                  data-name="Busan Connect Ocean Hotel"
+                  data-idx="40"
+                  onclick="toggleHotelDetail(40)">
                 <td class="py-2 px-2 text-xs text-gray-500">41</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">Busan Connect Ocean Hotel</td>
                 <td class="py-2 px-2 text-xs text-gray-400">Busan <span class="text-gray-600">·</span> Korea</td>
@@ -8753,7 +9143,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
                 </td>
               </tr>
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="baiton hotel seoul dongdaemun" onclick="toggleHotelDetail(41)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="baiton hotel seoul dongdaemun"
+                  data-country="Korea"
+                  data-city="Seoul"
+                  data-rn="112" data-bookings="56" data-adr="14183"
+                  data-wow="-0.17037037037037037"
+                  data-risk="0.8839285714285714"
+                  data-name="Baiton Hotel Seoul Dongdaemun"
+                  data-idx="41"
+                  onclick="toggleHotelDetail(41)">
                 <td class="py-2 px-2 text-xs text-gray-500">42</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">Baiton Hotel Seoul Dongdaemun</td>
                 <td class="py-2 px-2 text-xs text-gray-400">Seoul <span class="text-gray-600">·</span> Korea</td>
@@ -8844,7 +9243,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
                 </td>
               </tr>
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="sotetsu fresa inn kyoto-kiyomizu gojo" onclick="toggleHotelDetail(42)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="sotetsu fresa inn kyoto-kiyomizu gojo"
+                  data-country="Japan"
+                  data-city="Kyoto"
+                  data-rn="111" data-bookings="45" data-adr="7857"
+                  data-wow="-0.15267175572519084"
+                  data-risk="0.3333333333333333"
+                  data-name="Sotetsu Fresa Inn Kyoto-Kiyomizu Gojo"
+                  data-idx="42"
+                  onclick="toggleHotelDetail(42)">
                 <td class="py-2 px-2 text-xs text-gray-500">43</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">Sotetsu Fresa Inn Kyoto-Kiyomizu Gojo</td>
                 <td class="py-2 px-2 text-xs text-gray-400">Kyoto <span class="text-gray-600">·</span> Japan</td>
@@ -9013,7 +9421,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
                 </td>
               </tr>
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="keio plaza hotel tokyo" onclick="toggleHotelDetail(43)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="keio plaza hotel tokyo"
+                  data-country="Japan"
+                  data-city="Tokyo"
+                  data-rn="110" data-bookings="35" data-adr="57906"
+                  data-wow="0.8032786885245902"
+                  data-risk="0.4727272727272727"
+                  data-name="Keio Plaza Hotel Tokyo"
+                  data-idx="43"
+                  onclick="toggleHotelDetail(43)">
                 <td class="py-2 px-2 text-xs text-gray-500">44</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">Keio Plaza Hotel Tokyo</td>
                 <td class="py-2 px-2 text-xs text-gray-400">Tokyo <span class="text-gray-600">·</span> Japan</td>
@@ -9166,7 +9583,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
                 </td>
               </tr>
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="koko hotel osaka shinsaibashi" onclick="toggleHotelDetail(44)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="koko hotel osaka shinsaibashi"
+                  data-country="Japan"
+                  data-city="Osaka"
+                  data-rn="108" data-bookings="37" data-adr="9005"
+                  data-wow="-0.16279069767441862"
+                  data-risk="0.35185185185185186"
+                  data-name="KOKO HOTEL Osaka Shinsaibashi"
+                  data-idx="44"
+                  onclick="toggleHotelDetail(44)">
                 <td class="py-2 px-2 text-xs text-gray-500">45</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">KOKO HOTEL Osaka Shinsaibashi</td>
                 <td class="py-2 px-2 text-xs text-gray-400">Osaka <span class="text-gray-600">·</span> Japan</td>
@@ -9355,7 +9781,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
                 </td>
               </tr>
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="sotetsu fresa inn tokyo roppongi" onclick="toggleHotelDetail(45)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="sotetsu fresa inn tokyo roppongi"
+                  data-country="Japan"
+                  data-city="Tokyo"
+                  data-rn="108" data-bookings="49" data-adr="16150"
+                  data-wow="-0.5797665369649806"
+                  data-risk="0.3333333333333333"
+                  data-name="Sotetsu Fresa Inn Tokyo Roppongi"
+                  data-idx="45"
+                  onclick="toggleHotelDetail(45)">
                 <td class="py-2 px-2 text-xs text-gray-500">46</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">Sotetsu Fresa Inn Tokyo Roppongi</td>
                 <td class="py-2 px-2 text-xs text-gray-400">Tokyo <span class="text-gray-600">·</span> Japan</td>
@@ -9486,7 +9921,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
                 </td>
               </tr>
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="hotel resol trinity sapporo" onclick="toggleHotelDetail(46)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="hotel resol trinity sapporo"
+                  data-country="Japan"
+                  data-city="Sapporo"
+                  data-rn="107" data-bookings="47" data-adr="16821"
+                  data-wow="0.38961038961038963"
+                  data-risk="0.2803738317757009"
+                  data-name="Hotel Resol Trinity Sapporo"
+                  data-idx="46"
+                  onclick="toggleHotelDetail(46)">
                 <td class="py-2 px-2 text-xs text-gray-500">47</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">Hotel Resol Trinity Sapporo</td>
                 <td class="py-2 px-2 text-xs text-gray-400">Sapporo <span class="text-gray-600">·</span> Japan</td>
@@ -9611,7 +10055,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
                 </td>
               </tr>
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="the b asakusa" onclick="toggleHotelDetail(47)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="the b asakusa"
+                  data-country="Japan"
+                  data-city="Tokyo"
+                  data-rn="107" data-bookings="47" data-adr="21397"
+                  data-wow="0.22988505747126436"
+                  data-risk="0.4205607476635514"
+                  data-name="the b asakusa"
+                  data-idx="47"
+                  onclick="toggleHotelDetail(47)">
                 <td class="py-2 px-2 text-xs text-gray-500">48</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">the b asakusa</td>
                 <td class="py-2 px-2 text-xs text-gray-400">Tokyo <span class="text-gray-600">·</span> Japan</td>
@@ -9728,7 +10181,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
                 </td>
               </tr>
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="sl hotel gangneung" onclick="toggleHotelDetail(48)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="sl hotel gangneung"
+                  data-country="Korea"
+                  data-city="Gangneung"
+                  data-rn="107" data-bookings="100" data-adr="13394"
+                  data-wow="10.88888888888889"
+                  data-risk="0.616822429906542"
+                  data-name="SL Hotel Gangneung"
+                  data-idx="48"
+                  onclick="toggleHotelDetail(48)">
                 <td class="py-2 px-2 text-xs text-gray-500">49</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">SL Hotel Gangneung</td>
                 <td class="py-2 px-2 text-xs text-gray-400">Gangneung <span class="text-gray-600">·</span> Korea</td>
@@ -9843,7 +10305,16 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
                 </td>
               </tr>
             
-              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer" data-hotel="ala hotel kyoto" onclick="toggleHotelDetail(49)">
+              <tr class="hotel-row border-b border-gray-700/30 hover:bg-gray-800/40 cursor-pointer"
+                  data-hotel="ala hotel kyoto"
+                  data-country="Japan"
+                  data-city="Kyoto"
+                  data-rn="106" data-bookings="46" data-adr="11219"
+                  data-wow="0.4520547945205479"
+                  data-risk="0.2169811320754717"
+                  data-name="Ala Hotel Kyoto"
+                  data-idx="49"
+                  onclick="toggleHotelDetail(49)">
                 <td class="py-2 px-2 text-xs text-gray-500">50</td>
                 <td class="py-2 px-2 text-xs font-medium text-gray-200">Ala Hotel Kyoto</td>
                 <td class="py-2 px-2 text-xs text-gray-400">Kyoto <span class="text-gray-600">·</span> Japan</td>
@@ -23391,25 +23862,101 @@ document.querySelector('[data-tab="tab10"]').addEventListener('click', () => set
   }
 }, 150));
 
-// ── Hotel Analysis tab: row toggle + search ──
+// ── Hotel Analysis tab: row toggle + filters/sort ──
 function toggleHotelDetail(i) {
   const row = document.getElementById('hotelDetail_' + i);
   if (!row) return;
   row.style.display = row.style.display === 'none' ? '' : 'none';
 }
-function filterHotels(q) {
-  const norm = (q || '').trim().toLowerCase();
-  document.querySelectorAll('#hotelTbody tr.hotel-row').forEach(tr => {
-    const name = tr.dataset.hotel || '';
-    const show = !norm || name.includes(norm);
-    tr.style.display = show ? '' : 'none';
-    // Hide its detail row too if collapsed
-    const idx = tr.getAttribute('onclick')?.match(/((d+))/)?.[1];
-    if (idx) {
-      const detail = document.getElementById('hotelDetail_' + idx);
-      if (detail && !show) detail.style.display = 'none';
-    }
+function resetHotelFilters() {
+  const s = document.getElementById('hotelSearch'); if (s) s.value = '';
+  const cn = document.getElementById('hotelCountryFilter'); if (cn) cn.value = '';
+  const ct = document.getElementById('hotelCityFilter'); if (ct) ct.value = '';
+  const sort = document.getElementById('hotelSortBy'); if (sort) sort.value = 'rn';
+  applyHotelFilters();
+}
+function applyHotelFilters() {
+  const q = (document.getElementById('hotelSearch')?.value || '').trim().toLowerCase();
+  const cn = document.getElementById('hotelCountryFilter')?.value || '';
+  const ct = document.getElementById('hotelCityFilter')?.value || '';
+  const sortBy = document.getElementById('hotelSortBy')?.value || 'rn';
+  const tbody = document.getElementById('hotelTbody');
+  if (!tbody) return;
+
+  // Group hotel-row with its detail row as pairs
+  const rows = Array.from(tbody.querySelectorAll('tr.hotel-row'));
+  const pairs = rows.map(r => {
+    const idx = r.dataset.idx;
+    const detail = document.getElementById('hotelDetail_' + idx);
+    return { row: r, detail };
   });
+
+  // Filter
+  let visibleCount = 0;
+  pairs.forEach(({ row, detail }) => {
+    const name = row.dataset.hotel || '';
+    const country = row.dataset.country || '';
+    const city = row.dataset.city || '';
+    const match = (!q || name.includes(q)) && (!cn || country === cn) && (!ct || city === ct);
+    row.style.display = match ? '' : 'none';
+    if (detail && !match) detail.style.display = 'none';
+    if (match) visibleCount++;
+  });
+
+  // City filter restricted by country: dynamically narrow city options
+  const cityFilter = document.getElementById('hotelCityFilter');
+  if (cityFilter && cn) {
+    const validCities = new Set();
+    pairs.forEach(({ row }) => { if (row.dataset.country === cn) validCities.add(row.dataset.city); });
+    Array.from(cityFilter.options).forEach(opt => {
+      if (opt.value === '') return;
+      opt.style.display = validCities.has(opt.value) ? '' : 'none';
+    });
+    if (ct && !validCities.has(ct)) cityFilter.value = '';
+  } else if (cityFilter) {
+    Array.from(cityFilter.options).forEach(opt => opt.style.display = '');
+  }
+
+  // Sort visible rows
+  const visiblePairs = pairs.filter(p => p.row.style.display !== 'none');
+  const getKey = (r) => {
+    switch (sortBy) {
+      case 'bookings': return -Number(r.dataset.bookings);
+      case 'adr': return -Number(r.dataset.adr);
+      case 'wow': return -Number(r.dataset.wow);
+      case 'risk': return -Number(r.dataset.risk);
+      case 'name': return r.dataset.name.toLowerCase();
+      case 'rn':
+      default: return -Number(r.dataset.rn);
+    }
+  };
+  visiblePairs.sort((a, b) => {
+    const ka = getKey(a.row), kb = getKey(b.row);
+    if (typeof ka === 'string') return ka.localeCompare(kb);
+    return ka - kb;
+  });
+
+  // Re-append in order (also re-append the detail row right after each)
+  visiblePairs.forEach(({ row, detail }) => {
+    tbody.appendChild(row);
+    if (detail) tbody.appendChild(detail);
+  });
+  // Then append hidden rows at the end
+  pairs.filter(p => p.row.style.display === 'none').forEach(({ row, detail }) => {
+    tbody.appendChild(row);
+    if (detail) tbody.appendChild(detail);
+  });
+
+  // Renumber visible rows (# column)
+  let n = 1;
+  visiblePairs.forEach(({ row }) => {
+    const firstCell = row.querySelector('td:first-child');
+    if (firstCell) firstCell.textContent = n++;
+  });
+
+  // Update count
+  const cnt = document.getElementById('hotelFilterCount');
+  if (cnt) cnt.textContent = visibleCount + '개 표시';
 }
 
 // Resize all ECharts instances when window resizes (mobile rotation, etc.)
