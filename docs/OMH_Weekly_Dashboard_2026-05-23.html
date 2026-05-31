@@ -28,6 +28,14 @@
   .lang-btn:not(.active) { background: transparent; color: #94a3b8; }
   .lang-btn:not(.active):hover { border-color: #3b82f6; color: #e2e8f0; }
 
+  /* ── Sub-tabs (Statistics group) ── */
+  #statSubNav { display: none; padding: 8px 24px; gap: 6px; background: linear-gradient(180deg, rgba(139,92,246,0.08) 0%, transparent 100%); border-bottom: 1px solid #334155; flex-wrap: wrap; position: sticky; top: 0; z-index: 9; }
+  #statSubNav.active { display: flex; }
+  .stat-subtab-btn { padding: 7px 14px; font-size: 12px; font-weight: 600; border-radius: 999px; border: 1px solid #475569; color: #cbd5e1; cursor: pointer; transition: all 0.15s; background: #1e293b; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px; }
+  .stat-subtab-btn:hover { border-color: #a78bfa; color: #fff; background: #312e81; }
+  .stat-subtab-btn.active { background: linear-gradient(135deg, #8b5cf6, #6366f1); color: #fff; border-color: #8b5cf6; box-shadow: 0 2px 8px rgba(139,92,246,0.35); }
+  .stat-subtab-btn .icon { font-size: 14px; }
+
   /* ═══════ RESPONSIVE: Tablet (≤1024px) ═══════ */
   @media (max-width: 1024px) {
     .grid.grid-cols-5 { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
@@ -105,7 +113,7 @@
       </div>
       <p class="text-gray-400 mt-1"><span data-i18n="subtitle">주간 보고서</span> | 2026-05-23 ~ 2026-05-29</p>
     </div>
-    <div class="text-right text-sm text-gray-500"><span data-i18n="generated">생성일</span>: 2026-05-30</div>
+    <div class="text-right text-sm text-gray-500"><span data-i18n="generated">생성일</span>: 2026-05-31</div>
   </div>
 
   <!-- Data Basis -->
@@ -114,17 +122,22 @@
     <span><span class="inline-block w-2 h-2 rounded-full bg-blue-400 mr-1"></span><span data-i18n="basisThisWeek">이번 주 · WoW</span> = <strong class="text-blue-400">Booking Date</strong></span>
   </div>
 
-  <!-- Tab Navigation -->
+  <!-- Tab Navigation (Top Level) -->
   <div class="px-6 mt-4 flex gap-0 border-b border-gray-700 overflow-x-auto no-print" id="tabNav">
-    <div class="tab-btn active" data-tab="tab1"><span data-i18n="tab1">① 주간 실적</span></div>
-    <div class="tab-btn" data-tab="tab10"><span data-i18n="tab10">② 채널별 분석</span></div>
-    <div class="tab-btn" data-tab="tab2m"><span data-i18n="tab2m">② 월별 실적 (C/O)</span></div>
+    <div class="tab-btn active" data-tab="tabStats">📊 통계 · Statistics</div>
     <div class="tab-btn" data-tab="tab2"><span data-i18n="tab2">③ API·채널 파이프라인</span></div>
-    <div class="tab-btn" data-tab="tabHotel">🏨 호텔별 분석</div>
     <div class="tab-btn" data-tab="tab3"><span data-i18n="tab3">④ 계약 변경·SG Flip</span></div>
     <div class="tab-btn" data-tab="tab6"><span data-i18n="tab6">⑦ 시장·채널 동향</span></div>
     <div class="tab-btn" data-tab="tab8"><span data-i18n="tab8">⑨ Action Item</span></div>
-    <div class="tab-btn" data-tab="tab9"><span data-i18n="tab9">⑩ 월간 통계</span></div>
+  </div>
+
+  <!-- Sub-Tab Nav (only visible when Statistics group is active) -->
+  <div id="statSubNav" class="active no-print">
+    <button class="stat-subtab-btn active" data-stat="tab1"><span class="icon">📈</span>주간 실적</button>
+    <button class="stat-subtab-btn" data-stat="tab10"><span class="icon">🎯</span>채널별 분석</button>
+    <button class="stat-subtab-btn" data-stat="tabHotel"><span class="icon">🏨</span>호텔별 분석</button>
+    <button class="stat-subtab-btn" data-stat="tab2m"><span class="icon">📅</span>월별 실적 (C/O)</button>
+    <button class="stat-subtab-btn" data-stat="tab9"><span class="icon">🌍</span>월간 국가 통계</button>
   </div>
 
   <!-- ═══════ TAB 1: 주간 실적 ═══════ -->
@@ -1874,7 +1887,7 @@
           <div class="section-title mb-0">Market Insight</div>
           <span class="text-[10px] text-gray-500">~500자</span>
         </div>
-        <p class="text-gray-300 leading-relaxed mb-3">이번 주 아시아 여행업계는 <strong class="text-white">일본 · 한국 · 베트남 · 태국</strong> 관련 <strong class="text-blue-400">5건</strong>의 주요 뉴스가 수집되었습니다.</p><p class="text-gray-400 text-sm leading-relaxed mb-3">주요 헤드라인: <strong class="text-gray-200">"Travel Stocks Look Undervalued as Airline Demand Stays Strong, Hotel Pricing Holds Firm, Cruise Recovery Accelerates and Global Tourism Spending Surges in 2026 - Travel And Tour World"</strong>, <strong class="text-gray-200">"Japan joins Philippines, Thailand, Vietnam, Singapore, South Korea, India and more Asian Nations Experiencing Major Tourism, Aviation, and Travel Disruption as Rising Energy Costs Ripple Across Hotels, Airlines, and Medical Tourism in 2026 - Travel And Tour World"</strong>, <strong class="text-gray-200">"Thailand tourism sector cuts prices and boosts flights ahead of Songkran - TTG Asia"</strong> 등이 보도되었습니다.</p><p class="text-gray-400 text-sm leading-relaxed">경쟁 OTA 동향: <strong class="text-amber-400">Agoda, Trip.com, Booking.com, Expedia, MakeMyTrip, Traveloka</strong>에서 신규 뉴스가 확인되었으며, </p>
+        <p class="text-gray-300 leading-relaxed mb-3">이번 주 아시아 여행업계는 <strong class="text-white">일본 · 한국 · 베트남 · 중국</strong> 관련 <strong class="text-blue-400">5건</strong>의 주요 뉴스가 수집되었습니다.</p><p class="text-gray-400 text-sm leading-relaxed mb-3">주요 헤드라인: <strong class="text-gray-200">"Japan joins Philippines, Thailand, Vietnam, Singapore, South Korea, India and more Asian Nations Experiencing Major Tourism, Aviation, and Travel Disruption as Rising Energy Costs Ripple Across Hotels, Airlines, and Medical Tourism in 2026 - Travel And Tour World"</strong>, <strong class="text-gray-200">"Thailand tourism sector cuts prices and boosts flights ahead of Songkran - TTG Asia"</strong>, <strong class="text-gray-200">"China Joins Japan, India, South Korea and Australia in Leading Asia Pacific Business Travel Surge as Corporate Tourism Spending Nears Seven Hundred Billion Dollars in 2026—Here Is What Global Travelers and Airlines Should Watch - Travel And Tour World"</strong> 등이 보도되었습니다.</p><p class="text-gray-400 text-sm leading-relaxed">경쟁 OTA 동향: <strong class="text-amber-400">Agoda, Trip.com, Booking.com, Expedia, MakeMyTrip, Traveloka</strong>에서 신규 뉴스가 확인되었으며, </p>
       </div>
 
     <div class="card p-5">
@@ -1884,19 +1897,6 @@
           <div class="p-3 rounded bg-gray-800/50 border border-gray-700/50">
             <div class="flex items-start gap-3">
               <span class="text-blue-400 font-bold text-sm mt-0.5">1</span>
-              <div class="flex-1">
-                <a href="https://news.google.com/rss/articles/CBMirwJBVV95cUxPRHhPTzhjYkVmanJ2a21FcWo4bUJoZElpZ2lqTHpfeDVJcDJhUk9ja3RhMThxWWxQQlBiQ3hUNXNTUkNYeDZRb3E1RFdSTjZmMlM5eXFEZ3NBY0N3RDNieklCNTdiXzN1VkFxZ2lfYzliOVdwMXdqYTBsb1ZyVFV0SElzbGVKN3k0ZHdrdmg3ekpDUzFMMVY2aTJ1N1ZMUy05dTdEV0F3cUZoSTdwN3RYZ2FfRVRBZmtNVlFHdVprcExDR1J2aVhaZmw2a3dYNU1wNGlLTWY2N25aRUc2QnRuWHpiVS1oQXZDQlVVdG0tLWlyT1g5dDF5QnM4dGJicVNiOG4tR1R1cTRHZXpvYmtiT05lY3BMUHVpWmRGZ2V2cmxmVk1weFh0aVpQcHlGWEk?oc=5" target="_blank" class="text-sm font-medium text-gray-200 hover:text-blue-400 transition">Travel Stocks Look Undervalued as Airline Demand Stays Strong, Hotel Pricing Holds Firm, Cruise Recovery Accelerates and Global Tourism Spending Surges in 2026 - Travel And Tour World</a>
-                
-                <div class="flex gap-3 mt-1 text-xs text-gray-500">
-                  <span>Travel And Tour World</span>
-                  <span>2026. 5. 16.</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="p-3 rounded bg-gray-800/50 border border-gray-700/50">
-            <div class="flex items-start gap-3">
-              <span class="text-blue-400 font-bold text-sm mt-0.5">2</span>
               <div class="flex-1">
                 <a href="https://news.google.com/rss/articles/CBMibkFVX3lxTE83UFB6eV9KelMtYnZYNnBLMmV0Z1lJSWxRaW9CWkFEVGpTLXRyNWtoZWVOR2FWeUI2alJQUW9pZFhRVGQ0TnBTbHBqTi0zRThNbGltNm1PZzVmcmFqUmpJZjdNck5kREdTRWNKVWtB?oc=5" target="_blank" class="text-sm font-medium text-gray-200 hover:text-blue-400 transition">Japan joins Philippines, Thailand, Vietnam, Singapore, South Korea, India and more Asian Nations Experiencing Major Tourism, Aviation, and Travel Disruption as Rising Energy Costs Ripple Across Hotels, Airlines, and Medical Tourism in 2026 - Travel And Tour World</a>
                 
@@ -1909,7 +1909,7 @@
           </div>
           <div class="p-3 rounded bg-gray-800/50 border border-gray-700/50">
             <div class="flex items-start gap-3">
-              <span class="text-blue-400 font-bold text-sm mt-0.5">3</span>
+              <span class="text-blue-400 font-bold text-sm mt-0.5">2</span>
               <div class="flex-1">
                 <a href="https://news.google.com/rss/articles/CBMirAFBVV95cUxNR0JwV053QVhmREFqT0dNYWdVR21UWlJjUGlwaWM5NXh0ZldHdXh1RXhNX3B1c1V1cWNZZjE0MTV1RFRCeWJ6ODNtajZrQWxOMXdYRHZqUF9MZ3N5NFc5LWdBbUdLRldLLXpTTUtOTmR1dWNCbldldGh1blQxdGh0NDUzV0RERnNsTVNqTFViM2V1bHcxRmxFUENzaF91YWFJZ2tPUDQzVWhwTks3?oc=5" target="_blank" class="text-sm font-medium text-gray-200 hover:text-blue-400 transition">Thailand tourism sector cuts prices and boosts flights ahead of Songkran - TTG Asia</a>
                 
@@ -1922,13 +1922,26 @@
           </div>
           <div class="p-3 rounded bg-gray-800/50 border border-gray-700/50">
             <div class="flex items-start gap-3">
-              <span class="text-blue-400 font-bold text-sm mt-0.5">4</span>
+              <span class="text-blue-400 font-bold text-sm mt-0.5">3</span>
               <div class="flex-1">
-                <a href="https://news.google.com/rss/articles/CBMilAFBVV95cUxQbmE5NzlkZEMwZVZMcHhKT0x0S3VmZnBZZElxRUZjeDNfci05VHdvOVNpRmtIMENDekdfcEtkdmNzejRuOXNrRndldlgzQUNzT3ZzTmJXZzFHWjBpVEgyajNPeGtLc3NxcXJQRHl3RE1sc05HN1VXUEN5MEV5akdUUWtGYVVwNmtpcWxNZmJGakctbVNM?oc=5" target="_blank" class="text-sm font-medium text-gray-200 hover:text-blue-400 transition">Should I book travel now? What the Iran war means for your plans - CNN</a>
+                <a href="https://news.google.com/rss/articles/CBMi2gJBVV95cUxNWVpyYmZ1Ni1RelNRWHNIaXBWWXUyNHRmWEszYWN1T0NhRlAwN3phSWVLVWhFQTR3SzFYNERaaEFDRm9yLWJsYThxYzAzdnF3U0ZrRXZUZVFSR0dUazB1aFpYdmpfcUo1aXRXcDFjRTBtWnlBd3lPM1RTcnllcC1IY1NmSnVRS2t4WXdOSXFza21yT3I3RmltZ3NBMXB2U3pvdVRuVHl0ZGpTaHpJLTgyQ1Q0LWt0RW9SREtpMDhBVXpBOUpQcXpUREdOZlBaQ2FNNXQxUkYyTU9FX05Yb0hERXk3c2M1YmVTZ2lLNTUwSGtTaXU4RWQ3RE5kTnhlTGc4RC0yT3VIc3RMeEJPUDIzdW8xMlk2WkQwTmwtSDNzVmdYNTZGb2lSYjU0eUo5OWVLekRTUktFTGt2RGtsQUlFVGo0aFlONlpfVnR2VVg2OC1fSGxPX216aTBR?oc=5" target="_blank" class="text-sm font-medium text-gray-200 hover:text-blue-400 transition">China Joins Japan, India, South Korea and Australia in Leading Asia Pacific Business Travel Surge as Corporate Tourism Spending Nears Seven Hundred Billion Dollars in 2026—Here Is What Global Travelers and Airlines Should Watch - Travel And Tour World</a>
                 
                 <div class="flex gap-3 mt-1 text-xs text-gray-500">
-                  <span>CNN</span>
-                  <span>2026. 3. 13.</span>
+                  <span>Travel And Tour World</span>
+                  <span>2026. 5. 18.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="p-3 rounded bg-gray-800/50 border border-gray-700/50">
+            <div class="flex items-start gap-3">
+              <span class="text-blue-400 font-bold text-sm mt-0.5">4</span>
+              <div class="flex-1">
+                <a href="https://news.google.com/rss/articles/CBMi1wJBVV95cUxON2hYbFY3ZjYtaU0tSWxaelR6NWQtdGNON3lkclNLeE0wTlY1WUR5OEJhQnJqTjlYTXFsUkJEbFRpS3B1UEl6cXpqUjlZdWxBX1NXOHdBZUVfcTBGdzBtUDFoLTVkMGlpZzZJSFhxWVE2c3dvQ3JpcmlBNTQyRUZ1VGFfQV9xV3U3TGJLbVFWREw4akpEekpISnVoanBjbnNOcmF3bjVFZ2d3Z3hDdXc2VV9uMjBjZmRDNG9ISzRMQTZoVUFzUjM0STUtbWxzSm9aRUo1bk9wcXhNb1hySk1YakNSUXhSMnlkMzFITHYwRGtMWC1XVVQzclh4UU5xQnptdHF1YXczaDFOY0NDVUV3aXhBeHdpU3piVnlXWUxCQ0tkejZXbW5ZdUxoSHo1TFVxc1drU2liOE5NZlg1Q0V5VkwtclNrbmxuTmlMLUp6WVprak1rMmw4?oc=5" target="_blank" class="text-sm font-medium text-gray-200 hover:text-blue-400 transition">Hong Kong and China Drive Asia Travel and Tourism Recovery as Visitor Arrivals Surge and AI-Led Trade Boosts Economic Growth in 2026: What Global Travelers and Businesses Should Watch Next - Travel And Tour World</a>
+                
+                <div class="flex gap-3 mt-1 text-xs text-gray-500">
+                  <span>Travel And Tour World</span>
+                  <span>2026. 5. 16.</span>
                 </div>
               </div>
             </div>
@@ -1937,11 +1950,11 @@
             <div class="flex items-start gap-3">
               <span class="text-blue-400 font-bold text-sm mt-0.5">5</span>
               <div class="flex-1">
-                <a href="https://news.google.com/rss/articles/CBMivwFBVV95cUxNTUJPcDVDRWtuZGtUR2dIZmsxdHBRTVNQeHhRMUpiWlFOZDNYQm5iS3ZpNXhBOW41ZmtXcnFfbU9MZFdFNF9rQVRrTGh3UWNkOWtJanFHQWxQYzMyRXhyOVVMdVMwQWJGS2hqSFhydzNGWHd3blJXTjc2b0VuM1lnenEwTFgyeTgtd1RXRjh3N0dZWEE3NXFuemItQTNBdXdXZXJtTS05QzNYUlRUTUp0UVVQcVNIXzRST3BCcWo0MA?oc=5" target="_blank" class="text-sm font-medium text-gray-200 hover:text-blue-400 transition">Travel stocks tumble as US-Iran conflict sparks worst disruption since pandemic - Reuters</a>
+                <a href="https://news.google.com/rss/articles/CBMi3wFBVV95cUxPN0dCRzhXOUQ4em1NbV82V040b285RlcyUFFScFY0TldybmVxT0pDMjUwM0xDNnphMnlwYTJQSi04YVJCblhXRmtGWWlZMTRMX2pLNGl6eFFBZnhyS0hwTWZHRHNvLU80bl9DdE5LcGZTQnVNYWZEc0xnYnF4cE0xUmQyNmVGWmpKRk1MdlZfdGF4bTlmQ3p1djV0YUtSYjd3R2xSTXBTUVh4VTFyR0ZqTXdfVUR2dDZ2bVI0TFQ2OGlvaVIyZ3puMkNwNHd3WEJLYUk5V1JmWlBMRkFXMVNR?oc=5" target="_blank" class="text-sm font-medium text-gray-200 hover:text-blue-400 transition">WiT Japan 2026 Ignites Tokyo’s Travel Tech Revolution as AI, Tourism and Hospitality Leaders Gather - Travel And Tour World</a>
                 
                 <div class="flex gap-3 mt-1 text-xs text-gray-500">
-                  <span>Reuters</span>
-                  <span>2026. 3. 2.</span>
+                  <span>Travel And Tour World</span>
+                  <span>2026. 5. 6.</span>
                 </div>
               </div>
             </div>
@@ -1953,10 +1966,6 @@
       <div class="space-y-4"><div class="border-b border-gray-700/50 pb-3">
             <div class="font-medium text-sm mb-2 text-gray-300">Agoda</div>
             <div class="ml-4 mb-1.5">
-                <a href="https://news.google.com/rss/articles/CBMibkFVX3lxTE9ZLU0yNmVIOFZ4NzI2Z0dTRE53YXFqNE41THdCdUhONG9QcXYxUG9STzZ6UTJsVlYwRHZRZk9LNEVhLS0xOHZ5Z3NfbEpIald3YzRKRC1kV2VfRXhSYkNseV81bmpJLUo5MG5JZy1n?oc=5" target="_blank" class="text-xs text-gray-400 hover:text-blue-400 transition">Agoda Partners with KakaoBank to Integrate Hotel Booking, Driving their Future Travel and Tourism Growth in South Korea Through Seamless Mobile Planning - Travel And Tour World</a>
-                
-                <span class="text-xs text-gray-600 ml-2">Travel And Tour World · 2026. 5. 30.</span>
-              </div><div class="ml-4 mb-1.5">
                 <a href="https://news.google.com/rss/articles/CBMiYEFVX3lxTE9VV1RIWWp4TVVISmhxQkZLWGVPQnZaMGlFVEMzdmVoTm42dTRvb0xBMUdQUnlONk01VEN6MHdCXzRPQXo3V1I1NnBTb1BxQTlZUVVEMEhyc3VVUzBGaGVURw?oc=5" target="_blank" class="text-xs text-gray-400 hover:text-blue-400 transition">Agoda and KakaoBank Partner to Offer Travel Booking Experience on Digital Banking app - WebWire</a>
                 
                 <span class="text-xs text-gray-600 ml-2">WebWire · 2026. 5. 28.</span>
@@ -1964,21 +1973,25 @@
                 <a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxNelhTMDRhT0Zyclc0Z1BpUU5wVFFEVTR6anhlNVE4R1FxMlVYQzNFZVUtR253Q2VoNVZIMTd0TEZRM2FvTWNmZmtkUmJkRkNsemNad2NyQWppNGZfUWJwc0VLUzVJSlYwREx2ZjhtaG5QVVl6djNxN3NwN3ZtSjBLUDctWWZ3NTNxMVkyUWxGSDBKWlAxM1I0?oc=5" target="_blank" class="text-xs text-gray-400 hover:text-blue-400 transition">Agoda Integrates Hotel Booking Into KakaoBank in South Korea - Branding in Asia</a>
                 
                 <span class="text-xs text-gray-600 ml-2">Branding in Asia · 2026. 5. 28.</span>
+              </div><div class="ml-4 mb-1.5">
+                <a href="https://news.google.com/rss/articles/CBMibkFVX3lxTE9ZLU0yNmVIOFZ4NzI2Z0dTRE53YXFqNE41THdCdUhONG9QcXYxUG9STzZ6UTJsVlYwRHZRZk9LNEVhLS0xOHZ5Z3NfbEpIald3YzRKRC1kV2VfRXhSYkNseV81bmpJLUo5MG5JZy1n?oc=5" target="_blank" class="text-xs text-gray-400 hover:text-blue-400 transition">Agoda Partners with KakaoBank to Integrate Hotel Booking, Driving their Future Travel and Tourism Growth in South Korea Through Seamless Mobile Planning - Travel And Tour World</a>
+                
+                <span class="text-xs text-gray-600 ml-2">Travel And Tour World · 2026. 5. 30.</span>
               </div>
           </div><div class="border-b border-gray-700/50 pb-3">
             <div class="font-medium text-sm mb-2 text-gray-300">Trip.com</div>
             <div class="ml-4 mb-1.5">
-                <a href="https://news.google.com/rss/articles/CBMi3gFBVV95cUxNd2I4b3k2VUhYWTUtTnlnR0RGLUpWQkRuV1ZVVEl2ZkhWTFBnOGd4MG8zR2RXeW1tNk9HalNKRExBQjZKcDdzcmRzR0U3UmhaVEJNYWNucHdubGZKVkN1TjBRX0Z4dGY2OEF0SUNpM0NoTndaMjNNWXk1NjZNRkVfVFhtZTZBNWJZdW5qMmxzZm5aWkxfZ1hrZXFkck9UMjdwbnY2N3JoYVhnOERQR1ZaVHdqbU5EbWgyWXFEazVjZnAxZWJrQU5hV09CNDVrdHlBT04waXE0ZDlWemVWalE?oc=5" target="_blank" class="text-xs text-gray-400 hover:text-blue-400 transition">New Innovations, Expanding Partnerships, and Tourism Resilience at Trip.com Group's Envision 2026 - PR Newswire Asia</a>
+                <a href="https://news.google.com/rss/articles/CBMi4gFBVV95cUxNQkVTOEhtQ0VZendjNTBnRGFldVZCRndTMU1GeG82OU8wMkhEUExZSzR4WWxXZ3Nwemo0YWkzZEtqajhLN1dTRTlFa2NqNXBzSDdGa003bUU4d2NOUnhLR2hpeEdQYks4akZ0dmxGQWtDZ1p1ZVZUS19vTEJGRGM2bDhkeXBtYXdfRGVQVU9PRDFqUnYyV0hfckVBVTBaR29aa21iamtkWHd0OVIyZUlLWFozZDRlZU5nY3hoWmNUMkNQOElrV0NQZWg4VXdSU1ZyX21EZmtzcDVjRUdKbGxwMGVn?oc=5" target="_blank" class="text-xs text-gray-400 hover:text-blue-400 transition">New Innovations, Expanding Partnerships, and Tourism Resilience at Trip.com Group's Envision 2026 - PR Newswire Canada</a>
                 
-                <span class="text-xs text-gray-600 ml-2">PR Newswire Asia · 2026. 5. 28.</span>
+                <span class="text-xs text-gray-600 ml-2">PR Newswire Canada · 2026. 5. 28.</span>
               </div><div class="ml-4 mb-1.5">
                 <a href="https://news.google.com/rss/articles/CBMi0AFBVV95cUxNbDEwY21fM0toU2Y5SGVjbHNudVhlQ1ZPczhzYlBidk5xdWE0Uk04anBreEEyMm9MTGFjNUNSeTRfelBYd3E2ZHRWT2tub2gxSzNVcXItLTEyTDQ0ZjVKUEFZT3g0eWlTd3lFRVlaNDBSX3AzRnJVdDVydHd6N0YzOFY5RDhHMzRIVDBwWS12cDVBQnA0NTZieTNiQUtIdFBrYmJ6R0RZMUU5UWpDVEZsTXdXU1Z0UGVyUlAxZjRIbEE4SFJqaDR1WHczSm0wdlJX?oc=5" target="_blank" class="text-xs text-gray-400 hover:text-blue-400 transition">Trip.com Group to Launch New Bundled Booking Feature for Hotels in Maldives - PR Newswire</a>
                 
                 <span class="text-xs text-gray-600 ml-2">PR Newswire · 2026. 5. 15.</span>
               </div><div class="ml-4 mb-1.5">
-                <a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxPdU91OTBjUjAtMmtMaDcxb3M3WDlVbDVSTFhVM0QyUEhXZXZLTkxlVUhjUW5kdVRVNTdXeGpOTFp6MXBidkZWdE9IcEcyb0RFMFN2VWM2SE1EX1BVajktbWN5M19mYWtOSDVtMkZ2dDg1UV94VURWQU5VcUtZSWw1MTJuRmtZREx4?oc=5" target="_blank" class="text-xs text-gray-400 hover:text-blue-400 transition">Total revenue of Trip.com Group 2014-2025 - Statista</a>
+                <a href="https://news.google.com/rss/articles/CBMihAFBVV95cUxNTWpOT2MtdXBxc3J6M18xb1NycExPTVdfT0JyTTlhYkNEbXQwMUU2QmxBOWIxeFk1Sm91aGJaTWhsVjVZdG92c3FmeEpnUmw0SzFDOE80ZGV3NTJGVFNBWG11Z1EzdzhfLXItcUw3WEhjblJTZnRvcG1oZS0tUUs3OWY5M2s?oc=5" target="_blank" class="text-xs text-gray-400 hover:text-blue-400 transition">China Opens Antitrust Probe Into Trip.com Ahead of Lunar New Year Travel Surge - Yahoo Finance</a>
                 
-                <span class="text-xs text-gray-600 ml-2">Statista · 2026. 5. 6.</span>
+                <span class="text-xs text-gray-600 ml-2">Yahoo Finance · 2026. 1. 14.</span>
               </div>
           </div><div class="border-b border-gray-700/50 pb-3">
             <div class="font-medium text-sm mb-2 text-gray-300">Booking.com</div>
@@ -1987,9 +2000,9 @@
                 
                 <span class="text-xs text-gray-600 ml-2">WIRED · 2026. 5. 28.</span>
               </div><div class="ml-4 mb-1.5">
-                <a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxNNWxfQjdQdnN6X1NVWjNVaUVuUWR6QjF3R19GbFg4NW5nWVdLLUlDRTQ2Vks1UGgzdFd2ZldwQkNILTFncVhSb1kxa28zQ0x2YldJcER2NjdTRHpfanNXTmNvWVRhM25tbzM2a0oxUDRJQmx5NDJFRldNNVJKM0hxaUcxN0psOWQ4?oc=5" target="_blank" class="text-xs text-gray-400 hover:text-blue-400 transition">Motel owners say Booking.com has a stranglehold on their businesses - Australian Broadcasting Corporation</a>
+                <a href="https://news.google.com/rss/articles/CBMiygFBVV95cUxOVHFKMWtTTHVWcEFVYTZPLUpqSDhZNEYwa0Q1cTcwcFY1MmpkaUtFLTFGZUhpMDdMU1l4bU5MV2d0amdYbjdTYm1MRXlKNUNzcWczMkNEOEdMcURLUE1CLTNkWXF3WnVKYjdmdlducWFsUGg3OFpIMU1LR1NZNWI4Yk55c0JuaFB0WDZJZWxYd3JkcE5OZ0laRkNwamZmRU85bWhSVzQ1cjljNWpLcWFZSFhORFBHVjBXMW43VU9qZHRuVEViVElGcjZn?oc=5" target="_blank" class="text-xs text-gray-400 hover:text-blue-400 transition">These Iconic Hotels and Inns Along Route 66 Are Keeping the Magic Alive—One Neon Sign at a Time - Condé Nast Traveler</a>
                 
-                <span class="text-xs text-gray-600 ml-2">Australian Broadcasting Corporation · 2026. 5. 30.</span>
+                <span class="text-xs text-gray-600 ml-2">Condé Nast Traveler · 2026. 5. 29.</span>
               </div><div class="ml-4 mb-1.5">
                 <a href="https://news.google.com/rss/articles/CBMilAFBVV95cUxQLVlmX0w3S2taM1haR1pPSml1TXZLemQ2WTdULXVHQndVcGk2SHZXejNWWWFpcW9oQUtFX25pSlRJSzdHczRUaW5ySm1BZENxdWllSXZkY3dYckh0eXNiemxLd2kyUkxVVXlod2hxMlkxMGR5ZlV4WEtWbHhCQ2d2OXNXa2xlNURwVEdZUHhscUdpaEhx?oc=5" target="_blank" class="text-xs text-gray-400 hover:text-blue-400 transition">Airbnb Names Booking.com Veteran in Hotel Leadership Shakeup - Skift</a>
                 
@@ -1998,24 +2011,24 @@
           </div><div class="border-b border-gray-700/50 pb-3">
             <div class="font-medium text-sm mb-2 text-gray-300">Expedia</div>
             <div class="ml-4 mb-1.5">
+                <a href="https://news.google.com/rss/articles/CBMidEFVX3lxTFBabFV2YTc4UWlTRnJZWHBlRDB3cmZDZDBoOVBPVEc0SzdNZjdGZEFwWl92d3o0bnBMOXdBa0JFTXpPUEJIRlEzNjd2cWhRcjF3S1ZONTEtem0xWGxsWmZ2eHl3MzUyQU93N1doYzlfWTZmamU2?oc=5" target="_blank" class="text-xs text-gray-400 hover:text-blue-400 transition">Expedia announces ChatGPT-powered travel planning. How to try it now. - Mashable</a>
+                
+                <span class="text-xs text-gray-600 ml-2">Mashable · 2026. 5. 31.</span>
+              </div><div class="ml-4 mb-1.5">
                 <a href="https://news.google.com/rss/articles/CBMitAFBVV95cUxQR1ZFRzEzTHVJdGFXNzFTdnJkcXRNS1VQTThSSWFpdWwtX2dwVWYxejNPa1lIZ29UaURrWU16TzJmQk9IdG1JaHZOQVBEYVAxcU5Vblo2R2JQQ2g1MjNrX2JEU3BCdFVwQllaeW1WTS1fU1ZKVHVSWFlhX0hYSVB4cU1aR2ZWMjhvbzdBaUhjNXZsUjVTd2V1dkl0dEZNMHhZS0RYcVh4MHJKN1o4Q1JQRUVHSzc?oc=5" target="_blank" class="text-xs text-gray-400 hover:text-blue-400 transition">How Expedia Is Reinventing Travel Through AI And Agentic Design - Forbes</a>
                 
                 <span class="text-xs text-gray-600 ml-2">Forbes · 2026. 5. 29.</span>
               </div><div class="ml-4 mb-1.5">
-                <a href="https://news.google.com/rss/articles/CBMibkFVX3lxTE5CSTVJRHQ5d1BHVThRd0laRHB0SGZraTdoWWt3bHcwcEEtUmpSaXRmTEI0Nk8zQmN6d05yb3FDSTVEWUFmWFRpaVYyQXVfVWVqQmtyZXptQWFNMWNZX1dTTzJCVV9FRTlPMmF1SnRR?oc=5" target="_blank" class="text-xs text-gray-400 hover:text-blue-400 transition">Expedia’s Intelligent Experience Platform Brings Travel Into New Channels - Travel And Tour World</a>
+                <a href="https://news.google.com/rss/articles/CBMiggJBVV95cUxQUlNPTUFubzhCWlV2QzZDa1BkUHNqbk1ic3RaMjUzUy0tWjdxQ1ZkbC1iVjdwN1oyNVNqVl9zUW5CNWlRbWpmZVI3VGs0VUhVbWhQNkNhQ2JZdnFfSTdwZXpnMVpKTVc3T3B1bDJSY21xb2xCZ3FFMFhySWQwOUpYUmtfbGplZklSZ190TmUzSHdESlRFaDJhT0VqVVgyV004bzdHTmlvNTVpY29YTE9qS0FTVHgzbWk1SGFuRE9BeU1RQkVsUkNVRGtTY21ULUtQSVh3NHktUnpZei1hcHZ5MS1mT1RSM2hRMU9BUHRvQVpVcnhPcXRweHlLakYwcXhXU1E?oc=5" target="_blank" class="text-xs text-gray-400 hover:text-blue-400 transition">Expedia Group Unveils New AI Experiences, Expands Travel Ecosystem and Launches Philanthropy Program at Explore 2026 - Business Wire</a>
                 
-                <span class="text-xs text-gray-600 ml-2">Travel And Tour World · 2026. 5. 30.</span>
-              </div><div class="ml-4 mb-1.5">
-                <a href="https://news.google.com/rss/articles/CBMif0FVX3lxTE5xUHJ1bUk3bzJnM2h5S01iNzRXNW5maXRNSENvZ2pZVFJzUGNqNUVmaktaSlZkbHJKXzlraUxOZnNNWnFIRkE0SU12NzBocV8yY3pDWUdBeWF4eGVvQXBCU1JrVjVDLVJycmlLOHlDUWNaS2FYVnpyWklIM3dwU0E?oc=5" target="_blank" class="text-xs text-gray-400 hover:text-blue-400 transition">Expedia Group B2B launches AI toolkit - Hotel Management</a>
-                
-                <span class="text-xs text-gray-600 ml-2">Hotel Management · 2026. 5. 26.</span>
+                <span class="text-xs text-gray-600 ml-2">Business Wire · 2026. 5. 19.</span>
               </div>
           </div><div class="border-b border-gray-700/50 pb-3">
             <div class="font-medium text-sm mb-2 text-gray-300">MakeMyTrip</div>
             <div class="ml-4 mb-1.5">
-                <a href="https://news.google.com/rss/articles/CBMilgFBVV95cUxQTWZpUExQSXJYQ2RReWZQRlpYZEhkcmpFQ2plVXlxRHU2ZU01Vmt3R1JWV0pRaGltQ3V3VzktbjU3bXRfc1pQVERNbHI4cXRKdmpkX1NLRWR0QnFCdXVWRmM3VkFFemNsNExzWXRZTU5TdXh4MWFfV1pwWHE0Uk1zN29ucWppY0ppd2ZQUkNJRU9oWEoyTHc?oc=5" target="_blank" class="text-xs text-gray-400 hover:text-blue-400 transition">Analysts Maintain Bullish Views On MakeMyTrip (MMYT) Despite Geopolitical Headwinds - Yahoo! Finance Canada</a>
+                <a href="https://news.google.com/rss/articles/CBMikwFBVV95cUxQVU40Y0N3M1MySElIbVFkUFhyTm9VY05sNjhsalVkX3ozSF9wMlkyS0FkbWk3anJsd2ZZOWJvdWQ4TXQ5QTZCbFN5V2dwOEZvVDViNVRQMVJFb0JUUlBGdHF2cXd4VTNkWXNfWnlqLVBFdThPcjMwWHFnWDhqLUVlanRGNVNCS05vaHVrT2cyZGZZZkU?oc=5" target="_blank" class="text-xs text-gray-400 hover:text-blue-400 transition">MakeMyTrip (MMYT) Is Down 7.8% After Mixed FY26 Earnings Under Travel Disruptions And Ongoing Investments - Yahoo Finance</a>
                 
-                <span class="text-xs text-gray-600 ml-2">Yahoo! Finance Canada · 2026. 5. 29.</span>
+                <span class="text-xs text-gray-600 ml-2">Yahoo Finance · 2026. 5. 20.</span>
               </div><div class="ml-4 mb-1.5">
                 <a href="https://news.google.com/rss/articles/CBMi1wFBVV95cUxPVGxqZ01fRkF1RVlSX0JicHFKc0tJRkF2MkhPcHliUWZza2JjV0ZodnFFN1l1WGlObEtJZUlJSDlRdGd1YzNJZUt1RmhqVEV0ejNVQncwZEd4TVBVejd4NmNfVU93YXU5ZXZxVG1XY2VRMHdScHptdTRqdm80T2FvOHZiRVduQzFPS0VTM3FTTE1hNXl4a2JMZkFfRlRhX3FSMk9Tc0pjaU4ycnNzemFXMy04bmdnZDNsX2VCYVNzZkdzVXpXdHV0TkdyNDc1dmx0bUYtaXlLQdIB3AFBVV95cUxPRFdQVEVDdXQweFBkZkM5TEQ0UjlvbmFrWjJpbUdRWkFYM3p6QVlQak5lX2tYelhtUmFzbG9hemRIU0gwWlQ5TU5XOC05YWlub2ZiUTZUektIa0RqVXA1V012STN5bnctUGtfZURUUEMyb3I3WGlOMkZadmppaUpXWGs2MGk0Q21odTJVNXZlRmdUZmt3eGM4MjFtejJFOUp6eEJ1YkFQTVJkbnJmaWl5dW1iTE5haU5wNnZ5VzNRRGJ3OFRDUmh5WHJWMjBxNlJ0WnpVZVI5Z0cxd2ts?oc=5" target="_blank" class="text-xs text-gray-400 hover:text-blue-400 transition">The Bull Case For MakeMyTrip (MMYT) Could Change Following Profit Squeeze Amid Revenue Growth And Buyback Completion - simplywall.st</a>
                 
@@ -2028,17 +2041,17 @@
           </div><div class="border-b border-gray-700/50 pb-3">
             <div class="font-medium text-sm mb-2 text-gray-300">Traveloka</div>
             <div class="ml-4 mb-1.5">
-                <a href="https://news.google.com/rss/articles/CBMirAFBVV95cUxQekVEcmItYUI3OUgwY2NZTFYtbURHRzVmMXlpVkpuWUoxcU1zcVJrTnh4ZlE1azV4a0l6Rmd1b2c0QjBfYlRJNktWVVBnVUpXOFdOaGR3bEM3a0xFdDlZZVNhMTNvbnNhZXFNWm9jV1lfX1pQV0kwbG1aNG9GOU14NHdwMG9ra3J6bkVVVnBnSFhUOHNQS3V6VFRCT2l4Z2pPX3QweG1aUGhOdE0t?oc=5" target="_blank" class="text-xs text-gray-400 hover:text-blue-400 transition">Traveloka and Resorts World Sentosa Partner to Capture Surging Demand for Experience-Led Travel to Singapore - Yahoo Finance</a>
+                <a href="https://news.google.com/rss/articles/CBMi_gFBVV95cUxPUnMtVEJaX1E5M0VkaHd5NjFQQW9QNkhaRXB6RVNHejdxd0M1a3JPXy1EYWtyWGxjN19WUXJVaTRTdEEyMUxPOGRzc3FOMEZzTUp4d0JGNnpMLTdUQ2xrYm5FQVRORFlTYk5SVmVjdFNHdTJjVTNjcGU0MHRxc2ZkSDJ1VTdtOXJRWlJ4dmRmZ1M0d0E3NUZLWkhSMGNsaDJvMUlZYTZBajNIQUdES0syNnAwNHVqbDh3TDh5RWZrenRiNXhuQnZWbjVNaXRvUmwydVk3M25fbDVWWm9tUGR5WXFzRFl3NnQ0RDdWdmhleXJkY01lUVoybzhHMDNKdw?oc=5" target="_blank" class="text-xs text-gray-400 hover:text-blue-400 transition">Traveloka and Resorts World Sentosa Partner to Capture Surging Demand for Experience-Led Travel to Singapore - PR Newswire</a>
                 
-                <span class="text-xs text-gray-600 ml-2">Yahoo Finance · 2026. 5. 20.</span>
+                <span class="text-xs text-gray-600 ml-2">PR Newswire · 2026. 5. 20.</span>
+              </div><div class="ml-4 mb-1.5">
+                <a href="https://news.google.com/rss/articles/CBMiswFBVV95cUxPOTgzWlVfZE52R1RBa2lJMmp6UDdwRTktbnVBR1FaelVWVWRGaVZrXy1DVnQyYUZVZFlwWWYxa25sRDlDa0RRZUdjOG0zcC1hR0pTSzViSkZBRlBJOFRCV29xZUsweXBJQmRNSTlZR0toY3JpVXRCUmFUTVZldThaTkdYdW5XcjNRdU1lajFoLUFnc2hGU3gwODFCa0sxeVV1SFZVMkpsV2FCNVQtbjh1c1kyNA?oc=5" target="_blank" class="text-xs text-gray-400 hover:text-blue-400 transition">Gyeonggi Tourism Organization Partners Southeast Asia's Leading Travel Tech Platform, Traveloka, to Power Digital Discovery for Indonesian Travelers - Yahoo Finance</a>
+                
+                <span class="text-xs text-gray-600 ml-2">Yahoo Finance · 2026. 3. 19.</span>
               </div><div class="ml-4 mb-1.5">
                 <a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxPdUwteC00Uk42UW5jWGM4UThxOGc4UjlJeU5SbzUwZzh1cXhhcjZnUEdzM1o2ZzBuc1BQVk9zWEhCRW93X2NyaVE5NWtzdEhuWFREVERfaXd5OU5hWWZNM2RjUm84RERab29qRUpJbXVkOWRFaGZNbDE2SWk2OGFiYjliQS1XdVlG?oc=5" target="_blank" class="text-xs text-gray-400 hover:text-blue-400 transition">Greg Schulze: 21 years of Expedia, and a New Beginning - webintravel.com</a>
                 
                 <span class="text-xs text-gray-600 ml-2">webintravel.com · 2026. 5. 28.</span>
-              </div><div class="ml-4 mb-1.5">
-                <a href="https://news.google.com/rss/articles/CBMibkFVX3lxTE1qSEh1MHhIR2N2d1ZtRjM5TldUcEVzeERyTjBScm1WZEdUSGg3REdVbFhWMXB4ZWlXRHFvN2NJcHNDdTdJbkM3ZUp5dkRqM1RSWmxKbEJwZll3a01zbW5LN1dHNTRPNlhsT3dyakV3?oc=5" target="_blank" class="text-xs text-gray-400 hover:text-blue-400 transition">Indonesia Rocked by Explosive Illegal Villa Rental Crackdown as Airbnb Booking.com and Traveloka Face Massive Tourism Compliance Chaos in 2026 - Travel And Tour World</a>
-                
-                <span class="text-xs text-gray-600 ml-2">Travel And Tour World · 2026. 5. 28.</span>
               </div>
           </div></div>
     </div>
@@ -23375,16 +23388,91 @@ API Integration step will be processed on the end of June by IT Gotadi Team</div
 </div>
 
 <script>
-// Tab switching
+// ── Two-level Tab System: Top-level (5) + Statistics sub-tabs (5) ──
+const STAT_SUB_TABS = ['tab1','tab10','tabHotel','tab2m','tab9'];
+let _lastStatTab = 'tab1';
+
+function _activateTopTab(target) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === target));
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  const subNav = document.getElementById('statSubNav');
+  if (target === 'tabStats') {
+    // Show stat sub-nav + restore last viewed stat panel
+    subNav.classList.add('active');
+    const sub = _lastStatTab;
+    const panel = document.getElementById(sub);
+    if (panel) panel.classList.add('active');
+    document.querySelectorAll('.stat-subtab-btn').forEach(b => b.classList.toggle('active', b.dataset.stat === sub));
+    _onStatSubTabActivated(sub);
+  } else {
+    subNav.classList.remove('active');
+    const panel = document.getElementById(target);
+    if (panel) panel.classList.add('active');
+  }
+  // Resize echarts on view change
+  setTimeout(() => {
+    document.querySelectorAll('div').forEach(el => {
+      const inst = echarts.getInstanceByDom(el);
+      if (inst) inst.resize();
+    });
+  }, 80);
+}
+
+function _onStatSubTabActivated(sub) {
+  // Auto-render compare chart for tab10 (channel deep dive)
+  if (sub === 'tab10') {
+    setTimeout(() => {
+      if (typeof renderCompareChart === 'function') renderCompareChart();
+      if (typeof DEEP_DIVE_DATA !== 'undefined' && DEEP_DIVE_DATA.length > 0) {
+        const firstBtn = document.querySelector('#ddSelector button');
+        if (firstBtn && typeof selectDeepDive === 'function') selectDeepDive(firstBtn.dataset.ch);
+      }
+    }, 150);
+  }
+}
+
+// Top-level tab buttons
 document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => _activateTopTab(btn.dataset.tab));
+});
+
+// Sub-tab buttons (Statistics group)
+document.querySelectorAll('.stat-subtab-btn').forEach(btn => {
   btn.addEventListener('click', () => {
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    const sub = btn.dataset.stat;
+    _lastStatTab = sub;
     document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById(btn.dataset.tab).classList.add('active');
-    // Resize charts when switching tabs
-    setTimeout(() => { echarts.getInstanceByDom(document.getElementById('channelChart'))?.resize(); }, 50);
+    const panel = document.getElementById(sub);
+    if (panel) panel.classList.add('active');
+    document.querySelectorAll('.stat-subtab-btn').forEach(b => b.classList.toggle('active', b === btn));
+    // Make sure top-level Statistics stays highlighted
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === 'tabStats'));
+    _onStatSubTabActivated(sub);
+    setTimeout(() => {
+      document.querySelectorAll('div').forEach(el => {
+        const inst = echarts.getInstanceByDom(el);
+        if (inst) inst.resize();
+      });
+    }, 80);
   });
+});
+
+// Keyboard shortcut: press 1-5 to jump to top-level tab, Shift+1-5 to jump to sub-tab
+document.addEventListener('keydown', (e) => {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable) return;
+  const TOP = ['tabStats','tab2','tab3','tab6','tab8'];
+  const num = parseInt(e.key);
+  if (num >= 1 && num <= 5) {
+    if (e.shiftKey) {
+      const sub = STAT_SUB_TABS[num-1];
+      if (sub) {
+        const btn = document.querySelector('.stat-subtab-btn[data-stat="'+sub+'"]');
+        if (btn) btn.click();
+      }
+    } else {
+      _activateTopTab(TOP[num-1]);
+    }
+  }
 });
 
 // Add row to editable table
@@ -23758,10 +23846,7 @@ function renderCompareChart() {
   }, true);
 }
 
-// Init compare chart on tab10 click
-document.querySelector('[data-tab="tab10"]').addEventListener('click', function() {
-  setTimeout(renderCompareChart, 100);
-});
+// (tab10 init now handled by _onStatSubTabActivated in two-level tab system)
 
 function selectChannel(ch) {
   document.querySelectorAll('.channel-panel').forEach(p => p.style.display = 'none');
@@ -23853,14 +23938,7 @@ function renderDDMonthlyChart(ch, metric) {
     ]
   }, true);
 }
-// Auto-render first deep-dive chart when tab10 active
-document.querySelector('[data-tab="tab10"]').addEventListener('click', () => setTimeout(() => {
-  if (DEEP_DIVE_DATA.length > 0) {
-    // Select the first visible (top-ranked) button
-    const firstBtn = document.querySelector('#ddSelector button');
-    if (firstBtn) selectDeepDive(firstBtn.dataset.ch);
-  }
-}, 150));
+// (Deep-dive auto-render now triggered by _onStatSubTabActivated when sub-tab tab10 is selected)
 
 // ── Hotel Analysis tab: row toggle + filters/sort ──
 function toggleHotelDetail(i) {
