@@ -51,6 +51,14 @@ header .sub b{color:var(--acc)}
 .ev,.nx{font-size:14px;color:#C4D4D2;margin-top:8px}
 .ev b,.nx b{color:var(--ink)}
 .nx b{color:var(--acc)}
+.eo-wrap{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:16px;margin-top:14px}
+table.eo{width:100%;border-collapse:collapse;font-size:14.5px;min-width:860px}
+table.eo th{color:var(--mut);font-size:12.5px;text-transform:uppercase;letter-spacing:.06em;text-align:left;padding:16px 18px;border-bottom:1px solid var(--line)}
+table.eo td{padding:16px 18px;border-bottom:1px solid var(--line);vertical-align:top}
+table.eo tr:last-child td{border-bottom:0}
+.eo-effort{white-space:nowrap;font-variant-numeric:tabular-nums}
+.eo-verdict{white-space:nowrap;font-weight:700}
+.eo-insight{color:#C4D4D2;font-size:13.5px;max-width:420px}
 footer{color:var(--mut);font-size:12.5px;margin-top:56px;border-top:1px solid var(--line);padding-top:20px;line-height:1.8}
 </style>
 </head>
@@ -146,6 +154,49 @@ html.omh-locked{overflow:hidden}
     <div class="kr-bar"><i style="width:70%;background:#5AB5AE"></i></div>
     <div class="kr-pct">70% (정성 평가)</div>
   </div></div>
+
+  
+  <h2 class="section-h">Effort × Outcome 매트릭스</h2>
+  <div class="section-sub">2026-06-16 ~ 2026-07-09 (Teams 게시본 18일 · 108항목, scripts/c6-effort.js 실측) · effort = Critical 6 투입 비중 (로그+게시본 집계, scripts/c6-effort.js) · outcome = 같은 기간 KR 지표 변화</div>
+  <div class="eo-wrap"><table class="eo">
+    <thead><tr><th>KR</th><th>C6 투입 (effort)</th><th>지표 변화 (outcome)</th><th>판정</th><th>인사이트</th></tr></thead>
+    <tbody>
+  <tr>
+    <td><span class="krb" style="background:#2E9E6B22;color:#2E9E6B">KR2</span></td>
+    <td class="eo-effort">24건 (19%)</td>
+    <td>30% → 36% (+6pt, 2,543/일)</td>
+    <td class="eo-verdict">✅ 작동</td>
+    <td class="eo-insight">맵핑·QPS·가용성 투입이 성과로 입증된 유일한 KR — P18로 계속 드라이브. 단 중국채널 1,300/일 목표미달, 채널별 기여 분해 필요</td>
+  </tr>
+  <tr>
+    <td><span class="krb" style="background:#E0733C22;color:#E0733C">KR4</span></td>
+    <td class="eo-effort">30건 (23%) 🥈</td>
+    <td>중화권 85.9% — 악화</td>
+    <td class="eo-verdict">🔴 지표 역행 (측정 시차)</td>
+    <td class="eo-insight">비중화권 심기는 계약→볼륨 3~6개월 리드타임 + 중화권 분모 성장. 후행지표 대신 선행 KPI(비중화권 신규계약·첫부킹 채널 수, scripts/kr4-leading.js) 병행 측정</td>
+  </tr>
+  <tr>
+    <td><span class="krb" style="background:#3E8ED022;color:#3E8ED0">KR1</span></td>
+    <td class="eo-effort">43건 (34%) 🥇</td>
+    <td>53곳 (5%) — 정체</td>
+    <td class="eo-verdict">⚠️ 레버 문제</td>
+    <td class="eo-insight">1개씩 붙여서는 1,000곳 불가 — 유일한 점프 레버 = Shiji 스위치 299채널(P01). 우선순위→오픈을 7월 고정 C6로</td>
+  </tr>
+  <tr>
+    <td><span class="krb" style="background:#D0A43E22;color:#D0A43E">KR5</span></td>
+    <td class="eo-effort">19건 (15%)</td>
+    <td>19% → 22% (56억)</td>
+    <td class="eo-verdict">⚠️ run-rate 43%</td>
+    <td class="eo-insight">연환산 112억/260억 — 하반기 백로딩(8월 한국 세일즈+겨울 캠페인)이 만회 관문. 미팅당 목표 물량 설정 권고</td>
+  </tr>
+  <tr>
+    <td><span class="krb" style="background:#9B6BD022;color:#9B6BD0">KR3</span></td>
+    <td class="eo-effort">5건 (4%)</td>
+    <td>1곳 (33%) — 정체</td>
+    <td class="eo-verdict">🔴 사각지대</td>
+    <td class="eo-insight">실행·플랜 모두 공백이 정체 원인. Tier0 2호 후보 선정(메이투안·Agoda 라인) + C레벨 라인 설계를 C6 승격</td>
+  </tr></tbody>
+  </table></div>
 
   <h2 class="section-h">Critical 6 ↔ Action Plan 매칭 점검</h2>
   <div class="section-sub">C6 22일치(6/12~7/9) ↔ 액션플랜 매칭 검증</div>
