@@ -25,7 +25,7 @@ console.log(`Deploying: ${latest}`);
 
 // Inject password gate (docs pages are public on GitHub Pages)
 function withGate(html) {
-  if (html.includes('omh-gate')) return html;
+  if (html.includes('omh-gate') || html.includes('loginOverlay')) return html; // 자체 로그인 있는 페이지는 게이트 주입 안 함(이중 비번 방지)
   const snippet = fs.readFileSync(path.join(__dirname, 'gate-snippet.html'), 'utf8');
   const m = html.match(/<body[^>]*>/i);
   if (!m) return html;
