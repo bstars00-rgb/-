@@ -51,207 +51,321 @@ html.omh-locked{overflow:hidden}
 
 <style>
   :root {
-    --bg: #0B1E27;
-    --bg2: #102732;
-    --card: #14303D;
-    --ink: #EDF4F1;
-    --ink-soft: #9FB6AE;
-    --accent: #2FB37E;
-    --gold: #E8B34B;
-    --red: #E07B6A;
-    --line: #23414F;
+    --bg: #0B1E27; --bg2: #102732; --card: #14303D;
+    --ink: #EDF4F1; --ink-soft: #9FB6AE;
+    --accent: #2FB37E; --gold: #E8B34B; --red: #E07B6A; --line: #23414F;
   }
   * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
   body {
-    margin: 0; background: var(--bg); color: var(--ink);
+    background: var(--bg); color: var(--ink);
     font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', 'Segoe UI', sans-serif;
-    line-height: 1.6;
+    line-height: 1.55; overflow: hidden;
   }
-  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 28px; }
-  section { padding: 64px 0; border-bottom: 1px solid var(--line); }
+  .deck { height: 100vh; position: relative; }
+  .slide {
+    position: absolute; inset: 0; display: none; overflow-y: auto;
+    padding: 56px 0 96px;
+  }
+  .slide.active { display: block; animation: fadein .35s ease; }
+  @media (prefers-reduced-motion: reduce) { .slide.active { animation: none; } }
+  @keyframes fadein { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  .inner { max-width: 1060px; margin: 0 auto; padding: 0 32px; min-height: calc(100vh - 190px); display: flex; flex-direction: column; justify-content: center; }
 
-  /* HERO */
-  .hero { padding: 96px 0 72px; text-align: left; }
-  .hero .eyebrow { color: var(--gold); font-size: 15px; letter-spacing: .25em; text-transform: uppercase; font-weight: 700; }
-  .hero h1 { font-size: clamp(42px, 7vw, 76px); line-height: 1.12; margin: 18px 0 10px; font-weight: 800; text-wrap: balance; }
-  .hero h1 .g { color: var(--accent); }
-  .hero .period { font-size: clamp(18px, 2.6vw, 26px); color: var(--ink-soft); font-weight: 600; }
-  .hero .who { margin-top: 28px; font-size: 17px; color: var(--ink-soft); }
-  .hero .who b { color: var(--ink); }
+  .eyebrow { color: var(--gold); font-size: 14px; letter-spacing: .25em; text-transform: uppercase; font-weight: 700; }
+  .obj-tag { display: inline-block; background: var(--accent); color: #06231A; font-weight: 800; font-size: 13.5px; letter-spacing: .1em; padding: 6px 14px; border-radius: 999px; width: fit-content; }
+  .obj-tag.gold { background: var(--gold); color: #231A06; }
+  h1 { font-size: clamp(40px, 6.5vw, 72px); line-height: 1.12; margin: 16px 0 8px; font-weight: 800; text-wrap: balance; }
+  h1 .g { color: var(--accent); }
+  h2 { font-size: clamp(28px, 4vw, 44px); margin: 14px 0 6px; font-weight: 800; line-height: 1.2; text-wrap: balance; }
+  .sub { color: var(--ink-soft); font-size: clamp(15px, 1.8vw, 18px); margin-bottom: 22px; }
+  .period { font-size: clamp(17px, 2.4vw, 24px); color: var(--ink-soft); font-weight: 600; }
+  .who { margin-top: 22px; font-size: 16px; color: var(--ink-soft); }
+  .who b { color: var(--ink); }
 
-  /* STAT TILES */
-  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 36px; }
-  .tile { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 26px 24px; }
-  .tile .n { font-size: clamp(34px, 4.5vw, 48px); font-weight: 800; color: var(--accent); font-variant-numeric: tabular-nums; line-height: 1.1; }
+  .tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 10px; }
+  .tile { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 22px 20px; }
+  .tile .n { font-size: clamp(28px, 3.6vw, 42px); font-weight: 800; color: var(--accent); font-variant-numeric: tabular-nums; line-height: 1.1; }
   .tile .n.gold { color: var(--gold); }
-  .tile .l { font-size: 15px; color: var(--ink-soft); margin-top: 6px; }
+  .tile .l { font-size: 14px; color: var(--ink-soft); margin-top: 5px; }
 
-  /* OBJECTIVE */
-  .obj-tag { display: inline-block; background: var(--accent); color: #06231A; font-weight: 800; font-size: 14px; letter-spacing: .12em; padding: 6px 14px; border-radius: 999px; }
-  h2 { font-size: clamp(30px, 4.5vw, 46px); margin: 18px 0 8px; font-weight: 800; line-height: 1.2; text-wrap: balance; }
-  .obj-sub { color: var(--ink-soft); font-size: 18px; margin-bottom: 34px; }
-
-  /* KR BAR */
-  .kr { margin: 20px 0; }
-  .kr .kr-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
-  .kr .kr-name { font-size: 18px; font-weight: 700; }
-  .kr .kr-val { font-size: 16px; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
-  .kr .kr-val b { color: var(--accent); font-size: 20px; }
-  .bar { height: 14px; background: var(--bg2); border-radius: 999px; margin-top: 8px; overflow: hidden; border: 1px solid var(--line); }
+  .kr { margin: 14px 0; }
+  .kr-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  .kr-name { font-size: 17px; font-weight: 700; }
+  .kr-val { font-size: 15px; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+  .kr-val b { color: var(--accent); font-size: 19px; }
+  .bar { height: 13px; background: var(--bg2); border-radius: 999px; margin-top: 7px; overflow: hidden; border: 1px solid var(--line); }
   .bar i { display: block; height: 100%; background: linear-gradient(90deg, #1E8A61, var(--accent)); border-radius: 999px; }
   .bar i.warn { background: linear-gradient(90deg, #9C4A3C, var(--red)); }
 
-  /* CARDS */
-  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; margin-top: 26px; }
-  .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; }
-  .card h4 { margin: 0 0 6px; font-size: 17px; }
-  .card p { margin: 0; font-size: 14.5px; color: var(--ink-soft); }
-  .st { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 10px; border-radius: 999px; margin-left: 8px; vertical-align: middle; }
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 14px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 15px 17px; }
+  .card h4 { margin: 0 0 5px; font-size: 15.5px; }
+  .card p { margin: 0; font-size: 13px; color: var(--ink-soft); }
+  .st { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 9px; border-radius: 999px; margin-left: 6px; vertical-align: middle; }
   .st.done { background: rgba(47,179,126,.18); color: var(--accent); }
   .st.run { background: rgba(232,179,75,.16); color: var(--gold); }
 
-  /* TIMELINE */
-  .tl { margin-top: 30px; display: grid; gap: 14px; }
-  .tl-row { display: grid; grid-template-columns: 150px 1fr; gap: 18px; align-items: start; }
-  .tl-q { font-weight: 800; color: var(--gold); font-size: 17px; white-space: nowrap; }
-  .tl-c { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px; font-size: 15px; color: var(--ink-soft); }
-  .tl-c b { color: var(--ink); }
+  .hero-num { background: linear-gradient(135deg, var(--card), var(--bg2)); border: 1px solid var(--line); border-radius: 16px; padding: 26px 30px; margin-top: 16px; display: flex; gap: 34px; align-items: center; flex-wrap: wrap; }
+  .hero-num .big { font-size: clamp(52px, 8vw, 96px); font-weight: 800; color: var(--gold); line-height: 1; font-variant-numeric: tabular-nums; }
+  .hero-num .desc { font-size: clamp(15px, 2vw, 19px); color: var(--ink-soft); max-width: 480px; }
+  .hero-num .desc b { color: var(--ink); }
 
-  ul.big { font-size: 16.5px; padding-left: 22px; }
-  ul.big li { margin: 10px 0; }
+  ul.big { font-size: 15.5px; padding-left: 22px; margin: 8px 0; }
+  ul.big li { margin: 8px 0; }
   ul.big b { color: var(--ink); }
-  .note { font-size: 13.5px; color: var(--ink-soft); border-top: 1px solid var(--line); padding: 20px 0 60px; }
+
+  .tl { margin-top: 14px; display: grid; gap: 12px; }
+  .tl-row { display: grid; grid-template-columns: 140px 1fr; gap: 16px; }
+  .tl-q { font-weight: 800; color: var(--gold); font-size: 16px; white-space: nowrap; }
+  .tl-c { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px; font-size: 14px; color: var(--ink-soft); }
+  .tl-c b { color: var(--ink); }
   .todo { color: var(--gold); font-weight: 700; }
-  @media (max-width: 640px) { .tl-row { grid-template-columns: 1fr; gap: 6px; } }
+  .foot { font-size: 12.5px; color: var(--ink-soft); margin-top: 26px; }
+
+  /* NAV */
+  .nav {
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 10;
+    display: flex; align-items: center; justify-content: center; gap: 18px;
+    padding: 14px 20px; background: linear-gradient(transparent, rgba(11,30,39,.92) 40%);
+  }
+  .nav button {
+    background: var(--card); color: var(--ink); border: 1px solid var(--line);
+    width: 46px; height: 46px; border-radius: 50%; font-size: 19px; cursor: pointer; font-family: inherit;
+  }
+  .nav button:hover { border-color: var(--accent); color: var(--accent); }
+  .nav button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .dots { display: flex; gap: 8px; align-items: center; }
+  .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--line); cursor: pointer; border: 0; padding: 0; }
+  .dot.on { background: var(--accent); transform: scale(1.35); }
+  .pageno { font-size: 13px; color: var(--ink-soft); min-width: 52px; text-align: center; font-variant-numeric: tabular-nums; }
+
+  @media (max-width: 880px) {
+    .tiles, .cards { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 620px) {
+    .tiles, .cards { grid-template-columns: 1fr; }
+    .tl-row { grid-template-columns: 1fr; gap: 4px; }
+    .inner { justify-content: flex-start; padding-top: 10px; }
+  }
 </style>
 
-<div class="wrap">
+<div class="deck" id="deck">
 
-  <div class="hero">
-    <div class="eyebrow">1st Anniversary Report · 2026.08.18</div>
-    <h1>OMH에서의 <span class="g">1년</span>,<br>글로벌 세일즈의 기반을 만들다</h1>
-    <div class="period">2025. 08. 18 — 2026. 08. 18</div>
-    <div class="who"><b>Aiden Park (박창배)</b> · Global Head of Sales &amp; Marketing (GSM) · 보고 대상: 대표이사</div>
-
-    <div class="tiles">
-      <div class="tile"><div class="n">15+</div><div class="l">신규 채널·파트너 딜 (계약·연동·협상 진행)</div></div>
-      <div class="tile"><div class="n">2,543<span style="font-size:.5em">/일</span></div><div class="l">일일 부킹 (KR2 목표 7,000의 36%)</div></div>
-      <div class="tile"><div class="n">56억<span style="font-size:.5em"> KRW</span></div><div class="l">YTD 매출 (KR5) · TTV 767억</div></div>
-      <div class="tile"><div class="n gold">6종</div><div class="l">AI 자동화 시스템 구축·운영 (AI CRM 운영두뇌 외)</div></div>
-      <div class="tile"><div class="n gold">7명</div><div class="l">글로벌 세일즈 조직 재편 + SG 시니어 채용 1</div></div>
-      <div class="tile"><div class="n">2건</div><div class="l">전사 거버넌스 정비 (계약서 체계 · 에스컬레이션 SLA)</div></div>
+  <!-- 1. HERO -->
+  <div class="slide active">
+    <div class="inner">
+      <div class="eyebrow">1st Anniversary Report · 2026.08.18</div>
+      <h1>OMH에서의 <span class="g">1년</span>,<br>글로벌 세일즈의 기반을 만들다</h1>
+      <div class="period">2025. 08. 18 — 2026. 08. 18</div>
+      <div class="who"><b>Aiden Park (박창배)</b> · Global Head of Sales &amp; Marketing (GSM) · 보고 대상: 대표이사</div>
+      <div class="foot">← → 방향키 또는 하단 버튼으로 넘기세요</div>
     </div>
   </div>
 
-  <section>
-    <span class="obj-tag">OBJECTIVE 1 · GST KR1</span>
-    <h2>글로벌 채널 · 파트너십 확장</h2>
-    <div class="obj-sub">Active 1,000 채널을 향한 신규 딜 파이프라인 구축 — 1년간 15개+ 딜을 직접 오픈·드라이브</div>
-
-    <div class="cards">
-      <div class="card"><h4>MoMo (베트남 슈퍼앱) <span class="st done">타결</span></h4><p>커미션·오버라이드 협상 타결, 서명 단계. 베트남 볼륨 신규 축.</p></div>
-      <div class="card"><h4>Agoda <span class="st done">Addendum 서명</span></h4><p>Addendum 체결 + Override Incentive 협의 착수. 일본 매핑 갭 271건 → 실제 갭 11건 규명.</p></div>
-      <div class="card"><h4>HBX / Hotelbeds <span class="st run">승인 대기</span></h4><p>Portfolio 선제출 전략으로 Integration Fee 선투입 방어. 최종 승인 검토 중.</p></div>
-      <div class="card"><h4>GoGlobal (GGT) <span class="st run">go-live</span></h4><p>SLA 대표 서명 완료 → API Live Key 발급 단계.</p></div>
-      <div class="card"><h4>HIS 일본 HQ <span class="st run">HQ 오픈</span></h4><p>SG 브랜치 라이브(ohmyhotel.biz) 기반 → 일본 본사 HQ-to-HQ 관계 오픈, 소개 메일 발송.</p></div>
-      <div class="card"><h4>Teresa 대만 — 우산 모델 <span class="st run">제안</span></h4><p>대표님 제안 "몽키트래블式" 시스템 공유 파트너십 — 제안서(번체) 발송, 협의 중.</p></div>
-      <div class="card"><h4>COLA 可樂旅遊 (대만) <span class="st run">계약 단계</span></h4><p>Service Agreement 조항 합의 진입. 대만 4채널 개척(STAR 80%·Lion·SETTOUR) 병행.</p></div>
-      <div class="card"><h4>돌하루팡 <span class="st done">연동 확정</span></h4><p>제주 인바운드 신규 채널 — NDA 체결, ONDA 대체 기회.</p></div>
-      <div class="card"><h4>HiBeds (LetsFly) <span class="st done">온보딩</span></h4><p>중국계 B2B 공급 연동(6,000호텔) — 온보딩 설문 완성, B2B 표준답변 체계화.</p></div>
-      <div class="card"><h4>인도 · 인니 · 러시아 개척</h4><p>SATTE(MakeMyTrip·Cleartrip 등) · Traveloka 성장전략(연 4M SGD 드라이브) · Tiket.com API · 러시아 OTA 세일즈 콜.</p></div>
-      <div class="card"><h4>TBO · Pax2night · Miki · Kayak</h4><p>TBO 양방향 크로스셀 · 터키 베드뱅크 연동(Shiji 경유) · 홍콩 인바운드 · Kayak CPA→CPC 전환.</p></div>
-      <div class="card"><h4>Shiji 스위칭 연동 <span class="st run">진행</span></h4><p>수요채널 299개(Live 278) 공급 게이트웨이 — 연동가능 업체 전팀 취합 완료.</p></div>
+  <!-- 2. EXEC SUMMARY -->
+  <div class="slide">
+    <div class="inner">
+      <span class="obj-tag">EXECUTIVE SUMMARY</span>
+      <h2>1년의 성과, 여섯 개의 숫자</h2>
+      <div class="tiles">
+        <div class="tile"><div class="n gold">525개</div><div class="l">통합 채널 파이프라인 구축 — 기존 &lt;100개, 산재 → 단일 CRM 체계 (5배+)</div></div>
+        <div class="tile"><div class="n">15+</div><div class="l">신규 채널·파트너 딜 (계약·연동·협상 진행)</div></div>
+        <div class="tile"><div class="n">2,543<span style="font-size:.5em">/일</span></div><div class="l">일일 부킹 (KR2 목표 7,000의 36%)</div></div>
+        <div class="tile"><div class="n">56억<span style="font-size:.5em"> KRW</span></div><div class="l">YTD 매출 (KR5) · TTV 767억</div></div>
+        <div class="tile"><div class="n gold">6종</div><div class="l">AI 자동화 시스템 구축·운영 (AI CRM 운영두뇌 외)</div></div>
+        <div class="tile"><div class="n gold">7명</div><div class="l">글로벌 세일즈 조직 재편 + SG 시니어 채용 · 거버넌스 2건(계약 체계·SLA)</div></div>
+      </div>
     </div>
-  </section>
+  </div>
 
-  <section>
-    <span class="obj-tag">OBJECTIVE 2 · GST KR2 / KR3 / KR5</span>
-    <h2>예약 볼륨과 매출 성장</h2>
-    <div class="obj-sub">주간 부킹 인사이트 기반 데이터 드리븐 세일즈 — 14주 내 최고 주간 달성 (2026.6.27~7.3)</div>
-
-    <div class="kr"><div class="kr-head"><span class="kr-name">KR2 · 일일 부킹 7,000건</span><span class="kr-val">현재 <b>2,543/일</b> · 36%</span></div><div class="bar"><i style="width:36%"></i></div></div>
-    <div class="kr"><div class="kr-head"><span class="kr-name">KR3 · 월 TTV 50억 채널(Tier0) 3곳</span><span class="kr-val">현재 <b>1곳</b> · 33%</span></div><div class="bar"><i style="width:33%"></i></div></div>
-    <div class="kr"><div class="kr-head"><span class="kr-name">KR5 · 연 매출 260억</span><span class="kr-val">YTD <b>56억</b> · 22% (TTV 767억 · 23%)</span></div><div class="bar"><i style="width:22%"></i></div></div>
-
-    <ul class="big">
-      <li><b>주간 부킹 분석 체계 신설</b> — 원본 부킹데이터 → 자동 전처리 → 주간 인사이트 → OKR 자동 갱신 파이프라인. 채널 급증·급감을 매주 감지해 세일즈 액션으로 연결.</li>
-      <li><b>Vietravel 연체 페널티 체계</b> 대표 승인 · <b>QPS 승인 관리</b>(DIDA 반려, RTX·Tripbtoz 상향 검토)로 서버 부하·매출 왜곡 방어.</li>
-      <li><b>MyRealTrip 후지타관광 특가</b> 화이트리스트 노출(7~9월) + 프로모션 리스트 주간 자동 발송 체계.</li>
-    </ul>
-  </section>
-
-  <section>
-    <span class="obj-tag">OBJECTIVE 3 · GST KR4</span>
-    <h2>시장 다변화 — 중화권 의존 완화</h2>
-    <div class="obj-sub">가장 어려운 KR — 정면 보고: 후행지표는 아직 악화, 선행지표와 구조적 액션은 전진</div>
-
-    <div class="kr"><div class="kr-head"><span class="kr-name">KR4 · 중화권 비중 65% 이하</span><span class="kr-val">현재 <b style="color:var(--red)">85.9%</b> · 목표 미달</span></div><div class="bar"><i class="warn" style="width:86%"></i></div></div>
-
-    <ul class="big">
-      <li><b>비중화권 신규 계약 축적</b> — MoMo(베트남)·돌하루팡(한국)·GoGlobal·HBX(글로벌)·인도·인니·러시아 파이프라인. 계약→볼륨 시차를 감안해 <b>KR4 선행 KPI(첫 부킹 발생 비중화권 채널 수)</b>를 신설해 매주 추적.</li>
-      <li><b>Shiji 비중화권 87채널 우선 노출</b> 전략 수립 · <b>FIT Fair 태국(10월)·필리핀 공동판매</b> 모델 추진.</li>
-      <li><b>8월 한국 세일즈 위크 확정</b>(8/3~7, 대표 승인) — Nathan·Jane 동행, 고객사 미팅 컨택 중.</li>
-      <li><b>3rd-party 공급 판매 확대</b> — 다이렉트 호텔만 받는 고객사에 WebBeds 등 3rd-party 재고까지 확대(신규 재고축).</li>
-    </ul>
-  </section>
-
-  <section>
-    <span class="obj-tag">OBJECTIVE 4 · COMPANY KR4 (AI 내재화)</span>
-    <h2>AI · 시스템 혁신 — 회사의 일하는 방식을 바꾸다</h2>
-    <div class="obj-sub">"주간보고서" 기획안 → AI CRM 운영두뇌로 고도화 · 전사 확산 준비</div>
-
-    <div class="cards">
-      <div class="card"><h4>AI CRM 운영두뇌 <span class="st done">매일 가동</span></h4><p>CRM + Daily Critical 6 + OKR + 부킹분석 통합. 굿모닝/마감 자동 브리핑 → Teams 자동 게시(리더 2채팅). 메일·Teams·SharePoint 실시간 연동.</p></div>
-      <div class="card"><h4>주간보고 웹 대시보드 <span class="st done">매주 발행</span></h4><p>부킹·채널·호텔·API Gantt·계약변경·시장뉴스 통합 웹 리포트 — 대표·팀 상시 열람.</p></div>
-      <div class="card"><h4>OKR·액션플랜 플랫폼 <span class="st done">Planner 대체</span></h4><p>7월부터 MS Planner 대체 — Effort×Outcome 매트릭스로 월간 액션플랜 운영.</p></div>
-      <div class="card"><h4>ELLIS MCP 추진 <span class="st run">개발 협의</span></h4><p>실시간 DB 직결 "완성형 AI CRM" — 데이터 요구사항 명세 전달, 개발팀 API 스코핑 진행.</p></div>
-      <div class="card"><h4>AMS (AI 매핑 시스템) <span class="st done">프로토타입</span></h4><p>미매핑 룸 자동 조회→점수화→추천. 콘텐츠팀(Karl) 인계, 고도화 중.</p></div>
-      <div class="card"><h4>DotBiz B2B 고도화 <span class="st done">프로토타입</span></h4><p>정산·포인트·CRM·AI Assistant·대시보드 — Claude 기반 프로토타입 완성, 내부 리뷰.</p></div>
-      <div class="card"><h4>VN RPA <span class="st done">가동</span></h4><p>Stop Selling 자동화 테스트 완료·정상 작동. Data Operation 반자동 매핑 병행.</p></div>
-      <div class="card"><h4>SCM Intelligence</h4><p>부킹 기반 수요 데이터 + AI 시장 인사이트를 SCM에 제공 — 국가별 공급 선제 대응.</p></div>
+  <!-- 3. PIPELINE (신규 하이라이트) -->
+  <div class="slide">
+    <div class="inner">
+      <span class="obj-tag">OBJECTIVE 1-A · GST KR1</span>
+      <h2>산재했던 파이프라인을 하나로 — <br>100개 미만에서 525개로</h2>
+      <div class="sub">담당자별 파일·메일에 흩어져 있던 채널 정보를 단일 파이프라인 CRM으로 통합 구축</div>
+      <div class="hero-num">
+        <div class="big">525</div>
+        <div class="desc"><b>통합 파이프라인 채널 수</b> (2026-07 기준, Dev Schedule CRM 시트 실측)<br>
+        입사 시점 100개 미만·무분별 산재 → <b>Status·Tier·KPI·Type(API/Extranet)·PIC·지역·국가</b>를 갖춘 전사 단일 기준으로 재구축. 팀원별 일지(Jane·Grace·Ben 등 640건+)와 연동해 활동 이력까지 추적.</div>
+      </div>
+      <ul class="big">
+        <li><b>효과 ①</b> — 담당자 퇴사·이동에도 파이프라인 무손실 인수인계 (Ben→Bryant 실증).</li>
+        <li><b>효과 ②</b> — Tier·KPI 기반 우선순위 세일즈 (Shiji 스위칭 대상 취합·KR1 Active 채널 관리의 기반).</li>
+        <li><b>효과 ③</b> — 주간보고·AI CRM·OKR이 같은 파이프라인을 참조 → 수치 정합성 확보.</li>
+      </ul>
     </div>
-  </section>
+  </div>
 
-  <section>
-    <span class="obj-tag">OBJECTIVE 5 · 조직 · 거버넌스</span>
-    <h2>지속가능한 글로벌 세일즈 조직</h2>
-    <div class="obj-sub">사람 · 규칙 · 시스템 — 개인기가 아닌 체계로 돌아가는 팀</div>
-
-    <ul class="big">
-      <li><b>글로벌 세일즈 업무분장 재편</b>(6/18) — 중화권 Grace · SEA/러시아 Ben · SG/인도/중동/구미 Bryant · 한국 Nathan · 글로벌 서포트 Jane. 지역 총괄 체계 확립.</li>
-      <li><b>싱가포르 시니어 세일즈 채용</b> — Bryant(Senior Sales Manager) 발굴→채용→온보딩(시스템 교육·인수인계) 완료. 퇴사자(Ben) 인수인계 무중단 진행.</li>
-      <li><b>채널 계약 거버넌스</b> — 제3자 재판매 책임 조항 신설: 신규용 v8 본계약 + 기존 채널용 부속합의서 체계 완성(변호사 검토 반영). 알리트립 매핑 분쟁 재발 방지.</li>
-      <li><b>SCM-OP-SALES 에스컬레이션 SLA</b> 수립(v1.1) · <b>B2B 온보딩 표준답변</b> 체계화 · <b>Trader-Ellis 상태 운영 기준</b> 전사 확정(맵핑리스트 정확도 개선).</li>
-      <li><b>대표 지시 대응</b> — 히카리 줄퇴사 원인 분석 보고, Kayak CPA→CPC, OKR/CFR 정례 운영(OP·Content·Sales·Marketing 1:1).</li>
-    </ul>
-  </section>
-
-  <section>
-    <span class="obj-tag">TIMELINE</span>
-    <h2>1년의 궤적</h2>
-    <div class="tl">
-      <div class="tl-row"><div class="tl-q">2025 Q3–Q4</div><div class="tl-c"><b>입사·기반 구축</b> — 글로벌 세일즈 체계 파악, 채널 포트폴리오 정비, 파트너 관계 구축. <span class="todo">※ 상세 성과 추가 입력 예정</span></div></div>
-      <div class="tl-row"><div class="tl-q">2026 Q1</div><div class="tl-c"><b>시장 개척</b> — 인도 SATTE(MakeMyTrip·Cleartrip), 인니 OTA(Traveloka·Tiket), 러시아 개척, 중국 출장. CRM 고도화 기획 착수.</div></div>
-      <div class="tl-row"><div class="tl-q">2026 Q2</div><div class="tl-c"><b>시스템 혁신 + 딜 가속</b> — AI CRM 운영두뇌 가동(6월), Teams/메일 자동화, Agoda Addendum, HBX·GoGlobal·MoMo 협상, 대만 4채널, 업무분장 재편, Bryant 채용.</div></div>
-      <div class="tl-row"><div class="tl-q">2026 Q3</div><div class="tl-c"><b>수확 + 확산</b> — MoMo 타결·돌하루팡 확정·HiBeds 온보딩, Teresa 우산모델·HIS HQ 오픈, 계약 거버넌스 완성, OKR 플랫폼 Planner 대체, 8월 한국 세일즈 위크.</div></div>
+  <!-- 4. O1 DEALS -->
+  <div class="slide">
+    <div class="inner">
+      <span class="obj-tag">OBJECTIVE 1-B · GST KR1</span>
+      <h2>글로벌 채널 · 파트너십 확장</h2>
+      <div class="sub">1년간 15개+ 딜을 직접 오픈·드라이브</div>
+      <div class="cards">
+        <div class="card"><h4>MoMo (베트남) <span class="st done">타결</span></h4><p>커미션·오버라이드 협상 타결, 서명 단계. 베트남 볼륨 신규 축.</p></div>
+        <div class="card"><h4>Agoda <span class="st done">Addendum 서명</span></h4><p>Addendum 체결 + Override Incentive 협의. 일본 매핑 갭 271→11건 규명.</p></div>
+        <div class="card"><h4>HBX / Hotelbeds <span class="st run">승인 대기</span></h4><p>Portfolio 선제출 전략으로 Integration Fee 선투입 방어.</p></div>
+        <div class="card"><h4>GoGlobal <span class="st run">go-live</span></h4><p>SLA 대표 서명 완료 → API Live Key 발급 단계.</p></div>
+        <div class="card"><h4>HIS 일본 HQ <span class="st run">HQ 오픈</span></h4><p>SG 브랜치 라이브 기반 → 본사 HQ-to-HQ 관계 오픈.</p></div>
+        <div class="card"><h4>Teresa 대만 우산모델 <span class="st run">제안</span></h4><p>몽키트래블式 시스템 공유 파트너십 — 제안 발송, 협의 중.</p></div>
+        <div class="card"><h4>COLA (대만) <span class="st run">계약</span></h4><p>Service Agreement 진입 + 대만 4채널 개척(STAR 80%).</p></div>
+        <div class="card"><h4>돌하루팡 · HiBeds <span class="st done">확정</span></h4><p>제주 인바운드 연동 확정·NDA / 중국계 B2B 공급 온보딩.</p></div>
+        <div class="card"><h4>인도·인니·러시아 + α</h4><p>SATTE·Traveloka(연 4M SGD)·Tiket API·러시아 OTA·TBO·Pax2night·Kayak CPC·Shiji 299채널.</p></div>
+      </div>
     </div>
-  </section>
+  </div>
 
-  <section style="border-bottom:0">
-    <span class="obj-tag" style="background:var(--gold); color:#231A06">YEAR 2</span>
-    <h2>2년차 — 완성으로 가는 길</h2>
-    <ul class="big">
-      <li><b>ELLIS MCP 완성형 AI CRM</b> — 실시간 데이터 직결로 주간→실시간 인사이트 전환, 전사 확산(대표·CTO 정식 보고).</li>
-      <li><b>KR4 반전</b> — 비중화권 신규 채널 볼륨화(MoMo·한국·인니·인도), Shiji 87채널, 3rd-party 재고 확대.</li>
-      <li><b>Tier0 3곳 달성</b> — Ctrip 외 대형 채널 육성(알리트립·메이투안·아고다 성장 전략).</li>
-      <li><b>HQ-레벨 파트너십</b> — HIS 일본, Teresa 대만 모델 상용화, HBX·GoGlobal go-live.</li>
-    </ul>
-  </section>
+  <!-- 5. O2 VOLUME -->
+  <div class="slide">
+    <div class="inner">
+      <span class="obj-tag">OBJECTIVE 2 · GST KR2 / KR3 / KR5</span>
+      <h2>예약 볼륨과 매출 성장</h2>
+      <div class="sub">데이터 드리븐 세일즈 — 14주 내 최고 주간 달성 (2026.6.27~7.3, 17,799건)</div>
+      <div class="kr"><div class="kr-head"><span class="kr-name">KR2 · 일일 부킹 7,000건</span><span class="kr-val">현재 <b>2,543/일</b> · 36%</span></div><div class="bar"><i style="width:36%"></i></div></div>
+      <div class="kr"><div class="kr-head"><span class="kr-name">KR3 · 월 TTV 50억 채널(Tier0) 3곳</span><span class="kr-val">현재 <b>1곳</b> · 33%</span></div><div class="bar"><i style="width:33%"></i></div></div>
+      <div class="kr"><div class="kr-head"><span class="kr-name">KR5 · 연 매출 260억</span><span class="kr-val">YTD <b>56억</b> · 22% (TTV 767억)</span></div><div class="bar"><i style="width:22%"></i></div></div>
+      <ul class="big">
+        <li><b>주간 부킹 분석 체계 신설</b> — raw data → 자동 전처리 → 주간 인사이트 → OKR 자동 갱신. 채널 급증·급감을 매주 세일즈 액션으로 연결.</li>
+        <li><b>Vietravel 연체 페널티</b> 대표 승인 · <b>QPS 승인 관리</b>(DIDA 반려, RTX 상향 검토)로 서버 부하·매출 왜곡 방어.</li>
+        <li><b>MyRealTrip 후지타 특가</b> 노출(7~9월) + 프로모션 리스트 주간 자동 발송.</li>
+      </ul>
+    </div>
+  </div>
 
-  <p class="note">
-    작성: Aiden Park · 초안 2026-07-10 (보고일 2026-08-18까지 갱신) · 데이터 기준: OKR 자동산출(2026-07-08, KR1~4 최근 4주 부킹 / KR5 YTD 체크아웃), CRM 업데이트 로그, Daily Critical 6 로그, CEO 보고 아카이브 · 수치 출처: docs/OKR_PROGRESS.md
-  </p>
+  <!-- 6. O3 KR4 -->
+  <div class="slide">
+    <div class="inner">
+      <span class="obj-tag">OBJECTIVE 3 · GST KR4</span>
+      <h2>시장 다변화 — 중화권 의존 완화</h2>
+      <div class="sub">가장 어려운 KR — 정면 보고: 후행지표는 아직 악화, 선행지표와 구조적 액션은 전진</div>
+      <div class="kr"><div class="kr-head"><span class="kr-name">KR4 · 중화권 비중 65% 이하</span><span class="kr-val">현재 <b style="color:var(--red)">85.9%</b> · 목표 미달</span></div><div class="bar"><i class="warn" style="width:86%"></i></div></div>
+      <ul class="big">
+        <li><b>비중화권 신규 계약 축적</b> — MoMo·돌하루팡·GoGlobal·HBX·인도·인니·러시아. 계약→볼륨 시차 감안, <b>KR4 선행 KPI(첫 부킹 발생 비중화권 채널 수)</b> 신설·주간 추적.</li>
+        <li><b>Shiji 비중화권 87채널 우선 노출</b> · <b>FIT Fair 태국(10월)·필리핀 공동판매</b> 모델.</li>
+        <li><b>8월 한국 세일즈 위크</b>(8/3~7, 대표 승인) — Nathan·Jane 동행.</li>
+        <li><b>3rd-party 공급 판매 확대</b> — 다이렉트 전용 고객사에 WebBeds 등 3rd-party 재고 확대.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 7. O4 AI -->
+  <div class="slide">
+    <div class="inner">
+      <span class="obj-tag">OBJECTIVE 4 · COMPANY KR4 (AI 내재화)</span>
+      <h2>AI · 시스템 혁신 — 일하는 방식을 바꾸다</h2>
+      <div class="sub">"주간보고서" 기획안 → AI CRM 운영두뇌로 고도화 · 전사 확산 준비</div>
+      <div class="cards">
+        <div class="card"><h4>AI CRM 운영두뇌 <span class="st done">매일 가동</span></h4><p>CRM+Critical 6+OKR+부킹분석 통합 · 굿모닝/마감 → Teams 자동 게시 · 메일/Teams/SharePoint 연동.</p></div>
+        <div class="card"><h4>주간보고 웹 대시보드 <span class="st done">매주 발행</span></h4><p>부킹·채널·API Gantt·계약변경·시장뉴스 — 대표·팀 상시 열람.</p></div>
+        <div class="card"><h4>OKR·액션플랜 플랫폼 <span class="st done">Planner 대체</span></h4><p>Effort×Outcome 매트릭스 — 7월부터 MS Planner 대체.</p></div>
+        <div class="card"><h4>ELLIS MCP <span class="st run">개발 협의</span></h4><p>실시간 DB 직결 완성형 AI CRM — 명세 전달, API 스코핑 진행.</p></div>
+        <div class="card"><h4>AMS · DotBiz <span class="st done">프로토타입</span></h4><p>AI 매핑 추천 시스템(콘텐츠팀 인계) · B2B 플랫폼 고도화안.</p></div>
+        <div class="card"><h4>VN RPA · SCM Intelligence <span class="st done">가동</span></h4><p>Stop Selling 자동화 정상 작동 · 수요 데이터 기반 공급 선제 대응.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. O5 ORG -->
+  <div class="slide">
+    <div class="inner">
+      <span class="obj-tag">OBJECTIVE 5 · 조직 · 거버넌스</span>
+      <h2>지속가능한 글로벌 세일즈 조직</h2>
+      <div class="sub">사람 · 규칙 · 시스템 — 개인기가 아닌 체계로 돌아가는 팀</div>
+      <ul class="big">
+        <li><b>업무분장 재편</b>(6/18) — 중화권 Grace · SEA/러시아 Ben · SG/인도/중동/구미 Bryant · 한국 Nathan · 글로벌 서포트 Jane.</li>
+        <li><b>SG 시니어 채용</b> — Bryant 발굴→채용→온보딩 완료. 퇴사자(Ben) 인수인계 무중단 진행 (통합 파이프라인 덕분).</li>
+        <li><b>채널 계약 거버넌스</b> — 3자 재판매 책임 조항: 신규 v8 본계약 + 기존 채널 부속합의서 체계 완성(변호사 검토 반영).</li>
+        <li><b>에스컬레이션 SLA</b>(SCM-OP-SALES) · <b>B2B 온보딩 표준답변</b> · <b>Trader-Ellis 운영 기준</b> 전사 확정.</li>
+        <li><b>대표 지시 대응</b> — 히카리 원인 보고 · Kayak CPC 전환 · OKR/CFR 정례 운영.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 9. TIMELINE -->
+  <div class="slide">
+    <div class="inner">
+      <span class="obj-tag">TIMELINE</span>
+      <h2>1년의 궤적</h2>
+      <div class="tl">
+        <div class="tl-row"><div class="tl-q">2025 Q3–Q4</div><div class="tl-c"><b>입사·기반 구축</b> — 산재한 채널 정보 통합 착수, 파이프라인 CRM 설계, 파트너 관계 구축. <span class="todo">※ 상세 성과 추가 입력 예정</span></div></div>
+        <div class="tl-row"><div class="tl-q">2026 Q1</div><div class="tl-c"><b>시장 개척</b> — 인도 SATTE, 인니 OTA(Traveloka·Tiket), 러시아 개척, 중국 출장. CRM 고도화 기획 착수.</div></div>
+        <div class="tl-row"><div class="tl-q">2026 Q2</div><div class="tl-c"><b>시스템 혁신 + 딜 가속</b> — AI CRM 가동(6월), Agoda Addendum, HBX·GoGlobal·MoMo 협상, 대만 4채널, 업무분장 재편, Bryant 채용.</div></div>
+        <div class="tl-row"><div class="tl-q">2026 Q3</div><div class="tl-c"><b>수확 + 확산</b> — MoMo 타결·돌하루팡·HiBeds, Teresa 우산모델·HIS HQ, 계약 거버넌스 완성, 파이프라인 525개 도달, 8월 한국 세일즈.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10. YEAR 2 -->
+  <div class="slide">
+    <div class="inner">
+      <span class="obj-tag gold">YEAR 2</span>
+      <h2>2년차 — 완성으로 가는 길</h2>
+      <ul class="big">
+        <li><b>ELLIS MCP 완성형 AI CRM</b> — 실시간 데이터 직결, 전사 확산 (대표·CTO 정식 보고).</li>
+        <li><b>파이프라인 525 → Active 전환</b> — KR1 Active 1,000 채널을 향한 전환율 드라이브.</li>
+        <li><b>KR4 반전</b> — 비중화권 볼륨화(MoMo·한국·인니·인도), Shiji 87채널, 3rd-party 재고.</li>
+        <li><b>Tier0 3곳</b> — Ctrip 외 대형 채널 육성 (알리트립·메이투안·아고다).</li>
+        <li><b>HQ-레벨 파트너십</b> — HIS 일본·Teresa 모델 상용화·HBX/GoGlobal go-live.</li>
+      </ul>
+      <p class="foot">작성: Aiden Park · 초안 2026-07-11 (보고일 2026-08-18까지 갱신) · 데이터: OKR 자동산출(7/8) · 파이프라인 525개(Dev Schedule CRM 시트 실측 7/11) · CRM 업데이트 로그 · CEO 보고 아카이브</p>
+    </div>
+  </div>
+
 </div>
+
+<div class="nav">
+  <button id="prev" aria-label="이전 페이지">←</button>
+  <div class="dots" id="dots"></div>
+  <div class="pageno" id="pageno">1 / 10</div>
+  <button id="next" aria-label="다음 페이지">→</button>
+</div>
+
+<script>
+(function(){
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const dotsEl = document.getElementById('dots');
+  const pageno = document.getElementById('pageno');
+  let cur = 0;
+  slides.forEach((s, i) => {
+    const d = document.createElement('button');
+    d.className = 'dot' + (i === 0 ? ' on' : '');
+    d.setAttribute('aria-label', (i+1) + '페이지로');
+    d.addEventListener('click', () => go(i));
+    dotsEl.appendChild(d);
+  });
+  const dots = Array.from(dotsEl.children);
+  function go(i){
+    if (i < 0 || i >= slides.length) return;
+    slides[cur].classList.remove('active');
+    dots[cur].classList.remove('on');
+    cur = i;
+    slides[cur].classList.add('active');
+    dots[cur].classList.add('on');
+    pageno.textContent = (cur+1) + ' / ' + slides.length;
+    slides[cur].scrollTop = 0;
+  }
+  document.getElementById('prev').addEventListener('click', () => go(cur-1));
+  document.getElementById('next').addEventListener('click', () => go(cur+1));
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); go(cur+1); }
+    if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); go(cur-1); }
+    if (e.key === 'Home') go(0);
+    if (e.key === 'End') go(slides.length-1);
+  });
+  // touch swipe
+  let tx = null;
+  document.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, {passive:true});
+  document.addEventListener('touchend', e => {
+    if (tx === null) return;
+    const dx = e.changedTouches[0].clientX - tx;
+    if (Math.abs(dx) > 60) go(cur + (dx < 0 ? 1 : -1));
+    tx = null;
+  }, {passive:true});
+})();
+</script>
 
 </body>
 </html>
