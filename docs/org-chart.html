@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OMH 조직도 — GSM · Content · Operation</title>
+<style>
+:root{--navy:#1B3A5C;--navy2:#274E79;--blue:#3B82E8;--teal:#0E9384;--teal2:#0B7568;--ink:#16212E;--slate:#5B6B7E;--bg:#F4F7FB;--card:#FFFFFF;--line:#DDE6F0;--amber:#F2A93B;--red:#C0574A}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Pretendard","Malgun Gothic","Apple SD Gothic Neo",sans-serif;background:var(--bg);color:var(--ink)}
+.wrap{max-width:1480px;margin:0 auto;padding:56px 40px 80px}
+header{margin-bottom:56px}
+.kicker{font-size:15px;font-weight:800;letter-spacing:4px;color:var(--teal);text-transform:uppercase;margin-bottom:14px}
+h1{font-size:clamp(38px,5vw,60px);font-weight:900;line-height:1.12;letter-spacing:-1px}
+h1 .accent{color:var(--navy2)}
+.meta{margin-top:16px;font-size:16px;color:var(--slate)}
+section{margin-top:64px}
+.sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:8px}
+.sec-head h2{font-size:clamp(26px,3vw,36px);font-weight:900}
+.sec-head .count{font-size:16px;font-weight:700;color:var(--slate)}
+.sec-sub{font-size:16px;color:var(--slate);margin-bottom:28px}
+.top-card{margin:0 auto;max-width:520px;border-radius:18px;padding:26px 34px;text-align:center;color:#fff;box-shadow:0 10px 30px rgba(27,58,92,.25)}
+.top-card .nm{font-size:30px;font-weight:900}
+.top-card .rl{font-size:15.5px;opacity:.9;margin-top:6px;font-weight:600}
+.trunk{width:3px;height:34px;background:var(--line);margin:0 auto}
+.grid{display:grid;gap:18px}
+.g6{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.member{background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:22px 18px;text-align:center;transition:transform .15s,box-shadow .15s}
+.member:hover{transform:translateY(-4px);box-shadow:0 12px 26px rgba(27,58,92,.13)}
+.member .nm{font-size:23px;font-weight:900}
+.member .area{font-size:14.5px;color:var(--slate);margin-top:8px;line-height:1.45;font-weight:600}
+.member .tag{display:inline-block;margin-top:10px;font-size:12px;font-weight:800;padding:4px 12px;border-radius:99px}
+.gsm .member .nm{color:var(--navy)}
+.tag.lead{background:#EAF1FB;color:var(--navy2)}
+.tag.warn{background:#FBEDE9;color:var(--red)}
+.tag.off{background:#F0F2F5;color:var(--slate)}
+.note{margin-top:22px;background:#FFF6E8;border:1.5px solid #F2D9AC;border-radius:14px;padding:16px 22px;font-size:15px;color:#7A5A1E;font-weight:600}
+.branches{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.branch{border-radius:18px;background:var(--card);border:1.5px solid var(--line);overflow:hidden}
+.branch-head{padding:18px 26px;color:#fff;display:flex;justify-content:space-between;align-items:center}
+.branch-head .t{font-size:21px;font-weight:900;letter-spacing:1px}
+.branch-head .n{font-size:15px;font-weight:800;opacity:.9}
+.branch-body{padding:24px 26px 28px}
+.roles{font-size:14px;color:var(--slate);line-height:1.7;margin-top:18px;border-top:1.5px dashed var(--line);padding-top:16px}
+.roles b{color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{background:var(--bg);border:1.5px solid var(--line);border-radius:12px;padding:12px 18px;font-size:17px;font-weight:800}
+.chip.pl{background:#E5F5F2;border-color:#BFE5DE}
+.sub-label{font-size:13px;font-weight:800;letter-spacing:2px;color:var(--slate);margin:16px 0 10px;text-transform:uppercase}
+.cover{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.cover span{font-size:13.5px;font-weight:700;background:#E5F5F2;color:var(--teal2);border-radius:99px;padding:5px 14px}
+footer{margin-top:72px;border-top:1.5px solid var(--line);padding-top:22px;font-size:13.5px;color:var(--slate);line-height:1.7}
+@media(max-width:900px){.branches{grid-template-columns:1fr}.wrap{padding:36px 20px 60px}}
+</style>
+</head>
+<body>
+<!-- OMH password gate (client-side, casual protection) -->
+<meta name="robots" content="noindex">
+<style>
+#omh-gate{position:fixed;inset:0;z-index:2147483647;background:#0B1E27;display:flex;align-items:center;justify-content:center;font-family:"Malgun Gothic","Apple SD Gothic Neo",sans-serif}
+#omh-gate .box{text-align:center;padding:40px;max-width:360px;width:90%}
+#omh-gate h1{color:#EDF4F1;font-size:20px;margin:0 0 6px}
+#omh-gate p{color:#9DB8B9;font-size:13px;margin:0 0 24px}
+#omh-gate input{width:100%;box-sizing:border-box;padding:13px 16px;border-radius:10px;border:1px solid rgba(237,244,241,.25);background:rgba(255,255,255,.06);color:#EDF4F1;font-size:15px;outline:none;text-align:center}
+#omh-gate input:focus{border-color:#F2A93B}
+#omh-gate button{margin-top:12px;width:100%;padding:13px;border:0;border-radius:10px;background:#F2A93B;color:#22303A;font-size:15px;font-weight:700;cursor:pointer}
+#omh-gate .err{color:#F08A6B;font-size:12.5px;margin-top:10px;min-height:16px}
+html.omh-locked{overflow:hidden}
+</style>
+<div id="omh-gate"><div class="box">
+<h1>OMH Weekly Report</h1>
+<p>내부 자료입니다. 비밀번호를 입력하세요.</p>
+<input id="omh-pw" type="password" placeholder="Password" autocomplete="off">
+<button id="omh-go">확인</button>
+<div class="err" id="omh-err"></div>
+</div></div>
+<script>
+(function(){
+  var HASH='61798ebe28560a97b9b5f63d864fa6e024d78672f3d3985a53b49c387b1ee65c';
+  var gate=document.getElementById('omh-gate');
+  function unlock(){document.documentElement.classList.remove('omh-locked');if(gate&&gate.parentNode)gate.parentNode.removeChild(gate);}
+  if(sessionStorage.getItem('omh_gate')===HASH){unlock();return;}
+  document.documentElement.classList.add('omh-locked');
+  function sha256(s){return crypto.subtle.digest('SHA-256',new TextEncoder().encode(s)).then(function(b){return Array.prototype.map.call(new Uint8Array(b),function(x){return x.toString(16).padStart(2,'0')}).join('')});}
+  function tryPw(){
+    var v=document.getElementById('omh-pw').value;
+    if(!v)return;
+    sha256(v).then(function(h){
+      if(h===HASH){sessionStorage.setItem('omh_gate',HASH);unlock();}
+      else{document.getElementById('omh-err').textContent='비밀번호가 올바르지 않습니다.';document.getElementById('omh-pw').value='';}
+    });
+  }
+  document.getElementById('omh-go').addEventListener('click',tryPw);
+  document.getElementById('omh-pw').addEventListener('keydown',function(e){if(e.key==='Enter')tryPw();});
+  setTimeout(function(){document.getElementById('omh-pw').focus();},100);
+})();
+</script>
+
+<div class="wrap">
+<header>
+  <div class="kicker">Ohmyhotel &amp; Co. · Organization</div>
+  <h1>OMH 조직도 <span class="accent">GSM · Content · Operation</span></h1>
+  <div class="meta">2026-07 기준 · Global Sales &amp; Marketing + Content &amp; Operation Teams · 내부용</div>
+</header>
+
+<section class="gsm">
+  <div class="sec-head"><h2 style="color:var(--navy)">Global Sales &amp; Marketing (GSM)</h2><span class="count">총괄 1 + 팀원 6</span></div>
+  <div class="sec-sub">채널 발굴·연동·판매 확대 (수요 측) + 파트너 인벤토리 공급 (공급 측) — 2026-06 업무분장 기준</div>
+  <div class="top-card" style="background:linear-gradient(135deg,var(--navy),var(--navy2))">
+    <div class="nm">Aiden Park</div>
+    <div class="rl">Global Head of Sales &amp; Marketing · OP 헤드 겸임</div>
+  </div>
+  <div class="trunk"></div>
+  <div class="grid g6">
+    <div class="member"><div class="nm">Grace</div><div class="area">중화권<br>중국 · 대만 · 홍콩</div><span class="tag lead">대형 B2B · 대만 파트너십</span></div>
+    <div class="member"><div class="nm">Bryant</div><div class="area">싱가포르 · 말레이 · 인도<br>중동 · 유럽/미주 (+인니)</div><span class="tag lead">Senior Sales Manager</span></div>
+    <div class="member"><div class="nm">Nathan</div><div class="area">한국 + 그룹/단체 + 항공</div><span class="tag lead">신규 분담</span></div>
+    <div class="member"><div class="nm">Jane</div><div class="area">글로벌 · 한국 · 일본 서포트</div><span class="tag lead">오퍼레이션 지원</span></div>
+    <div class="member"><div class="nm">Ben</div><div class="area">동남아 · 러시아 · Agoda</div><span class="tag warn">퇴사 예정 · 인수인계 중</span></div>
+    <div class="member"><div class="nm">Jasmine</div><div class="area">—</div><span class="tag off">출산휴가</span></div>
+  </div>
+  <div class="note">※ Ben(동남아·러시아·Agoda) 퇴사 예정 → 인도네시아는 Bryant 인계, 나머지 재배치·후임 채용 진행 중. &nbsp;|&nbsp; 라우팅 원칙: 채널 Country/Region으로 담당 매칭 — 한국=Nathan·Jane / 일본=Aiden·Jane / 중화권=Grace.</div>
+</section>
+
+<section>
+  <div class="sec-head"><h2 style="color:var(--teal2)">Content &amp; Operation</h2><span class="count">매니저 1 + Content 6 + Operation 8</span></div>
+  <div class="sec-sub">호텔 콘텐츠·요금·매핑 관리 + 부킹·정산·Stop Sale 운영</div>
+  <div class="top-card" style="background:linear-gradient(135deg,var(--teal2),var(--teal));max-width:460px">
+    <div class="nm">Vicky</div>
+    <div class="rl">Manager · Content &amp; Operation</div>
+  </div>
+  <div class="trunk"></div>
+  <div class="branches">
+    <div class="branch">
+      <div class="branch-head" style="background:var(--blue)"><span class="t">CONTENT TEAM</span><span class="n">6명 · content@ohmyhotel.com</span></div>
+      <div class="branch-body">
+        <div class="chips">
+          <span class="chip">Nancy</span><span class="chip">Mia</span><span class="chip">Trish</span><span class="chip">Vanessa</span><span class="chip">Karl</span><span class="chip">Jane</span>
+        </div>
+        <div class="roles">
+          <b>① 콘텐츠 관리</b> — 호텔 코드 생성·정보/사진 관리 · 시설 운영상태 · B2C 배너/이벤트 · 호텔 프로모션 세팅<br>
+          <b>② Rate 입력</b> — OMH Admin(ELLIS)·Extranet · DMC 플랫폼(WebBeds·TBO) 요금 입력<br>
+          <b>③ CMS / Extranet 세팅</b> — CMS 상품 구성 · Extranet 계정 생성/설정<br>
+          <b>④ API 매핑 관리</b> — 파트너 매핑리스트 발송·모니터링 · 이슈 조사/해결 · 수동 매핑 · 채널 블랙리스트
+        </div>
+      </div>
+    </div>
+    <div class="branch">
+      <div class="branch-head" style="background:var(--teal)"><span class="t">OPERATION TEAM</span><span class="n">8명</span></div>
+      <div class="branch-body">
+        <div class="sub-label" style="margin-top:0">Part Leaders</div>
+        <div class="chips">
+          <span class="chip pl">Peter</span><span class="chip pl">Paul</span><span class="chip pl">Felix</span>
+        </div>
+        <div class="sub-label">Team Members</div>
+        <div class="chips">
+          <span class="chip">Moon</span><span class="chip">Haze</span><span class="chip">Lucy</span><span class="chip">Juno</span><span class="chip">Ivy</span>
+        </div>
+        <div class="cover"><span>VN — 전 호텔 · 전 채널</span><span>KR — 한국 호텔 + 일부 채널</span><span>JP — 일본 호텔</span></div>
+        <div class="roles">
+          <b>① 부킹 운영</b> — 예약 확정·HCN 입력 · 취소(ELLIS+호텔) · DMC 부킹(WebBeds·TBO) · 분쟁/적자 부킹 해결<br>
+          <b>② 재무 운영</b> — 요금 조정 · VN 호텔 지급 요청 · 보상/적자 부킹 추적 · 인보이스 관리·대사<br>
+          <b>③ Stop Sale</b> — TH/VN 호텔 스탑세일 · DMC 수동 스탑셀 · 매핑 실패 부킹 점검·추가결제 체이싱
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  출처: OMH_GSM_조직브리핑_신임CSO_2026-07.pptx (cb.park, 7/6) · CT-OP orientation.pptx (tu.htn, 7/8) — SharePoint 최신본 기준<br>
+  생성: 2026-07-11 · Owner: Aiden Park (Global Head of Sales &amp; Marketing) · 내부용 (비밀번호 보호)
+</footer>
+</div>
+</body>
+</html>
