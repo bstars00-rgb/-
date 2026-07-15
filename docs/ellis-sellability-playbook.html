@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ELLIS Sellability Setup Playbook</title>
+<style>
+:root{
+  --navy:#1E2761; --navy2:#141A45; --teal:#1C7293; --ink:#22262F; --muted:#6B7280;
+  --line:#E3E7F0; --bg:#ffffff; --side:#F6F8FC; --code:#eef1f8;
+  --ok:#1E8E4E; --okbg:#E4F4EA; --amber:#B5670F; --amberbg:#FBEBD6; --stop:#C0392B; --stopbg:#F7E2DF; --gray:#5B6472; --graybg:#EBEEF4;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Malgun Gothic","Yu Gothic",-apple-system,"Segoe UI",Roboto,system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;font-size:16px}
+code,.mono{font-family:ui-monospace,"Cascadia Code",Consolas,monospace}
+a{color:var(--teal)}
+/* top bar */
+.topbar{position:sticky;top:0;z-index:20;background:var(--navy);color:#fff;display:flex;align-items:center;gap:16px;padding:0 22px;height:58px;box-shadow:0 1px 0 rgba(0,0,0,.15)}
+.topbar .brand{font-weight:700;font-size:17px;letter-spacing:.2px}
+.topbar .brand small{font-weight:400;color:#B9C6EA;font-size:12px;margin-left:8px}
+.topbar .spacer{flex:1}
+.langs{display:flex;gap:6px}
+.langs button{font:600 13px/1 inherit;color:#C7D3F0;background:transparent;border:1px solid #3A4488;border-radius:7px;padding:7px 11px;cursor:pointer}
+.langs button.active{background:#fff;color:var(--navy);border-color:#fff}
+/* layout */
+.wrap{display:grid;grid-template-columns:250px 1fr;max-width:1180px;margin:0 auto}
+aside{position:sticky;top:58px;align-self:start;height:calc(100vh - 58px);overflow:auto;background:var(--side);border-right:1px solid var(--line);padding:22px 16px}
+aside .navttl{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);font-weight:700;margin:0 8px 10px}
+aside a{display:block;color:var(--ink);text-decoration:none;font-size:14.5px;padding:7px 10px;border-radius:7px}
+aside a:hover{background:#e9eef8}
+aside a.on{background:#e5e9f6;color:var(--navy);font-weight:700}
+main{padding:34px 46px 90px;min-width:0}
+main h1{font-size:31px;line-height:1.25;margin:.1em 0 .1em;color:var(--navy);font-weight:800}
+main .lead{color:var(--muted);font-size:16px;margin:0 0 8px}
+section{scroll-margin-top:74px;padding-top:26px}
+section h2{font-size:23px;color:var(--navy);font-weight:800;margin:.6em 0 .4em;padding-bottom:.28em;border-bottom:2px solid var(--line)}
+section h3{font-size:17.5px;color:var(--ink);font-weight:700;margin:1.3em 0 .3em}
+p{margin:.55em 0}
+ul,ol{margin:.5em 0;padding-left:1.3em}
+li{margin:.28em 0}
+/* callouts */
+.cal{border-radius:9px;padding:13px 16px 13px 16px;margin:16px 0;border:1px solid;font-size:14.5px}
+.cal p{margin:.2em 0}
+.cal .ct{font-weight:700;display:block;margin-bottom:2px}
+.cal.tip{background:var(--okbg);border-color:#B7E0C6}.cal.tip .ct{color:var(--ok)}
+.cal.warn{background:var(--amberbg);border-color:#F0CE9E}.cal.warn .ct{color:var(--amber)}
+.cal.danger{background:var(--stopbg);border-color:#EBBDB6}.cal.danger .ct{color:var(--stop)}
+.cal.info{background:#E7EEFA;border-color:#C2D2F0}.cal.info .ct{color:var(--teal)}
+/* pills */
+.pill{font-family:ui-monospace,Consolas,monospace;font-weight:700;font-size:12.5px;padding:3px 8px;border-radius:6px;display:inline-block;white-space:nowrap;line-height:1.35}
+.pill.ok{background:var(--okbg);color:var(--ok)}
+.pill.amber{background:var(--amberbg);color:var(--amber)}
+.pill.stop{background:var(--stopbg);color:var(--stop)}
+.pill.gray{background:var(--graybg);color:var(--gray)}
+.pill.navy{background:#E5E9F6;color:var(--navy)}
+.path{font-family:ui-monospace,Consolas,monospace;font-size:12.5px;background:var(--code);color:var(--navy);padding:2px 7px;border-radius:5px}
+/* tables */
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14px}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:center;vertical-align:middle}
+th{background:var(--navy);color:#fff;font-weight:700;font-size:13px}
+td.l,th.l{text-align:left}
+tr.leak td{background:var(--amberbg)}
+tr:nth-child(even):not(.leak) td{background:#F7F9FD}
+.yes{color:var(--ok);font-weight:700}.no{color:var(--muted)}
+.sells{background:var(--amber);color:#fff;font-weight:700;border-radius:5px;padding:2px 7px;font-size:12px;white-space:nowrap}
+/* status cards */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:16px 0}
+.card{border:1px solid var(--line);border-radius:11px;padding:16px 17px;background:#fff}
+.card h4{margin:0 0 3px;font-size:16px;color:var(--navy)}
+.card .mp{font-size:11.5px;color:var(--muted);margin:0 0 10px}
+.card .row{display:flex;gap:7px;align-items:center;margin:7px 0;font-size:13.5px}
+.figcap{color:var(--muted);font-size:13px;margin:6px 2px 0;text-align:center}
+figure{margin:20px 0}
+.svgbox{border:1px solid var(--line);border-radius:11px;background:#fff;padding:14px;overflow-x:auto}
+.footer{color:var(--muted);font-size:12.5px;border-top:1px solid var(--line);margin-top:40px;padding-top:16px}
+@media(max-width:820px){.wrap{grid-template-columns:1fr}aside{display:none}main{padding:24px 20px 70px}.cards{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<!-- OMH password gate (client-side, casual protection) -->
+<meta name="robots" content="noindex">
+<style>
+#omh-gate{position:fixed;inset:0;z-index:2147483647;background:#0B1E27;display:flex;align-items:center;justify-content:center;font-family:"Malgun Gothic","Apple SD Gothic Neo",sans-serif}
+#omh-gate .box{text-align:center;padding:40px;max-width:360px;width:90%}
+#omh-gate h1{color:#EDF4F1;font-size:20px;margin:0 0 6px}
+#omh-gate p{color:#9DB8B9;font-size:13px;margin:0 0 24px}
+#omh-gate input{width:100%;box-sizing:border-box;padding:13px 16px;border-radius:10px;border:1px solid rgba(237,244,241,.25);background:rgba(255,255,255,.06);color:#EDF4F1;font-size:15px;outline:none;text-align:center}
+#omh-gate input:focus{border-color:#F2A93B}
+#omh-gate button{margin-top:12px;width:100%;padding:13px;border:0;border-radius:10px;background:#F2A93B;color:#22303A;font-size:15px;font-weight:700;cursor:pointer}
+#omh-gate .err{color:#F08A6B;font-size:12.5px;margin-top:10px;min-height:16px}
+html.omh-locked{overflow:hidden}
+</style>
+<div id="omh-gate"><div class="box">
+<h1>OMH Weekly Report</h1>
+<p>내부 자료입니다. 비밀번호를 입력하세요.</p>
+<input id="omh-pw" type="password" placeholder="Password" autocomplete="off">
+<button id="omh-go">확인</button>
+<div class="err" id="omh-err"></div>
+</div></div>
+<script>
+(function(){
+  var HASH='61798ebe28560a97b9b5f63d864fa6e024d78672f3d3985a53b49c387b1ee65c';
+  var gate=document.getElementById('omh-gate');
+  function unlock(){document.documentElement.classList.remove('omh-locked');if(gate&&gate.parentNode)gate.parentNode.removeChild(gate);}
+  if(sessionStorage.getItem('omh_gate')===HASH){unlock();return;}
+  document.documentElement.classList.add('omh-locked');
+  function sha256(s){return crypto.subtle.digest('SHA-256',new TextEncoder().encode(s)).then(function(b){return Array.prototype.map.call(new Uint8Array(b),function(x){return x.toString(16).padStart(2,'0')}).join('')});}
+  function tryPw(){
+    var v=document.getElementById('omh-pw').value;
+    if(!v)return;
+    sha256(v).then(function(h){
+      if(h===HASH){sessionStorage.setItem('omh_gate',HASH);unlock();}
+      else{document.getElementById('omh-err').textContent='비밀번호가 올바르지 않습니다.';document.getElementById('omh-pw').value='';}
+    });
+  }
+  document.getElementById('omh-go').addEventListener('click',tryPw);
+  document.getElementById('omh-pw').addEventListener('keydown',function(e){if(e.key==='Enter')tryPw();});
+  setTimeout(function(){document.getElementById('omh-pw').focus();},100);
+})();
+</script>
+
+<div class="topbar">
+  <span class="brand">ELLIS Playbook <small id="hsub"></small></span>
+  <span class="spacer"></span>
+  <span class="langs">
+    <button data-l="ko" class="active">한국어</button>
+    <button data-l="en">English</button>
+    <button data-l="vi">Tiếng Việt</button>
+    <button data-l="ja">日本語</button>
+  </span>
+</div>
+<div class="wrap">
+  <aside><div class="navttl" id="navttl">Contents</div><nav id="nav"></nav></aside>
+  <main>
+    <h1 id="h1"></h1>
+    <p class="lead" id="lead"></p>
+    <section id="s1"></section>
+    <section id="s2"></section>
+    <section id="s3"></section>
+    <section id="s4"></section>
+    <section id="s5"></section>
+    <section id="s6"></section>
+    <section id="s7"></section>
+    <div class="footer" id="foot"></div>
+  </main>
+</div>
+
+<script>
+/* ---------- language-neutral building blocks ---------- */
+function P(cls,txt){return '<span class="pill '+cls+'">'+txt+'</span>';}
+const HOTEL={ap:P('amber','Approval Pending'),apr:P('ok','Approved'),ss:P('stop','Sale Suspended')};
+const TRD={a:P('ok','Active'),p:P('amber','Pending'),sd:P('gray','Shut Down'),su:P('stop','Suspended')};
+const CON={a:P('ok','Active'),p:P('amber','Pending'),st:P('stop','Stop')};
+
+/* hero SVG — 3 dials -> sellability (language-neutral, values are system terms) */
+const SVG_HERO=`
+<svg viewBox="0 0 940 300" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI,system-ui,sans-serif">
+<defs><marker id="ar" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#1C7293"/></marker></defs>
+<g>
+<rect x="20" y="40" width="220" height="220" rx="14" fill="#F6F8FC" stroke="#D9DEEA"/>
+<text x="130" y="70" text-anchor="middle" font-size="15" font-weight="700" fill="#1E2761">HOTEL STATUS</text>
+<rect x="44" y="90" width="172" height="30" rx="7" fill="#E4F4EA"/><text x="130" y="110" text-anchor="middle" font-size="13" font-weight="700" fill="#1E8E4E">Approved ✓</text>
+<rect x="44" y="128" width="172" height="28" rx="7" fill="#FBEBD6"/><text x="130" y="147" text-anchor="middle" font-size="12.5" fill="#B5670F">Approval Pending</text>
+<rect x="44" y="164" width="172" height="28" rx="7" fill="#F7E2DF"/><text x="130" y="183" text-anchor="middle" font-size="12.5" fill="#C0392B">Sale Suspended</text>
+<text x="130" y="228" text-anchor="middle" font-size="11.5" fill="#6B7280">Products › Hotel Contents</text>
+</g>
+<g>
+<rect x="270" y="40" width="220" height="220" rx="14" fill="#F6F8FC" stroke="#D9DEEA"/>
+<text x="380" y="70" text-anchor="middle" font-size="15" font-weight="700" fill="#1E2761">TRADER STATUS</text>
+<rect x="294" y="90" width="172" height="30" rx="7" fill="#E4F4EA"/><text x="380" y="110" text-anchor="middle" font-size="13" font-weight="700" fill="#1E8E4E">Active ✓</text>
+<rect x="294" y="128" width="172" height="28" rx="7" fill="#FBEBD6"/><text x="380" y="147" text-anchor="middle" font-size="12.5" fill="#B5670F">Pending</text>
+<rect x="294" y="164" width="172" height="28" rx="7" fill="#EBEEF4"/><text x="380" y="183" text-anchor="middle" font-size="12.5" fill="#5B6472">Shut Down / Suspended</text>
+<text x="380" y="228" text-anchor="middle" font-size="11.5" fill="#6B7280">Users › Traders</text>
+</g>
+<g>
+<rect x="520" y="40" width="220" height="220" rx="14" fill="#F6F8FC" stroke="#D9DEEA"/>
+<text x="630" y="70" text-anchor="middle" font-size="15" font-weight="700" fill="#1E2761">CONTRACT STATUS</text>
+<rect x="544" y="90" width="172" height="30" rx="7" fill="#E4F4EA"/><text x="630" y="110" text-anchor="middle" font-size="13" font-weight="700" fill="#1E8E4E">Active ✓</text>
+<rect x="544" y="128" width="172" height="28" rx="7" fill="#FBEBD6"/><text x="630" y="147" text-anchor="middle" font-size="12.5" fill="#B5670F">Pending</text>
+<rect x="544" y="164" width="172" height="28" rx="7" fill="#F7E2DF"/><text x="630" y="183" text-anchor="middle" font-size="12.5" fill="#C0392B">Stop</text>
+<text x="630" y="228" text-anchor="middle" font-size="11.5" fill="#6B7280">Users › Traders › Vendor Contract</text>
+</g>
+<line x1="740" y1="150" x2="792" y2="150" stroke="#1C7293" stroke-width="2.5" marker-end="url(#ar)"/>
+<rect x="796" y="104" width="126" height="92" rx="13" fill="#1E2761"/>
+<text x="859" y="140" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">SELLABILITY</text>
+<text x="859" y="164" text-anchor="middle" font-size="12" fill="#CADCFC">B2B · B2C · 3rd</text>
+</svg>`;
+
+/* decision-flow SVG */
+const SVG_FLOW=`
+<svg viewBox="0 0 940 250" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI,system-ui,sans-serif">
+<defs><marker id="ar2" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#6B7280"/></marker></defs>
+<rect x="20" y="95" width="150" height="60" rx="12" fill="#1E2761"/><text id="flowQ" x="95" y="130" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">?</text>
+<line x1="170" y1="125" x2="228" y2="45" stroke="#6B7280" stroke-width="1.7" marker-end="url(#ar2)"/>
+<line x1="170" y1="125" x2="228" y2="125" stroke="#6B7280" stroke-width="1.7" marker-end="url(#ar2)"/>
+<line x1="170" y1="125" x2="228" y2="205" stroke="#6B7280" stroke-width="1.7" marker-end="url(#ar2)"/>
+<g><rect x="232" y="18" width="270" height="54" rx="11" fill="#E4F4EA" stroke="#B7E0C6"/><text id="f1" x="248" y="40" font-size="12.5" font-weight="700" fill="#1E8E4E">Sell everywhere</text><text x="248" y="60" font-size="11.5" fill="#22262F">Hotel Approved · Trader Active · Contract Active</text></g>
+<g><rect x="232" y="98" width="270" height="54" rx="11" fill="#E7EEFA" stroke="#C2D2F0"/><text id="f2" x="248" y="120" font-size="12.5" font-weight="700" fill="#1C7293">Only 3rd-party B2C</text><text x="248" y="140" font-size="11.5" fill="#22262F">Hotel Approved · Contract Stop</text></g>
+<g><rect x="232" y="178" width="270" height="54" rx="11" fill="#F7E2DF" stroke="#EBBDB6"/><text id="f3" x="248" y="200" font-size="12.5" font-weight="700" fill="#C0392B">Stop ALL sales</text><text x="248" y="220" font-size="11.5" fill="#22262F">Hotel → Sale Suspended</text></g>
+<g><rect x="540" y="60" width="380" height="130" rx="12" fill="#FBEBD6" stroke="#F0CE9E"/>
+<text id="fwt" x="560" y="88" font-size="13" font-weight="700" fill="#B5670F">⚠</text>
+<text id="fw1" x="560" y="112" font-size="12" fill="#22262F"> </text>
+<text id="fw2" x="560" y="134" font-size="12" fill="#22262F"> </text>
+<text id="fw3" x="560" y="156" font-size="12" fill="#22262F"> </text></g>
+</svg>`;
+
+/* ---------- matrix (Hotel=Approved) — values language-neutral ---------- */
+const SC=[[1,'Active','Active','Y','Y','Y'],[2,'Active','Pending','N','N','Y'],[3,'Active','Stop','N','N','Y'],
+[4,'Pending','Active','L','N','Y'],[5,'Pending','Pending','N','N','Y'],[6,'Pending','Stop','N','N','Y'],
+[7,'Shut Down','Active','L','N','Y'],[8,'Shut Down','Pending','N','N','Y'],[9,'Shut Down','Stop','N','N','Y'],
+[10,'Suspended','Active','L','N','Y'],[11,'Suspended','Pending','N','N','Y'],[12,'Suspended','Stop','N','N','Y']];
+function matrix(t){
+  let h='<table><thead><tr><th>#</th><th class="l">'+t.mTrader+'</th><th class="l">'+t.mContract+'</th><th>B2B (DC)</th><th>B2C (DC)</th><th>B2C (3rd)</th></tr></thead><tbody>';
+  for(const r of SC){const leak=r[3]==='L';
+    const cell=v=>v==='Y'?'<span class="yes">Y</span>':v==='N'?'<span class="no">N</span>':'<span class="sells">'+t.sells+'</span>';
+    h+='<tr class="'+(leak?'leak':'')+'"><td>'+r[0]+'</td><td class="l mono">'+r[1]+'</td><td class="l mono">'+r[2]+'</td><td>'+cell(r[3])+'</td><td>'+cell(r[4])+'</td><td>'+cell(r[5])+'</td></tr>';}
+  return h+'</tbody></table>';
+}
+/* recipe table */
+function recipes(t){
+  const rows=[
+    [t.rA,HOTEL.apr,TRD.a,CON.a,t.rAr,'ok'],
+    [t.rB,HOTEL.apr,'<span class="pill gray">any</span>',CON.st,t.rBr,'info'],
+    [t.rC,HOTEL.ss,'—','—',t.rCr,'stop'],
+    [t.rD,HOTEL.ap,'—','—',t.rDr,'amber'],
+    [t.rE,HOTEL.apr+' / '+TRD.p,TRD.p+'/'+TRD.su,CON.st,t.rEr,'ok'],
+  ];
+  let h='<table><thead><tr><th class="l">'+t.rGoal+'</th><th>Hotel</th><th>Trader</th><th>Contract</th><th class="l">'+t.rResult+'</th></tr></thead><tbody>';
+  for(const r of rows){h+='<tr><td class="l"><b>'+r[0]+'</b></td><td>'+r[1]+'</td><td>'+r[2]+'</td><td>'+r[3]+'</td><td class="l">'+r[4]+'</td></tr>';}
+  return h+'</tbody></table>';
+}
+
+/* ---------- i18n prose ---------- */
+const I18N={
+ko:{lang:'ko',hsub:'SCM 교육자료',navttl:'목차',title:'ELLIS 판매가능 상태값 설정 플레이북',
+ lead:'SCM 교육자료 · 우리 시스템은 Hotel · Trader · Vendor Contract 상태 조합으로 판매가능을 결정합니다 · 2026-07-14 기준',
+ nav:['1. 개요','2. 3개 상태값','3. 판매가능 매트릭스','4. 설정 방법','5. 흔한 실수','6. SCM 체크리스트','7. 용어'],
+ mTrader:'Trader 상태',mContract:'Contract 상태',sells:'판매됨 ⚠',
+ rGoal:'목표',rResult:'결과',
+ rA:'모든 채널로 판매',rAr:'B2B + B2C 직접 + 3rd-party 모두 판매',
+ rB:'직접판매 중단, 3rd-party 유지',rBr:'직접(B2B·B2C) 꺼짐, 3rd-party B2C는 계속 판매',
+ rC:'모든 판매 중단',rCr:'아무 채널도 판매 안 됨 (3rd-party 포함)',
+ rD:'온보딩 중(미준비)',rDr:'판매·매핑 모두 안 됨',
+ rE:'벤더 일시중단(정상 처리)',rEr:'직접판매 꺼짐 — 누수 없음(정합 상태)',
+ flowQ:'무엇을 팔 것인가?',f1:'모든 채널 판매',f2:'3rd-party B2C만',f3:'모든 판매 중단',
+ fw1:'Trader를 비활성으로 두면서',fw2:'Contract를 Active로 남기지 말 것 —',fw3:'B2B가 계속 팔립니다(누수).',
+ s1:`<h2>1. 개요</h2>
+ <p>ELLIS에서 <b>호텔이 판매되는지, 어느 채널로 판매되는지</b>는 세 가지 상태값이 <b>함께</b> 결정합니다 — <b>Hotel Status</b>, <b>Trader Status</b>, <b>Vendor Contract Status</b>. 이 플레이북은 SCM이 의도한 판매 결과를 얻도록 이 값들을 <b>어떻게 설정</b>하는지, 그리고 흔한 함정을 어떻게 피하는지 안내합니다.</p>
+ <figure><div class="svgbox">${SVG_HERO}</div><figcaption class="figcap">세 상태값의 조합이 판매가능(B2B·B2C·3rd-party)을 결정합니다.</figcaption></figure>
+ <div class="cal tip"><span class="ct">황금률</span><p>판매가능은 <b>단일 스위치가 아니라 세 값의 조합</b>입니다. 하나만 바꾸지 말고 세 값을 항상 의도적으로 함께 설정하세요.</p></div>`,
+ s2:`<h2>2. 3개 상태값</h2>
+ <div class="cards">
+ <div class="card"><h4>Hotel Status</h4><p class="mp"><span class="path">Products › Hotel Contents</span></p>
+   <div class="row">${HOTEL.apr} 예약 노출·판매 가능</div><div class="row">${HOTEL.ap} 신규 등록·아직 미노출</div><div class="row">${HOTEL.ss} 숨김(삭제 대신) — 판매 안 됨</div>
+   <p style="font-size:13px;color:var(--muted);margin-top:8px">호텔이 <b>Approved</b>일 때만 판매 대상이 됩니다.</p></div>
+ <div class="card"><h4>Trader Status</h4><p class="mp"><span class="path">Users › Traders</span> (벤더/호텔 계정)</p>
+   <div class="row">${TRD.a} 직접(DC) 채널 열림</div><div class="row">${TRD.p} 승인 대기</div><div class="row">${TRD.sd} 종료</div><div class="row">${TRD.su} 정지</div>
+   <p style="font-size:13px;color:var(--muted);margin-top:8px"><b>Active</b>일 때만 직접판매(DC) 채널이 유지됩니다.</p></div>
+ <div class="card"><h4>Contract Status</h4><p class="mp"><span class="path">Users › Traders › Vendor Contract</span></p>
+   <div class="row">${CON.a} 직접계약 유효</div><div class="row">${CON.p} 대기</div><div class="row">${CON.st} 중지</div>
+   <p style="font-size:13px;color:var(--muted);margin-top:8px">직접계약(Vendor Contract)의 유효 여부입니다.</p></div>
+ </div>
+ <div class="cal info"><span class="ct">참고 — Contract Type</span><p><span class="mono">Exclusive / Shared / Dynamic Rate</span>는 <b>요금 모델</b>일 뿐, 판매가능 스위치가 아닙니다. 판매 여부는 위 세 <b>상태값</b>이 결정합니다.</p></div>`,
+ s3:`<h2>3. 판매가능 매트릭스 (Hotel = Approved)</h2>
+ <p>호텔이 <b>Approved</b>일 때 Trader·Contract 조합에 따른 12가지 결과입니다.</p>
+ __MATRIX__
+ <div class="cal info"><span class="ct">핵심</span><p>· <b>#1(Active + Active)만</b> B2B·B2C 직접 판매됩니다.<br>· <b>3rd-party B2C</b>는 호텔이 Approved이면 Trader/Contract와 <b>무관하게 계속</b> 판매됩니다.<br>· <b>#4·7·10</b>은 Trader가 비활성인데 Contract가 Active라 <b>B2B가 새는 시스템 공백</b>입니다(5절 참조).</p></div>`,
+ s4:`<h2>4. 설정 방법 — 목표별 레시피</h2>
+ <p>"무엇을 팔 것인가"를 먼저 정하고, 그에 맞게 세 값을 설정합니다.</p>
+ <figure><div class="svgbox">${SVG_FLOW}</div><figcaption class="figcap">원하는 판매 결과 → 설정할 상태값.</figcaption></figure>
+ __RECIPES__
+ <div class="cal warn"><span class="ct">3rd-party를 멈추려면</span><p>Contract를 <span class="pill stop">Stop</span>으로 해도 3rd-party는 멈추지 않습니다. <b>3rd-party 판매는 Hotel Status를 <span class="pill stop">Sale Suspended</span>로 바꿔야만</b> 멈춥니다.</p></div>`,
+ s5:`<h2>5. 흔한 실수</h2>
+ <div class="cal danger"><span class="ct">1. Trader 비활성 + Contract Active (누수)</span><p>Trader를 ${TRD.p}·${TRD.sd}·${TRD.su}로 내리면서 Contract를 ${CON.a}로 남기지 마세요. B2B 직접판매가 꺼져야 하는데 <b>기술적 이슈로 채널에서 계속 팔립니다</b>(시나리오 4·7·10). <b>Trader를 내릴 때는 반드시 Contract도 ${CON.st}으로</b> 맞추세요.</p></div>
+ <div class="cal warn"><span class="ct">2. Contract만 Stop하고 3rd-party가 멈출 거라 기대</span><p>3rd-party는 Hotel Status가 바뀔 때만 멈춥니다.</p></div>
+ <div class="cal warn"><span class="ct">3. 테스트/임시 호텔을 Approved로 방치</span><p>Approved면 실제로 판매됩니다. 테스트 호텔은 ${HOTEL.ap} 또는 ${HOTEL.ss}로 두세요.</p></div>`,
+ s6:`<h2>6. SCM 체크리스트</h2>
+ <p>상태값을 바꾸기 전에 아래를 확인하세요.</p>
+ <ol>
+ <li><b>판매 결과부터 결정</b> — 전체 판매 / 3rd-party만 / 전면 중단 중 무엇인가?</li>
+ <li><b>Hotel Status를 목표에 맞춤</b> — 팔려면 ${HOTEL.apr}, 완전 중단은 ${HOTEL.ss}.</li>
+ <li><b>Trader ↔ Contract 정합</b> — Trader가 Active가 아니면 Contract는 ${CON.st}.</li>
+ <li><b>3rd-party는 Hotel Status를 따름</b> — Contract가 아니라 Hotel로 통제.</li>
+ <li><b>테스트/임시 호텔은 Approved로 두지 않기.</b></li>
+ </ol>
+ <div class="cal tip"><span class="ct">한 줄 요약</span><p>“전체 판매 = Approved + Active + Active. 3rd-party만 = Approved + Contract Stop. 전면 중단 = Sale Suspended. Trader를 내리면 Contract도 내린다.”</p></div>`,
+ s7:`<h2>7. 용어</h2>
+ <table><thead><tr><th class="l">용어</th><th class="l">정의</th></tr></thead><tbody>
+ <tr><td class="l"><b>Trader</b></td><td class="l">OMH와 거래하는 회사(법인) 계정. Seller 또는 Vendor일 수 있음. 여기서는 <b>호텔 공급사(Vendor) 계정</b>.</td></tr>
+ <tr><td class="l"><b>Vendor</b></td><td class="l">OMH에 상품을 공급하는 회사(호텔·체인·DMC 등).</td></tr>
+ <tr><td class="l"><b>Seller</b></td><td class="l">OMH로부터 사가는 회사(채널/고객사).</td></tr>
+ <tr><td class="l"><b>Vendor Contract</b></td><td class="l">OMH와 벤더(호텔) 간 직접계약. 상태 Active/Pending/Stop.</td></tr>
+ <tr><td class="l"><b>DC</b></td><td class="l">Direct Contract — 직접계약 기반 판매(B2B·B2C).</td></tr>
+ <tr><td class="l"><b>3rd-party</b></td><td class="l">외부 공급망을 통한 B2C 판매. 호텔이 Approved이면 노출.</td></tr>
+ </tbody></table>`,
+ foot:'OMH GSM · SCM 교육자료 · ELLIS Hotel–Trader–Vendor Contract 상태값 설정 가이드 · 데이터 기준 2026-07-14 · 용어 출처: ELLIS Admin Playbook'},
+
+en:{lang:'en',hsub:'SCM Training',navttl:'Contents',title:'ELLIS Sellability Status Setup Playbook',
+ lead:'SCM training · Our system decides sellability by the combination of Hotel · Trader · Vendor Contract status · Data as of 2026-07-14',
+ nav:['1. Overview','2. The 3 Statuses','3. Sellability Matrix','4. How to Set It','5. Common Mistakes','6. SCM Checklist','7. Glossary'],
+ mTrader:'Trader Status',mContract:'Contract Status',sells:'Sells ⚠',
+ rGoal:'Goal',rResult:'Result',
+ rA:'Sell on all channels',rAr:'B2B + B2C direct + 3rd-party all sell',
+ rB:'Stop direct, keep 3rd-party',rBr:'Direct (B2B·B2C) off; 3rd-party B2C still sells',
+ rC:'Stop all sales',rCr:'Nothing sells anywhere (incl. 3rd-party)',
+ rD:'Onboarding (not ready)',rDr:'No sale, no mapping',
+ rE:'Pause a vendor (properly)',rEr:'Direct off — no leak (aligned)',
+ flowQ:'What do you want to sell?',f1:'Sell everywhere',f2:'Only 3rd-party B2C',f3:'Stop ALL sales',
+ fw1:'Never leave a Trader inactive',fw2:'while Contract stays Active —',fw3:'B2B keeps selling (leak).',
+ s1:`<h2>1. Overview</h2>
+ <p>In ELLIS, <b>whether a hotel sells — and through which channel</b> — is decided by three status values working <b>together</b>: <b>Hotel Status</b>, <b>Trader Status</b> and <b>Vendor Contract Status</b>. This playbook shows SCM <b>how to set</b> them to get the sales outcome you intend, and how to avoid the common pitfalls.</p>
+ <figure><div class="svgbox">${SVG_HERO}</div><figcaption class="figcap">The combination of the three statuses decides sellability (B2B · B2C · 3rd-party).</figcaption></figure>
+ <div class="cal tip"><span class="ct">Golden rule</span><p>Sellability is <b>the combination of three values, not any single switch</b>. Always set all three deliberately — don't flip just one.</p></div>`,
+ s2:`<h2>2. The 3 Statuses</h2>
+ <div class="cards">
+ <div class="card"><h4>Hotel Status</h4><p class="mp"><span class="path">Products › Hotel Contents</span></p>
+   <div class="row">${HOTEL.apr} live, sellable</div><div class="row">${HOTEL.ap} new, not yet live</div><div class="row">${HOTEL.ss} hidden — not sold</div>
+   <p style="font-size:13px;color:var(--muted);margin-top:8px">Only an <b>Approved</b> hotel is on sale.</p></div>
+ <div class="card"><h4>Trader Status</h4><p class="mp"><span class="path">Users › Traders</span> (vendor/hotel account)</p>
+   <div class="row">${TRD.a} direct (DC) channel open</div><div class="row">${TRD.p} awaiting approval</div><div class="row">${TRD.sd} shut down</div><div class="row">${TRD.su} suspended</div>
+   <p style="font-size:13px;color:var(--muted);margin-top:8px">Only <b>Active</b> keeps the direct-sale (DC) channel open.</p></div>
+ <div class="card"><h4>Contract Status</h4><p class="mp"><span class="path">Users › Traders › Vendor Contract</span></p>
+   <div class="row">${CON.a} direct contract live</div><div class="row">${CON.p} pending</div><div class="row">${CON.st} stopped</div>
+   <p style="font-size:13px;color:var(--muted);margin-top:8px">Whether the direct Vendor Contract is live.</p></div>
+ </div>
+ <div class="cal info"><span class="ct">Note — Contract Type</span><p><span class="mono">Exclusive / Shared / Dynamic Rate</span> is a <b>pricing model</b>, not a sellability switch. Sale is decided by the three <b>statuses</b> above.</p></div>`,
+ s3:`<h2>3. Sellability Matrix (Hotel = Approved)</h2>
+ <p>The 12 outcomes by Trader × Contract combination when a hotel is <b>Approved</b>.</p>
+ __MATRIX__
+ <div class="cal info"><span class="ct">Key reading</span><p>· <b>Only #1 (Active + Active)</b> sells B2B + B2C directly.<br>· <b>3rd-party B2C</b> keeps selling for any Approved hotel, <b>regardless</b> of Trader / Contract.<br>· <b>#4 · 7 · 10</b> are a <b>system gap</b> where B2B leaks because the Trader is inactive but the Contract is Active (see §5).</p></div>`,
+ s4:`<h2>4. How to Set It — recipes by goal</h2>
+ <p>Decide "what you want to sell" first, then set the three values to match.</p>
+ <figure><div class="svgbox">${SVG_FLOW}</div><figcaption class="figcap">Desired sales outcome → status values to set.</figcaption></figure>
+ __RECIPES__
+ <div class="cal warn"><span class="ct">To stop 3rd-party</span><p>Setting Contract to <span class="pill stop">Stop</span> does <b>not</b> stop 3rd-party. 3rd-party stops <b>only</b> when you change Hotel Status to <span class="pill stop">Sale Suspended</span>.</p></div>`,
+ s5:`<h2>5. Common Mistakes</h2>
+ <div class="cal danger"><span class="ct">1. Trader inactive + Contract Active (leak)</span><p>Don't lower a Trader to ${TRD.p}·${TRD.sd}·${TRD.su} while leaving Contract at ${CON.a}. Direct B2B should be off, but <b>it keeps selling on channels due to a tech issue</b> (scenarios 4·7·10). <b>When you deactivate a Trader, also set Contract to ${CON.st}.</b></p></div>
+ <div class="cal warn"><span class="ct">2. Expecting Contract=Stop to also stop 3rd-party</span><p>3rd-party stops only when Hotel Status changes.</p></div>
+ <div class="cal warn"><span class="ct">3. Leaving test / placeholder hotels as Approved</span><p>An Approved hotel really sells. Keep test hotels at ${HOTEL.ap} or ${HOTEL.ss}.</p></div>`,
+ s6:`<h2>6. SCM Checklist</h2>
+ <p>Before changing any status, check:</p>
+ <ol>
+ <li><b>Decide the sales outcome first</b> — sell all / 3rd-party only / stop all?</li>
+ <li><b>Match Hotel Status to the goal</b> — ${HOTEL.apr} to sell, ${HOTEL.ss} to fully stop.</li>
+ <li><b>Align Trader ↔ Contract</b> — if the Trader isn't Active, set Contract to ${CON.st}.</li>
+ <li><b>3rd-party follows Hotel Status</b> — control it via Hotel, not Contract.</li>
+ <li><b>Never leave test / placeholder hotels as Approved.</b></li>
+ </ol>
+ <div class="cal tip"><span class="ct">One-line summary</span><p>"Sell all = Approved + Active + Active. 3rd-party only = Approved + Contract Stop. Stop all = Sale Suspended. Lower a Trader → lower the Contract too."</p></div>`,
+ s7:`<h2>7. Glossary</h2>
+ <table><thead><tr><th class="l">Term</th><th class="l">Definition</th></tr></thead><tbody>
+ <tr><td class="l"><b>Trader</b></td><td class="l">A company account trading with OMH; can be a Seller and/or Vendor. Here it is the <b>hotel supplier (Vendor) account</b>.</td></tr>
+ <tr><td class="l"><b>Vendor</b></td><td class="l">A company that supplies inventory to OMH (hotel, chain, DMC…).</td></tr>
+ <tr><td class="l"><b>Seller</b></td><td class="l">A company that buys from OMH (channel / client).</td></tr>
+ <tr><td class="l"><b>Vendor Contract</b></td><td class="l">The direct contract between OMH and a vendor (hotel). Status Active/Pending/Stop.</td></tr>
+ <tr><td class="l"><b>DC</b></td><td class="l">Direct Contract — sale based on the direct contract (B2B · B2C).</td></tr>
+ <tr><td class="l"><b>3rd-party</b></td><td class="l">B2C sale via external supply. Exposed whenever the hotel is Approved.</td></tr>
+ </tbody></table>`,
+ foot:'OMH GSM · SCM training · ELLIS Hotel–Trader–Vendor Contract status setup guide · Data as of 2026-07-14 · Terminology: ELLIS Admin Playbook'},
+
+vi:{lang:'vi',hsub:'Đào tạo SCM',navttl:'Mục lục',title:'Playbook thiết lập trạng thái khả năng bán ELLIS',
+ lead:'Tài liệu đào tạo SCM · Hệ thống quyết định khả năng bán theo tổ hợp trạng thái Hotel · Trader · Vendor Contract · Dữ liệu đến 14/07/2026',
+ nav:['1. Tổng quan','2. Ba trạng thái','3. Ma trận khả năng bán','4. Cách thiết lập','5. Lỗi thường gặp','6. Danh sách kiểm tra','7. Thuật ngữ'],
+ mTrader:'Trạng thái Trader',mContract:'Trạng thái Contract',sells:'Vẫn bán ⚠',
+ rGoal:'Mục tiêu',rResult:'Kết quả',
+ rA:'Bán trên mọi kênh',rAr:'B2B + B2C trực tiếp + bên thứ ba đều bán',
+ rB:'Dừng trực tiếp, giữ bên thứ ba',rBr:'Trực tiếp (B2B·B2C) tắt; B2C bên thứ ba vẫn bán',
+ rC:'Dừng mọi bán hàng',rCr:'Không bán ở đâu (kể cả bên thứ ba)',
+ rD:'Đang onboarding (chưa sẵn sàng)',rDr:'Không bán, không mapping',
+ rE:'Tạm dừng vendor (đúng cách)',rEr:'Trực tiếp tắt — không rò rỉ (đồng bộ)',
+ flowQ:'Bạn muốn bán gì?',f1:'Bán mọi kênh',f2:'Chỉ B2C bên thứ ba',f3:'Dừng mọi bán hàng',
+ fw1:'Không để Trader không hoạt động',fw2:'trong khi Contract vẫn Active —',fw3:'B2B vẫn bán (rò rỉ).',
+ s1:`<h2>1. Tổng quan</h2>
+ <p>Trong ELLIS, <b>khách sạn có bán được không — và qua kênh nào</b> — được quyết định bởi ba trạng thái hoạt động <b>cùng nhau</b>: <b>Hotel Status</b>, <b>Trader Status</b> và <b>Vendor Contract Status</b>. Playbook này hướng dẫn SCM <b>cách thiết lập</b> chúng để đạt kết quả bán mong muốn và tránh các lỗi thường gặp.</p>
+ <figure><div class="svgbox">${SVG_HERO}</div><figcaption class="figcap">Tổ hợp ba trạng thái quyết định khả năng bán (B2B · B2C · bên thứ ba).</figcaption></figure>
+ <div class="cal tip"><span class="ct">Nguyên tắc vàng</span><p>Khả năng bán là <b>tổ hợp của ba giá trị, không phải một công tắc</b>. Luôn thiết lập cả ba một cách có chủ đích — đừng chỉ đổi một.</p></div>`,
+ s2:`<h2>2. Ba trạng thái</h2>
+ <div class="cards">
+ <div class="card"><h4>Hotel Status</h4><p class="mp"><span class="path">Products › Hotel Contents</span></p>
+   <div class="row">${HOTEL.apr} hiển thị, bán được</div><div class="row">${HOTEL.ap} mới, chưa hiển thị</div><div class="row">${HOTEL.ss} ẩn — không bán</div>
+   <p style="font-size:13px;color:var(--muted);margin-top:8px">Chỉ khách sạn <b>Approved</b> mới được bán.</p></div>
+ <div class="card"><h4>Trader Status</h4><p class="mp"><span class="path">Users › Traders</span> (tài khoản vendor/khách sạn)</p>
+   <div class="row">${TRD.a} kênh trực tiếp (DC) mở</div><div class="row">${TRD.p} chờ duyệt</div><div class="row">${TRD.sd} đóng</div><div class="row">${TRD.su} tạm ngưng</div>
+   <p style="font-size:13px;color:var(--muted);margin-top:8px">Chỉ <b>Active</b> mới giữ kênh bán trực tiếp (DC).</p></div>
+ <div class="card"><h4>Contract Status</h4><p class="mp"><span class="path">Users › Traders › Vendor Contract</span></p>
+   <div class="row">${CON.a} hợp đồng trực tiếp còn hiệu lực</div><div class="row">${CON.p} chờ</div><div class="row">${CON.st} dừng</div>
+   <p style="font-size:13px;color:var(--muted);margin-top:8px">Hợp đồng trực tiếp (Vendor Contract) có hiệu lực hay không.</p></div>
+ </div>
+ <div class="cal info"><span class="ct">Lưu ý — Contract Type</span><p><span class="mono">Exclusive / Shared / Dynamic Rate</span> là <b>mô hình giá</b>, không phải công tắc khả năng bán. Việc bán do ba <b>trạng thái</b> trên quyết định.</p></div>`,
+ s3:`<h2>3. Ma trận khả năng bán (Hotel = Approved)</h2>
+ <p>12 kết quả theo tổ hợp Trader × Contract khi khách sạn <b>Approved</b>.</p>
+ __MATRIX__
+ <div class="cal info"><span class="ct">Điểm chính</span><p>· <b>Chỉ #1 (Active + Active)</b> bán trực tiếp B2B + B2C.<br>· <b>B2C bên thứ ba</b> vẫn bán cho mọi khách sạn Approved, <b>bất kể</b> Trader / Contract.<br>· <b>#4 · 7 · 10</b> là <b>lỗ hổng hệ thống</b> khiến B2B rò rỉ vì Trader không hoạt động nhưng Contract vẫn Active (xem §5).</p></div>`,
+ s4:`<h2>4. Cách thiết lập — công thức theo mục tiêu</h2>
+ <p>Xác định "muốn bán gì" trước, rồi đặt ba giá trị cho khớp.</p>
+ <figure><div class="svgbox">${SVG_FLOW}</div><figcaption class="figcap">Kết quả bán mong muốn → trạng thái cần đặt.</figcaption></figure>
+ __RECIPES__
+ <div class="cal warn"><span class="ct">Để dừng bên thứ ba</span><p>Đặt Contract thành <span class="pill stop">Stop</span> <b>không</b> dừng được bên thứ ba. Bên thứ ba chỉ dừng khi đổi Hotel Status thành <span class="pill stop">Sale Suspended</span>.</p></div>`,
+ s5:`<h2>5. Lỗi thường gặp</h2>
+ <div class="cal danger"><span class="ct">1. Trader không hoạt động + Contract Active (rò rỉ)</span><p>Đừng hạ Trader xuống ${TRD.p}·${TRD.sd}·${TRD.su} mà vẫn để Contract ở ${CON.a}. B2B trực tiếp lẽ ra phải tắt, nhưng <b>vẫn bán trên kênh do lỗi kỹ thuật</b> (kịch bản 4·7·10). <b>Khi hạ Trader, hãy đặt Contract thành ${CON.st}.</b></p></div>
+ <div class="cal warn"><span class="ct">2. Tưởng Contract=Stop sẽ dừng bên thứ ba</span><p>Bên thứ ba chỉ dừng khi Hotel Status thay đổi.</p></div>
+ <div class="cal warn"><span class="ct">3. Để khách sạn test / tạm ở Approved</span><p>Approved là bán thật. Hãy để khách sạn test ở ${HOTEL.ap} hoặc ${HOTEL.ss}.</p></div>`,
+ s6:`<h2>6. Danh sách kiểm tra SCM</h2>
+ <p>Trước khi đổi bất kỳ trạng thái nào, hãy kiểm tra:</p>
+ <ol>
+ <li><b>Xác định kết quả bán trước</b> — bán tất cả / chỉ bên thứ ba / dừng tất cả?</li>
+ <li><b>Đặt Hotel Status khớp mục tiêu</b> — ${HOTEL.apr} để bán, ${HOTEL.ss} để dừng hoàn toàn.</li>
+ <li><b>Đồng bộ Trader ↔ Contract</b> — nếu Trader không Active, đặt Contract thành ${CON.st}.</li>
+ <li><b>Bên thứ ba theo Hotel Status</b> — điều khiển qua Hotel, không phải Contract.</li>
+ <li><b>Không để khách sạn test / tạm ở Approved.</b></li>
+ </ol>
+ <div class="cal tip"><span class="ct">Tóm tắt một dòng</span><p>"Bán tất cả = Approved + Active + Active. Chỉ bên thứ ba = Approved + Contract Stop. Dừng tất cả = Sale Suspended. Hạ Trader → hạ luôn Contract."</p></div>`,
+ s7:`<h2>7. Thuật ngữ</h2>
+ <table><thead><tr><th class="l">Thuật ngữ</th><th class="l">Định nghĩa</th></tr></thead><tbody>
+ <tr><td class="l"><b>Trader</b></td><td class="l">Tài khoản công ty giao dịch với OMH; có thể là Seller và/hoặc Vendor. Ở đây là <b>tài khoản nhà cung cấp khách sạn (Vendor)</b>.</td></tr>
+ <tr><td class="l"><b>Vendor</b></td><td class="l">Công ty cung cấp tồn kho cho OMH (khách sạn, chuỗi, DMC…).</td></tr>
+ <tr><td class="l"><b>Seller</b></td><td class="l">Công ty mua từ OMH (kênh / khách hàng).</td></tr>
+ <tr><td class="l"><b>Vendor Contract</b></td><td class="l">Hợp đồng trực tiếp giữa OMH và vendor (khách sạn). Trạng thái Active/Pending/Stop.</td></tr>
+ <tr><td class="l"><b>DC</b></td><td class="l">Direct Contract — bán dựa trên hợp đồng trực tiếp (B2B · B2C).</td></tr>
+ <tr><td class="l"><b>3rd-party</b></td><td class="l">Bán B2C qua nguồn cung bên ngoài. Hiển thị khi khách sạn Approved.</td></tr>
+ </tbody></table>`,
+ foot:'OMH GSM · Tài liệu đào tạo SCM · Hướng dẫn thiết lập trạng thái ELLIS Hotel–Trader–Vendor Contract · Dữ liệu đến 14/07/2026 · Thuật ngữ: ELLIS Admin Playbook'},
+
+ja:{lang:'ja',hsub:'SCM 教育資料',navttl:'目次',title:'ELLIS 販売可否ステータス設定プレイブック',
+ lead:'SCM 教育資料 · 当社システムは Hotel · Trader · Vendor Contract のステータス組合せで販売可否を決定します · 2026-07-14時点',
+ nav:['1. 概要','2. 3つのステータス','3. 販売可否マトリクス','4. 設定方法','5. よくある間違い','6. SCMチェックリスト','7. 用語'],
+ mTrader:'Trader ステータス',mContract:'Contract ステータス',sells:'販売 ⚠',
+ rGoal:'目標',rResult:'結果',
+ rA:'全チャネルで販売',rAr:'B2B + B2C 直接 + 3rd-party すべて販売',
+ rB:'直接販売を停止、3rd-party維持',rBr:'直接（B2B·B2C）オフ、3rd-party B2Cは販売継続',
+ rC:'全販売を停止',rCr:'どのチャネルでも販売されない（3rd-party含む）',
+ rD:'オンボーディング中（未準備）',rDr:'販売もマッピングもされない',
+ rE:'ベンダー一時停止（正しく）',rEr:'直接オフ — 漏れなし（整合状態）',
+ flowQ:'何を販売するか？',f1:'全チャネル販売',f2:'3rd-party B2Cのみ',f3:'全販売を停止',
+ fw1:'Trader を非アクティブにしたまま',fw2:'Contract を Active に残さない —',fw3:'B2Bが販売され続けます（漏れ）。',
+ s1:`<h2>1. 概要</h2>
+ <p>ELLISでは、<b>ホテルが販売されるか、どのチャネルで販売されるか</b>を、3つのステータスが<b>組み合わさって</b>決定します — <b>Hotel Status</b>、<b>Trader Status</b>、<b>Vendor Contract Status</b>。本プレイブックは、SCMが意図した販売結果を得るためにこれらを<b>どう設定するか</b>、そしてよくある落とし穴の避け方を示します。</p>
+ <figure><div class="svgbox">${SVG_HERO}</div><figcaption class="figcap">3つのステータスの組合せが販売可否（B2B · B2C · 3rd-party）を決定します。</figcaption></figure>
+ <div class="cal tip"><span class="ct">黄金律</span><p>販売可否は<b>単一のスイッチではなく3つの値の組合せ</b>です。1つだけ変えず、常に3つを意図的に設定してください。</p></div>`,
+ s2:`<h2>2. 3つのステータス</h2>
+ <div class="cards">
+ <div class="card"><h4>Hotel Status</h4><p class="mp"><span class="path">Products › Hotel Contents</span></p>
+   <div class="row">${HOTEL.apr} 掲載・販売可</div><div class="row">${HOTEL.ap} 新規・未掲載</div><div class="row">${HOTEL.ss} 非表示 — 販売不可</div>
+   <p style="font-size:13px;color:var(--muted);margin-top:8px"><b>Approved</b>のホテルのみ販売対象です。</p></div>
+ <div class="card"><h4>Trader Status</h4><p class="mp"><span class="path">Users › Traders</span>（ベンダー/ホテルアカウント）</p>
+   <div class="row">${TRD.a} 直接(DC)チャネル開放</div><div class="row">${TRD.p} 承認待ち</div><div class="row">${TRD.sd} 終了</div><div class="row">${TRD.su} 停止</div>
+   <p style="font-size:13px;color:var(--muted);margin-top:8px"><b>Active</b>のときのみ直接販売(DC)チャネルが維持されます。</p></div>
+ <div class="card"><h4>Contract Status</h4><p class="mp"><span class="path">Users › Traders › Vendor Contract</span></p>
+   <div class="row">${CON.a} 直接契約が有効</div><div class="row">${CON.p} 保留</div><div class="row">${CON.st} 停止</div>
+   <p style="font-size:13px;color:var(--muted);margin-top:8px">直接契約(Vendor Contract)が有効かどうか。</p></div>
+ </div>
+ <div class="cal info"><span class="ct">注 — Contract Type</span><p><span class="mono">Exclusive / Shared / Dynamic Rate</span> は<b>料金モデル</b>であり、販売可否のスイッチではありません。販売可否は上記3つの<b>ステータス</b>が決定します。</p></div>`,
+ s3:`<h2>3. 販売可否マトリクス (Hotel = Approved)</h2>
+ <p>ホテルが<b>Approved</b>のときの、Trader × Contract 組合せによる12の結果です。</p>
+ __MATRIX__
+ <div class="cal info"><span class="ct">要点</span><p>· <b>#1（Active + Active）のみ</b>B2B・B2Cを直接販売。<br>· <b>3rd-party B2C</b>はApprovedであればTrader/Contractに<b>関係なく</b>販売継続。<br>· <b>#4・7・10</b>はTraderが非アクティブなのにContractがActiveで<b>B2Bが漏れるシステムの隙間</b>（§5参照）。</p></div>`,
+ s4:`<h2>4. 設定方法 — 目標別レシピ</h2>
+ <p>「何を販売するか」を先に決め、それに合わせて3つの値を設定します。</p>
+ <figure><div class="svgbox">${SVG_FLOW}</div><figcaption class="figcap">望む販売結果 → 設定するステータス。</figcaption></figure>
+ __RECIPES__
+ <div class="cal warn"><span class="ct">3rd-partyを止めるには</span><p>Contractを<span class="pill stop">Stop</span>にしても3rd-partyは止まりません。3rd-party販売はHotel Statusを<span class="pill stop">Sale Suspended</span>に変えたときのみ止まります。</p></div>`,
+ s5:`<h2>5. よくある間違い</h2>
+ <div class="cal danger"><span class="ct">1. Trader非アクティブ + Contract Active（漏れ）</span><p>Traderを${TRD.p}·${TRD.sd}·${TRD.su}に下げつつContractを${CON.a}に残さないでください。直接B2Bはオフになるべきですが、<b>技術的な問題でチャネルで販売され続けます</b>（シナリオ4·7·10）。<b>Traderを下げるときはContractも${CON.st}に</b>してください。</p></div>
+ <div class="cal warn"><span class="ct">2. Contract=Stopで3rd-partyも止まると誤解</span><p>3rd-partyはHotel Statusが変わったときのみ止まります。</p></div>
+ <div class="cal warn"><span class="ct">3. テスト/仮ホテルをApprovedのまま放置</span><p>Approvedは実際に販売されます。テストホテルは${HOTEL.ap}または${HOTEL.ss}にしてください。</p></div>`,
+ s6:`<h2>6. SCMチェックリスト</h2>
+ <p>ステータスを変える前に確認してください。</p>
+ <ol>
+ <li><b>販売結果を先に決める</b> — 全販売 / 3rd-partyのみ / 全停止のどれか？</li>
+ <li><b>Hotel Statusを目標に合わせる</b> — 販売は${HOTEL.apr}、完全停止は${HOTEL.ss}。</li>
+ <li><b>Trader ↔ Contractを整合</b> — TraderがActiveでなければContractは${CON.st}。</li>
+ <li><b>3rd-partyはHotel Statusに従う</b> — ContractではなくHotelで制御。</li>
+ <li><b>テスト/仮ホテルをApprovedにしない。</b></li>
+ </ol>
+ <div class="cal tip"><span class="ct">一行まとめ</span><p>「全販売 = Approved + Active + Active。3rd-partyのみ = Approved + Contract Stop。全停止 = Sale Suspended。Traderを下げたらContractも下げる。」</p></div>`,
+ s7:`<h2>7. 用語</h2>
+ <table><thead><tr><th class="l">用語</th><th class="l">定義</th></tr></thead><tbody>
+ <tr><td class="l"><b>Trader</b></td><td class="l">OMHと取引する会社アカウント。SellerかVendor、または両方。ここでは<b>ホテル供給側(Vendor)アカウント</b>。</td></tr>
+ <tr><td class="l"><b>Vendor</b></td><td class="l">OMHに商品を供給する会社（ホテル・チェーン・DMCなど）。</td></tr>
+ <tr><td class="l"><b>Seller</b></td><td class="l">OMHから買う会社（チャネル/顧客）。</td></tr>
+ <tr><td class="l"><b>Vendor Contract</b></td><td class="l">OMHとベンダー（ホテル）間の直接契約。ステータス Active/Pending/Stop。</td></tr>
+ <tr><td class="l"><b>DC</b></td><td class="l">Direct Contract — 直接契約に基づく販売（B2B · B2C）。</td></tr>
+ <tr><td class="l"><b>3rd-party</b></td><td class="l">外部供給網を通じたB2C販売。ホテルがApprovedであれば露出。</td></tr>
+ </tbody></table>`,
+ foot:'OMH GSM · SCM 教育資料 · ELLIS Hotel–Trader–Vendor Contract ステータス設定ガイド · 2026-07-14時点 · 用語出典: ELLIS Admin Playbook'},
+};
+
+/* ---------- render ---------- */
+function render(lang){
+  const t=I18N[lang];
+  document.documentElement.lang=lang;
+  document.getElementById('hsub').textContent='· '+t.hsub;
+  document.getElementById('navttl').textContent=t.navttl;
+  document.getElementById('h1').textContent=t.title;
+  document.getElementById('lead').textContent=t.lead;
+  document.getElementById('foot').textContent=t.foot;
+  // nav
+  const nav=document.getElementById('nav');
+  nav.innerHTML=t.nav.map((x,i)=>'<a href="#s'+(i+1)+'">'+x+'</a>').join('');
+  // sections
+  for(let i=1;i<=7;i++){
+    let html=t['s'+i]||'';
+    if(html.includes('__MATRIX__')) html=html.replace('__MATRIX__',matrix(t));
+    if(html.includes('__RECIPES__')) html=html.replace('__RECIPES__',recipes(t));
+    document.getElementById('s'+i).innerHTML=html;
+  }
+  // localize flow-svg labels
+  const set=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};
+  set('flowQ',t.flowQ); set('f1',t.f1); set('f2',t.f2); set('f3',t.f3);
+  set('fw1',t.fw1); set('fw2',t.fw2); set('fw3',t.fw3);
+  // lang buttons
+  document.querySelectorAll('.langs button').forEach(b=>b.classList.toggle('active',b.dataset.l===lang));
+  // active nav on scroll
+  hookScroll();
+}
+let secs=[];
+function hookScroll(){
+  secs=[...document.querySelectorAll('main section')];
+}
+window.addEventListener('scroll',()=>{
+  let cur='s1';const y=window.scrollY+90;
+  for(const s of secs){if(s.offsetTop<=y)cur=s.id;}
+  document.querySelectorAll('#nav a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+});
+document.querySelectorAll('.langs button').forEach(b=>b.addEventListener('click',()=>render(b.dataset.l)));
+render('ko');
+</script>
+</body>
+</html>
