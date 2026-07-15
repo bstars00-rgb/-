@@ -25,13 +25,13 @@ a{color:var(--teal)}
 .langs button{font:600 13px/1 inherit;color:#C7D3F0;background:transparent;border:1px solid #3A4488;border-radius:7px;padding:7px 11px;cursor:pointer}
 .langs button.active{background:#fff;color:var(--navy);border-color:#fff}
 /* layout */
-.wrap{display:grid;grid-template-columns:250px 1fr;max-width:1180px;margin:0 auto}
+.wrap{display:grid;grid-template-columns:272px minmax(0,1fr)}
 aside{position:sticky;top:58px;align-self:start;height:calc(100vh - 58px);overflow:auto;background:var(--side);border-right:1px solid var(--line);padding:22px 16px}
 aside .navttl{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);font-weight:700;margin:0 8px 10px}
 aside a{display:block;color:var(--ink);text-decoration:none;font-size:14.5px;padding:7px 10px;border-radius:7px}
 aside a:hover{background:#e9eef8}
 aside a.on{background:#e5e9f6;color:var(--navy);font-weight:700}
-main{padding:34px 46px 90px;min-width:0}
+main{padding:34px 46px 90px;min-width:0;max-width:960px}
 main h1{font-size:31px;line-height:1.25;margin:.1em 0 .1em;color:var(--navy);font-weight:800}
 main .lead{color:var(--muted);font-size:16px;margin:0 0 8px}
 section{scroll-margin-top:74px;padding-top:26px}
@@ -75,7 +75,31 @@ tr:nth-child(even):not(.leak) td{background:#F7F9FD}
 figure{margin:20px 0}
 .svgbox{border:1px solid var(--line);border-radius:11px;background:#fff;padding:14px;overflow-x:auto}
 .footer{color:var(--muted);font-size:12.5px;border-top:1px solid var(--line);margin-top:40px;padding-top:16px}
-@media(max-width:820px){.wrap{grid-template-columns:1fr}aside{display:none}main{padding:24px 20px 70px}.cards{grid-template-columns:1fr}}
+/* search */
+.search{position:relative;margin:2px 4px 16px}
+.search .si{position:absolute;left:11px;top:9px;font-size:13px;opacity:.55;pointer-events:none}
+.search input{width:100%;box-sizing:border-box;padding:9px 12px 9px 31px;border:1px solid var(--line);border-radius:9px;font-size:13.5px;outline:none;background:#fff;color:var(--ink)}
+.search input:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(28,114,147,.12)}
+.results{position:absolute;left:0;right:0;top:41px;background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:0 10px 28px rgba(20,26,69,.16);max-height:64vh;overflow:auto;z-index:40;display:none}
+.results.on{display:block}
+.results a{display:block;padding:9px 12px;text-decoration:none;border-bottom:1px solid #f0f2f8}
+.results a:last-child{border-bottom:0}
+.results a:hover{background:#eef3fc}
+.results .rc{font-size:10.5px;letter-spacing:.4px;text-transform:uppercase;color:var(--muted);font-weight:700;display:block}
+.results .rt{font-size:13.5px;color:var(--navy);font-weight:700;display:block;margin:1px 0}
+.results .rs{font-size:12px;color:var(--muted);display:block;line-height:1.45}
+.results mark{background:#FCE6A8;color:inherit;padding:0 1px;border-radius:2px}
+.results .none{padding:13px;color:var(--muted);font-size:13px}
+/* topic groups (scales to multiple training topics) */
+.grp{margin:0 0 10px}
+.grptitle{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);font-weight:800;padding:7px 10px 5px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none}
+.grptitle:hover{color:var(--navy)}
+.grptitle .cv{font-size:10px;opacity:.55;transition:transform .15s}
+.grp.collapsed .cv{transform:rotate(-90deg)}
+.grp.collapsed .items{display:none}
+section.flash{animation:flashbg 1.7s ease}
+@keyframes flashbg{0%,12%{background:#FEF3D6}100%{background:transparent}}
+@media(max-width:820px){.wrap{grid-template-columns:1fr}aside{display:none}main{padding:24px 20px 70px;max-width:none}.cards{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -90,7 +114,11 @@ figure{margin:20px 0}
   </span>
 </div>
 <div class="wrap">
-  <aside><div class="navttl" id="navttl">Contents</div><nav id="nav"></nav></aside>
+  <aside>
+    <div class="navttl" id="navttl">Contents</div>
+    <div class="search"><span class="si">🔍</span><input id="q" type="search" autocomplete="off" placeholder="Search"><div class="results" id="results"></div></div>
+    <nav id="nav"></nav>
+  </aside>
   <main>
     <h1 id="h1"></h1>
     <p class="lead" id="lead"></p>
@@ -194,7 +222,8 @@ function recipes(t){
 const I18N={
 ko:{lang:'ko',hsub:'SCM 교육자료',navttl:'목차',title:'ELLIS 판매가능 상태값 설정 플레이북',
  lead:'SCM 교육자료 · 우리 시스템은 Hotel · Trader · Vendor Contract 상태 조합으로 판매가능을 결정합니다 · 2026-07-14 기준',
- nav:['1. 개요','2. 3개 상태값','3. 판매가능 매트릭스','4. 설정 방법','5. 흔한 실수','6. SCM 체크리스트','7. 용어'],
+ searchPh:'플레이북 검색…',noRes:'검색 결과 없음',
+ toc:[{t:'ELLIS 판매가능 상태값 설정',items:[[1,'개요'],[2,'3개 상태값'],[3,'판매가능 매트릭스'],[4,'설정 방법'],[5,'흔한 실수'],[6,'SCM 체크리스트'],[7,'용어']]}],
  mTrader:'Trader 상태',mContract:'Contract 상태',sells:'판매됨 ⚠',
  rGoal:'목표',rResult:'결과',
  rA:'모든 채널로 판매',rAr:'B2B + B2C 직접 + 3rd-party 모두 판매',
@@ -257,7 +286,8 @@ ko:{lang:'ko',hsub:'SCM 교육자료',navttl:'목차',title:'ELLIS 판매가능 
 
 en:{lang:'en',hsub:'SCM Training',navttl:'Contents',title:'ELLIS Sellability Status Setup Playbook',
  lead:'SCM training · Our system decides sellability by the combination of Hotel · Trader · Vendor Contract status · Data as of 2026-07-14',
- nav:['1. Overview','2. The 3 Statuses','3. Sellability Matrix','4. How to Set It','5. Common Mistakes','6. SCM Checklist','7. Glossary'],
+ searchPh:'Search the playbook…',noRes:'No results',
+ toc:[{t:'ELLIS Sellability Status Setup',items:[[1,'Overview'],[2,'The 3 Statuses'],[3,'Sellability Matrix'],[4,'How to Set It'],[5,'Common Mistakes'],[6,'SCM Checklist'],[7,'Glossary']]}],
  mTrader:'Trader Status',mContract:'Contract Status',sells:'Sells ⚠',
  rGoal:'Goal',rResult:'Result',
  rA:'Sell on all channels',rAr:'B2B + B2C direct + 3rd-party all sell',
@@ -320,7 +350,8 @@ en:{lang:'en',hsub:'SCM Training',navttl:'Contents',title:'ELLIS Sellability Sta
 
 vi:{lang:'vi',hsub:'Đào tạo SCM',navttl:'Mục lục',title:'Playbook thiết lập trạng thái khả năng bán ELLIS',
  lead:'Tài liệu đào tạo SCM · Hệ thống quyết định khả năng bán theo tổ hợp trạng thái Hotel · Trader · Vendor Contract · Dữ liệu đến 14/07/2026',
- nav:['1. Tổng quan','2. Ba trạng thái','3. Ma trận khả năng bán','4. Cách thiết lập','5. Lỗi thường gặp','6. Danh sách kiểm tra','7. Thuật ngữ'],
+ searchPh:'Tìm trong playbook…',noRes:'Không có kết quả',
+ toc:[{t:'Thiết lập trạng thái khả năng bán ELLIS',items:[[1,'Tổng quan'],[2,'Ba trạng thái'],[3,'Ma trận khả năng bán'],[4,'Cách thiết lập'],[5,'Lỗi thường gặp'],[6,'Danh sách kiểm tra'],[7,'Thuật ngữ']]}],
  mTrader:'Trạng thái Trader',mContract:'Trạng thái Contract',sells:'Vẫn bán ⚠',
  rGoal:'Mục tiêu',rResult:'Kết quả',
  rA:'Bán trên mọi kênh',rAr:'B2B + B2C trực tiếp + bên thứ ba đều bán',
@@ -383,7 +414,8 @@ vi:{lang:'vi',hsub:'Đào tạo SCM',navttl:'Mục lục',title:'Playbook thiế
 
 ja:{lang:'ja',hsub:'SCM 教育資料',navttl:'目次',title:'ELLIS 販売可否ステータス設定プレイブック',
  lead:'SCM 教育資料 · 当社システムは Hotel · Trader · Vendor Contract のステータス組合せで販売可否を決定します · 2026-07-14時点',
- nav:['1. 概要','2. 3つのステータス','3. 販売可否マトリクス','4. 設定方法','5. よくある間違い','6. SCMチェックリスト','7. 用語'],
+ searchPh:'プレイブックを検索…',noRes:'該当なし',
+ toc:[{t:'ELLIS 販売可否ステータス設定',items:[[1,'概要'],[2,'3つのステータス'],[3,'販売可否マトリクス'],[4,'設定方法'],[5,'よくある間違い'],[6,'SCMチェックリスト'],[7,'用語']]}],
  mTrader:'Trader ステータス',mContract:'Contract ステータス',sells:'販売 ⚠',
  rGoal:'目標',rResult:'結果',
  rA:'全チャネルで販売',rAr:'B2B + B2C 直接 + 3rd-party すべて販売',
@@ -445,40 +477,65 @@ ja:{lang:'ja',hsub:'SCM 教育資料',navttl:'目次',title:'ELLIS 販売可否�
  foot:'OMH GSM · SCM 教育資料 · ELLIS Hotel–Trader–Vendor Contract ステータス設定ガイド · 2026-07-14時点 · 用語出典: ELLIS Admin Playbook'},
 };
 
-/* ---------- render ---------- */
+/* ---------- render + search (scales to multiple training topics) ---------- */
+let secs=[], INDEX=[], CURT=null;
+const $=id=>document.getElementById(id);
+function esc(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+function hl(str,v){const s=esc(str);if(!v)return s;const re=new RegExp('('+v.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','ig');return s.replace(re,'<mark>$1</mark>');}
+function snippet(text,v){const i=text.toLowerCase().indexOf(v);if(i<0)return text.slice(0,90);const a=Math.max(0,i-35);return (a>0?'…':'')+text.slice(a,i+v.length+62)+'…';}
+function goTo(id){const el=$(id);if(!el)return;el.scrollIntoView({behavior:'smooth',block:'start'});el.classList.remove('flash');void el.offsetWidth;el.classList.add('flash');}
+
 function render(lang){
-  const t=I18N[lang];
+  const t=I18N[lang]; CURT=t;
   document.documentElement.lang=lang;
-  document.getElementById('hsub').textContent='· '+t.hsub;
-  document.getElementById('navttl').textContent=t.navttl;
-  document.getElementById('h1').textContent=t.title;
-  document.getElementById('lead').textContent=t.lead;
-  document.getElementById('foot').textContent=t.foot;
-  // nav
-  const nav=document.getElementById('nav');
-  nav.innerHTML=t.nav.map((x,i)=>'<a href="#s'+(i+1)+'">'+x+'</a>').join('');
+  $('hsub').textContent='· '+t.hsub;
+  $('navttl').textContent=t.navttl;
+  $('h1').textContent=t.title;
+  $('lead').textContent=t.lead;
+  $('foot').textContent=t.foot;
+  $('q').placeholder=t.searchPh;
+  // grouped nav: topic → sections (add future topics as more toc groups)
+  $('nav').innerHTML=t.toc.map((g,gi)=>
+    '<div class="grp" data-g="'+gi+'"><div class="grptitle">'+esc(g.t)+'<span class="cv">▾</span></div><div class="items">'+
+    g.items.map(it=>'<a href="#s'+it[0]+'">'+esc(it[1])+'</a>').join('')+'</div></div>').join('');
+  $('nav').querySelectorAll('.grptitle').forEach(el=>el.addEventListener('click',()=>el.parentElement.classList.toggle('collapsed')));
   // sections
-  for(let i=1;i<=7;i++){
+  const maxId=Math.max.apply(null,t.toc.flatMap(g=>g.items.map(it=>it[0])));
+  for(let i=1;i<=maxId;i++){
+    const el=$('s'+i); if(!el)continue;
     let html=t['s'+i]||'';
     if(html.includes('__MATRIX__')) html=html.replace('__MATRIX__',matrix(t));
     if(html.includes('__RECIPES__')) html=html.replace('__RECIPES__',recipes(t));
-    document.getElementById('s'+i).innerHTML=html;
+    el.innerHTML=html;
   }
-  // localize flow-svg labels
-  const set=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};
-  set('flowQ',t.flowQ); set('f1',t.f1); set('f2',t.f2); set('f3',t.f3);
-  set('fw1',t.fw1); set('fw2',t.fw2); set('fw3',t.fw3);
-  // lang buttons
+  const set=(id,v)=>{const e=$(id);if(e)e.textContent=v;};
+  set('flowQ',t.flowQ);set('f1',t.f1);set('f2',t.f2);set('f3',t.f3);
+  set('fw1',t.fw1);set('fw2',t.fw2);set('fw3',t.fw3);
   document.querySelectorAll('.langs button').forEach(b=>b.classList.toggle('active',b.dataset.l===lang));
-  // active nav on scroll
-  hookScroll();
-}
-let secs=[];
-function hookScroll(){
   secs=[...document.querySelectorAll('main section')];
+  INDEX=t.toc.flatMap(g=>g.items.map(it=>{const el=$('s'+it[0]);return el?{id:'s'+it[0],topic:g.t,title:it[1],text:el.innerText.replace(/\s+/g,' ').trim()}:null;})).filter(Boolean);
+  runSearch();
 }
+function runSearch(){
+  const q=$('q'), res=$('results'); if(!CURT)return;
+  const v=q.value.trim().toLowerCase();
+  if(!v){res.className='results';res.innerHTML='';return;}
+  const hits=[];
+  for(const s of INDEX){
+    const inT=s.title.toLowerCase().includes(v), inX=s.text.toLowerCase().includes(v);
+    if(inT||inX) hits.push({s,snip:inX?snippet(s.text,v):s.title});
+    if(hits.length>=16)break;
+  }
+  if(!hits.length){res.className='results on';res.innerHTML='<div class="none">'+esc(CURT.noRes)+'</div>';return;}
+  res.className='results on';
+  res.innerHTML=hits.map(h=>'<a href="#'+h.s.id+'"><span class="rc">'+esc(h.s.topic)+'</span><span class="rt">'+hl(h.s.title,v)+'</span><span class="rs">'+hl(h.snip,v)+'</span></a>').join('');
+  res.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();goTo(a.getAttribute('href').slice(1));res.className='results';q.blur();}));
+}
+$('q').addEventListener('input',runSearch);
+$('q').addEventListener('keydown',e=>{if(e.key==='Escape'){$('q').value='';runSearch();}else if(e.key==='Enter'){const a=$('results').querySelector('a');if(a){e.preventDefault();a.click();}}});
+document.addEventListener('click',e=>{if(!e.target.closest('.search'))$('results').className='results';});
 window.addEventListener('scroll',()=>{
-  let cur='s1';const y=window.scrollY+90;
+  let cur=secs[0]?secs[0].id:'s1';const y=window.scrollY+90;
   for(const s of secs){if(s.offsetTop<=y)cur=s.id;}
   document.querySelectorAll('#nav a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
 });
