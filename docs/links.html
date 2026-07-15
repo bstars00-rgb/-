@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OMH GSM — 링크 허브</title>
+</head>
+<body>
+<!-- OMH password gate (client-side, casual protection) -->
+<meta name="robots" content="noindex">
+<style>
+#omh-gate{position:fixed;inset:0;z-index:2147483647;background:#0B1E27;display:flex;align-items:center;justify-content:center;font-family:"Malgun Gothic","Apple SD Gothic Neo",sans-serif}
+#omh-gate .box{text-align:center;padding:40px;max-width:360px;width:90%}
+#omh-gate h1{color:#EDF4F1;font-size:20px;margin:0 0 6px}
+#omh-gate p{color:#9DB8B9;font-size:13px;margin:0 0 24px}
+#omh-gate input{width:100%;box-sizing:border-box;padding:13px 16px;border-radius:10px;border:1px solid rgba(237,244,241,.25);background:rgba(255,255,255,.06);color:#EDF4F1;font-size:15px;outline:none;text-align:center}
+#omh-gate input:focus{border-color:#F2A93B}
+#omh-gate button{margin-top:12px;width:100%;padding:13px;border:0;border-radius:10px;background:#F2A93B;color:#22303A;font-size:15px;font-weight:700;cursor:pointer}
+#omh-gate .err{color:#F08A6B;font-size:12.5px;margin-top:10px;min-height:16px}
+html.omh-locked{overflow:hidden}
+</style>
+<div id="omh-gate"><div class="box">
+<h1>OMH Weekly Report</h1>
+<p>내부 자료입니다. 비밀번호를 입력하세요.</p>
+<input id="omh-pw" type="password" placeholder="Password" autocomplete="off">
+<button id="omh-go">확인</button>
+<div class="err" id="omh-err"></div>
+</div></div>
+<script>
+(function(){
+  var HASH='61798ebe28560a97b9b5f63d864fa6e024d78672f3d3985a53b49c387b1ee65c';
+  var gate=document.getElementById('omh-gate');
+  function unlock(){document.documentElement.classList.remove('omh-locked');if(gate&&gate.parentNode)gate.parentNode.removeChild(gate);}
+  if(sessionStorage.getItem('omh_gate')===HASH){unlock();return;}
+  document.documentElement.classList.add('omh-locked');
+  function sha256(s){return crypto.subtle.digest('SHA-256',new TextEncoder().encode(s)).then(function(b){return Array.prototype.map.call(new Uint8Array(b),function(x){return x.toString(16).padStart(2,'0')}).join('')});}
+  function tryPw(){
+    var v=document.getElementById('omh-pw').value;
+    if(!v)return;
+    sha256(v).then(function(h){
+      if(h===HASH){sessionStorage.setItem('omh_gate',HASH);unlock();}
+      else{document.getElementById('omh-err').textContent='비밀번호가 올바르지 않습니다.';document.getElementById('omh-pw').value='';}
+    });
+  }
+  document.getElementById('omh-go').addEventListener('click',tryPw);
+  document.getElementById('omh-pw').addEventListener('keydown',function(e){if(e.key==='Enter')tryPw();});
+  setTimeout(function(){document.getElementById('omh-pw').focus();},100);
+})();
+</script>
+
+<style>
+:root{--bg:#0E1B22;--card:#152833;--line:rgba(237,244,241,.1);--ink:#EDF4F1;--mut:#8FA8AB;--acc:#F2A93B}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:"Malgun Gothic","Apple SD Gothic Neo",sans-serif;line-height:1.5}
+.wrap{max-width:720px;margin:0 auto;padding:28px 22px 50px}
+.h{font-size:22px;letter-spacing:-.01em;font-weight:800}
+.sub{color:var(--mut);font-size:13px;margin:4px 0 22px}
+.grp{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--acc);margin:22px 0 10px}
+a.card{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:13px;padding:14px 16px;margin-bottom:9px;text-decoration:none;color:var(--ink);transition:border-color .15s,transform .1s}
+a.card:hover{border-color:var(--acc);transform:translateX(2px)}
+.ic{font-size:20px;flex:none;width:30px;text-align:center}
+.tx{flex:1;min-width:0}
+.tx b{font-size:15px;font-weight:700}
+.tx span{display:block;color:var(--mut);font-size:12px;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.go{color:var(--mut);font-size:18px;flex:none}
+footer{color:var(--mut);font-size:11.5px;margin-top:26px;border-top:1px solid var(--line);padding-top:14px}
+</style>
+<div class="wrap">
+  <div class="h">OMH GSM — 링크 허브</div>
+  <div class="sub">Aiden의 배포물 한곳 · 이 탭을 오른쪽에 띄워두세요 · 내부용(비번)</div>
+
+  <div class="grp">운영 · 보고</div>
+  <a class="card" href="https://bstars00-rgb.github.io/-/" target="_blank"><span class="ic">📊</span><div class="tx"><b>주간보고 대시보드</b><span>index.html · 매주 토 발행</span></div><span class="go">↗</span></a>
+  <a class="card" href="https://bstars00-rgb.github.io/-/okr-actionplan.html" target="_blank"><span class="ic">🎯</span><div class="tx"><b>OKR × Action Plan</b><span>okr-actionplan.html · 월간 갱신 (KR)</span></div><span class="go">↗</span></a>
+  <a class="card" href="https://bstars00-rgb.github.io/-/okr-actionplan-en.html" target="_blank"><span class="ic">🎯</span><div class="tx"><b>OKR × Action Plan (EN)</b><span>okr-actionplan-en.html</span></div><span class="go">↗</span></a>
+  <a class="card" href="https://bstars00-rgb.github.io/-/aiden-1year.html" target="_blank"><span class="ic">🏆</span><div class="tx"><b>입사 1주년 성과 보고</b><span>aiden-1year.html · 대표 보고 (8/18)</span></div><span class="go">↗</span></a>
+
+  <div class="grp">브리핑 · 세일즈</div>
+  <a class="card" href="https://bstars00-rgb.github.io/-/org-chart.html" target="_blank"><span class="ic">🏢</span><div class="tx"><b>조직 &amp; 비즈니스 브리핑</b><span>org-chart.html · GSM·Content·OP</span></div><span class="go">↗</span></a>
+  <a class="card" href="https://bstars00-rgb.github.io/-/vn-winter-brief.html" target="_blank"><span class="ic">🇻🇳</span><div class="tx"><b>베트남 겨울 브리프</b><span>vn-winter-brief.html · 8월 한국세일즈용</span></div><span class="go">↗</span></a>
+  <a class="card" href="https://bstars00-rgb.github.io/-/vn-winter-brief-en.html" target="_blank"><span class="ic">🇻🇳</span><div class="tx"><b>Vietnam Winter Brief (EN)</b><span>vn-winter-brief-en.html</span></div><span class="go">↗</span></a>
+  <a class="card" href="https://bstars00-rgb.github.io/-/omh-signature-aiden.html" target="_blank"><span class="ic">✉️</span><div class="tx"><b>Aiden 이메일 서명</b><span>omh-signature-aiden.html</span></div><span class="go">↗</span></a>
+
+  <div class="grp">SharePoint (온라인 원본)</div>
+  <a class="card" href="https://ohmylab-my.sharepoint.com/:p:/g/personal/cb_park_ohmyhotel_com/IQCLIvSTcNQCT5bl1uBwqxntAeOlBmg1rW3pSwL-Ru_X9xw?e=i7TRrp" target="_blank"><span class="ic">📽️</span><div class="tx"><b>하반기 OKR PPT (SSOT)</b><span>SharePoint · 온라인 갱신 정본</span></div><span class="go">↗</span></a>
+
+  <footer>내부 자료 · 무단 공유 금지 · 갱신 요청 시 Aiden</footer>
+</div>
+</body>
+</html>
