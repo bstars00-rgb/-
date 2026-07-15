@@ -2,6 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
+<meta name="robots" content="noindex">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ELLIS Sellability Setup Playbook</title>
 <style>
@@ -78,48 +79,6 @@ figure{margin:20px 0}
 </style>
 </head>
 <body>
-<!-- OMH password gate (client-side, casual protection) -->
-<meta name="robots" content="noindex">
-<style>
-#omh-gate{position:fixed;inset:0;z-index:2147483647;background:#0B1E27;display:flex;align-items:center;justify-content:center;font-family:"Malgun Gothic","Apple SD Gothic Neo",sans-serif}
-#omh-gate .box{text-align:center;padding:40px;max-width:360px;width:90%}
-#omh-gate h1{color:#EDF4F1;font-size:20px;margin:0 0 6px}
-#omh-gate p{color:#9DB8B9;font-size:13px;margin:0 0 24px}
-#omh-gate input{width:100%;box-sizing:border-box;padding:13px 16px;border-radius:10px;border:1px solid rgba(237,244,241,.25);background:rgba(255,255,255,.06);color:#EDF4F1;font-size:15px;outline:none;text-align:center}
-#omh-gate input:focus{border-color:#F2A93B}
-#omh-gate button{margin-top:12px;width:100%;padding:13px;border:0;border-radius:10px;background:#F2A93B;color:#22303A;font-size:15px;font-weight:700;cursor:pointer}
-#omh-gate .err{color:#F08A6B;font-size:12.5px;margin-top:10px;min-height:16px}
-html.omh-locked{overflow:hidden}
-</style>
-<div id="omh-gate"><div class="box">
-<h1>OMH Weekly Report</h1>
-<p>내부 자료입니다. 비밀번호를 입력하세요.</p>
-<input id="omh-pw" type="password" placeholder="Password" autocomplete="off">
-<button id="omh-go">확인</button>
-<div class="err" id="omh-err"></div>
-</div></div>
-<script>
-(function(){
-  var HASH='61798ebe28560a97b9b5f63d864fa6e024d78672f3d3985a53b49c387b1ee65c';
-  var gate=document.getElementById('omh-gate');
-  function unlock(){document.documentElement.classList.remove('omh-locked');if(gate&&gate.parentNode)gate.parentNode.removeChild(gate);}
-  if(sessionStorage.getItem('omh_gate')===HASH){unlock();return;}
-  document.documentElement.classList.add('omh-locked');
-  function sha256(s){return crypto.subtle.digest('SHA-256',new TextEncoder().encode(s)).then(function(b){return Array.prototype.map.call(new Uint8Array(b),function(x){return x.toString(16).padStart(2,'0')}).join('')});}
-  function tryPw(){
-    var v=document.getElementById('omh-pw').value;
-    if(!v)return;
-    sha256(v).then(function(h){
-      if(h===HASH){sessionStorage.setItem('omh_gate',HASH);unlock();}
-      else{document.getElementById('omh-err').textContent='비밀번호가 올바르지 않습니다.';document.getElementById('omh-pw').value='';}
-    });
-  }
-  document.getElementById('omh-go').addEventListener('click',tryPw);
-  document.getElementById('omh-pw').addEventListener('keydown',function(e){if(e.key==='Enter')tryPw();});
-  setTimeout(function(){document.getElementById('omh-pw').focus();},100);
-})();
-</script>
-
 <div class="topbar">
   <span class="brand">ELLIS Playbook <small id="hsub"></small></span>
   <span class="spacer"></span>
