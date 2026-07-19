@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>DIDA · Partner Business Review — OMH</title>
+</head>
+<body>
+<!-- OMH gate -->
+<style>
+#omh-gate{position:fixed;inset:0;z-index:2147483647;background:#0B1E27;display:flex;align-items:center;justify-content:center;font-family:"Malgun Gothic","Apple SD Gothic Neo",sans-serif}
+#omh-gate .box{text-align:center;padding:40px;max-width:360px;width:90%}
+#omh-gate h1{color:#EDF4F1;font-size:20px;margin:0 0 6px}
+#omh-gate p{color:#9DB8B9;font-size:13px;margin:0 0 24px}
+#omh-gate input{width:100%;box-sizing:border-box;padding:13px 16px;border-radius:10px;border:1px solid rgba(237,244,241,.25);background:rgba(255,255,255,.06);color:#EDF4F1;font-size:15px;outline:none;text-align:center}
+#omh-gate input:focus{border-color:#F2A93B}
+#omh-gate button{margin-top:12px;width:100%;padding:13px;border:0;border-radius:10px;background:#F2A93B;color:#22303A;font-size:15px;font-weight:700;cursor:pointer}
+#omh-gate .err{color:#F08A6B;font-size:12.5px;margin-top:10px;min-height:16px}
+html.omh-locked{overflow:hidden}
+</style>
+<div id="omh-gate"><div class="box"><h1>OMH Weekly Report</h1><p>내부 자료입니다. 비밀번호를 입력하세요.</p>
+<input id="omh-pw" type="password" placeholder="Password" autocomplete="off"><button id="omh-go">확인</button><div class="err" id="omh-err"></div></div></div>
+<script>
+(function(){var HASH='61798ebe28560a97b9b5f63d864fa6e024d78672f3d3985a53b49c387b1ee65c';var gate=document.getElementById('omh-gate');
+function unlock(){document.documentElement.classList.remove('omh-locked');if(gate&&gate.parentNode)gate.parentNode.removeChild(gate);}
+if(sessionStorage.getItem('omh_gate')===HASH){unlock();return;}document.documentElement.classList.add('omh-locked');
+function sha256(s){return crypto.subtle.digest('SHA-256',new TextEncoder().encode(s)).then(function(b){return Array.prototype.map.call(new Uint8Array(b),function(x){return x.toString(16).padStart(2,'0')}).join('')});}
+function go(){var v=document.getElementById('omh-pw').value;if(!v)return;sha256(v).then(function(h){if(h===HASH){sessionStorage.setItem('omh_gate',HASH);unlock();}else{document.getElementById('omh-err').textContent='비밀번호가 올바르지 않습니다.';document.getElementById('omh-pw').value='';}});}
+document.getElementById('omh-go').addEventListener('click',go);document.getElementById('omh-pw').addEventListener('keydown',function(e){if(e.key==='Enter')go();});setTimeout(function(){document.getElementById('omh-pw').focus();},100);})();
+</script>
+
+<style>
+  :root{--bg:#f5f6f9;--card:#fff;--ink:#161b26;--mut:#5a6474;--line:#e2e6ee;--acc:#2455c4;--red:#c0392f;--redbg:#fbe6e3;--grn:#1a7f4b;--grnbg:#e3f4ea;--amb:#a8730a;--navy:#141a2e;}
+  @media(prefers-color-scheme:dark){:root{--bg:#0e121c;--card:#161c2b;--ink:#eef1f8;--mut:#9aa6bd;--line:#2a3348;--acc:#6f9bff;--red:#f0796d;--redbg:#3a1d1a;--grn:#4bd08a;--grnbg:#123227;--amb:#e6b657;--navy:#0b0f1a;}}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:"Malgun Gothic","Apple SD Gothic Neo",sans-serif;line-height:1.6;font-variant-numeric:tabular-nums}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+  .hero{background:var(--navy);color:#eef1f8;padding:52px 0 46px}
+  .hero .eyebrow{color:#8fa9ff;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+  .hero h1{font-size:clamp(30px,5vw,52px);font-weight:800;letter-spacing:-.02em;margin:12px 0 6px}
+  .hero .sub{color:#9aa6bd;font-size:16px;max-width:60ch}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-top:30px}
+  .kpi{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:18px 20px}
+  .kpi .l{font-size:12.5px;color:#9aa6bd;font-weight:600}
+  .kpi .v{font-size:clamp(26px,4vw,38px);font-weight:800;letter-spacing:-.01em;margin:4px 0 2px;line-height:1}
+  .kpi .d{font-size:12.5px;color:#c4d0e6}
+  .kpi.bad .v{color:#ff8a7d} .kpi.good .v{color:#63d69a}
+  section{padding:44px 0;border-bottom:1px solid var(--line)}
+  .eyebrow{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--acc)}
+  h2{font-size:clamp(22px,3vw,32px);font-weight:800;letter-spacing:-.01em;margin:8px 0 4px;text-wrap:balance}
+  .lead{color:var(--mut);font-size:16px;max-width:70ch;margin-bottom:8px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin-top:18px}
+  .barrow{display:grid;grid-template-columns:130px 1fr 92px;align-items:center;gap:12px;margin:9px 0;font-size:14px}
+  .barrow .nm{font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .barrow .track{background:var(--line);border-radius:8px;height:26px;position:relative;overflow:hidden}
+  .barrow .fill{position:absolute;top:0;bottom:0;border-radius:8px}
+  .barrow .val{text-align:right;font-weight:800;font-variant-numeric:tabular-nums}
+  .pos .fill{background:linear-gradient(90deg,#2E9E6B,#59c98d)} .pos .val{color:var(--grn)}
+  .neg .fill{background:linear-gradient(90deg,#e0715f,#c0392f)} .neg .val{color:var(--red)}
+  .flat .fill{background:#9aa6bd} .flat .val{color:var(--mut)}
+  .dida{outline:2px solid var(--red);outline-offset:2px;border-radius:9px;padding:3px 0}
+  .dida .nm{color:var(--red)}
+  .mgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-top:20px;align-items:end}
+  .mcol{text-align:center}
+  .mbars{display:flex;gap:5px;justify-content:center;align-items:end;height:170px}
+  .mbars .b{width:26px;border-radius:5px 5px 0 0;position:relative}
+  .mbars .b25{background:#b8c2d6} .mbars .b26{background:var(--red)}
+  .mbars .b span{position:absolute;top:-19px;left:50%;transform:translateX(-50%);font-size:10.5px;font-weight:700;color:var(--mut);white-space:nowrap}
+  .mcol .ml{font-size:12.5px;color:var(--mut);margin-top:8px;font-weight:600}
+  .legend{display:flex;gap:18px;font-size:12.5px;color:var(--mut);margin-top:6px}
+  .legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:760px){.two{grid-template-columns:1fr}.mgrid{grid-template-columns:repeat(3,1fr)}}
+  ul.q{list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:6px}
+  ul.q li{display:flex;gap:11px;font-size:15px}
+  ul.q li::before{content:"?";flex:none;width:22px;height:22px;border-radius:6px;background:var(--acc);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;margin-top:2px}
+  .hyp{display:flex;gap:12px;padding:13px 0;border-bottom:1px dashed var(--line)}
+  .hyp:last-child{border:0}
+  .hyp .n{flex:none;width:28px;height:28px;border-radius:8px;background:var(--redbg);color:var(--red);font-weight:800;display:flex;align-items:center;justify-content:center}
+  .hyp b{font-weight:700}
+  .hyp p{color:var(--mut);font-size:13.5px;margin-top:2px}
+  .chip{display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border-radius:100px;background:var(--redbg);color:var(--red)}
+  .chip.g{background:var(--grnbg);color:var(--grn)}
+  .note{font-size:12.5px;color:var(--amb);background:rgba(168,115,10,.08);border:1px solid rgba(168,115,10,.25);border-radius:10px;padding:11px 14px;margin-top:16px}
+  footer{padding:28px 0 50px;color:var(--mut);font-size:12.5px}
+  .pillrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+</style>
+
+<div class="hero"><div class="wrap">
+  <div class="eyebrow">Partner Business Review · 대면 미팅용</div>
+  <h1>DIDA — 상반기 실적 진단</h1>
+  <div class="sub">체크아웃 기준 · 2025 H1 vs 2026 H1 (1~6월) · OMH 부킹 데이터 실측 · 2026-07-17</div>
+  <div class="kpis">
+    <div class="kpi bad"><div class="l">디다 예약 건수 (H1)</div><div class="v">−43%</div><div class="d">24,344 → 13,973건</div></div>
+    <div class="kpi bad"><div class="l">디다 룸나이트 (H1)</div><div class="v">−38%</div><div class="d">47,684 → 29,397박</div></div>
+    <div class="kpi bad"><div class="l">OMH 내 점유율</div><div class="v">5.1%</div><div class="d">9.5% → 5.1% (반토막)</div></div>
+    <div class="kpi good"><div class="l">전체 시장(OMH) H1</div><div class="v">+8%</div><div class="d">256K → 276K건 (성장)</div></div>
+  </div>
+</div></div>
+
+<section><div class="wrap">
+  <div class="eyebrow">핵심 진단</div>
+  <h2>시장은 +8% 성장했는데, 디다만 −43% 역주행</h2>
+  <p class="lead">OMH 전체 예약은 상반기 <b>+8% 성장</b>했고 대부분의 동종 채널이 유지·성장했습니다. 그런데 <b style="color:var(--red)">디다는 −43% 급감</b>하며 순위가 <b>3위 → 6위</b>로, 점유율은 <b>9.5%에서 5.1%로 반토막</b> 났습니다. 이는 시장 탓이 아니라 <b>디다 고유의 문제</b>임을 뜻합니다.</p>
+</div></section>
+
+<section><div class="wrap">
+  <div class="eyebrow">타 업체 비교 ★ 가장 중요</div>
+  <h2>채널별 예약 건수 YoY (2025 H1 → 2026 H1)</h2>
+  <p class="lead">같은 세그먼트(중국계 B2B)의 <b>Convergent(+371%)·PKFARE(+31%)는 크게 성장</b>했습니다. 디다가 잃은 물량을 이들이 흡수했습니다.</p>
+  <div class="card">
+    <!-- scale: map YoY% to width; cap at ±100 for viz -->
+    <div class="barrow pos"><div class="nm">Convergent</div><div class="track"><div class="fill" style="left:50%;width:50%">​</div></div><div class="val">+371%</div></div>
+    <div class="barrow pos"><div class="nm">PKFARE</div><div class="track"><div class="fill" style="left:50%;width:15.5%">​</div></div><div class="val">+31%</div></div>
+    <div class="barrow pos"><div class="nm">Ctrip Vietnam</div><div class="track"><div class="fill" style="left:50%;width:12%">​</div></div><div class="val">+24%</div></div>
+    <div class="barrow pos"><div class="nm">Agoda</div><div class="track"><div class="fill" style="left:50%;width:2%">​</div></div><div class="val">+4%</div></div>
+    <div class="barrow flat"><div class="nm">Meituan</div><div class="track"><div class="fill" style="left:50%;width:1px">​</div></div><div class="val">0%</div></div>
+    <div class="barrow neg"><div class="nm">Ctrip Korea</div><div class="track"><div class="fill" style="left:49.5%;width:.5%">​</div></div><div class="val">−1%</div></div>
+    <div class="barrow neg"><div class="nm">Elong</div><div class="track"><div class="fill" style="left:33%;width:17%">​</div></div><div class="val">−34%</div></div>
+    <div class="barrow neg dida"><div class="nm">DIDA ◀</div><div class="track"><div class="fill" style="left:28.5%;width:21.5%">​</div></div><div class="val">−43%</div></div>
+    <div class="legend"><span><i style="background:#59c98d"></i>성장</span><span><i style="background:#c0392f"></i>하락</span><span>중앙선 = 0% (YoY 예약 건수, 체크아웃 기준)</span></div>
+  </div>
+  <div class="pillrow">
+    <span class="chip g">Convergent 점유율 1.8% → 7.7%</span>
+    <span class="chip g">PKFARE 5.3% → 6.4%</span>
+    <span class="chip">DIDA 9.5% → 5.1%</span>
+    <span class="chip">Elong 7.5% → 4.6%</span>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="eyebrow">추세</div>
+  <h2>디다 월별 예약 — 일시적 하락이 아닌 6개월 내내 −40%대</h2>
+  <div class="card">
+    <div class="mgrid">
+      <div class="mcol"><div class="mbars"><div class="b b25" style="height:167px"><span>4,367</span></div><div class="b b26" style="height:98px"><span>2,555</span></div></div><div class="ml">1월</div></div>
+      <div class="mcol"><div class="mbars"><div class="b b25" style="height:159px"><span>4,153</span></div><div class="b b26" style="height:89px"><span>2,336</span></div></div><div class="ml">2월</div></div>
+      <div class="mcol"><div class="mbars"><div class="b b25" style="height:162px"><span>4,238</span></div><div class="b b26" style="height:98px"><span>2,559</span></div></div><div class="ml">3월</div></div>
+      <div class="mcol"><div class="mbars"><div class="b b25" style="height:147px"><span>3,845</span></div><div class="b b26" style="height:80px"><span>2,088</span></div></div><div class="ml">4월</div></div>
+      <div class="mcol"><div class="mbars"><div class="b b25" style="height:154px"><span>4,029</span></div><div class="b b26" style="height:88px"><span>2,302</span></div></div><div class="ml">5월</div></div>
+      <div class="mcol"><div class="mbars"><div class="b b25" style="height:142px"><span>3,712</span></div><div class="b b26" style="height:82px"><span>2,133</span></div></div><div class="ml">6월</div></div>
+    </div>
+    <div class="legend"><span><i style="background:#b8c2d6"></i>2025</span><span><i style="background:#c0392f"></i>2026</span><span>월별 예약 건수 · 매월 약 −40% 균일 하락 (구조적)</span></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="eyebrow">디다 상품 믹스 (2026 H1)</div>
+  <h2>어디를 팔고 있나</h2>
+  <div class="two">
+    <div class="card"><b>호텔 국가</b>
+      <div class="barrow pos" style="grid-template-columns:110px 1fr 70px"><div class="nm">일본</div><div class="track"><div class="fill" style="left:0;width:100%;background:#2455c4">​</div></div><div class="val" style="color:var(--ink)">8,131</div></div>
+      <div class="barrow pos" style="grid-template-columns:110px 1fr 70px"><div class="nm">베트남</div><div class="track"><div class="fill" style="left:0;width:41%;background:#2455c4">​</div></div><div class="val" style="color:var(--ink)">3,377</div></div>
+      <div class="barrow pos" style="grid-template-columns:110px 1fr 70px"><div class="nm">한국</div><div class="track"><div class="fill" style="left:0;width:29%;background:#2455c4">​</div></div><div class="val" style="color:var(--ink)">2,328</div></div>
+      <p style="color:var(--mut);font-size:13px;margin-top:8px">일본 편중(58%). 도쿄·오사카 중심 → 이 구간의 경쟁력 약화가 곧 디다 물량 감소.</p>
+    </div>
+    <div class="card"><b>주요 도시 (건수)</b>
+      <div class="barrow pos" style="grid-template-columns:110px 1fr 70px"><div class="nm">도쿄</div><div class="track"><div class="fill" style="left:0;width:100%;background:#5a7fd0">​</div></div><div class="val" style="color:var(--ink)">2,437</div></div>
+      <div class="barrow pos" style="grid-template-columns:110px 1fr 70px"><div class="nm">오사카</div><div class="track"><div class="fill" style="left:0;width:81%;background:#5a7fd0">​</div></div><div class="val" style="color:var(--ink)">1,970</div></div>
+      <div class="barrow pos" style="grid-template-columns:110px 1fr 70px"><div class="nm">교토</div><div class="track"><div class="fill" style="left:0;width:26%;background:#5a7fd0">​</div></div><div class="val" style="color:var(--ink)">632</div></div>
+      <div class="barrow pos" style="grid-template-columns:110px 1fr 70px"><div class="nm">나트랑</div><div class="track"><div class="fill" style="left:0;width:25%;background:#5a7fd0">​</div></div><div class="val" style="color:var(--ink)">622</div></div>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="eyebrow">왜 떨어졌나 — 가설</div>
+  <h2>디다 고유 원인 (동종 채널은 성장했으므로)</h2>
+  <p class="lead">전체·동종이 성장한 상황이라 원인은 <b>디다↔OMH 사이</b>에 있습니다. 우선순위 가설:</p>
+  <div class="card">
+    <div class="hyp"><div class="n">1</div><div><b>매핑·룸타입 코드 불일치</b> <span class="chip">유력</span><p>디다는 Legacy↔Ellis 코드 불일치·Single Use 룸타입 네이밍 이슈가 지속. 매핑이 깨지면 판매 가능 재고가 줄어 검색·전환 하락. (사내 T19 진행 중)</p></div></div>
+    <div class="hyp"><div class="n">2</div><div><b>요율·커버리지 경쟁력 열위</b> <span class="chip">유력</span><p>같은 인벤토리에서 Convergent·PKFARE가 더 나은 요율/커버리지로 앞섬 → 디다 물량을 흡수. Elong도 동반 하락(−34%)해 "중국계 저마진 경쟁" 구도.</p></div></div>
+    <div class="hyp"><div class="n">3</div><div><b>QPS·검색 커버리지 제약</b><p>과거 디다 QPS 이슈 이력. 초당 요청 제약 시 검색 노출·전환이 구조적으로 감소.</p></div></div>
+    <div class="hyp"><div class="n">4</div><div><b>L2B(검색→예약) 전환 저하</b><p>디다 측 프론트 노출/전환 로직 변화 가능. 디다 내부 지표 확인 필요.</p></div></div>
+  </div>
+  <div class="note">⚠️ 매출·ADR은 이번 데이터에서 신뢰도가 낮아(수출 파일의 revenue 필드 이슈) <b>물량(건수·룸나이트) 지표만</b> 사용했습니다. 결론(−43% 물량, 점유율 반토막, 동종 대비 열위)은 물량 기준으로 견고합니다.</div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="eyebrow">미팅 어젠다</div>
+  <h2>디다에 물어볼 것 · 함께 정할 것</h2>
+  <div class="two">
+    <div class="card"><b>디다에 확인</b>
+      <ul class="q">
+        <li>디다 측 L2B(검색→예약) 전환율 추세는? 우리 재고 검색량은 유지되나?</li>
+        <li>우리 요율·커버리지에 대한 시장 피드백은? 경쟁사 대비 약한 구간은?</li>
+        <li>매핑/룸타입(Single Use 포함) 이슈로 판매 못한 재고가 있나?</li>
+        <li>물량 회복을 위해 디다가 OMH에 필요로 하는 것은?</li>
+      </ul>
+    </div>
+    <div class="card"><b>OMH가 할 것 (합의 시)</b>
+      <ul class="q">
+        <li>매핑 정합·Single Use 결정 마무리(T19) → 판매 재고 정상화</li>
+        <li>일본(도쿄·오사카) 요율 경쟁력 점검 — Convergent·PKFARE 벤치마크</li>
+        <li>QPS 한도 재검토(검색 커버리지 확대)</li>
+        <li>공동 프로모션/타깃 구간(일본 소도시·베트남) 확대 논의</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">OMH Global Sales &amp; Marketing · DIDA Partner Review · 체크아웃 기준 2025 H1 vs 2026 H1 · 내부 자료 · 2026-07-17</div></footer>
+</body>
+</html>
