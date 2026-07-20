@@ -8,28 +8,6 @@
 </head>
 <body>
 <style>
-#omh-gate{position:fixed;inset:0;z-index:2147483647;background:#0B1E27;display:flex;align-items:center;justify-content:center;font-family:"Microsoft YaHei","Malgun Gothic",sans-serif}
-#omh-gate .box{text-align:center;padding:40px;max-width:360px;width:90%}
-#omh-gate h1{color:#EDF4F1;font-size:20px;margin:0 0 6px}
-#omh-gate p{color:#9DB8B9;font-size:13px;margin:0 0 24px}
-#omh-gate input{width:100%;box-sizing:border-box;padding:13px 16px;border-radius:10px;border:1px solid rgba(237,244,241,.25);background:rgba(255,255,255,.06);color:#EDF4F1;font-size:15px;outline:none;text-align:center}
-#omh-gate input:focus{border-color:#F2A93B}
-#omh-gate button{margin-top:12px;width:100%;padding:13px;border:0;border-radius:10px;background:#F2A93B;color:#22303A;font-size:15px;font-weight:700;cursor:pointer}
-#omh-gate .err{color:#F08A6B;font-size:12.5px;margin-top:10px;min-height:16px}
-html.omh-locked{overflow:hidden}
-</style>
-<div id="omh-gate"><div class="box"><h1>OMH Weekly Report</h1><p>内部资料，请输入密码。</p>
-<input id="omh-pw" type="password" placeholder="Password" autocomplete="off"><button id="omh-go">确认</button><div class="err" id="omh-err"></div></div></div>
-<script>
-(function(){var HASH='61798ebe28560a97b9b5f63d864fa6e024d78672f3d3985a53b49c387b1ee65c';var gate=document.getElementById('omh-gate');
-function unlock(){document.documentElement.classList.remove('omh-locked');if(gate&&gate.parentNode)gate.parentNode.removeChild(gate);}
-if(sessionStorage.getItem('omh_gate')===HASH){unlock();return;}document.documentElement.classList.add('omh-locked');
-function sha256(s){return crypto.subtle.digest('SHA-256',new TextEncoder().encode(s)).then(function(b){return Array.prototype.map.call(new Uint8Array(b),function(x){return x.toString(16).padStart(2,'0')}).join('')});}
-function go(){var v=document.getElementById('omh-pw').value;if(!v)return;sha256(v).then(function(h){if(h===HASH){sessionStorage.setItem('omh_gate',HASH);unlock();}else{document.getElementById('omh-err').textContent='密码不正确。';document.getElementById('omh-pw').value='';}});}
-document.getElementById('omh-go').addEventListener('click',go);document.getElementById('omh-pw').addEventListener('keydown',function(e){if(e.key==='Enter')go();});setTimeout(function(){document.getElementById('omh-pw').focus();},100);})();
-</script>
-
-<style>
   :root{--bg:#f5f6f9;--card:#fff;--ink:#161b26;--mut:#5a6474;--line:#e2e6ee;--acc:#2455c4;--red:#c0392f;--redbg:#fbe6e3;--grn:#1a7f4b;--grnbg:#e3f4ea;--amb:#a8730a;--navy:#141a2e;}
   @media(prefers-color-scheme:dark){:root{--bg:#0e121c;--card:#161c2b;--ink:#eef1f8;--mut:#9aa6bd;--line:#2a3348;--acc:#6f9bff;--red:#f0796d;--redbg:#3a1d1a;--grn:#4bd08a;--grnbg:#123227;--amb:#e6b657;--navy:#0b0f1a;}}
   *{box-sizing:border-box;margin:0;padding:0}
@@ -170,7 +148,7 @@ document.getElementById('omh-go').addEventListener('click',go);document.getEleme
   <h2>DIDA 自身原因（同业均在增长）</h2>
   <p class="lead">既然大盘与同业都在增长，原因就出在<b>DIDA 与 OMH 之间</b>。优先假设：</p>
   <div class="card">
-    <div class="hyp"><div class="n">1</div><div><b>映射 / 房型代码不一致</b> <span class="chip">高度可能</span><p>DIDA 持续存在 Legacy↔Ellis 代码不一致、Single Use 房型命名问题。映射错乱会减少可售库存 → 搜索与转化下降。（内部 T19 处理中）</p></div></div>
+    <div class="hyp"><div class="n">1</div><div><b>Single Use 房型映射问题</b> <span class="chip">高度可能</span><p>DIDA 持续存在 Single Use 房型命名（roomTypeCode）问题。映射错乱会减少可售库存 → 搜索与转化下降。（内部 T19 处理中）</p></div></div>
     <div class="hyp"><div class="n">2</div><div><b>价格 / 覆盖竞争力不足</b> <span class="chip">高度可能</span><p>在同一库存上，Convergent 与 PKFARE 以更优的价格/覆盖胜出，吸收了 DIDA 的量。艺龙也同步下滑（−34%），呈现"中国系低毛利"竞争挤压。</p></div></div>
     <div class="hyp"><div class="n">3</div><div><b>QPS / 搜索覆盖受限</b><p>DIDA 曾有 QPS 受限历史。每秒请求受限会结构性降低搜索曝光与转化。</p></div></div>
     <div class="hyp"><div class="n">4</div><div><b>L2B（搜索→预订）转化下降</b><p>DIDA 前端曝光/转化逻辑可能有变化，需 DIDA 内部指标确认。</p></div></div>

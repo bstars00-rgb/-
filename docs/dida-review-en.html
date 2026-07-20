@@ -8,28 +8,6 @@
 </head>
 <body>
 <style>
-#omh-gate{position:fixed;inset:0;z-index:2147483647;background:#0B1E27;display:flex;align-items:center;justify-content:center;font-family:"Segoe UI","Malgun Gothic",sans-serif}
-#omh-gate .box{text-align:center;padding:40px;max-width:360px;width:90%}
-#omh-gate h1{color:#EDF4F1;font-size:20px;margin:0 0 6px}
-#omh-gate p{color:#9DB8B9;font-size:13px;margin:0 0 24px}
-#omh-gate input{width:100%;box-sizing:border-box;padding:13px 16px;border-radius:10px;border:1px solid rgba(237,244,241,.25);background:rgba(255,255,255,.06);color:#EDF4F1;font-size:15px;outline:none;text-align:center}
-#omh-gate input:focus{border-color:#F2A93B}
-#omh-gate button{margin-top:12px;width:100%;padding:13px;border:0;border-radius:10px;background:#F2A93B;color:#22303A;font-size:15px;font-weight:700;cursor:pointer}
-#omh-gate .err{color:#F08A6B;font-size:12.5px;margin-top:10px;min-height:16px}
-html.omh-locked{overflow:hidden}
-</style>
-<div id="omh-gate"><div class="box"><h1>OMH Weekly Report</h1><p>Internal document. Please enter the password.</p>
-<input id="omh-pw" type="password" placeholder="Password" autocomplete="off"><button id="omh-go">Enter</button><div class="err" id="omh-err"></div></div></div>
-<script>
-(function(){var HASH='61798ebe28560a97b9b5f63d864fa6e024d78672f3d3985a53b49c387b1ee65c';var gate=document.getElementById('omh-gate');
-function unlock(){document.documentElement.classList.remove('omh-locked');if(gate&&gate.parentNode)gate.parentNode.removeChild(gate);}
-if(sessionStorage.getItem('omh_gate')===HASH){unlock();return;}document.documentElement.classList.add('omh-locked');
-function sha256(s){return crypto.subtle.digest('SHA-256',new TextEncoder().encode(s)).then(function(b){return Array.prototype.map.call(new Uint8Array(b),function(x){return x.toString(16).padStart(2,'0')}).join('')});}
-function go(){var v=document.getElementById('omh-pw').value;if(!v)return;sha256(v).then(function(h){if(h===HASH){sessionStorage.setItem('omh_gate',HASH);unlock();}else{document.getElementById('omh-err').textContent='Incorrect password.';document.getElementById('omh-pw').value='';}});}
-document.getElementById('omh-go').addEventListener('click',go);document.getElementById('omh-pw').addEventListener('keydown',function(e){if(e.key==='Enter')go();});setTimeout(function(){document.getElementById('omh-pw').focus();},100);})();
-</script>
-
-<style>
   :root{--bg:#f5f6f9;--card:#fff;--ink:#161b26;--mut:#5a6474;--line:#e2e6ee;--acc:#2455c4;--red:#c0392f;--redbg:#fbe6e3;--grn:#1a7f4b;--grnbg:#e3f4ea;--amb:#a8730a;--navy:#141a2e;}
   @media(prefers-color-scheme:dark){:root{--bg:#0e121c;--card:#161c2b;--ink:#eef1f8;--mut:#9aa6bd;--line:#2a3348;--acc:#6f9bff;--red:#f0796d;--redbg:#3a1d1a;--grn:#4bd08a;--grnbg:#123227;--amb:#e6b657;--navy:#0b0f1a;}}
   *{box-sizing:border-box;margin:0;padding:0}
@@ -170,7 +148,7 @@ document.getElementById('omh-go').addEventListener('click',go);document.getEleme
   <h2>DIDA-specific causes (peers grew)</h2>
   <p class="lead">Because the total and peers grew, the cause lies <b>between DIDA and OMH</b>. Prioritised hypotheses:</p>
   <div class="card">
-    <div class="hyp"><div class="n">1</div><div><b>Mapping / room-type code mismatch</b> <span class="chip">Likely</span><p>DIDA has persistent Legacy↔Ellis code inconsistency and Single-Use room-type naming issues. Broken mapping shrinks sellable inventory → lower search &amp; conversion. (Internal T19 in progress.)</p></div></div>
+    <div class="hyp"><div class="n">1</div><div><b>Single-Use room-type mapping issue</b> <span class="chip">Likely</span><p>DIDA has an ongoing Single-Use room-type naming (roomTypeCode) issue. When mapping is off, sellable inventory shrinks → lower search &amp; conversion. (Internal T19 in progress.)</p></div></div>
     <div class="hyp"><div class="n">2</div><div><b>Rate / coverage competitiveness</b> <span class="chip">Likely</span><p>On the same inventory, Convergent &amp; PKFARE win on rate/coverage and absorb DIDA's volume. Elong also fell (−34%), pointing to a "Chinese low-margin" competitive squeeze.</p></div></div>
     <div class="hyp"><div class="n">3</div><div><b>QPS / search coverage limits</b><p>DIDA has a history of QPS constraints. Request-rate limits structurally reduce search exposure and conversion.</p></div></div>
     <div class="hyp"><div class="n">4</div><div><b>L2B (look-to-book) conversion drop</b><p>Possible change in DIDA's front-end exposure/conversion logic. DIDA's internal metrics needed to confirm.</p></div></div>
