@@ -36,7 +36,9 @@ document.getElementById('omh-go').addEventListener('click',go);document.getEleme
   *{box-sizing:border-box;margin:0;padding:0}
   body{background:var(--bg);color:var(--ink);font-family:"Malgun Gothic","Apple SD Gothic Neo",sans-serif;line-height:1.6;font-variant-numeric:tabular-nums}
   .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
-  .hero{background:var(--navy);color:#eef1f8;padding:52px 0 46px}
+  .langsw{position:absolute;top:18px;right:24px;font-size:13px;font-weight:700}
+  .langsw a{color:#9aa6bd;text-decoration:none;padding:0 6px}.langsw a.on{color:#fff}
+  .hero{background:var(--navy);color:#eef1f8;padding:52px 0 46px;position:relative}
   .hero .eyebrow{color:#8fa9ff;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
   .hero h1{font-size:clamp(30px,5vw,52px);font-weight:800;letter-spacing:-.02em;margin:12px 0 6px}
   .hero .sub{color:#9aa6bd;font-size:16px;max-width:60ch}
@@ -88,6 +90,7 @@ document.getElementById('omh-go').addEventListener('click',go);document.getEleme
 </style>
 
 <div class="hero"><div class="wrap">
+  <div class="langsw"><a href="dida-review.html" class="on">한국어</a><a href="dida-review-en.html">EN</a><a href="dida-review-cn.html">中文</a></div>
   <div class="eyebrow">Partner Business Review · 대면 미팅용</div>
   <h1>DIDA — 상반기 실적 진단</h1>
   <div class="sub">체크아웃 기준 · 2025 H1 vs 2026 H1 (1~6월) · OMH 부킹 데이터 실측 · 2026-07-17</div>
