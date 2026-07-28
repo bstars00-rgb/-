@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>API 연동 프로세스 Playbook — OMH Global Sales</title>
+<script>(function(){try{var s=localStorage.getItem('pb-theme');var m=s||((window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',m);}catch(e){}})();</script>
+<style>
+:root{
+  --navy:#1E2761; --navy2:#141A45; --teal:#1C7293; --gold:#B5670F; --ink:#22262F; --muted:#6B7280;
+  --line:#E3E7F0; --bg:#ffffff; --side:#F6F8FC; --code:#eef1f8; --accent:#1E2761;
+  --ok:#1E8E4E; --okbg:#E4F4EA; --amber:#B5670F; --amberbg:#FBEBD6; --stop:#C0392B; --stopbg:#F7E2DF; --gray:#5B6472; --graybg:#EBEEF4;
+}
+:root[data-theme="dark"]{
+  --ink:#E6E9F2; --muted:#98A2B8; --line:#2A3348; --bg:#0F1421; --side:#151B2B; --code:#1B2236; --accent:#9FB6EE; --teal:#78C0D6; --gold:#E5A65A;
+  --ok:#5FCE93; --okbg:#12331F; --amber:#E5A65A; --amberbg:#3A2A12; --stop:#EA8B81; --stopbg:#3A1D1B; --gray:#AEB6C8; --graybg:#232B40;
+}
+:root[data-theme="dark"] .card{background:#151B2B}
+:root[data-theme="dark"] tr:nth-child(even) td{background:#171E30}
+:root[data-theme="dark"] .step{background:#151B2B}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Malgun Gothic","Yu Gothic",-apple-system,"Segoe UI",Roboto,system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;font-size:16px}
+code,.mono,.path{font-family:ui-monospace,"Cascadia Code",Consolas,monospace}
+a{color:var(--teal)}
+.topbar{position:sticky;top:0;z-index:20;background:var(--navy);color:#fff;display:flex;align-items:center;gap:16px;padding:0 22px;height:58px;box-shadow:0 1px 0 rgba(0,0,0,.15)}
+.topbar .brand{font-weight:700;font-size:16px;letter-spacing:.2px}
+.topbar .brand small{font-weight:400;color:#B9C6EA;font-size:12px;margin-left:8px}
+.spacer{flex:1}
+.tbtn{font-size:14px;line-height:1;background:transparent;border:1px solid #3A4488;border-radius:8px;padding:7px 11px;cursor:pointer;color:#C7D3F0}
+.tbtn:hover{background:#2A3488}
+.wrap{display:grid;grid-template-columns:262px minmax(0,1fr)}
+aside{position:sticky;top:58px;align-self:start;height:calc(100vh - 58px);overflow:auto;background:var(--side);border-right:1px solid var(--line);padding:20px 14px}
+aside .navttl{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);font-weight:700;margin:0 8px 10px}
+aside a{display:block;color:var(--ink);text-decoration:none;font-size:14px;padding:6px 10px;border-radius:7px}
+aside a:hover{background:#e9eef8}
+aside a.on{background:#e5e9f6;color:var(--accent);font-weight:700}
+:root[data-theme="dark"] aside a:hover{background:#1c243a}
+:root[data-theme="dark"] aside a.on{background:#232b40}
+main{padding:32px 46px 90px;min-width:0;max-width:940px}
+main h1{font-size:30px;line-height:1.25;margin:.1em 0;color:var(--accent);font-weight:800}
+main .lead{color:var(--muted);font-size:16px;margin:2px 0 6px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 6px}
+section{scroll-margin-top:70px;padding-top:28px}
+section h2{font-size:22px;color:var(--accent);font-weight:800;margin:.5em 0 .4em;padding-bottom:.26em;border-bottom:2px solid var(--line);display:flex;align-items:center;gap:9px}
+section h2 .ph{font:700 12px/1 ui-monospace,Consolas,monospace;background:var(--navy);color:#fff;padding:5px 9px;border-radius:6px;letter-spacing:.5px}
+:root[data-theme="dark"] section h2 .ph{background:#2A3488}
+section h3{font-size:16.5px;color:var(--ink);font-weight:700;margin:1.2em 0 .3em}
+p{margin:.5em 0}
+ul,ol{margin:.5em 0;padding-left:1.25em}
+li{margin:.25em 0}
+.cal{border-radius:9px;padding:12px 15px;margin:14px 0;border:1px solid;font-size:14.5px}
+.cal p{margin:.2em 0}
+.cal .ct{font-weight:700;display:block;margin-bottom:2px}
+.cal.tip{background:var(--okbg);border-color:#B7E0C6}.cal.tip .ct{color:var(--ok)}
+.cal.warn{background:var(--amberbg);border-color:#F0CE9E}.cal.warn .ct{color:var(--amber)}
+.cal.danger{background:var(--stopbg);border-color:#EBBDB6}.cal.danger .ct{color:var(--stop)}
+.cal.info{background:#E7EEFA;border-color:#C2D2F0}.cal.info .ct{color:var(--teal)}
+:root[data-theme="dark"] .cal.info{background:#16233A;border-color:#2A3D5E}
+.cal.gate{background:linear-gradient(90deg,#FBEBD6,transparent);border-color:#E7C48A}.cal.gate .ct{color:var(--gold)}
+:root[data-theme="dark"] .cal.gate{background:linear-gradient(90deg,#3A2A12,transparent)}
+.pill{font-family:ui-monospace,Consolas,monospace;font-weight:700;font-size:12px;padding:3px 8px;border-radius:6px;display:inline-block;white-space:nowrap}
+.pill.ok{background:var(--okbg);color:var(--ok)}
+.pill.amber{background:var(--amberbg);color:var(--amber)}
+.pill.stop{background:var(--stopbg);color:var(--stop)}
+.pill.gray{background:var(--graybg);color:var(--gray)}
+.pill.navy{background:#E5E9F6;color:var(--accent)}
+:root[data-theme="dark"] .pill.navy{background:#232B40;color:var(--accent)}
+.path{font-size:12.5px;background:var(--code);color:var(--accent);padding:2px 7px;border-radius:5px}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:13.5px}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:center;vertical-align:middle}
+th{background:var(--navy);color:#fff;font-weight:700;font-size:12.5px}
+td.l,th.l{text-align:left}
+tr:nth-child(even) td{background:#F7F9FD}
+.no{color:var(--muted)} .yes{color:var(--ok);font-weight:700}
+/* step cards */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:16px 0}
+.step{border:1px solid var(--line);border-radius:11px;padding:14px 15px;background:#fff;position:relative}
+.step .n{font:800 12px/1 ui-monospace,Consolas,monospace;color:#fff;background:var(--teal);width:26px;height:26px;border-radius:7px;display:inline-flex;align-items:center;justify-content:center;margin-bottom:8px}
+.step.gate .n{background:var(--gold)}
+.step h4{margin:0 0 3px;font-size:14.5px;color:var(--accent)}
+.step p{margin:0;font-size:12.5px;color:var(--muted);line-height:1.5}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:14px 0}
+.box{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:var(--side)}
+.box h4{margin:0 0 8px;font-size:14px;color:var(--accent)}
+.box ul{margin:.2em 0;padding-left:1.15em;font-size:13.5px}
+.footer{color:var(--muted);font-size:12.5px;border-top:1px solid var(--line);margin-top:40px;padding-top:16px}
+@media(max-width:860px){.wrap{grid-template-columns:1fr}aside{display:none}main{padding:22px 18px 70px;max-width:none}.steps{grid-template-columns:1fr}.two{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="brand">🔌 API 연동 프로세스 <small>Sales Playbook · OMH Global S&M</small></div>
+  <div class="spacer"></div>
+  <button class="tbtn" id="themeBtn" title="테마 전환">◑ 테마</button>
+</div>
+<div class="wrap">
+<aside>
+  <div class="navttl">목차</div>
+  <a href="#overview">개요 · 학습 목표</a>
+  <a href="#flow">9단계 한눈에</a>
+  <a href="#p1">Phase 1 · Lead 발굴</a>
+  <a href="#p2">Phase 2 · NDA & 적합성</a>
+  <a href="#p3">Phase 3 · 거래조건 협의 ★</a>
+  <a href="#p4">Phase 4 · 나이스 & 계약서</a>
+  <a href="#p5">Phase 5 · SPEC·DEV Key</a>
+  <a href="#p6">Phase 6 · 스테이징 테스트</a>
+  <a href="#p7">Phase 7 · 완료 & Deposit ★</a>
+  <a href="#p8">Phase 8 · 라이브키 & Test</a>
+  <a href="#p9">Phase 9 · Go-Live ★</a>
+  <a href="#terms">OMH 표준 거래조건</a>
+  <a href="#issues">계약 단골이슈 4선</a>
+  <a href="#checklist">Sales 체크리스트</a>
+  <a href="#key">Key Takeaways</a>
+</aside>
+<main>
+  <h1>API 연동 프로세스 — Sales Playbook</h1>
+  <p class="lead">초기 컨택부터 Go-Live까지, Sales가 알아야 할 9단계 End-to-End</p>
+  <div class="meta">
+    <span class="pill navy">CASE STUDY · Linkstay (China)</span>
+    <span class="pill gray">2025.06 ~ 2026.05 · 약 11개월</span>
+    <span class="pill amber">B2B Hotel Distribution · Supplier</span>
+  </div>
+
+  <section id="overview">
+    <h2>개요 · 학습 목표</h2>
+    <p>이 플레이북을 통해 <b>① 전체 프로세스 흐름</b>(9단계, 각 단계 Sales 역할), <b>② 표준 조건과 협상 한도</b>(Deposit·Credit·Settlement·Currency), <b>③ 계약서 단골 이슈 4대 대응법</b>을 익힙니다.</p>
+    <div class="two">
+      <div class="box"><h4>🏢 Case Study — Linkstay</h4>
+        <ul>
+          <li>국가: China · B2B Hotel Distribution</li>
+          <li>채널: Ctrip · Fliggy · Meituan + WeChat 400K+ 에이전트</li>
+          <li>계약 형태: Supplier (B2B Inventory 공급)</li>
+          <li>일 주문량: <b>1,500 ~ 2,000건</b></li>
+          <li>기간: 초기 컨택 → Go-Live 약 <b>11개월</b></li>
+        </ul>
+      </div>
+      <div class="box"><h4>🎯 Sales = PM 모드</h4>
+        <p style="font-size:13.5px;margin:.2em 0">Sales는 9단계 전 과정의 <b>프로젝트 매니저</b>입니다. 단, 기술 구간은 <b>고객사 IT ↔ OMH 개발팀 직접 소통</b>이 원칙이며, Sales는 일정 관리·에스컬레이션을 담당합니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="flow">
+    <h2>End-to-End 9단계 한눈에</h2>
+    <div class="steps">
+      <div class="step gate"><span class="n">1</span><h4>거래처 미팅 & Lead 발굴</h4><p>계정 발급, Top-Selling 리스트, 대면 미팅</p></div>
+      <div class="step"><span class="n">2</span><h4>NDA 발송 & 적합성 검토</h4><p>비밀보장 NDA 체결, 모델·채널 확인</p></div>
+      <div class="step gate"><span class="n">3</span><h4>거래조건 협의 (정산조건)</h4><p>Deposit·Currency·Settlement → 대표님 승인</p></div>
+      <div class="step"><span class="n">4</span><h4>오마이 나이스 & 계약서·SLA</h4><p>AI 심사 통과 후 조항 검토·SLA 분리</p></div>
+      <div class="step"><span class="n">5</span><h4>계약 체결 & DEV Key</h4><p>API SPEC · DEV 환경 · DEV Credential</p></div>
+      <div class="step"><span class="n">6</span><h4>개발 & 스테이징 테스트</h4><p>통합 시나리오 기반 Certification</p></div>
+      <div class="step gate"><span class="n">7</span><h4>테스트 완료 & Deposit 입금</h4><p>Cert 결과 검증 + 입금 확인</p></div>
+      <div class="step"><span class="n">8</span><h4>라이브키 발급 & Live Test</h4><p>개발팀 → 세일즈 → 고객사, Live Test</p></div>
+      <div class="step gate"><span class="n">9</span><h4>Go-Live / 라이브 완료</h4><p>사전 일정 공유, 초기 모니터링, 공식 런칭</p></div>
+    </div>
+    <div class="cal gate"><span class="ct">★ 골드 표시(3·7·9)</span>Sales가 가장 집중해야 할 <b>의사결정·게이트 구간</b>입니다.</div>
+  </section>
+
+  <section id="p1">
+    <h2><span class="ph">PHASE 1</span> Lead 발굴 & 초기 컨택</h2>
+    <p class="lead">관심 → 계정 발급 → Follow-up까지</p>
+    <div class="two">
+      <div class="box"><h4>Sales 액션</h4>
+        <ul>
+          <li><code>ohmyhotel.biz</code> 계정 발급 (임시 PW 포함)</li>
+          <li>국가별 Top-Selling 호텔 리스트 공유 (KR/JP/VN)</li>
+          <li>선불 결제 정책 안내 (Credit Card / Bank Transfer)</li>
+          <li>응답 없을 시 정기 Follow-up (3~6주 간격)</li>
+          <li>고객사 비즈니스 카운터파트 명확화 (R&D, Procurement)</li>
+        </ul>
+      </div>
+      <div class="box"><h4>Linkstay Case</h4>
+        <ul>
+          <li><b>06.26</b> Jensen 계정 발급 + Top-Selling 송부</li>
+          <li><b>06.27</b> Jason(Linkstay) 가격 검토 의사 + 계약서 요청</li>
+          <li><b>07.30</b> Grace 첫 Follow-up (응답 없음)</li>
+          <li><b>09.12</b> 두 번째 Follow-up → 협력 의사 재확인</li>
+        </ul>
+      </div>
+    </div>
+    <div class="cal tip"><span class="ct">KEY LESSON · 응답이 없어도 포기 금지</span>Linkstay는 첫 컨택 후 약 <b>3개월 침묵</b>(6월→9월) 끝에 재개되었습니다. 정기적 Follow-up이 결국 Deal로 이어집니다.</div>
+    <div class="cal gate"><span class="ct">GATE ▸ Phase 2</span>고객사 협력 의사 확인 + 진행 일정 공유 시점에 이동.</div>
+  </section>
+
+  <section id="p2">
+    <h2><span class="ph">PHASE 2</span> NDA 발송 & 비즈니스 적합성 검토</h2>
+    <p class="lead">비밀보장 확보 후 고객사 모델·채널 파악</p>
+    <h3>STEP 1 · NDA 발송 (비밀보장 목적)</h3>
+    <ul>
+      <li>거래처 미팅 직후 OMH NDA 템플릿 송부 (<b>Sales가 driver</b>)</li>
+      <li>고객사 서명 후 회신 → 우리측 서명본 송부</li>
+      <li>가격·재고·API 등 후속 자료는 <b>NDA 체결 이후에만</b> 공유</li>
+    </ul>
+    <h3>STEP 2 · 적합성 질문 (필수 5)</h3>
+    <table>
+      <tr><th class="l" style="width:56%">질문</th><th>Linkstay 답변 (실제)</th></tr>
+      <tr><td class="l">Q1. 주요 판매 채널 (B2B / B2C / WeChat)</td><td>Ctrip·Fliggy·Meituan(B2B) + WeChat 400K+(B2C)</td></tr>
+      <tr><td class="l">Q2. B2B vs B2C 매출 비중</td><td>주로 B2B (해외 3rd-party는 Private 채널 한정)</td></tr>
+      <tr><td class="l">Q3. 일일 평균 주문량 (예상 볼륨)</td><td>1,500 ~ 2,000건 (해외 거래 기준)</td></tr>
+      <tr><td class="l">Q4. 재고 공급 방식 (API / Static / Cross-Selling)</td><td>API 연동 후 즉시 자동 확정 / 자체 정산</td></tr>
+      <tr><td class="l">Q5. 결제·정산 가능 통화 (USD / JPY / CNY)</td><td>USD (협상 결과)</td></tr>
+    </table>
+  </section>
+
+  <section id="p3">
+    <h2><span class="ph">PHASE 3 ★</span> 거래조건 협의 (정산조건)</h2>
+    <p class="lead">Deposit · Currency · Settlement 합의 → 대표님 승인</p>
+    <table>
+      <tr><th>항목</th><th>OMH 표준</th><th>협상 결과 (Linkstay)</th><th class="l">원칙</th></tr>
+      <tr><td>Deposit</td><td>USD 30,000</td><td>USD 10,000</td><td class="l">Tier·볼륨 따라 협상</td></tr>
+      <tr><td>Credit Ratio</td><td>1:1</td><td>1:1 유지</td><td class="l"><span class="pill stop">양보 불가</span></td></tr>
+      <tr><td>Settlement</td><td>Bi-Weekly</td><td>Bi-Weekly (Check-out 기준)</td><td class="l">주기 유지</td></tr>
+      <tr><td>Currency</td><td>USD</td><td>USD (JPY 제안 거절)</td><td class="l"><span class="pill stop">USD 고수</span></td></tr>
+    </table>
+    <div class="cal danger"><span class="ct">★ 대표님 승인 전 확약 금지</span>4개 항목 합의안은 <b>반드시 대표님 승인 후 확정</b>. 대면 미팅이 협상 가속 핵심 — Linkstay는 <b>10/15 ITB Singapore</b> 대면 후 Deposit 합의.</div>
+  </section>
+
+  <section id="p4">
+    <h2><span class="ph">PHASE 4</span> 오마이 나이스 심사 & 계약서·SLA</h2>
+    <p class="lead">AI 자체 심사 통과 → 조항별 검토 → SLA 분리 → 서명</p>
+    <h3>진행 흐름 (Linkstay 실제)</h3>
+    <ul>
+      <li><b>10/17</b> OMH 계약서 초안 송부 (나이스 심사 통과 후)</li>
+      <li><b>11/13</b> 고객사 코멘트 회신 (SLA 추가 제안 포함)</li>
+      <li><b>11/26</b> OMH 검토 회신 + 하이라이트 코멘트</li>
+      <li><b>12/05</b> SLA를 계약서 III.3·IV.3에 참조시키는 방안 논의</li>
+      <li><b>12/09</b> SLA 별도 문서 분리 결정 + 수정 계약서 송부</li>
+      <li><b>01/09</b> 양측 계약서 + SLA 서명 완료</li>
+    </ul>
+    <div class="cal info"><span class="ct">SLA는 별도 문서로 분리</span>계약서 본문엔 "SLA에 따른다" 참조만 두고, 구체적 처리 기준은 SLA 문서에 명문화 → 계약 협상 속도·유연성 확보.</div>
+  </section>
+
+  <section id="p5">
+    <h2><span class="ph">PHASE 5</span> API SPEC · DEV 환경 · DEV Key 제공</h2>
+    <p class="lead">세일즈 요청 → 개발팀 발급 → 세일즈 → 고객사</p>
+    <div class="two">
+      <div class="box"><h4>Sales 액션 체크리스트</h4>
+        <ul>
+          <li>① 개발팀에 DEV Credential 발급 요청 (Sales 기안)</li>
+          <li>② API SPEC Site 링크 공유 (<code>developer.ohmyhotel.com</code>)</li>
+          <li>③ DEV 환경 URL + DEV Key(Token·Secret) 전달</li>
+          <li>④ 고객사 IT 담당자 명단 + 접속 IP 확보</li>
+          <li>⑤ OMH 기술팀(@API SUPPORT) 채널 연결</li>
+          <li>⑥ MS Teams 그룹 생성 → 이후 IT ↔ IT 직접 소통</li>
+        </ul>
+      </div>
+      <div class="box"><h4>고객사 전달 패키지</h4>
+        <ul>
+          <li>Signed Contract (양측 서명 PDF)</li>
+          <li>API SPEC Site — <span class="path">developer.ohmyhotel.com</span></li>
+          <li>DEV Environment — <span class="path">dev-api-ota-v2.ohmyhotel.com</span></li>
+          <li>DEV Credential Key (Token + Secret, 개발팀 발급)</li>
+          <li>Teams Channel (고객사 IT ↔ OMH 개발팀)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="p6">
+    <h2><span class="ph">PHASE 6</span> 테스트 시나리오 & 스테이징 테스트</h2>
+    <p class="lead">시나리오 배포 → 스테이징 검증 → Cert 문서 제출</p>
+    <div class="two">
+      <div class="box"><h4>OMH 제공 자료</h4>
+        <ul>
+          <li>API Client Certification V2.1</li>
+          <li>Hotel Static Information (호텔·객실, 주 1회 갱신)</li>
+          <li>스테이징 환경 + 테스트 호텔코드 (<code>764481</code>)</li>
+          <li>API 디버깅 지원 (Teams IT ↔ IT 실시간)</li>
+        </ul>
+      </div>
+      <div class="box"><h4>고객사 제출물</h4>
+        <ul>
+          <li>API Test Result + Log (6개 Request/Response 전량)</li>
+          <li>Certification Form (Client Detail·Support·접속 IP)</li>
+          <li>Voucher 스크린 캡처 (Payable by + Emergency contact)</li>
+          <li>Prior Acknowledgement 동의 (Static·매핑·MSP 등 6항목)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="cal info"><span class="ct">KEY · 소통 원칙</span>고객사 IT ↔ OMH 개발팀 <b>직접 소통이 기본</b>. Sales는 일정 관리·에스컬레이션(PM 모드).</div>
+    <div class="cal warn"><span class="ct">개선 과제</span>테스트 시나리오는 현재 3종(Normal / 3rd include / Package rate) — <b>1종 통합</b>이 개선 과제.</div>
+  </section>
+
+  <section id="p7">
+    <h2><span class="ph">PHASE 7 ★</span> 테스트 완료 & Deposit 입금</h2>
+    <p class="lead">라이브키 발급의 두 가지 전제 조건</p>
+    <ol>
+      <li>Cert 문서 + Log 수신 (고객사 IT → OMH 개발팀 직접 제출)</li>
+      <li>개발팀 내부 검증 (6개 API 응답 · Voucher 요건 충족 확인)</li>
+      <li>테스트 완료(Pass) 판정 — 미충족 항목은 재테스트</li>
+      <li>Deposit 송금 요청 (지정 USD 계좌 · Bank Fee는 Party B 부담)</li>
+      <li>입금 확인 → 라이브키 발급 승인</li>
+    </ol>
+    <div class="cal danger"><span class="ct">★ AND 조건</span>라이브키는 <b>Cert Pass <u>AND</u> Deposit 입금</b>, 두 조건 <b>모두</b> 충족 시에만 발급.</div>
+    <div class="cal tip"><span class="ct">Linkstay 입금 사례</span>USD 10,000 · Credit 1:1 · 통화 USD · Bank Fee 고객사 부담 · 송금일 <b>2026.04.30</b> · 증빙 송금 영수증 PDF.</div>
+  </section>
+
+  <section id="p8">
+    <h2><span class="ph">PHASE 8</span> Certification(라이브키) 발급 & Live Test</h2>
+    <p class="lead">개발팀 → 세일즈 → 고객사 전달 + 실거래 검증</p>
+    <ol>
+      <li>라이브키 발급 — Cert Pass + 입금 확인 후 PROD 자격증명 생성 (개발팀)</li>
+      <li>세일즈 경유 전달 — <span class="path">개발팀 → 세일즈 → 고객사</span> (전달 이력 기록)</li>
+      <li>PROD 적용 + 실거래 테스트 부킹 — 1건 이상 + 부킹번호 회신</li>
+      <li>OMH 부킹 확인 → Go-Live 일정 공지 (ELLIS 기록 확인 후 D-Day 사전 통보)</li>
+    </ol>
+    <div class="cal info"><span class="ct">Channel Information 교환 (양측)</span>Channel BD · CS · Operation · Finance · IT 담당자 정보를 교환해 Go-Live 후 협업 라인을 확정합니다.</div>
+  </section>
+
+  <section id="p9">
+    <h2><span class="ph">PHASE 9 ★</span> Go-Live / 라이브 완료</h2>
+    <p class="lead">공식 런칭 + 초기 모니터링 + 셀스루 가속</p>
+    <div class="steps">
+      <div class="step"><span class="n">A</span><h4>Pre-Launch · D-7~D-1</h4><p>Go-Live 날짜 공식 확정 · IT 모니터링 시프트 배정 · OP/CS 브리핑 · 인벤토리·요금 점검</p></div>
+      <div class="step gate"><span class="n">B</span><h4>Launch Day · D-Day</h4><p>Live 채널 활성화(고객사 토글) · 개발팀·IT Teams 즉시 대응 대기</p></div>
+      <div class="step"><span class="n">C</span><h4>Post-Launch · D+1~D+30</h4><p>주간 부킹/매출 공유 · 에러율·취소율 모니터링 · Top-Selling 보강 · 월간 정산 진입</p></div>
+    </div>
+    <div class="cal tip"><span class="ct">Linkstay 실제 타임라인</span>Cert 통과(4/29) → Deposit 입금(4/30) → 라이브키 발급 → Live Test(5/7) → 라이브 완료(5월 중) — <b>약 2주</b>.</div>
+  </section>
+
+  <section id="terms">
+    <h2>OMH 표준 거래 조건</h2>
+    <p class="lead">협상 시 알고 있어야 할 기준선 (Sales 권한은 가이드라인 · 최종 승인은 본사 절차)</p>
+    <table>
+      <tr><th class="l">Term</th><th>Standard</th><th class="l">협상 가능 범위</th><th>Sales 권한</th></tr>
+      <tr><td class="l">Deposit</td><td>USD 30,000</td><td class="l">USD 10,000 (Tier 1) ~ Bank Guarantee</td><td><span class="pill amber">Director 승인</span></td></tr>
+      <tr><td class="l">Credit Ratio</td><td>1:1</td><td class="l">변경 불가 (원칙)</td><td><span class="pill stop">양보 불가</span></td></tr>
+      <tr><td class="l">Currency</td><td>USD</td><td class="l">USD 고수 (JPY/KRW/CNY 거절)</td><td><span class="pill amber">Director 사전협의</span></td></tr>
+      <tr><td class="l">Settlement</td><td>Bi-Weekly</td><td class="l">주기 변경 불가</td><td><span class="pill stop">양보 불가</span></td></tr>
+      <tr><td class="l">Settlement 기준</td><td>Check-Out</td><td class="l">Check-Out 기준 유지</td><td><span class="pill stop">양보 불가</span></td></tr>
+      <tr><td class="l">Bank Fee</td><td>Party B 부담</td><td class="l">고객사 부담</td><td><span class="pill stop">양보 불가</span></td></tr>
+      <tr><td class="l">Payment Penalty</td><td>1% / Day</td><td class="l">분쟁 기간 면제 단서 가능</td><td><span class="pill amber">Director 협의</span></td></tr>
+      <tr><td class="l">Billing Dispute</td><td>5 Working Days</td><td class="l">최대 10 Working Days까지</td><td><span class="pill navy">Manager 협의</span></td></tr>
+    </table>
+  </section>
+
+  <section id="issues">
+    <h2>계약서 협상 단골 이슈 4선</h2>
+    <p class="lead">고객사가 반복적으로 제기하는 조항 + 대응법</p>
+    <div class="cal warn"><span class="ct">Q1 · 예약가로 체크인이 안 되는 경우 책임은?</span>▸ SLA에 <b>구체적 처리 절차 명문화</b>(재예약·환불·차액 보전 등 시나리오별). 계약서 본문엔 'SLA에 따른다' 참조만.</div>
+    <div class="cal warn"><span class="ct">Q2 · Party B 권리·의무는 API에만? 웹사이트도?</span>▸ 요청대로 <b>API 송출 범위에 한정 가능</b>. 단, 우리측 웹사이트는 제외한다는 점 명시 (Linkstay 케이스 적용).</div>
+    <div class="cal warn"><span class="ct">Q3 · 청구 분쟁 해결 5 working days로는 부족</span>▸ 분쟁이 명시적으로 제기된 기간 <b>1% Penalty 면제 단서</b> 추가. 최대 10 working days까지 연장 가능.</div>
+    <div class="cal warn"><span class="ct">Q4 · 1% Daily Payment Penalty가 과도</span>▸ 분쟁 기간 면제 단서 + <b>Cap(예: 누적 30%)</b> 조항 협상 가능. <b>기본률 인하는 양보 불가</b>.</div>
+  </section>
+
+  <section id="checklist">
+    <h2>Sales 체크리스트 — 단계별 'Done' 기준</h2>
+    <div class="two">
+      <div class="box"><h4>P1 · 거래처 미팅</h4><ul><li>계정 발급 + 임시 PW 송부</li><li>Top-Selling 리스트 송부</li><li>미팅 후 Follow-up 일정 등록</li></ul></div>
+      <div class="box"><h4>P2 · NDA 발송</h4><ul><li>비밀보장 NDA 송부·회신</li><li>5대 적합성 질문 답변 확보</li></ul></div>
+      <div class="box"><h4>P3 · 거래조건 협의 ★</h4><ul><li>Deposit 합의 + 대표님 승인</li><li>Currency·Settlement 확정</li></ul></div>
+      <div class="box"><h4>P4 · 나이스 & 계약서</h4><ul><li>오마이 나이스 AI 심사 통과</li><li>조항별 검토 + SLA 별도 문서화</li><li>4대 단골 이슈 대응</li></ul></div>
+      <div class="box"><h4>P5 · SPEC·DEV Key</h4><ul><li>개발팀에 DEV Key 발급 요청</li><li>SPEC Site·DEV URL·DEV Key 전달</li><li>Teams 채널 셋업 (IT ↔ IT)</li></ul></div>
+      <div class="box"><h4>P6 · 스테이징 테스트</h4><ul><li>Cert 문서 + Static 정보 공유</li><li>기술담당자·접속 IP 확보</li><li>테스트 진행 모니터링</li></ul></div>
+      <div class="box"><h4>P7 · 테스트 완료/입금 ★</h4><ul><li>Result + Log 개발팀 검증</li><li>테스트 Pass 판정 확인</li><li>Deposit 입금 + 영수증 수령</li></ul></div>
+      <div class="box"><h4>P8·9 · 라이브키/Go-Live ★</h4><ul><li>라이브키 전달 + Live Test 부킹</li><li>Channel Info 양측 교환</li><li>Go-Live D-3 사전 통보</li></ul></div>
+    </div>
+  </section>
+
+  <section id="key">
+    <h2>KEY TAKEAWAYS — 기억해 둘 5가지</h2>
+    <div class="cal info"><span class="ct">01 · Sales = PM 모드</span>9단계 전 과정의 프로젝트 매니저. 기술 구간은 고객사 IT ↔ OMH 개발팀 직접 소통, Sales는 일정·에스컬레이션 관리.</div>
+    <div class="cal info"><span class="ct">02 · 표준 USD 30K, 협상 하한 USD 10K</span>Tier 1 한정 Deposit 10K까지 인하. Credit 1:1·Settlement 주기는 양보 불가.</div>
+    <div class="cal info"><span class="ct">03 · 테스트 시나리오는 1종 통합</span>현재 3종(Normal / 3rd include / Package) 분리 → 공통 TEST + 옵션 1개로 단일 문서 통합 가능.</div>
+    <div class="cal info"><span class="ct">04 · AND 조건 — Cert Pass + Deposit</span>라이브키는 두 조건 모두 충족 시에만. 전달 경로는 개발팀 → 세일즈 → 고객사 준수.</div>
+    <div class="cal info"><span class="ct">05 · Follow-up은 포기하지 않는다</span>Linkstay는 첫 컨택 후 약 3개월 침묵 후 재개. 정기적 follow-up이 결국 Deal을 만듭니다.</div>
+  </section>
+
+  <div class="footer">OMH Global Sales &amp; Marketing · API Integration Training · Case Study: Linkstay · 2026<br>세일즈 스텝 온보딩 교육자료 · 내부용</div>
+</main>
+</div>
+<script>
+// theme toggle
+document.getElementById('themeBtn').addEventListener('click',function(){
+  var cur=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',cur);
+  try{localStorage.setItem('pb-theme',cur);}catch(e){}
+});
+// scrollspy for sidebar
+var links=[].slice.call(document.querySelectorAll('aside a'));
+var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'));});
+function spy(){
+  var y=window.scrollY+90,idx=0;
+  for(var i=0;i<secs.length;i++){if(secs[i]&&secs[i].offsetTop<=y)idx=i;}
+  links.forEach(function(a,i){a.classList.toggle('on',i===idx);});
+}
+window.addEventListener('scroll',spy,{passive:true});spy();
+</script>
+</body>
+</html>
