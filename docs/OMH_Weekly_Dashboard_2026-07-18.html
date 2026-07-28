@@ -26,15 +26,21 @@
   th { text-align: left; padding: 8px 12px; font-weight: 600; color: #94a3b8; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 2px solid #334155; }
   .section-title { font-size: 1.125rem; font-weight: 700; color: #f1f5f9; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
   .section-title::before { content: ''; width: 4px; height: 20px; background: #3b82f6; border-radius: 2px; flex-shrink: 0; }
-  /* 온보딩 탭 */
-  .onb-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
-  .onb-tab { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 10px; border: 1px solid #334155; background: #1e293b; color: #94a3b8; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.15s; }
-  .onb-tab:hover { border-color: #f59e0b; color: #fbbf24; }
-  .onb-tab.active { background: linear-gradient(135deg, #f59e0b, #d97706); border-color: #f59e0b; color: #fff; }
-  .onb-panel.onb-hidden { display: none; }
-  .onb-gallery { display: flex; flex-direction: column; align-items: center; gap: 18px; }
-  .onb-slide { width: 100%; max-width: 960px; height: auto; border-radius: 10px; border: 1px solid #334155; box-shadow: 0 8px 24px rgba(0,0,0,0.35); background: #fff; }
-  .onb-frame { width: 100%; height: calc(100vh - 210px); min-height: 620px; border: 1px solid #334155; border-radius: 12px; background: #fff; box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+  /* 온보딩 탭 — 다운로드 카드 */
+  .onb-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 18px; }
+  .onb-card { border: 1px solid #334155; border-radius: 14px; background: #1e293b; padding: 20px 20px 18px; display: flex; flex-direction: column; }
+  .onb-card-h { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .onb-ic { font-size: 30px; line-height: 1; width: 52px; height: 52px; display: inline-flex; align-items: center; justify-content: center; background: linear-gradient(135deg,#f59e0b22,#d9770622); border: 1px solid #f59e0b44; border-radius: 12px; flex-shrink: 0; }
+  .onb-title { font-size: 1.05rem; font-weight: 700; color: #f1f5f9; }
+  .onb-tag { font-size: 0.7rem; color: #fbbf24; font-weight: 600; letter-spacing: .3px; }
+  .onb-sub { font-size: 0.82rem; color: #94a3b8; line-height: 1.5; margin: 0 0 14px; flex: 1; }
+  .onb-dls { display: flex; flex-wrap: wrap; gap: 9px; }
+  .onb-dl { display: inline-flex; flex-direction: column; gap: 2px; padding: 9px 15px; border-radius: 10px; background: linear-gradient(135deg,#f59e0b,#d97706); color: #fff; text-decoration: none; transition: transform .1s, box-shadow .15s; box-shadow: 0 4px 12px rgba(217,119,6,.28); }
+  .onb-dl:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(217,119,6,.4); }
+  .onb-dl .dlmain { font-size: 0.85rem; font-weight: 700; }
+  .onb-dl .dlmeta { font-size: 0.68rem; opacity: .85; }
+  .onb-web { display: inline-block; margin-top: 12px; font-size: 0.8rem; color: #60a5fa; text-decoration: none; }
+  .onb-web:hover { text-decoration: underline; }
   .tab-btn { padding: 10px 16px; font-size: 13px; font-weight: 500; border-bottom: 2px solid transparent; color: #94a3b8; cursor: pointer; white-space: nowrap; transition: all 0.15s; }
   .tab-btn:hover { color: #e2e8f0; background: #1e293b; }
   .tab-btn.active { color: #3b82f6; border-bottom-color: #3b82f6; background: #1e293b; }
@@ -1981,7 +1987,7 @@
 
   <!-- ═══════ TAB: 온보딩 (세일즈 교육자료) ═══════ -->
   <div id="tabOnboarding" class="tab-panel p-6">
-    <div class="onb-tabs"><button class="onb-tab active" data-onb="api-integration"><span>🔌</span> API 연동 프로세스</button></div><div class="onb-panel" id="onb_api-integration"><div class="onb-head"><div class="section-title" style="margin-bottom:4px">🔌 API 연동 프로세스 <span class="text-[10px] px-1.5 py-0.5 rounded bg-amber-500/15 text-amber-300 border border-amber-500/30 font-normal ml-2">인터랙티브 플레이북</span></div><p class="text-xs text-gray-500 mb-2">Sales가 알아야 할 9단계 End-to-End · Case Study: Linkstay (China) · <a href="onboarding/api-integration-playbook.html" target="_blank" class="text-blue-400 hover:underline">새 창으로 열기 ↗</a></p></div><iframe class="onb-frame" src="onboarding/api-integration-playbook.html" title="API 연동 프로세스" loading="lazy"></iframe></div>
+    <div class="section-title">🎓 세일즈 온보딩 교육자료 <span class="text-[10px] px-1.5 py-0.5 rounded bg-amber-500/15 text-amber-300 border border-amber-500/30 font-normal ml-2">다운로드</span></div><p class="text-xs text-gray-500 mb-5">자료를 다운로드해 교육에 활용하세요. 새 자료는 여기에 계속 추가됩니다.</p><div class="onb-grid"><div class="onb-card"><div class="onb-card-h"><span class="onb-ic">🔌</span><div><div class="onb-title">API 연동 프로세스</div><div class="onb-tag">세일즈 교육</div></div></div><p class="onb-sub">Sales가 알아야 할 9단계 End-to-End · Case Study: Linkstay (China)</p><div class="onb-dls"><a class="onb-dl" href="onboarding/API_Integration_Process_KR.pptx" download><span class="dlmain">⬇ 🇰🇷 한국어</span><span class="dlmeta">PPTX · 17p · 152KB</span></a><a class="onb-dl" href="onboarding/API_Integration_Process_EN.pptx" download><span class="dlmain">⬇ 🇺🇸 English</span><span class="dlmeta">PPTX · 17p · 150KB</span></a></div><a class="onb-web" href="onboarding/api-integration-playbook.html" target="_blank">🌐 웹으로 보기 ↗</a></div><div class="onb-card"><div class="onb-card-h"><span class="onb-ic">🤝</span><div><div class="onb-title">B2B Partner Manual</div><div class="onb-tag">파트너 온보딩</div></div></div><p class="onb-sub">파트너 온보딩 매뉴얼 · 계정·기능·운영 가이드</p><div class="onb-dls"><a class="onb-dl" href="onboarding/B2B_Partner_Manual_EN.pptx" download><span class="dlmain">⬇ 🇺🇸 English</span><span class="dlmeta">PPTX · 22p · 1.3MB</span></a></div></div></div>
   </div>
 
   <!-- ═══════ TAB 8: Action Item ═══════ -->
