@@ -221,8 +221,10 @@ H+='<section><h2><span class="n">05</span>최근 예약 모멘텀 (부킹데이�
 
 // SECTION 6 — July daily
 H+='<section><h2><span class="n">06</span>7월 일별 예약 패턴 & 외부 변수</h2>'
- +'<p class="sublead">부킹데이트 기준 · 7/30~31 딥은 태풍 Noul(중국 화남 상륙) 영향 — 아고다 볼륨은 중국 계약 엔티티 경유로 직접 노출</p>'
- +'<div class="card"><div id="ch-day"></div></div></section>';
+ +'<p class="sublead">부킹데이트 기준 · 7/30~31 딥의 주원인은 <b>7/28 규슈(구마모토) M7.1 지진</b>과 쓰나미 경보·여행경보에 따른 일본 목적지 예약 급감</p>'
+ +'<div class="card"><div id="ch-day"></div>'
+ +'<div class="insight" style="margin:14px 0 0">🌏 <b>딥은 일본 목적지에 집중.</b> 1~29일 일평균 대비 7/31 예약: 🇯🇵일본 <b style="color:var(--neg)">−50%</b> vs 🇻🇳베트남 <b style="color:var(--pos)">+10%</b> · 🇰🇷한국 −26%. 중국 출발 요인(태풍 등)이라면 전 목적지가 고르게 빠졌어야 하나, 실제로는 일본만 더 깊게·더 오래 하락 → <b>일본發 목적지 특정 충격</b>(지진·쓰나미 경보). 규슈 물리적 피해(신칸센 운휴·항공 40여 편 결항)보다 <b>일본 전역 여행심리 위축</b>이 지배적이며(7/31 비규슈 −58%), 중국發 수요(아고다 물량 100% 중국 엔티티 경유)가 특히 민감하게 반응. 중국 화남 태풍 Noul은 있었더라도 부차적 요인.</div>'
+ +'</div></section>';
 
 // SECTION 7 — Talking points
 H+='<section><h2><span class="n">07</span>미팅 논의 포인트</h2><div class="tp">'
@@ -250,7 +252,7 @@ function drawAll(){
       // annotate 7/30 dip
       const idx=d.julBD.findIndex(r=>r.date==='2026-07-30'); if(idx<0)return;
       const svg=el.querySelector('svg'); const ns='http://www.w3.org/2000/svg';
-      const t=document.createElementNS(ns,'text');t.setAttribute('class','ann');t.setAttribute('x',S.x(idx));t.setAttribute('y',S.ya(d.julBD[idx].bookings)-10);t.setAttribute('text-anchor','middle');t.textContent='▼ 태풍 Noul';svg.appendChild(t);
+      const t=document.createElementNS(ns,'text');t.setAttribute('class','ann');t.setAttribute('x',S.x(idx));t.setAttribute('y',S.ya(d.julBD[idx].bookings)-10);t.setAttribute('text-anchor','middle');t.textContent='▼ 규슈 지진(7/28)';svg.appendChild(t);
     }});
 }
 drawAll();
