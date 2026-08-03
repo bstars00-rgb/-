@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ctrip Korea × OhMyHotel — Business Review</title>
+<script>(function(){try{var s=localStorage.getItem('ckr-theme');var m=s||((window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',m);}catch(e){}})();</script>
+<style>
+:root{
+  --navy:#122047; --navy2:#0B1533; --ink:#1C2130; --muted:#6A7488; --line:#E4E8F1; --bg:#FBFCFE; --card:#fff; --side:#F3F7FC;
+  --c25:#9AA6BB; --c26:#2577E3; --kr:#E23B57; --jp:#2577E3; --adr:#7A4DA6;
+  --pos:#1E8E4E; --posbg:#E5F4EA; --neg:#C43D2E; --negbg2:#F8E6E2; --accent:#122047;
+}
+:root[data-theme="dark"]{
+  --ink:#E7EAF3; --muted:#98A2B8; --line:#28324B; --bg:#0C1120; --card:#141B2E; --side:#111829; --navy:#0B1533; --accent:#9DB2EC;
+  --c25:#59647C; --c26:#5AA0F0; --kr:#F07185; --jp:#5AA0F0; --adr:#B79AE0; --pos:#5FCE93; --posbg:#123320; --neg:#EE8B80; --negbg2:#3A1E1B;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Malgun Gothic","Yu Gothic","Segoe UI",-apple-system,Roboto,system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;font-size:15.5px}
+.mono{font-family:ui-monospace,"Cascadia Code",Consolas,monospace}
+.top{position:sticky;top:0;z-index:20;background:var(--navy);color:#fff;display:flex;align-items:center;gap:14px;padding:0 26px;height:60px;box-shadow:0 1px 0 rgba(0,0,0,.14)}
+.top .b1{font-weight:800;font-size:17px;letter-spacing:.2px}
+.top .b1 .x{color:var(--c26)}
+.top .b2{font-size:12.5px;color:#AEBBDD;margin-left:2px}
+.sp{flex:1}
+.tbtn{font-size:13px;background:transparent;border:1px solid #34406F;border-radius:8px;padding:7px 11px;cursor:pointer;color:#C7D3F0}
+.wrap{max-width:1180px;margin:0 auto;padding:26px 24px 90px}
+.hero{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;border-radius:18px;padding:26px 30px 8px;position:relative;overflow:hidden}
+.hero h1{font-size:25px;font-weight:800;margin:.1em 0}
+.hero p{color:#B9C6EA;font-size:14px;margin:6px 0 0}
+.hero .tag{display:inline-block;background:rgba(37,119,227,.18);border:1px solid rgba(37,119,227,.45);color:#BBD6FF;font-size:11.5px;font-weight:700;padding:3px 10px;border-radius:20px;margin-bottom:8px}
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin:18px 0 4px}
+.kpi{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);border-radius:13px;padding:14px 15px}
+.kpi .lb{font-size:11.5px;color:#AEBBDD;font-weight:600;letter-spacing:.3px;text-transform:uppercase}
+.kpi .v{font-size:23px;font-weight:800;margin:6px 0 2px;color:#fff}
+.kpi .sub{font-size:11.5px;color:#95A4CC}
+.kpi .d{font-size:13px;font-weight:800;margin-top:5px}
+.kpi .d.pos{color:#6FE0A0}.kpi .d.neg{color:#FF9E90}.kpi .d.flat{color:#D9C48A}
+section{margin-top:34px}
+h2{font-size:19px;font-weight:800;color:var(--accent);margin:0 0 4px;display:flex;align-items:center;gap:9px}
+h2 .n{background:var(--c26);color:#fff;font:800 12px/1 ui-monospace,Consolas,monospace;padding:5px 8px;border-radius:7px}
+.sublead{color:var(--muted);font-size:13.5px;margin:0 0 14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.dcard{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:15px 17px;position:relative}
+.dcard .fl{font-size:22px}
+.dcard h3{margin:2px 0 8px;font-size:16px;color:var(--accent)}
+.dcard .row{display:flex;justify-content:space-between;font-size:13px;padding:3px 0;border-bottom:1px dashed var(--line)}
+.dcard .row:last-child{border-bottom:0}
+.dcard .row b{font-weight:700}
+.badge{position:absolute;top:14px;right:15px;font-size:13px;font-weight:800;padding:3px 9px;border-radius:20px}
+.badge.pos{background:var(--posbg);color:var(--pos)}.badge.neg{background:var(--negbg2);color:var(--neg)}.badge.flat{background:#F0EEDD;color:#9C7A16}
+:root[data-theme="dark"] .badge.flat{background:#33300F;color:#D9C48A}
+table{border-collapse:collapse;width:100%;font-size:13px;margin-top:6px}
+th,td{border-bottom:1px solid var(--line);padding:9px 10px;text-align:right}
+th:first-child,td:first-child{text-align:left}
+th{color:var(--muted);font-weight:700;font-size:11.5px;text-transform:uppercase;letter-spacing:.4px}
+td .g{font-weight:700}.g.pos{color:var(--pos)}.g.neg{color:var(--neg)}.g.flat{color:#9C7A16}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);margin:2px 0 10px}
+.legend .it{display:inline-flex;align-items:center;gap:6px}
+.legend .sw{width:12px;height:12px;border-radius:3px;display:inline-block}
+.legend .sw.ln{height:3px;width:16px;border-radius:2px}
+svg{display:block;width:100%;height:auto;overflow:visible}
+.gl{stroke:var(--line);stroke-width:1;stroke-dasharray:2 3;opacity:.7}
+.tx{fill:var(--muted);font-size:11px}
+.tv{fill:var(--ink);font-size:10.5px;font-weight:700}
+.mini-t{font-weight:800;color:var(--accent);font-size:14px;margin:0 0 2px}
+.mini-s{font-size:12px;font-weight:800;margin:0 0 6px}
+.insight{border-left:4px solid var(--c26);background:var(--side);border-radius:0 10px 10px 0;padding:13px 16px;margin:11px 0}
+.insight b{color:var(--accent)}
+.tp{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}
+.tp .t{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.tp .t .h{font-weight:800;color:var(--accent);font-size:14.5px;margin-bottom:5px;display:flex;align-items:center;gap:7px}
+.tp .t .ic{width:26px;height:26px;border-radius:8px;background:var(--side);display:inline-flex;align-items:center;justify-content:center;font-size:15px}
+.tp .t p{margin:0;font-size:13px;color:var(--ink)}
+.foot{margin-top:40px;border-top:1px solid var(--line);padding-top:16px;color:var(--muted);font-size:12px}
+.conf{display:inline-block;background:var(--negbg2);color:var(--neg);font-size:11px;font-weight:700;padding:3px 9px;border-radius:6px;margin-bottom:6px}
+@media(max-width:900px){.kpis{grid-template-columns:repeat(2,1fr)}.grid2,.grid3,.tp{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="top">
+  <div><div class="b1">Ctrip Korea <span class="x">×</span> OhMyHotel</div></div>
+  <div class="b2">Partnership Business Review · 상반기</div>
+  <div class="sp"></div>
+  <button class="tbtn" id="theme">◑ Theme</button>
+</div>
+<div class="wrap" id="app"></div>
+<script>
+const DATA = {"seller":"Ctrip Korea","generated":"2026-08-03","periodLabel":"1~6월","scope":"Ctrip Korea · 체크아웃 기준 2025 vs 2026(1~6월) + 부킹데이트 기준 최근 트렌드","yoy":{"y2025":{"bookings":94125,"rn":193030,"adr":17746,"los":2.05,"lead":31.7},"y2026":{"bookings":93492,"rn":201617,"adr":16019,"los":2.16,"lead":32.9},"growth":{"bookings":-0.7,"rn":4.4,"adr":-9.7,"los":5.4,"lead":3.8}},"monthly2025":[{"m":1,"bookings":18042,"rn":36119,"adr":17511},{"m":2,"bookings":16635,"rn":33409,"adr":18428},{"m":3,"bookings":15546,"rn":32097,"adr":16542},{"m":4,"bookings":14622,"rn":30677,"adr":19775},{"m":5,"bookings":14550,"rn":30046,"adr":17691},{"m":6,"bookings":14730,"rn":30682,"adr":16563},{"m":7,"bookings":16019,"rn":33036,"adr":16047},{"m":8,"bookings":17627,"rn":36623,"adr":17188},{"m":9,"bookings":16224,"rn":33155,"adr":16700},{"m":10,"bookings":17397,"rn":35660,"adr":19172},{"m":11,"bookings":15280,"rn":31439,"adr":19527},{"m":12,"bookings":20644,"rn":42105,"adr":19467}],"monthly2026":[{"m":1,"bookings":16186,"rn":34925,"adr":14840},{"m":2,"bookings":16513,"rn":34799,"adr":16168},{"m":3,"bookings":16230,"rn":35039,"adr":15911},{"m":4,"bookings":14128,"rn":30741,"adr":17866},{"m":5,"bookings":14879,"rn":31788,"adr":16868},{"m":6,"bookings":15556,"rn":34325,"adr":14735},{"m":7,"bookings":19100,"rn":40998,"adr":16207}],"dest26":[{"name":"Japan","bookings":69230,"share":74},{"name":"Korea","bookings":23491,"share":25.1},{"name":"Vietnam","bookings":628,"share":0.7},{"name":"Malaysia","bookings":73,"share":0.1},{"name":"Thailand","bookings":67,"share":0.1},{"name":"Guam","bookings":3,"share":0}],"dest25":[{"name":"Japan","bookings":73837,"share":78.4},{"name":"Korea","bookings":19644,"share":20.9},{"name":"Vietnam","bookings":470,"share":0.5},{"name":"Thailand","bookings":174,"share":0.2}],"destYoY":[{"name":"Japan","b2026":69230,"b2025":73837,"rn2026":154099,"rn2025":153530,"adr2026":16023,"adr2025":18735,"growth":-6.2},{"name":"Korea","b2026":23491,"b2025":19644,"rn2026":45905,"rn2025":38139,"adr2026":16071,"adr2025":14006,"growth":19.6},{"name":"Vietnam","b2026":628,"b2025":470,"rn2026":1314,"rn2025":877,"adr2026":12837,"adr2025":8905,"growth":33.6},{"name":"Malaysia","b2026":73,"b2025":0,"rn2026":107,"rn2025":0,"adr2026":18351,"adr2025":0,"growth":0},{"name":"Thailand","b2026":67,"b2025":174,"rn2026":183,"rn2025":484,"adr2026":20530,"adr2025":14581,"growth":-61.5},{"name":"Guam","b2026":3,"b2025":0,"rn2026":9,"rn2025":0,"adr2026":28634,"adr2025":0,"growth":0}],"city26":[{"name":"Osaka","bookings":21887,"share":23.4},{"name":"Tokyo","bookings":19014,"share":20.3},{"name":"Seoul","bookings":12023,"share":12.9},{"name":"Fukuoka","bookings":5612,"share":6},{"name":"Sapporo","bookings":5040,"share":5.4},{"name":"Kyoto","bookings":3790,"share":4.1},{"name":"Busan","bookings":3173,"share":3.4},{"name":"Naha","bookings":2400,"share":2.6},{"name":"Kobe","bookings":2128,"share":2.3},{"name":"Jeju City","bookings":1764,"share":1.9}],"weekly":[{"start":"2026-03-28","end":"2026-04-03","bookings":4510,"rn":10261,"adr":17089},{"start":"2026-04-04","end":"2026-04-10","bookings":4717,"rn":10694,"adr":16573},{"start":"2026-04-11","end":"2026-04-17","bookings":4651,"rn":10480,"adr":16428},{"start":"2026-04-18","end":"2026-04-24","bookings":4055,"rn":9065,"adr":16340},{"start":"2026-04-25","end":"2026-05-01","bookings":4465,"rn":9884,"adr":16115},{"start":"2026-05-02","end":"2026-05-08","bookings":3957,"rn":9073,"adr":15715},{"start":"2026-05-09","end":"2026-05-15","bookings":5484,"rn":12222,"adr":16161},{"start":"2026-05-16","end":"2026-05-22","bookings":5850,"rn":13517,"adr":16248},{"start":"2026-05-23","end":"2026-05-29","bookings":4543,"rn":10665,"adr":16245},{"start":"2026-05-30","end":"2026-06-05","bookings":5167,"rn":11813,"adr":16069},{"start":"2026-06-06","end":"2026-06-12","bookings":5145,"rn":11533,"adr":16597},{"start":"2026-06-13","end":"2026-06-19","bookings":5287,"rn":11858,"adr":16022},{"start":"2026-06-20","end":"2026-06-26","bookings":5782,"rn":12763,"adr":16557},{"start":"2026-06-27","end":"2026-07-03","bookings":6506,"rn":14014,"adr":16470},{"start":"2026-07-04","end":"2026-07-10","bookings":7068,"rn":15214,"adr":16727}],"koreaMonthly":{"y2025":[3738,3040,3496,3065,3068,3237],"y2026":[3176,3306,3763,4185,4221,4840]},"japanMonthly":{"y2025":[14258,13544,11930,11422,11335,11348],"y2026":[12936,13099,12338,9830,10487,10540]},"monthMax":6,"counts":{"co2025":94125,"co2026":93492}};
+const F = n => (n==null?'-':Number(n).toLocaleString('en-US'));
+const yen = n => '¥'+F(n);
+const gcls = g => g>2?'pos':(g<-2?'neg':'flat');
+const gsign = g => (g>0?'+':'')+g+'%';
+const cs = getComputedStyle(document.documentElement);
+const col = k => cs.getPropertyValue(k).trim() || k;
+
+function groupedBars(el, series, opts){
+  const W=el.clientWidth||760, H=opts.h||300, m={t:22,r:12,b:32,l:44};
+  const iw=W-m.l-m.r, ih=H-m.t-m.b;
+  const max=Math.max(...series.flatMap(s=>[s.a,s.b]))*1.12||1;
+  const bw=iw/series.length, pad=bw*0.16, gw=(bw-pad*2)/2;
+  const y=v=>m.t+ih-(v/max)*ih;
+  const cA=opts.cA||col('--c25'), cB=opts.cB||col('--c26');
+  let s='<svg viewBox="0 0 '+W+' '+H+'">';
+  for(let i=0;i<=4;i++){const gy=m.t+ih*(i/4),val=Math.round(max*(1-i/4));s+='<line class="gl" x1="'+m.l+'" y1="'+gy+'" x2="'+(W-m.r)+'" y2="'+gy+'"/><text class="tx" x="'+(m.l-6)+'" y="'+(gy+3)+'" text-anchor="end">'+F(val)+'</text>';}
+  series.forEach((d,i)=>{const x0=m.l+bw*i+pad;
+    s+='<rect x="'+x0+'" y="'+y(d.a)+'" width="'+gw+'" height="'+(m.t+ih-y(d.a))+'" rx="3" fill="'+cA+'"/>';
+    s+='<rect x="'+(x0+gw)+'" y="'+y(d.b)+'" width="'+gw+'" height="'+(m.t+ih-y(d.b))+'" rx="3" fill="'+cB+'"/>';
+    s+='<text class="tx" x="'+(m.l+bw*i+bw/2)+'" y="'+(H-13)+'" text-anchor="middle">'+d.label+'</text>';});
+  s+='</svg>';el.innerHTML=s;
+}
+function lineDual(el, rows, aKey, bKey, opts){
+  const W=el.clientWidth||760, H=opts.h||300, m={t:22,r:52,b:50,l:44};
+  const iw=W-m.l-m.r, ih=H-m.t-m.b;
+  const amax=Math.max(...rows.map(r=>r[aKey]))*1.15;
+  const bmin=Math.min(...rows.map(r=>r[bKey])), bmax=Math.max(...rows.map(r=>r[bKey]));
+  const bpad=(bmax-bmin)*0.4||1;
+  const xr= rows.length>1?iw/(rows.length-1):0;
+  const x=i=>m.l+xr*i, ya=v=>m.t+ih-(v/amax)*ih, yb=v=>m.t+ih-((v-(bmin-bpad))/((bmax+bpad)-(bmin-bpad)))*ih;
+  let s='<svg viewBox="0 0 '+W+' '+H+'">';
+  for(let i=0;i<=4;i++){const gy=m.t+ih*(i/4),val=Math.round(amax*(1-i/4));s+='<line class="gl" x1="'+m.l+'" y1="'+gy+'" x2="'+(W-m.r)+'" y2="'+gy+'"/><text class="tx" x="'+(m.l-6)+'" y="'+(gy+3)+'" text-anchor="end">'+F(val)+'</text>';}
+  const bw=Math.max(6,xr*0.5);
+  rows.forEach((r,i)=>{s+='<rect x="'+(x(i)-bw/2)+'" y="'+ya(r[aKey])+'" width="'+bw+'" height="'+(m.t+ih-ya(r[aKey]))+'" rx="2" fill="'+col('--c26')+'" opacity="0.82"/>';});
+  let p='';rows.forEach((r,i)=>{p+=(i?'L':'M')+x(i)+' '+yb(r[bKey])+' ';});
+  s+='<path d="'+p+'" fill="none" stroke="'+col('--adr')+'" stroke-width="2.5"/>';
+  rows.forEach((r,i)=>{s+='<circle cx="'+x(i)+'" cy="'+yb(r[bKey])+'" r="3" fill="'+col('--adr')+'"/>';});
+  const step=Math.ceil(rows.length/9);
+  rows.forEach((r,i)=>{if(i%step===0||i===rows.length-1)s+='<text class="tx" x="'+x(i)+'" y="'+(H-28)+'" text-anchor="middle">'+(opts.xlab?opts.xlab(r,i):i)+'</text>';});
+  for(let i=0;i<=4;i++){const gy=m.t+ih*(i/4);const val=Math.round((bmin-bpad)+((bmax+bpad)-(bmin-bpad))*(1-i/4));s+='<text class="tx" x="'+(W-m.r+7)+'" y="'+(gy+3)+'" text-anchor="start">'+F(val)+'</text>';}
+  s+='</svg>';el.innerHTML=s;
+}
+function hbars(el, rows, opts){
+  const W=el.clientWidth||760, rowH=30, m={t:6,r:60,b:6,l:104};
+  const H=m.t+m.b+rows.length*rowH, max=Math.max(...rows.map(r=>r.v))*1.02, iw=W-m.l-m.r;
+  let s='<svg viewBox="0 0 '+W+' '+H+'">';
+  rows.forEach((r,i)=>{const y=m.t+i*rowH+4, bw=(r.v/max)*iw, bh=rowH-11;
+    s+='<text class="tv" x="'+(m.l-8)+'" y="'+(y+bh/2+4)+'" text-anchor="end" style="font-weight:600">'+r.label+'</text>';
+    s+='<rect x="'+m.l+'" y="'+y+'" width="'+bw+'" height="'+bh+'" rx="4" fill="'+(r.color||col('--c26'))+'"/>';
+    s+='<text class="tv" x="'+(m.l+bw+7)+'" y="'+(y+bh/2+4)+'">'+F(r.v)+(r.share!=null?'  ('+r.share+'%)':'')+'</text>';});
+  s+='</svg>';el.innerHTML=s;
+}
+
+const d=DATA, yy=d.yoy, g=yy.growth;
+const MON=['','1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'];
+const jp=d.destYoY.find(x=>x.name==='Japan'), kr=d.destYoY.find(x=>x.name==='Korea'), vn=d.destYoY.find(x=>x.name==='Vietnam');
+function kpi(lb,v,sub,gr,invert){
+  const cl = gr==null?'flat':(invert?(gr<-2?'pos':(gr>2?'neg':'flat')):gcls(gr));
+  return '<div class="kpi"><div class="lb">'+lb+'</div><div class="v">'+v+'</div><div class="sub">'+sub+'</div>'+(gr==null?'':'<div class="d '+cl+'">'+gsign(gr)+' YoY</div>')+'</div>';
+}
+let H='';
+H+='<div class="hero"><span class="tag">CONFIDENTIAL · Partner Review</span>'
+ +'<h1>Ctrip Korea × OhMyHotel — 상반기 비즈니스 리뷰</h1>'
+ +'<p>'+d.scope+'　·　기준일 '+d.generated+'　·　지표: 예약건·룸나잇·ADR(요율)·LOS·리드타임 (금액 총액·마진 비공개)</p>'
+ +'<div class="kpis">'
+ + kpi('Bookings', F(yy.y2026.bookings), '2025 '+F(yy.y2025.bookings), g.bookings)
+ + kpi('Room Nights', F(yy.y2026.rn), '2025 '+F(yy.y2025.rn), g.rn)
+ + kpi('ADR (요율)', yen(yy.y2026.adr), '2025 '+yen(yy.y2025.adr), g.adr)
+ + kpi('평균 숙박 LOS', yy.y2026.los.toFixed(2)+'박', '2025 '+yy.y2025.los.toFixed(2)+'박', g.los)
+ + kpi('리드타임', yy.y2026.lead.toFixed(0)+'일', '2025 '+yy.y2025.lead.toFixed(0)+'일', g.lead, true)
+ +'</div></div>';
+
+// 01 summary
+H+='<section><h2><span class="n">01</span>핵심 요약 (Executive Summary)</h2>'
+ +'<p class="sublead">체크아웃 기준 2025년 vs 2026년 '+d.periodLabel+' · 실제 투숙 완료분 · 중국發 수요(계약 엔티티 100% 중국)</p>'
+ +'<div class="insight">🇰🇷 <b>한국 인바운드가 성장 엔진.</b> 한국 목적지 예약 <b>+'+kr.growth+'%</b>('+F(kr.b2025)+'→'+F(kr.b2026)+'), ADR도 '+yen(kr.adr2025)+'→'+yen(kr.adr2026)+'(<b>+'+(((kr.adr2026/kr.adr2025-1)*100).toFixed(1))+'%</b>) 동반 상승. 월별로도 우상향 가속(1월 '+F(d.koreaMonthly.y2026[0])+'→6월 '+F(d.koreaMonthly.y2026[5])+').</div>'
+ +'<div class="insight">🇯🇵 <b>일본은 물량·요율 동반 약세.</b> 일본 예약 <b>'+jp.growth+'%</b>, ADR '+yen(jp.adr2025)+'→'+yen(jp.adr2026)+'(<b>'+(((jp.adr2026/jp.adr2025-1)*100).toFixed(1))+'%</b>) — 요율 경쟁 심화. 전체 볼륨의 '+d.dest26.find(x=>x.name==='Japan').share+'%로 여전히 최대 비중이나 성장 둔화.</div>'
+ +'<div class="insight">💴 <b>블렌디드 ADR '+gsign(g.adr)+'.</b> 하락의 주원인은 일본 요율 급락 + 상대적 저ADR 시장(한국·베트남)으로의 믹스 전환. 다만 한국·베트남은 오히려 ADR 상승 — 시장별 요율 트렌드는 상반됨.</div>'
+ +'<div class="insight">📊 <b>볼륨 보합 · 체류 확대.</b> 예약 '+gsign(g.bookings)+'로 보합이나 룸나잇 <b>+'+g.rn+'%</b>, LOS '+yy.y2025.los.toFixed(2)+'→'+yy.y2026.los.toFixed(2)+'박(<b>+'+g.los+'%</b>). 최근 주간 예약은 우상향(부킹데이트 기준 4~7월 지속 증가).</div>'
+ +'</section>';
+
+// 02 monthly
+H+='<section><h2><span class="n">02</span>월별 거래량 추이 (2025 vs 2026)</h2>'
+ +'<p class="sublead">체크아웃 월 기준 예약건수 · '+d.periodLabel+'</p>'
+ +'<div class="card"><div class="legend"><span class="it"><span class="sw" style="background:var(--c25)"></span>2025</span><span class="it"><span class="sw" style="background:var(--c26)"></span>2026</span></div><div id="ch-mon"></div></div></section>';
+
+// 03 destination
+H+='<section><h2><span class="n">03</span>목적지별 성과</h2>'
+ +'<p class="sublead">체크아웃 기준 '+d.periodLabel+' · 예약건 YoY</p><div class="grid3" style="margin-bottom:14px">';
+const flag={Japan:'🇯🇵',Korea:'🇰🇷',Vietnam:'🇻🇳',Thailand:'🇹🇭','Hong Kong':'🇭🇰',Taiwan:'🇹🇼',Malaysia:'🇲🇾',Guam:'🇬🇺'};
+d.destYoY.filter(x=>x.b2026>300).forEach(x=>{const cl=gcls(x.growth);
+  H+='<div class="dcard"><span class="badge '+cl+'">'+gsign(x.growth)+'</span><div class="fl">'+(flag[x.name]||'🏨')+'</div><h3>'+x.name+'</h3>'
+   +'<div class="row"><span>예약 2026</span><b>'+F(x.b2026)+'</b></div>'
+   +'<div class="row"><span>예약 2025</span><b>'+F(x.b2025)+'</b></div>'
+   +'<div class="row"><span>룸나잇 2026</span><b>'+F(x.rn2026)+'</b></div>'
+   +'<div class="row"><span>ADR</span><b>'+yen(x.adr2026)+' <span style="color:'+(x.adr2026>=x.adr2025?'var(--pos)':'var(--neg)')+';font-size:11px">'+(x.adr2025?gsign(+((x.adr2026/x.adr2025-1)*100).toFixed(1)):'')+'</span></b></div></div>';});
+H+='</div><div class="card"><table><thead><tr><th>목적지</th><th>예약 25</th><th>예약 26</th><th>YoY</th><th>RN 26</th><th>ADR 25→26</th></tr></thead><tbody>';
+d.destYoY.filter(x=>x.b2026>0||x.b2025>0).forEach(x=>{H+='<tr><td>'+(flag[x.name]||'')+' '+x.name+'</td><td>'+F(x.b2025)+'</td><td>'+F(x.b2026)+'</td><td><span class="g '+gcls(x.growth)+'">'+gsign(x.growth)+'</span></td><td>'+F(x.rn2026)+'</td><td>'+yen(x.adr2025)+' → '+yen(x.adr2026)+'</td></tr>';});
+H+='</tbody></table></div></section>';
+
+// 04 Korea vs Japan mix shift
+H+='<section><h2><span class="n">04</span>한국 ↔ 일본 믹스 전환 (핵심)</h2>'
+ +'<p class="sublead">체크아웃 월별 예약건 · 한국은 우상향 가속, 일본은 둔화 — 포트폴리오 재균형</p>'
+ +'<div class="grid2"><div class="card"><div class="mini-t">🇰🇷 한국 목적지</div><div class="mini-s" style="color:var(--pos)">'+gsign(kr.growth)+' YoY</div><div id="ch-kr"></div></div>'
+ +'<div class="card"><div class="mini-t">🇯🇵 일본 목적지</div><div class="mini-s" style="color:var(--neg)">'+gsign(jp.growth)+' YoY</div><div id="ch-jp"></div></div></div></section>';
+
+// 05 city
+H+='<section><h2><span class="n">05</span>도시 집중도 (2026 · Top 10)</h2>'
+ +'<p class="sublead">체크아웃 기준 '+d.periodLabel+' 예약건 점유율 — 서울·부산·제주 등 한국 도시 확대 확인</p>'
+ +'<div class="card"><div id="ch-city"></div></div></section>';
+
+// 06 recent momentum
+H+='<section><h2><span class="n">06</span>최근 예약 모멘텀 (부킹데이트 기준)</h2>'
+ +'<p class="sublead">주간 예약건(막대) · ADR 요율(선) — 2026년 4월~상반기 말 실제 예약 발생 기준</p>'
+ +'<div class="card"><div class="legend"><span class="it"><span class="sw" style="background:var(--c26)"></span>주간 예약건</span><span class="it"><span class="sw ln" style="background:var(--adr)"></span>ADR (¥)</span></div><div id="ch-week"></div></div></section>';
+
+// 07 talking points
+H+='<section><h2><span class="n">07</span>미팅 논의 포인트</h2><div class="tp">'
+ +'<div class="t"><div class="h"><span class="ic">🇰🇷</span>한국 인바운드 가속</div><p>한국 +'+kr.growth+'% + ADR '+gsign(+((kr.adr2026/kr.adr2025-1)*100).toFixed(1))+'로 물량·요율 동반 성장. 서울 외 부산·제주 확장, 여름 성수기 재고·기획전 선제 확보.</p></div>'
+ +'<div class="t"><div class="h"><span class="ic">🇯🇵</span>일본 요율 방어</div><p>일본 물량 '+jp.growth+'% + ADR '+(((jp.adr2026/jp.adr2025-1)*100).toFixed(1))+'% 동반 하락. 요율 경쟁 대응·다이나믹 프라이싱, 오사카·도쿄 핵심 재고 경쟁력 점검.</p></div>'
+ +'<div class="t"><div class="h"><span class="ic">💴</span>믹스·ADR 전략</div><p>블렌디드 ADR '+gsign(g.adr)+'은 믹스 전환 + 일본 요율 영향. 고ADR 상승 세그먼트(한국·베트남) 비중 확대로 수익성 방어.</p></div>'
+ +'<div class="t"><div class="h"><span class="ic">📈</span>볼륨 재점화</div><p>예약 보합('+gsign(g.bookings)+') 속 RN +'+g.rn+'%·LOS +'+g.los+'%. 최근 주간 예약 우상향 → 하반기 볼륨 반등 위한 공동 마케팅·노출 확대 협의.</p></div>'
+ +'</div></section>';
+
+H+='<div class="foot"><span class="conf">CONFIDENTIAL</span><br>'
+ +'데이터 기준: OhMyHotel 내부 예약 데이터. 셀러 '+d.seller+'. 체크아웃 기준(실제 투숙 완료) 2025·2026 '+d.periodLabel+', 부킹데이트 기준 2026 최근. '
+ +'예약건=룸 단위 라인, ADR=청구액÷룸나잇(요율). 매출 총액·마진·수수료 등 민감 지표는 미포함. 생성일 '+d.generated+'.</div>';
+
+document.getElementById('app').innerHTML=H;
+
+function drawAll(){
+  const mon=[];for(let i=0;i<d.monthly2026.length&&i<6;i++){const a=d.monthly2025[i],b=d.monthly2026[i];mon.push({label:MON[b.m],a:a?a.bookings:0,b:b.bookings});}
+  groupedBars(document.getElementById('ch-mon'), mon, {h:300});
+  // Korea / Japan mini
+  const krS=d.koreaMonthly.y2026.map((v,i)=>({label:MON[i+1],a:d.koreaMonthly.y2025[i],b:v}));
+  const jpS=d.japanMonthly.y2026.map((v,i)=>({label:MON[i+1],a:d.japanMonthly.y2025[i],b:v}));
+  groupedBars(document.getElementById('ch-kr'), krS, {h:230, cB:col('--kr')});
+  groupedBars(document.getElementById('ch-jp'), jpS, {h:230, cB:col('--jp')});
+  const cityColor=n=>/Seoul|Busan|Jeju|Incheon|Gangneung/.test(n)?col('--kr'):col('--c26');
+  hbars(document.getElementById('ch-city'), d.city26.map(c=>({label:c.name,v:c.bookings,share:c.share,color:cityColor(c.name)})), {});
+  lineDual(document.getElementById('ch-week'), d.weekly, 'bookings','adr', {h:300, xlab:r=>r.start.slice(5)});
+}
+drawAll();
+window.addEventListener('resize',()=>{clearTimeout(window.__rt);window.__rt=setTimeout(drawAll,180);});
+document.getElementById('theme').onclick=function(){var el=document.documentElement,m=el.getAttribute('data-theme')==='dark'?'light':'dark';el.setAttribute('data-theme',m);localStorage.setItem('ckr-theme',m);drawAll();};
+</script>
+</body>
+</html>
