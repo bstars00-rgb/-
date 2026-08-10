@@ -10,22 +10,38 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
 <style>
+  /* ===== 2026 리프레시: 큼지막·고가독·현대적 ===== */
+  html { font-size: 16.5px; }
   body {
-    background: #0f172a;
-    color: #e2e8f0;
+    background:
+      radial-gradient(1100px 560px at 100% -8%, rgba(59,130,246,0.07), transparent 60%),
+      radial-gradient(820px 480px at -8% 2%, rgba(139,92,246,0.06), transparent 55%),
+      #0d1524;
+    color: #e8eefb;
     font-family: 'Pretendard Variable', 'Pretendard', -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
     font-feature-settings: 'tnum' on;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    line-height: 1.55;
+    letter-spacing: -0.004em;
   }
   .font-mono, table td.font-mono { font-variant-numeric: tabular-nums; }
 
-  .card { background: #1e293b; border: 1px solid #334155; border-radius: 12px; }
-  .kpi-card { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border: 1px solid #334155; }
+  /* Cards — elevated, softer, more air */
+  .card { background: #16203a; border: 1px solid #2a3752; border-radius: 18px; box-shadow: 0 10px 34px -18px rgba(0,0,0,0.8); }
+  .kpi-card { background: linear-gradient(152deg, #1d2a49 0%, #131d34 100%); border: 1px solid #32415f; border-radius: 18px; box-shadow: 0 12px 36px -18px rgba(0,0,0,0.85); transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease; }
+  .kpi-card:hover { transform: translateY(-3px); border-color: #4a659a; box-shadow: 0 22px 48px -20px rgba(0,0,0,0.9); }
+  /* Big, legible KPI numbers */
+  .kpi-card .text-4xl, .kpi-card .text-3xl, .kpi-card .text-2xl { font-weight: 800; letter-spacing: -0.025em; line-height: 1.04; }
   table { width: 100%; }
-  th { text-align: left; padding: 8px 12px; font-weight: 600; color: #94a3b8; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 2px solid #334155; }
-  .section-title { font-size: 1.125rem; font-weight: 700; color: #f1f5f9; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-  .section-title::before { content: ''; width: 4px; height: 20px; background: #3b82f6; border-radius: 2px; flex-shrink: 0; }
+  th { text-align: left; padding: 11px 14px; font-weight: 700; color: #93a6c6; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.045em; border-bottom: 2px solid #32415f; }
+  /* Readable table body */
+  .card table td { padding: 11px 14px; font-size: 0.95rem; color: #dbe6f7; border-bottom: 1px solid #212e46; }
+  .card table tbody tr { transition: background .12s; }
+  .card table tbody tr:hover td { background: rgba(59,130,246,0.07); }
+  /* Section titles — larger, bolder, glowing accent */
+  .section-title { font-size: 1.42rem; font-weight: 800; color: #f4f8ff; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; letter-spacing: -0.01em; }
+  .section-title::before { content: ''; width: 5px; height: 28px; background: linear-gradient(180deg, #3b82f6, #6366f1); border-radius: 3px; flex-shrink: 0; box-shadow: 0 0 14px rgba(59,130,246,0.55); }
   /* 온보딩 탭 — 다운로드 카드 */
   .onb-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 18px; }
   .onb-card { border: 1px solid #334155; border-radius: 14px; background: #1e293b; padding: 20px 20px 18px; display: flex; flex-direction: column; }
@@ -41,9 +57,9 @@
   .onb-dl .dlmeta { font-size: 0.68rem; opacity: .85; }
   .onb-web { display: inline-block; margin-top: 12px; font-size: 0.8rem; color: #60a5fa; text-decoration: none; }
   .onb-web:hover { text-decoration: underline; }
-  .tab-btn { padding: 10px 16px; font-size: 13px; font-weight: 500; border-bottom: 2px solid transparent; color: #94a3b8; cursor: pointer; white-space: nowrap; transition: all 0.15s; }
-  .tab-btn:hover { color: #e2e8f0; background: #1e293b; }
-  .tab-btn.active { color: #3b82f6; border-bottom-color: #3b82f6; background: #1e293b; }
+  .tab-btn { padding: 14px 22px; font-size: 15px; font-weight: 600; border-bottom: 3px solid transparent; color: #93a6c6; cursor: pointer; white-space: nowrap; transition: all 0.15s; letter-spacing: -0.01em; }
+  .tab-btn:hover { color: #eef4ff; background: #17223c; }
+  .tab-btn.active { color: #60a5fa; border-bottom-color: #3b82f6; background: #17223c; }
   .tab-panel { display: none; }
   .tab-panel.active { display: block; }
   [contenteditable]:focus { outline: 1px solid #3b82f6; outline-offset: -1px; background: #0f172a; border-radius: 2px; }
@@ -131,7 +147,7 @@
   /* ── Sub-tabs (Statistics group) ── */
   #statSubNav { display: none; padding: 8px 24px; gap: 6px; background: linear-gradient(180deg, rgba(139,92,246,0.08) 0%, transparent 100%); border-bottom: 1px solid #334155; flex-wrap: wrap; position: sticky; top: 0; z-index: 9; }
   #statSubNav.active { display: flex; }
-  .stat-subtab-btn { padding: 7px 14px; font-size: 12px; font-weight: 600; border-radius: 999px; border: 1px solid #475569; color: #cbd5e1; cursor: pointer; transition: all 0.15s; background: #1e293b; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px; }
+  .stat-subtab-btn { padding: 9px 18px; font-size: 13.5px; font-weight: 600; border-radius: 999px; border: 1px solid #475569; color: #cbd5e1; cursor: pointer; transition: all 0.15s; background: #1e293b; white-space: nowrap; display: inline-flex; align-items: center; gap: 7px; }
   .stat-subtab-btn:hover { border-color: #a78bfa; color: #fff; background: #312e81; }
   .stat-subtab-btn.active { background: linear-gradient(135deg, #8b5cf6, #6366f1); color: #fff; border-color: #8b5cf6; box-shadow: 0 2px 8px rgba(139,92,246,0.35); }
   .stat-subtab-btn .icon { font-size: 14px; }
@@ -174,7 +190,7 @@
     .card { overflow-x: auto; }
 
     /* Tab nav — sticky + scrollable */
-    #tabNav { position: sticky; top: 0; background: #0f172a; z-index: 10; }
+    #tabNav { position: sticky; top: 0; background: rgba(13,21,36,0.92); backdrop-filter: blur(10px); border-bottom: 1px solid #223047; z-index: 10; }
     .tab-btn { padding: 8px 10px !important; font-size: 12px !important; }
 
     /* Charts — slightly smaller default heights */
@@ -309,7 +325,7 @@
       </div>
       <p class="text-gray-400 mt-1"><span data-i18n="subtitle">주간 보고서</span> | 2026-08-01 ~ 2026-08-07</p>
     </div>
-    <div class="text-right text-sm text-gray-500"><span data-i18n="generated">생성일</span>: 2026-08-08</div>
+    <div class="text-right text-sm text-gray-500"><span data-i18n="generated">생성일</span>: 2026-08-10</div>
   </div>
 
   <!-- Data Basis -->
