@@ -14,43 +14,99 @@
   .top{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:6px}
   h1{font-size:1.9rem;font-weight:800;margin:0;color:#f4f8ff;letter-spacing:-0.02em}
   .sub{color:#93a6c6;font-size:0.92rem;margin-top:4px}
-  .asof{color:#93a6c6;font-size:0.85rem}
+  .asof{color:#93a6c6;font-size:0.85rem;text-align:right}
   .asof b{color:#60a5fa}
   .grid-kpi{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin:22px 0 8px}
   .kpi{background:linear-gradient(152deg,#1d2a49,#131d34);border:1px solid #32415f;border-radius:18px;box-shadow:0 12px 36px -18px rgba(0,0,0,0.85);padding:18px 20px}
   .kpi .lb{font-size:0.82rem;color:#8ba0bd;font-weight:700}
-  .kpi .v{font-size:2rem;font-weight:800;letter-spacing:-0.025em;margin:6px 0 3px;color:#fff;line-height:1.05}
-  .kpi .d{font-size:0.9rem;font-weight:800}
+  .kpi .v{font-size:1.75rem;font-weight:800;letter-spacing:-0.025em;margin:6px 0 3px;color:#fff;line-height:1.08}
+  .kpi .d{font-size:0.88rem;font-weight:800}
   .pos{color:#34d399}.neg{color:#f87171}.flat{color:#94a3b8}
   section{margin-top:30px}
   h2{font-size:1.38rem;font-weight:800;color:#f4f8ff;margin:0 0 16px;display:flex;align-items:center;gap:10px;letter-spacing:-0.01em}
   h2::before{content:'';width:5px;height:26px;background:linear-gradient(180deg,#3b82f6,#6366f1);border-radius:3px;box-shadow:0 0 14px rgba(59,130,246,0.55)}
+  h2.red::before{background:linear-gradient(180deg,#f87171,#ef4444);box-shadow:0 0 14px rgba(248,113,113,0.55)}
+  h2.vio::before{background:linear-gradient(180deg,#a78bfa,#8b5cf6);box-shadow:0 0 14px rgba(167,139,250,0.55)}
   .card{background:#16203a;border:1px solid #2a3752;border-radius:18px;box-shadow:0 10px 34px -18px rgba(0,0,0,0.8);padding:22px}
+  .card+.card{margin-top:14px}
   svg{display:block;width:100%;height:auto;overflow:visible}
   .gl{stroke:#243149;stroke-width:1;stroke-dasharray:2 3}
   .tx{fill:#8ba0bd;font-size:11px}.tv{fill:#dbe6f7;font-size:11px;font-weight:700}
   table{width:100%;border-collapse:collapse}
-  th{text-align:left;padding:10px 12px;font-size:0.78rem;color:#93a6c6;text-transform:uppercase;letter-spacing:.04em;border-bottom:2px solid #32415f}
+  th{text-align:left;padding:10px 12px;font-size:0.78rem;color:#93a6c6;text-transform:uppercase;letter-spacing:.04em;border-bottom:2px solid #32415f;white-space:nowrap}
   td{padding:11px 12px;font-size:0.95rem;color:#dbe6f7;border-bottom:1px solid #212e46}
   tbody tr:hover td{background:rgba(59,130,246,0.06)}
+  .scroll{overflow-x:auto}
   .spark{display:inline-block;vertical-align:middle}
-  .foot{margin-top:34px;border-top:1px solid #223047;padding-top:14px;color:#6b7ea0;font-size:0.78rem}
-  .badge{display:inline-block;font-size:0.7rem;font-weight:800;padding:3px 9px;border-radius:20px;margin-left:8px}
+  .foot{margin-top:34px;border-top:1px solid #223047;padding-top:14px;color:#6b7ea0;font-size:0.78rem;line-height:1.7}
+  .badge{display:inline-block;font-size:0.7rem;font-weight:800;padding:3px 9px;border-radius:20px;margin-left:8px;vertical-align:middle}
   .badge.live{background:rgba(52,211,153,0.14);color:#34d399;border:1px solid rgba(52,211,153,0.4)}
   .badge.samp{background:rgba(240,133,31,0.14);color:#fbbf24;border:1px solid rgba(240,133,31,0.4)}
-  @media(max-width:820px){.grid-kpi{grid-template-columns:repeat(2,1fr)}}
+  /* ── 알럿 ── */
+  .sevbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+  .sevchip{display:flex;align-items:baseline;gap:8px;padding:10px 16px;border-radius:14px;font-weight:800;font-size:0.88rem;border:1px solid}
+  .sevchip b{font-size:1.5rem;letter-spacing:-0.02em}
+  .s-p1{background:rgba(239,68,68,0.13);border-color:rgba(248,113,113,0.45);color:#fca5a5}
+  .s-p2{background:rgba(245,158,11,0.12);border-color:rgba(251,191,36,0.42);color:#fcd34d}
+  .s-p3{background:rgba(96,165,250,0.10);border-color:rgba(96,165,250,0.35);color:#93c5fd}
+  .s-ok{background:rgba(52,211,153,0.12);border-color:rgba(52,211,153,0.42);color:#6ee7b7}
+  .al{border-radius:16px;border:1px solid #2a3752;background:#16203a;padding:0;margin-bottom:12px;overflow:hidden}
+  .al.p1{border-color:rgba(248,113,113,0.45);background:linear-gradient(180deg,rgba(239,68,68,0.09),#16203a 42%)}
+  .al.p2{border-color:rgba(251,191,36,0.38);background:linear-gradient(180deg,rgba(245,158,11,0.07),#16203a 42%)}
+  .al.p3{border-color:rgba(96,165,250,0.3)}
+  .alh{display:flex;align-items:center;gap:12px;padding:16px 20px 12px;flex-wrap:wrap}
+  .tag{font-size:0.72rem;font-weight:900;padding:4px 10px;border-radius:8px;letter-spacing:.06em}
+  .tag.p1{background:#ef4444;color:#fff}.tag.p2{background:#f59e0b;color:#231a05}.tag.p3{background:#3b82f6;color:#fff}
+  .alt{font-size:1.06rem;font-weight:800;color:#f4f8ff}
+  .cnt{margin-left:auto;font-size:1.35rem;font-weight:900;color:#fff}
+  .cnt span{font-size:0.8rem;color:#93a6c6;font-weight:700}
+  .ald{padding:0 20px 12px;color:#b9c8e2;font-size:0.92rem}
+  .act{margin:0 20px 14px;padding:12px 15px;border-radius:12px;background:rgba(59,130,246,0.09);border-left:3px solid #60a5fa;font-size:0.9rem;color:#dbe6f7}
+  .act b{color:#93c5fd}
+  .own{float:right;font-size:0.78rem;color:#8ba0bd;font-weight:700}
+  .al table{margin:0}
+  .al th{background:rgba(0,0,0,0.18);border-bottom:1px solid #2a3752}
+  .al td{font-size:0.87rem;padding:9px 12px}
+  .mono{font-family:'SF Mono',Consolas,monospace;font-size:0.82rem;color:#93c5fd}
+  .st{font-size:0.75rem;font-weight:800;padding:2px 8px;border-radius:6px;background:#243149;color:#cbd5e1}
+  .st.warn{background:rgba(245,158,11,0.18);color:#fcd34d}
+  .st.bad{background:rgba(239,68,68,0.18);color:#fca5a5}
+  .st.ok{background:rgba(52,211,153,0.16);color:#6ee7b7}
+  /* ── 인사이트 ── */
+  .ins{background:linear-gradient(150deg,#1e1b3a,#141d33);border:1px solid #3b3566}
+  .ins li{margin:0 0 11px;padding-left:26px;position:relative;color:#dbe6f7;font-size:0.96rem;list-style:none}
+  .ins li:last-child{margin-bottom:0}
+  .ins li::before{position:absolute;left:0;top:0;font-size:0.95rem}
+  .ins li.good::before{content:'✅'}.ins li.warn::before{content:'⚠️'}
+  .ins li.bad::before{content:'🔴'}.ins li.flat::before{content:'📊'}
+  .ins ul{margin:0;padding:0}
+  /* ── 통계 타일 ── */
+  .tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .tile{background:#16203a;border:1px solid #2a3752;border-radius:14px;padding:15px 17px}
+  .tile .lb{font-size:0.78rem;color:#8ba0bd;font-weight:700}
+  .tile .v{font-size:1.45rem;font-weight:800;color:#fff;margin:5px 0 2px;letter-spacing:-0.02em}
+  .tile .n{font-size:0.78rem;color:#7f93b3}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .bar{height:10px;border-radius:6px;background:#243149;overflow:hidden;margin-top:6px}
+  .bar i{display:block;height:100%;border-radius:6px}
+  .dq{font-size:0.82rem;color:#93a6c6;background:rgba(96,165,250,0.07);border:1px solid #2a3752;border-radius:12px;padding:10px 15px;margin-top:14px}
+  @media(max-width:960px){.grid-kpi{grid-template-columns:repeat(2,1fr)}.tiles{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <div class="wrap" id="app"></div>
 <script>
-const D = {"generated":"2026-08-15T12:15:51.176Z","asof":"2026-08-14","source":"ellis-mcp","windowDays":14,"days":[{"date":"2026-08-01","dow":"토","bookings":0,"cancelled":0,"rn":0,"ttv":0,"adr":0},{"date":"2026-08-02","dow":"일","bookings":0,"cancelled":0,"rn":0,"ttv":0,"adr":0},{"date":"2026-08-03","dow":"월","bookings":1,"cancelled":0,"rn":1,"ttv":464830,"adr":464830},{"date":"2026-08-04","dow":"화","bookings":1,"cancelled":1,"rn":0,"ttv":0,"adr":0},{"date":"2026-08-05","dow":"수","bookings":6,"cancelled":5,"rn":1,"ttv":94047,"adr":94047},{"date":"2026-08-06","dow":"목","bookings":377,"cancelled":0,"rn":377,"ttv":35361761,"adr":93798},{"date":"2026-08-07","dow":"금","bookings":22,"cancelled":22,"rn":0,"ttv":0,"adr":0},{"date":"2026-08-08","dow":"토","bookings":0,"cancelled":0,"rn":0,"ttv":0,"adr":0},{"date":"2026-08-09","dow":"일","bookings":0,"cancelled":0,"rn":0,"ttv":0,"adr":0},{"date":"2026-08-10","dow":"월","bookings":8,"cancelled":1,"rn":7,"ttv":194520,"adr":27789},{"date":"2026-08-11","dow":"화","bookings":4,"cancelled":3,"rn":1,"ttv":0,"adr":0},{"date":"2026-08-12","dow":"수","bookings":1,"cancelled":0,"rn":1,"ttv":80839,"adr":80839},{"date":"2026-08-13","dow":"목","bookings":5,"cancelled":5,"rn":0,"ttv":0,"adr":0},{"date":"2026-08-14","dow":"금","bookings":4,"cancelled":1,"rn":3,"ttv":100068639,"adr":33356213}],"latest":{"date":"2026-08-14","dow":"금","bookings":4,"cancelled":1,"rn":3,"ttv":100068639,"adr":33356213},"prev":{"date":"2026-08-13","dow":"목","bookings":5,"cancelled":5,"rn":0,"ttv":0,"adr":0},"dod":{"bookings":-20,"rn":0,"ttv":0,"adr":0},"wow":{"date":"2026-08-07","bookings":22,"dodBookings":-81.8},"cancel":{"rate14d":8.9,"latest":25},"avgDaily":31,"peakDay":{"date":"2026-08-06","dow":"목","bookings":377,"cancelled":0,"rn":377,"ttv":35361761,"adr":93798},"byCountry":[{"country":"Others","today":3,"prev":0,"dod":0,"total14":380,"spark":[0,0,0,0,1,376,0,0,0,0,0,0,0,3]},{"country":"Korea","today":0,"prev":0,"dod":0,"total14":9,"spark":[0,0,0,0,0,1,0,0,0,7,0,1,0,0]},{"country":"Japan","today":0,"prev":0,"dod":0,"total14":1,"spark":[0,0,0,0,0,0,0,0,0,0,1,0,0,0]},{"country":"Vietnam","today":0,"prev":0,"dod":0,"total14":1,"spark":[0,0,1,0,0,0,0,0,0,0,0,0,0,0]}],"byChannel":[{"channel":"Ohmyhotel KR","total14":376,"today":0,"prev":0,"dod":0,"spark":[0,0,0,0,1,375,0,0,0,0,0,0,0,0]},{"channel":"Elong","total14":6,"today":0,"prev":0,"dod":0,"spark":[0,0,0,0,0,0,0,0,0,6,0,0,0,0]},{"channel":"Ohmyhotel (Non Member)","total14":2,"today":0,"prev":0,"dod":0,"spark":[0,0,1,0,0,1,0,0,0,0,0,0,0,0]},{"channel":"Dida","total14":2,"today":0,"prev":0,"dod":0,"spark":[0,0,0,0,0,1,0,0,0,1,0,0,0,0]},{"channel":"Kakao","total14":2,"today":1,"prev":0,"dod":0,"spark":[0,0,0,0,0,0,0,0,0,0,0,1,0,1]},{"channel":"Channel IT Test","total14":2,"today":2,"prev":0,"dod":0,"spark":[0,0,0,0,0,0,0,0,0,0,0,0,0,2]},{"channel":"bizplay","total14":1,"today":0,"prev":0,"dod":0,"spark":[0,0,0,0,0,0,0,0,0,0,1,0,0,0]}],"countries":["Japan","Korea","Vietnam","Taiwan","Thailand","Hong Kong","Others"]};
+const D = {"generated":"2026-08-15T12:54:02.575Z","asof":"2026-08-14","refDate":"2026-08-15","source":"ellis-mcp","windowDays":14,"currency":"KRW","hasMargin":true,"dataQuality":{"collected":429,"used":32,"test":397,"testPct":92.5,"inWindow":32,"note":"금액은 fxRate로 KRW 환산 · 테스트 예약 제외"},"days":[{"date":"2026-08-01","dow":"토","bookings":0,"cancelled":0,"pending":0,"rn":0,"ttv":0,"margin":0,"adr":0,"marginPct":0},{"date":"2026-08-02","dow":"일","bookings":0,"cancelled":0,"pending":0,"rn":0,"ttv":0,"margin":0,"adr":0,"marginPct":0},{"date":"2026-08-03","dow":"월","bookings":1,"cancelled":0,"pending":0,"rn":1,"ttv":25287,"margin":1895,"adr":25287,"marginPct":7.5},{"date":"2026-08-04","dow":"화","bookings":0,"cancelled":0,"pending":0,"rn":0,"ttv":0,"margin":0,"adr":0,"marginPct":0},{"date":"2026-08-05","dow":"수","bookings":0,"cancelled":0,"pending":0,"rn":0,"ttv":0,"margin":0,"adr":0,"marginPct":0},{"date":"2026-08-06","dow":"목","bookings":1,"cancelled":0,"pending":1,"rn":1,"ttv":126535,"margin":5344,"adr":126535,"marginPct":4.2},{"date":"2026-08-07","dow":"금","bookings":20,"cancelled":20,"pending":0,"rn":0,"ttv":0,"margin":0,"adr":0,"marginPct":0},{"date":"2026-08-08","dow":"토","bookings":0,"cancelled":0,"pending":0,"rn":0,"ttv":0,"margin":0,"adr":0,"marginPct":0},{"date":"2026-08-09","dow":"일","bookings":0,"cancelled":0,"pending":0,"rn":0,"ttv":0,"margin":0,"adr":0,"marginPct":0},{"date":"2026-08-10","dow":"월","bookings":8,"cancelled":1,"pending":7,"rn":7,"ttv":2134667,"margin":71887,"adr":304952,"marginPct":3.4},{"date":"2026-08-11","dow":"화","bookings":1,"cancelled":0,"pending":0,"rn":1,"ttv":0,"margin":0,"adr":0,"marginPct":0},{"date":"2026-08-12","dow":"수","bookings":1,"cancelled":0,"pending":0,"rn":1,"ttv":80839,"margin":10544,"adr":80839,"marginPct":13},{"date":"2026-08-13","dow":"목","bookings":0,"cancelled":0,"pending":0,"rn":0,"ttv":0,"margin":0,"adr":0,"marginPct":0},{"date":"2026-08-14","dow":"금","bookings":0,"cancelled":0,"pending":0,"rn":0,"ttv":0,"margin":0,"adr":0,"marginPct":0}],"latest":{"date":"2026-08-14","dow":"금","bookings":0,"cancelled":0,"pending":0,"rn":0,"ttv":0,"margin":0,"adr":0,"marginPct":0},"prev":{"date":"2026-08-13","dow":"목","bookings":0,"cancelled":0,"pending":0,"rn":0,"ttv":0,"margin":0,"adr":0,"marginPct":0},"dod":{"bookings":0,"rn":0,"ttv":0,"adr":0,"margin":0},"wow":{"date":"2026-08-07","bookings":20,"dodBookings":-100},"totals":{"bookings":32,"live":11,"ttv14":2367328,"margin14":89670,"marginPct":3.8,"rn14":11,"adr14":215212},"cancel":{"rate14d":65.6,"latest":0,"count14":21,"medianHours":1.9,"sameDayPct":100,"fastCount":12,"fastPct":57.1},"avgDaily":2,"peakDay":{"date":"2026-08-07","dow":"금","bookings":20,"cancelled":20,"pending":0,"rn":0,"ttv":0,"margin":0,"adr":0,"marginPct":0},"byCountry":[{"country":"Korea","today":0,"prev":0,"dod":0,"total14":9,"ttv14":2342041,"adr":260227,"spark":[0,0,0,0,0,1,0,0,0,7,0,1,0,0]},{"country":"Japan","today":0,"prev":0,"dod":0,"total14":1,"ttv14":0,"adr":0,"spark":[0,0,0,0,0,0,0,0,0,0,1,0,0,0]},{"country":"Vietnam","today":0,"prev":0,"dod":0,"total14":1,"ttv14":25287,"adr":25287,"spark":[0,0,1,0,0,0,0,0,0,0,0,0,0,0]}],"byChannel":[{"channel":"Elong","total14":6,"today":0,"prev":0,"dod":0,"ttv14":1774524,"margin14":56670,"marginPct":3.2,"pending":6,"cancelled":3,"last7":6,"prev7":0,"wow":0,"lastBooking":"2026-08-10","silentDays":4,"spark":[0,0,0,0,0,0,0,0,0,6,0,0,0,0]},{"channel":"Dida","total14":2,"today":0,"prev":0,"dod":0,"ttv14":486678,"margin14":20561,"marginPct":4.2,"pending":2,"cancelled":3,"last7":1,"prev7":1,"wow":0,"lastBooking":"2026-08-10","silentDays":4,"spark":[0,0,0,0,0,1,0,0,0,1,0,0,0,0]},{"channel":"Ohmyhotel (Non Member)","total14":1,"today":0,"prev":0,"dod":0,"ttv14":25287,"margin14":1895,"marginPct":7.5,"pending":0,"cancelled":0,"last7":0,"prev7":1,"wow":-100,"lastBooking":"2026-08-03","silentDays":11,"spark":[0,0,1,0,0,0,0,0,0,0,0,0,0,0]},{"channel":"bizplay","total14":1,"today":0,"prev":0,"dod":0,"ttv14":0,"margin14":0,"marginPct":0,"pending":0,"cancelled":1,"last7":1,"prev7":0,"wow":0,"lastBooking":"2026-08-11","silentDays":3,"spark":[0,0,0,0,0,0,0,0,0,0,1,0,0,0]},{"channel":"Kakao","total14":1,"today":0,"prev":0,"dod":0,"ttv14":80839,"margin14":10544,"marginPct":13,"pending":0,"cancelled":0,"last7":1,"prev7":0,"wow":0,"lastBooking":"2026-08-12","silentDays":2,"spark":[0,0,0,0,0,0,0,0,0,0,0,1,0,0]}],"countries":["Japan","Korea","Vietnam","Taiwan","Thailand","Hong Kong","Others"],"statusMix":[{"status":"Cancelled(Replied)","count":13,"pct":40.6},{"status":"Cancelled","count":8,"pct":25},{"status":"Pending","count":8,"pct":25},{"status":"Confirmed","count":3,"pct":9.4}],"leadTime":{"n":11,"avg":69,"median":92,"buckets":[{"key":"D0-1","label":"당일~익일","count":1,"pct":9.1},{"key":"D2-7","label":"2~7일","count":0,"pct":0},{"key":"D8-30","label":"8~30일","count":2,"pct":18.2},{"key":"D31+","label":"31일+","count":8,"pct":72.7}]},"los":{"n":11,"avg":1,"median":1,"long":0},"concentration":{"top1":"Elong","top1Share":18.8,"top3Share":28.1,"hhi":420,"activeChannels":5},"alerts":[{"sev":"P2","code":"CXLRATE","title":"취소율 과다 (14일 65.6%)","detail":"14일 예약 32건 중 21건이 취소되어 실현율이 34.4%에 그칩니다.","action":"취소 상위 채널부터 사유 확인 → 재고/요금 문제면 기술 조치, 고객 변심이면 취소정책 재협의","owner":"고객사 담당","count":21,"unit":"건","itemsAre":"channel","shown":7,"items":[{"channel":"Alitrip","count":7,"pct":33.3},{"channel":"Meituan","count":4,"pct":19},{"channel":"Dida","count":3,"pct":14.3},{"channel":"Elong","count":3,"pct":14.3},{"channel":"Qunar","count":2,"pct":9.5},{"channel":"bizplay","count":1,"pct":4.8},{"channel":"Agoda","count":1,"pct":4.8}]},{"sev":"P2","code":"FASTCXL","title":"즉시취소 다발 (예약 후 2시간 내)","detail":"취소 21건 중 12건(57.1%)이 예약 직후 취소됐습니다. 고객 변심보다는 재고 미동기화·요금 불일치로 예약이 되돌려지는 패턴입니다.","action":"해당 호텔의 재고/요금 동기화 상태 점검 → 반복되면 고객사에 원인과 조치 계획 공유","owner":"기술팀 + 고객사 담당","count":12,"unit":"건","itemsAre":"booking","shown":12,"items":[{"code":"K26081010009H01","channel":"bizplay","hotel":"Shinjuku Granbell Hotel","country":"Japan","city":"Tokyo","checkIn":"2026-10-28","bookingDate":"2026-08-10","status":"Cancelled","ttv":0,"margin":0,"rn":1,"cxlHours":0},{"code":"S26080710021H01","channel":"Dida","hotel":"Ocean Grand Hotel","country":"Korea","city":"Jeju City","checkIn":"2026-09-03","bookingDate":"2026-08-07","status":"Cancelled(Replied)","ttv":0,"margin":0,"rn":1,"cxlHours":0},{"code":"S26080710020H01","channel":"Dida","hotel":"Royal Halong Hotel","country":"Vietnam","city":"Ha Long","checkIn":"2026-09-03","bookingDate":"2026-08-07","status":"Cancelled(Replied)","ttv":0,"margin":0,"rn":1,"cxlHours":0.8},{"code":"S26080710019H01","channel":"Dida","hotel":"Ocean Grand Hotel","country":"Korea","city":"Jeju City","checkIn":"2026-09-06","bookingDate":"2026-08-07","status":"Cancelled(Replied)","ttv":0,"margin":0,"rn":1,"cxlHours":1.3},{"code":"S26080710010H01","channel":"Alitrip","hotel":"Tokushima Washington Hotel Plaza","country":"Japan","city":"Tokushima","checkIn":"2026-09-06","bookingDate":"2026-08-07","status":"Cancelled(Replied)","ttv":0,"margin":0,"rn":1,"cxlHours":1.8},{"code":"S26080710009H01","channel":"Meituan","hotel":"Tokushima Washington Hotel Plaza","country":"Japan","city":"Tokushima","checkIn":"2026-09-06","bookingDate":"2026-08-07","status":"Cancelled","ttv":0,"margin":0,"rn":1,"cxlHours":1.9},{"code":"S26080710008H01","channel":"Meituan","hotel":"Tokushima Washington Hotel Plaza","country":"Japan","city":"Tokushima","checkIn":"2026-09-06","bookingDate":"2026-08-07","status":"Cancelled","ttv":0,"margin":0,"rn":1,"cxlHours":1.6},{"code":"S26080710007H01","channel":"Alitrip","hotel":"Tokushima Washington Hotel Plaza","country":"Japan","city":"Tokushima","checkIn":"2026-09-06","bookingDate":"2026-08-07","status":"Cancelled","ttv":0,"margin":0,"rn":1,"cxlHours":1.6},{"code":"S26080710006H01","channel":"Meituan","hotel":"Tokushima Washington Hotel Plaza","country":"Japan","city":"Tokushima","checkIn":"2026-09-06","bookingDate":"2026-08-07","status":"Cancelled","ttv":0,"margin":0,"rn":1,"cxlHours":0.9},{"code":"S26080710005H01","channel":"Elong","hotel":"Tokushima Washington Hotel Plaza","country":"Japan","city":"Tokushima","checkIn":"2026-09-06","bookingDate":"2026-08-07","status":"Cancelled(Replied)","ttv":0,"margin":0,"rn":1,"cxlHours":1.2},{"code":"S26080710004H01","channel":"Qunar","hotel":"Tokushima Washington Hotel Plaza","country":"Japan","city":"Tokushima","checkIn":"2026-09-06","bookingDate":"2026-08-07","status":"Cancelled","ttv":0,"margin":0,"rn":1,"cxlHours":1.9},{"code":"S26080710003H01","channel":"Qunar","hotel":"Tokushima Washington Hotel Plaza","country":"Japan","city":"Tokushima","checkIn":"2026-09-05","bookingDate":"2026-08-07","status":"Cancelled","ttv":0,"margin":0,"rn":1,"cxlHours":1.9}]},{"sev":"P2","code":"PENDAGE","title":"미확약 적체 (24시간 초과)","detail":"접수 후 하루가 지나도록 확약이 안 난 예약. 채널 화면에는 아직 \"대기\"로 보이는 상태입니다.","action":"호텔별로 묶어 확약 독촉 → 채널에는 진행 상황 중간 회신","owner":"예약팀","count":8,"unit":"건","itemsAre":"booking","shown":8,"items":[{"code":"S26081010007H01","channel":"Elong","hotel":"Crown Park Hotel","country":"Korea","city":"Seoul","checkIn":"2026-11-10","bookingDate":"2026-08-10","status":"Pending","ttv":295754,"margin":9445,"rn":1},{"code":"S26081010006H01","channel":"Elong","hotel":"Crown Park Hotel","country":"Korea","city":"Seoul","checkIn":"2026-11-10","bookingDate":"2026-08-10","status":"Pending","ttv":295754,"margin":9445,"rn":1},{"code":"S26081010005H01","channel":"Elong","hotel":"Crown Park Hotel","country":"Korea","city":"Seoul","checkIn":"2026-11-10","bookingDate":"2026-08-10","status":"Pending","ttv":295754,"margin":9445,"rn":1},{"code":"S26081010004H01","channel":"Elong","hotel":"Crown Park Hotel","country":"Korea","city":"Seoul","checkIn":"2026-11-10","bookingDate":"2026-08-10","status":"Pending","ttv":295754,"margin":9445,"rn":1},{"code":"S26081010003H01","channel":"Elong","hotel":"Crown Park Hotel","country":"Korea","city":"Seoul","checkIn":"2026-11-10","bookingDate":"2026-08-10","status":"Pending","ttv":295754,"margin":9445,"rn":1},{"code":"S26081010002H01","channel":"Elong","hotel":"Crown Park Hotel","country":"Korea","city":"Seoul","checkIn":"2026-11-10","bookingDate":"2026-08-10","status":"Pending","ttv":295754,"margin":9445,"rn":1},{"code":"S26081010001H01","channel":"Dida","hotel":"Crown Park Hotel","country":"Korea","city":"Seoul","checkIn":"2026-09-05","bookingDate":"2026-08-10","status":"Pending","ttv":360143,"margin":15217,"rn":1},{"code":"S26080610001H01","channel":"Dida","hotel":"Ocean Grand Hotel","country":"Korea","city":"Jeju City","checkIn":"2026-09-05","bookingDate":"2026-08-06","status":"Pending","ttv":126535,"margin":5344,"rn":1}]},{"sev":"P2","code":"LOWMARGIN","title":"저마진 예약 (마진율 5% 미만)","detail":"수수료가 기준선을 밑도는 예약. 요금 설정 오류이거나 계약 조건과 어긋난 판매일 수 있습니다.","action":"해당 호텔 계약 마진율·프로모션 설정 대조 → 오설정이면 요금 즉시 수정","owner":"요금팀","count":8,"unit":"건","itemsAre":"booking","shown":8,"items":[{"code":"S26081010007H01","channel":"Elong","hotel":"Crown Park Hotel","country":"Korea","city":"Seoul","checkIn":"2026-11-10","bookingDate":"2026-08-10","status":"Pending","ttv":295754,"margin":9445,"rn":1,"marginPct":3.2},{"code":"S26081010006H01","channel":"Elong","hotel":"Crown Park Hotel","country":"Korea","city":"Seoul","checkIn":"2026-11-10","bookingDate":"2026-08-10","status":"Pending","ttv":295754,"margin":9445,"rn":1,"marginPct":3.2},{"code":"S26081010005H01","channel":"Elong","hotel":"Crown Park Hotel","country":"Korea","city":"Seoul","checkIn":"2026-11-10","bookingDate":"2026-08-10","status":"Pending","ttv":295754,"margin":9445,"rn":1,"marginPct":3.2},{"code":"S26081010004H01","channel":"Elong","hotel":"Crown Park Hotel","country":"Korea","city":"Seoul","checkIn":"2026-11-10","bookingDate":"2026-08-10","status":"Pending","ttv":295754,"margin":9445,"rn":1,"marginPct":3.2},{"code":"S26081010003H01","channel":"Elong","hotel":"Crown Park Hotel","country":"Korea","city":"Seoul","checkIn":"2026-11-10","bookingDate":"2026-08-10","status":"Pending","ttv":295754,"margin":9445,"rn":1,"marginPct":3.2},{"code":"S26081010002H01","channel":"Elong","hotel":"Crown Park Hotel","country":"Korea","city":"Seoul","checkIn":"2026-11-10","bookingDate":"2026-08-10","status":"Pending","ttv":295754,"margin":9445,"rn":1,"marginPct":3.2},{"code":"S26080610001H01","channel":"Dida","hotel":"Ocean Grand Hotel","country":"Korea","city":"Jeju City","checkIn":"2026-09-05","bookingDate":"2026-08-06","status":"Pending","ttv":126535,"margin":5344,"rn":1,"marginPct":4.2},{"code":"S26081010001H01","channel":"Dida","hotel":"Crown Park Hotel","country":"Korea","city":"Seoul","checkIn":"2026-09-05","bookingDate":"2026-08-10","status":"Pending","ttv":360143,"margin":15217,"rn":1,"marginPct":4.2}]},{"sev":"P2","code":"ZEROAMT","title":"금액 0원 예약","detail":"취소되지 않았는데 청구금액이 0원인 예약. 요금 미설정이거나 정산에서 누락될 수 있습니다.","action":"요금 설정 확인 → 실제 판매가 맞으면 정산 반영, 오류면 요금 수정 후 채널 재통보","owner":"요금팀 + 정산팀","count":1,"unit":"건","itemsAre":"booking","shown":1,"items":[{"code":"K26081110001H01","channel":"bizplay","hotel":"HOTEL LiVEMAX Amagasaki","country":"Japan","city":"Amagasaki","checkIn":"2026-11-17","bookingDate":"2026-08-11","status":"Confirmed","ttv":0,"margin":0,"rn":1}]},{"sev":"P3","code":"TESTDATA","title":"테스트 데이터 다량 유입","detail":"수집 429건 중 397건(92.5%)이 테스트 예약입니다. 아래 지표에서는 제외했습니다.","action":"운영 채널에서 테스트 예약이 생성되는 경로 점검 → 테스트는 전용 채널로 분리","owner":"기술팀","count":397,"unit":"건","itemsAre":"channel","items":[{"channel":"Ohmyhotel KR","count":381},{"channel":"Channel IT Test","count":11},{"channel":"Ohmyhotel (Non Member)","count":4},{"channel":"Kakao","count":1}]}],"alertSummary":{"P1":0,"P2":5,"P3":1,"p1Bookings":0,"p2Bookings":21,"actionNow":21,"contactChannels":["Agoda","Alitrip","Dida","Elong","Meituan","Qunar","bizplay"]},"insights":[{"tone":"warn","text":"즉시 처리(P1) 건은 없습니다. 당일 내 처리 대상은 중복 제외 21건이며, 컨택이 필요한 고객사는 7곳(Agoda, Alitrip, Dida, Elong, Meituan, Qunar, bizplay)입니다."},{"tone":"bad","text":"2026-08-14(금) 신규 예약이 0건입니다. 데이터 수집 지연인지 실제 거래 공백인지 먼저 확인이 필요합니다."},{"tone":"warn","text":"14일 실현 TTV ₩2,367,328, 마진 ₩89,670(마진율 3.8%)입니다. 마진율이 5% 아래로 요금 설정 점검이 필요합니다."},{"tone":"flat","text":"평균 리드타임 69일(중앙값 92일), 당일~익일 체크인 비중 9.1%입니다."},{"tone":"bad","text":"14일 취소율 65.6%(21건), 취소까지 중앙값 1.9시간입니다. 그중 57.1%가 예약 후 2시간 내 취소로, 고객 변심이 아니라 재고·요금 동기화 문제일 가능성이 큽니다."},{"tone":"warn","text":"미확약 8건이 Elong 6건, Dida 2건에 몰려 있습니다. 채널별로 묶어 한 번에 확약 요청하는 편이 빠릅니다."}]};
 const F=n=>Number(Math.round(n)).toLocaleString('en-US');
-const yen=n=>'¥'+F(n);
+const CUR=D.currency==='JPY'?'¥':'₩';
+const won=n=>CUR+F(n);
+const wonS=n=>Math.abs(n)>=1e8?CUR+(n/1e8).toFixed(1)+'억':Math.abs(n)>=1e4?CUR+F(n/1e4)+'만':CUR+F(n);
 const gs=v=>(v>0?'+':'')+v+'%';
 const gc=v=>v>1.5?'pos':(v<-1.5?'neg':'flat');
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const KO={Japan:'일본',Korea:'한국',Vietnam:'베트남',Taiwan:'대만',Thailand:'태국','Hong Kong':'홍콩',Others:'기타'};
 const FLAG={Japan:'🇯🇵',Korea:'🇰🇷',Vietnam:'🇻🇳',Taiwan:'🇹🇼',Thailand:'🇹🇭','Hong Kong':'🇭🇰',Others:'🌏'};
+const stCls=s=>/confirm/i.test(s)?'ok':/unavailable|cancel request/i.test(s)?'bad':/pending|request/i.test(s)?'warn':'';
 
 function spark(vals,w,h,color){
   const max=Math.max(...vals,1),n=vals.length,xr=n>1?w/(n-1):0;
@@ -59,52 +115,161 @@ function spark(vals,w,h,color){
   return '<svg class="spark" width="'+w+'" height="'+h+'" viewBox="0 0 '+w+' '+h+'"><path d="'+p+'" fill="none" stroke="'+color+'" stroke-width="2" stroke-linejoin="round"/><circle cx="'+((n-1)*xr).toFixed(1)+'" cy="'+(h-(last/max)*(h-3)).toFixed(1)+'" r="2.6" fill="'+color+'"/></svg>';
 }
 
-const d=D, L=d.latest, P=d.prev;
+const d=D, L=d.latest, P=d.prev, A=d.alertSummary;
 let H='';
-// header
+// ── header ──
 H+='<div class="top"><div><h1>데일리 부킹 트렌드'+(d.source==='ellis-mcp'?'<span class="badge live">● LIVE · ELLIS MCP</span>':'<span class="badge samp">SAMPLE · 파일기반</span>')+'</h1>'
- +'<div class="sub">부킹데이트 기준 · 최근 '+d.windowDays+'일 · 매일 07:00 자동 갱신</div></div>'
- +'<div class="asof">기준일 <b>'+L.date+' ('+L.dow+')</b><br><span style="font-size:0.72rem">생성 '+String(d.generated).slice(0,16).replace('T',' ')+'</span></div></div>';
-// KPI row — 어제 vs 전일
-H+='<div class="grid-kpi">'
- +kpi('어제 예약('+L.date.slice(5)+')',F(L.bookings),'전일 '+F(P.bookings)+'건',d.dod.bookings)
- +kpi('룸나잇',F(L.rn),'전일 대비',d.dod.rn)
- +kpi('TTV',yen(L.ttv),'전일 대비',d.dod.ttv)
- +kpi('ADR',yen(L.adr),'전일 대비',d.dod.adr)
- +(d.wow?kpi('전주 동요일 대비',gs(d.wow.dodBookings),d.wow.date.slice(5)+' '+F(d.wow.bookings)+'건',d.wow.dodBookings):kpi('14일 평균',F(d.avgDaily),'일 평균',0))
+ +'<div class="sub">부킹데이트 기준 · 최근 '+d.windowDays+'일 · 매일 07:00 자동 갱신 · 금액 KRW 환산</div></div>'
+ +'<div class="asof">데이터 기준일 <b>'+L.date+' ('+L.dow+')</b><br>알럿 기준일 <b>'+d.refDate+'</b>'
+ +'<br><span style="font-size:0.72rem">생성 '+String(d.generated).slice(0,16).replace('T',' ')+'</span></div></div>';
+
+// ══ 1. 오늘의 액션 알럿 ══
+H+='<section><h2 class="'+(A.P1?'red':'')+'">🚨 오늘의 액션 — 처리 필요 건</h2>';
+H+='<div class="sevbar">'
+ +(A.P1?'<div class="sevchip s-p1"><b>'+F(A.p1Bookings)+'</b> P1 · 즉시 처리 ('+A.P1+'개 항목)</div>'
+      :'<div class="sevchip s-ok"><b>0</b> P1 · 즉시 처리 없음</div>')
+ +'<div class="sevchip s-p2"><b>'+F(A.p2Bookings)+'</b> P2 · 당일 내 ('+A.P2+'개 항목)</div>'
+ +'<div class="sevchip s-p3"><b>'+A.P3+'</b> P3 · 모니터링</div>'
+ +(A.contactChannels.length?'<div class="sevchip s-p2" style="background:rgba(167,139,250,0.12);border-color:rgba(167,139,250,0.4);color:#c4b5fd"><b>'+A.contactChannels.length+'</b> 컨택 필요 고객사</div>':'')
  +'</div>';
-H+='<div class="sub" style="margin-top:4px">14일 평균 <b style="color:#cbd5e1">'+F(d.avgDaily)+'</b>건 · 피크 '+d.peakDay.date.slice(5)+' '+F(d.peakDay.bookings)+'건 · 취소율 '+d.cancel.rate14d+'%</div>';
+if(A.actionNow>0)H+='<div class="sub" style="margin:-4px 0 14px">중복 제외 실제 처리 대상 <b style="color:#fcd34d">'+F(A.actionNow)+'건</b>'
+ +(A.contactChannels.length?' · 컨택 대상 <b style="color:#c4b5fd">'+A.contactChannels.map(esc).join(', ')+'</b>':'')+'</div>';
+
+if(!d.alerts.length){
+  H+='<div class="card" style="text-align:center;padding:36px;color:#6ee7b7;font-weight:700">✅ 오늘 조치가 필요한 예약 건이 없습니다.</div>';
+}else{
+  d.alerts.forEach(a=>{
+    const p=a.sev.toLowerCase();
+    H+='<div class="al '+p+'"><div class="alh"><span class="tag '+p+'">'+a.sev+'</span><span class="alt">'+esc(a.title)+'</span>'
+      +'<span class="cnt">'+F(a.count)+'<span> '+esc(a.unit||'건')+'</span></span></div>'
+      +'<div class="ald">'+esc(a.detail)+'</div>'
+      +'<div class="act"><span class="own">담당 · '+esc(a.owner)+'</span><b>조치</b> — '+esc(a.action)+'</div>';
+    const it=a.items||[];
+    if(it.length){
+      const isCh=a.itemsAre==='channel';
+      H+='<div class="scroll"><table><thead><tr>';
+      H+= isCh ? '<th>채널(고객사)</th><th style="text-align:right">건수</th>'+(it[0].pct!==undefined?'<th style="text-align:right">비중</th>':'')+(it[0].silentDays!==undefined?'<th style="text-align:right">무거래일</th><th>최근 거래</th>':'')
+               : '<th>부킹코드</th><th>채널</th><th>호텔</th><th>체크인</th><th>상태</th>'
+                 +(it[0].cxlHours!==undefined?'<th style="text-align:right">취소까지</th>':'<th style="text-align:right">금액</th>')
+                 +(it[0].marginPct!==undefined?'<th style="text-align:right">마진율</th>':'');
+      H+='</tr></thead><tbody>';
+      it.forEach(x=>{
+        H+= isCh
+          ? '<tr><td style="font-weight:600">'+esc(x.channel)+'</td><td style="text-align:right;font-weight:700">'+F(x.count)+'</td>'
+            +(x.pct!==undefined?'<td style="text-align:right;color:#93a6c6">'+x.pct+'%</td>':'')
+            +(x.silentDays!==undefined?'<td style="text-align:right;color:#fca5a5;font-weight:700">'+x.silentDays+'일</td><td style="color:#93a6c6">'+esc(x.lastBooking||'-')+'</td>':'')+'</tr>'
+          : '<tr><td class="mono">'+esc(x.code||'-')+'</td><td>'+esc(x.channel||'-')+'</td>'
+            +'<td>'+esc(x.hotel||'-')+(x.country?' <span style="color:#7f93b3;font-size:0.8rem">'+(FLAG[x.country]||'')+' '+esc(KO[x.country]||x.country)+'</span>':'')+'</td>'
+            +'<td>'+esc(x.checkIn||'-')+'</td><td><span class="st '+stCls(x.status)+'">'+esc(x.status||'-')+'</span></td>'
+            +(x.cxlHours!==undefined
+               ? '<td style="text-align:right;color:'+(x.cxlHours<=2?'#fca5a5':'#cbd5e1')+';font-weight:700">'+x.cxlHours+'h</td>'
+               : '<td style="text-align:right">'+(x.ttv?won(x.ttv):'<span style="color:#fca5a5">0</span>')+'</td>')
+            +(x.marginPct!==undefined?'<td style="text-align:right;color:'+(x.marginPct<3?'#fca5a5':'#fcd34d')+';font-weight:700">'+x.marginPct+'%</td>':'')+'</tr>';
+      });
+      H+='</tbody></table></div>';
+      if(!isCh&&a.count>a.shown)H+='<div style="padding:9px 20px;color:#7f93b3;font-size:0.82rem">외 '+F(a.count-a.shown)+'건 — 전체는 ELLIS에서 확인</div>';
+    }
+    H+='</div>';
+  });
+}
+H+='</section>';
+
+// ══ 2. AI 인사이트 ══
+H+='<section><h2 class="vio">🧠 AI 인사이트</h2><div class="card ins"><ul>'
+ +d.insights.map(i=>'<li class="'+i.tone+'">'+esc(i.text)+'</li>').join('')
+ +'</ul></div></section>';
+
+// ══ 3. KPI ══
+H+='<section><h2>어제 실적</h2><div class="grid-kpi" style="margin-top:0">'
+ +kpi('신규 예약('+L.date.slice(5)+')',F(L.bookings)+'건','전일 '+F(P.bookings)+'건',d.dod.bookings)
+ +kpi('룸나잇',F(L.rn),'전일 대비',d.dod.rn)
+ +kpi('TTV',wonS(L.ttv),'전일 대비',d.dod.ttv)
+ +kpi('ADR',wonS(L.adr),'전일 대비',d.dod.adr)
+ +(d.hasMargin?kpi('마진',wonS(L.margin),'마진율 '+L.marginPct+'%',d.dod.margin)
+              :(d.wow?kpi('전주 동요일 대비',gs(d.wow.dodBookings),d.wow.date.slice(5)+' '+F(d.wow.bookings)+'건',d.wow.dodBookings):kpi('14일 평균',F(d.avgDaily)+'건','일 평균',0)))
+ +'</div>';
+H+='<div class="sub" style="margin-top:10px">14일 누계 <b style="color:#cbd5e1">'+F(d.totals.bookings)+'건</b> · 실현 '+F(d.totals.live)+'건 · TTV '+wonS(d.totals.ttv14)
+ +(d.hasMargin?' · 마진 '+wonS(d.totals.margin14)+'('+d.totals.marginPct+'%)':'')
+ +' · 일평균 '+F(d.avgDaily)+'건 · 피크 '+d.peakDay.date.slice(5)+' '+F(d.peakDay.bookings)+'건</div>';
+H+='<div class="dq">📥 수집 '+F(d.dataQuality.collected)+'건 중 테스트 예약 '+F(d.dataQuality.test)+'건('+d.dataQuality.testPct+'%)을 제외한 <b style="color:#cbd5e1">'+F(d.dataQuality.used)+'건</b>으로 집계했습니다 · '+esc(d.dataQuality.note)+'</div></section>';
 
 function kpi(lb,v,sub,delta){
   return '<div class="kpi"><div class="lb">'+lb+'</div><div class="v">'+v+'</div><div class="d '+gc(delta)+'">'+(delta>0?'▲':delta<0?'▼':'—')+' '+gs(delta)+' <span style="color:#8ba0bd;font-weight:600">· '+sub+'</span></div></div>';
 }
 
-// 14-day trend
-H+='<section><h2>일별 예약 추이 (14일)</h2><div class="card"><div id="ch-days"></div></div></section>';
-// by country
-H+='<section><h2>국가별 일일 추이</h2><div class="card"><table><thead><tr><th>목적지</th><th style="text-align:right">어제</th><th style="text-align:right">전일</th><th style="text-align:right">전일대비</th><th style="text-align:right">14일 합</th><th>추이</th></tr></thead><tbody>'
- +d.byCountry.map(c=>'<tr><td>'+(FLAG[c.country]||'🌏')+' '+(KO[c.country]||c.country)+'</td><td style="text-align:right;font-weight:700">'+F(c.today)+'</td><td style="text-align:right;color:#93a6c6">'+F(c.prev)+'</td><td style="text-align:right" class="'+gc(c.dod)+'">'+gs(c.dod)+'</td><td style="text-align:right;color:#93a6c6">'+F(c.total14)+'</td><td>'+spark(c.spark,120,26,'#60a5fa')+'</td></tr>').join('')
- +'</tbody></table></div></section>';
-// by channel
-H+='<section><h2>채널(고객사)별 일일 추이 · Top 12</h2><div class="card"><table><thead><tr><th>채널</th><th style="text-align:right">어제</th><th style="text-align:right">전일대비</th><th style="text-align:right">14일 합</th><th>추이</th></tr></thead><tbody>'
- +d.byChannel.map(c=>'<tr><td style="font-weight:600">'+c.channel+'</td><td style="text-align:right;font-weight:700">'+F(c.today)+'</td><td style="text-align:right" class="'+gc(c.dod)+'">'+gs(c.dod)+'</td><td style="text-align:right;color:#93a6c6">'+F(c.total14)+'</td><td>'+spark(c.spark,120,26,'#34d399')+'</td></tr>').join('')
+// ══ 4. 14일 추이 ══
+H+='<section><h2>일별 예약 추이 (14일)</h2><div class="card"><div id="ch-days"></div>'
+ +'<div class="sub" style="margin-top:8px;font-size:0.82rem"><span style="color:#3b82f6">■</span> 실현 &nbsp; <span style="color:#64748b">■</span> 취소 &nbsp; <span style="color:#f0851f">■</span> 기준일</div></div></section>';
+
+// ══ 5. 예약 상태 + 리드타임 ══
+H+='<section><h2>예약 품질 지표</h2><div class="two">';
+// 상태 믹스
+H+='<div class="card"><div style="font-weight:800;margin-bottom:12px;color:#f4f8ff">예약 상태 구성 (14일)</div>';
+const stColor={Confirmed:'#34d399',Reserved:'#60a5fa',Pending:'#fbbf24','Cancel Request':'#fb923c',Unavailable:'#f87171'};
+d.statusMix.forEach(s=>{
+  const c=stColor[s.status]||(/cancel/i.test(s.status)?'#64748b':'#a78bfa');
+  H+='<div style="margin-bottom:11px"><div style="display:flex;justify-content:space-between;font-size:0.88rem"><span>'+esc(s.status)+'</span><span style="font-weight:700">'+F(s.count)+'건 · '+s.pct+'%</span></div>'
+    +'<div class="bar"><i style="width:'+Math.max(s.pct,1.5)+'%;background:'+c+'"></i></div></div>';
+});
+H+='</div>';
+// 리드타임
+H+='<div class="card"><div style="font-weight:800;margin-bottom:4px;color:#f4f8ff">부킹 리드타임 (부킹→체크인)</div>'
+ +'<div class="sub" style="margin:0 0 12px">평균 <b style="color:#cbd5e1">'+d.leadTime.avg+'일</b> · 중앙값 '+d.leadTime.median+'일 · 평균 숙박 '+d.los.avg+'박 (n='+d.leadTime.n+')</div>';
+d.leadTime.buckets.forEach(b=>{
+  const c=b.key==='D0-1'?'#f87171':b.key==='D2-7'?'#fbbf24':b.key==='D8-30'?'#60a5fa':'#34d399';
+  H+='<div style="margin-bottom:11px"><div style="display:flex;justify-content:space-between;font-size:0.88rem"><span>'+b.label+'</span><span style="font-weight:700">'+F(b.count)+'건 · '+b.pct+'%</span></div>'
+    +'<div class="bar"><i style="width:'+Math.max(b.pct,1.5)+'%;background:'+c+'"></i></div></div>';
+});
+H+='</div></div>';
+// 취소 프로파일 + 집중도 타일
+H+='<div class="tiles" style="margin-top:16px">'
+ +tile('14일 취소율',d.cancel.rate14d+'%',F(d.cancel.count14)+'건 취소',d.cancel.rate14d>=25?'#f87171':'#cbd5e1')
+ +tile('취소까지 소요',d.cancel.medianHours+'h','중앙값 · 24h내 '+d.cancel.sameDayPct+'%',d.cancel.medianHours<2?'#f87171':'#cbd5e1')
+ +tile('즉시취소 비중',d.cancel.fastPct+'%','예약 후 2h 내 '+F(d.cancel.fastCount)+'건',d.cancel.fastPct>=50?'#f87171':'#cbd5e1')
+ +tile('채널 집중도','HHI '+F(d.concentration.hhi),'1위 '+esc(d.concentration.top1)+' '+d.concentration.top1Share+'% · 활성 '+d.concentration.activeChannels+'곳',d.concentration.top1Share>=50?'#fbbf24':'#cbd5e1')
+ +'</div></section>';
+
+function tile(lb,v,n,color){
+  return '<div class="tile"><div class="lb">'+lb+'</div><div class="v" style="color:'+(color||'#fff')+'">'+v+'</div><div class="n">'+n+'</div></div>';
+}
+
+// ══ 6. 국가별 ══
+H+='<section><h2>국가별 일일 추이</h2><div class="card scroll"><table><thead><tr><th>목적지</th><th style="text-align:right">기준일</th><th style="text-align:right">전일</th><th style="text-align:right">전일대비</th><th style="text-align:right">14일 합</th><th style="text-align:right">14일 TTV</th><th style="text-align:right">ADR</th><th>추이</th></tr></thead><tbody>'
+ +d.byCountry.map(c=>'<tr><td>'+(FLAG[c.country]||'🌏')+' '+esc(KO[c.country]||c.country)+'</td><td style="text-align:right;font-weight:700">'+F(c.today)+'</td><td style="text-align:right;color:#93a6c6">'+F(c.prev)+'</td><td style="text-align:right" class="'+gc(c.dod)+'">'+gs(c.dod)+'</td><td style="text-align:right;color:#93a6c6">'+F(c.total14)+'</td><td style="text-align:right">'+wonS(c.ttv14)+'</td><td style="text-align:right;color:#93a6c6">'+wonS(c.adr)+'</td><td>'+spark(c.spark,110,26,'#60a5fa')+'</td></tr>').join('')
  +'</tbody></table></div></section>';
 
-H+='<div class="foot">데이터 소스: '+(d.source==='ellis-mcp'?'ELLIS MCP (실시간 get_hotel_bookings)':'processed booking-date 파일 (샘플/폴백)')+' · 부킹데이트 기준 · 취소건은 실현 RN/TTV/국가·채널 집계에서 제외 · 매일 07:00 KST 자동 갱신 · CONFIDENTIAL</div>';
+// ══ 7. 채널별 ══
+H+='<section><h2>채널(고객사)별 현황 · Top 12</h2><div class="card scroll"><table><thead><tr><th>채널</th><th style="text-align:right">기준일</th><th style="text-align:right">14일 합</th><th style="text-align:right">주간 증감</th><th style="text-align:right">14일 TTV</th>'+(d.hasMargin?'<th style="text-align:right">마진율</th>':'')+'<th style="text-align:right">미확약</th><th style="text-align:right">취소</th><th style="text-align:right">무거래</th><th>추이</th></tr></thead><tbody>'
+ +d.byChannel.map(c=>'<tr><td style="font-weight:600">'+esc(c.channel)+'</td>'
+   +'<td style="text-align:right;font-weight:700">'+F(c.today)+'</td>'
+   +'<td style="text-align:right;color:#93a6c6">'+F(c.total14)+'</td>'
+   +'<td style="text-align:right" class="'+gc(c.wow)+'">'+gs(c.wow)+'</td>'
+   +'<td style="text-align:right">'+wonS(c.ttv14)+'</td>'
+   +(d.hasMargin?'<td style="text-align:right;color:'+(c.marginPct>0&&c.marginPct<5?'#fca5a5':'#cbd5e1')+';font-weight:700">'+c.marginPct+'%</td>':'')
+   +'<td style="text-align:right">'+(c.pending?'<span class="st warn">'+F(c.pending)+'</span>':'<span style="color:#4b5b76">0</span>')+'</td>'
+   +'<td style="text-align:right">'+(c.cancelled?'<span class="st bad">'+F(c.cancelled)+'</span>':'<span style="color:#4b5b76">0</span>')+'</td>'
+   +'<td style="text-align:right;color:'+(c.silentDays>=3?'#fca5a5':'#93a6c6')+';font-weight:'+(c.silentDays>=3?'700':'400')+'">'+c.silentDays+'일</td>'
+   +'<td>'+spark(c.spark,110,26,'#34d399')+'</td></tr>').join('')
+ +'</tbody></table></div></section>';
+
+H+='<div class="foot">데이터 소스: '+(d.source==='ellis-mcp'?'ELLIS MCP (get_hotel_bookings)':'processed booking-date 파일 (샘플/폴백)')+' · 부킹데이트 기준 · 금액은 fxRate로 KRW 환산 · 취소건은 실현 RN/TTV/마진 집계에서 제외 · 테스트 예약(TEST 호텔/채널) 제외<br>'
+ +'알럿은 최근 '+d.windowDays+'일 내 <b>생성된</b> 예약이 대상입니다 — 그 이전에 접수된 예약의 임박 체크인은 잡히지 않습니다 · 게스트 개인정보 미포함 · 매일 07:00 KST 자동 갱신 · CONFIDENTIAL</div>';
 document.getElementById('app').innerHTML=H;
 
-// draw 14-day bars
+// draw 14-day stacked bars (실현 + 취소)
 (function(){
   const el=document.getElementById('ch-days'); const W=el.clientWidth||1150,H2=300,m={t:22,r:14,b:38,l:44};
-  const iw=W-m.l-m.r,ih=H2-m.t-m.b; const vals=d.days.map(x=>x.bookings); const max=Math.max(...vals)*1.12;
+  const iw=W-m.l-m.r,ih=H2-m.t-m.b; const vals=d.days.map(x=>x.bookings); const max=Math.max(...vals,1)*1.12;
   const bw=iw/d.days.length; const y=v=>m.t+ih-(v/max)*ih;
   let s='<svg viewBox="0 0 '+W+' '+H2+'">';
   for(let i=0;i<=4;i++){const gy=m.t+ih*(i/4),val=Math.round(max*(1-i/4));s+='<line class="gl" x1="'+m.l+'" y1="'+gy+'" x2="'+(W-m.r)+'" y2="'+gy+'"/><text class="tx" x="'+(m.l-7)+'" y="'+(gy+3)+'" text-anchor="end">'+F(val)+'</text>';}
   d.days.forEach((day,i)=>{const x0=m.l+bw*i+bw*0.16,w=bw*0.68,last=i===d.days.length-1;
-    s+='<rect x="'+x0+'" y="'+y(day.bookings)+'" width="'+w+'" height="'+(m.t+ih-y(day.bookings))+'" rx="3" fill="'+(last?'#f0851f':'#3b82f6')+'" opacity="'+(last?1:0.82)+'"/>';
+    const done=day.bookings-day.cancelled;
+    if(done>0)s+='<rect x="'+x0+'" y="'+y(day.bookings)+'" width="'+w+'" height="'+(y(day.cancelled)-y(day.bookings))+'" rx="3" fill="'+(last?'#f0851f':'#3b82f6')+'" opacity="'+(last?1:0.85)+'"/>';
+    if(day.cancelled>0)s+='<rect x="'+x0+'" y="'+y(day.cancelled)+'" width="'+w+'" height="'+(m.t+ih-y(day.cancelled))+'" rx="3" fill="#64748b" opacity="0.75"/>';
     if(i%2===0||last)s+='<text class="tx" x="'+(m.l+bw*i+bw/2)+'" y="'+(H2-22)+'" text-anchor="middle">'+day.date.slice(5)+'</text>';
     s+='<text class="tx" x="'+(m.l+bw*i+bw/2)+'" y="'+(H2-9)+'" text-anchor="middle" style="fill:#64748b">'+day.dow+'</text>';
-    if(last)s+='<text class="tv" x="'+(m.l+bw*i+bw/2)+'" y="'+(y(day.bookings)-6)+'" text-anchor="middle" style="fill:#fbbf24">'+F(day.bookings)+'</text>';
+    if(day.bookings>0)s+='<text class="tv" x="'+(m.l+bw*i+bw/2)+'" y="'+(y(day.bookings)-6)+'" text-anchor="middle" style="fill:'+(last?'#fbbf24':'#8ba0bd')+'">'+F(day.bookings)+'</text>';
   });
   s+='</svg>';el.innerHTML=s;
 })();
