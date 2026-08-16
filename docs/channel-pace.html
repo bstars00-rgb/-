@@ -98,19 +98,20 @@ const pc=p=>p==null?'—':Math.round(p*100)+'%';
 const CLS={surge:'가파른 가속',grow:'견조한 성장',flat:'정체',soft:'완만한 둔화',drop:'뚜렷한 감소',new:'신규 성장'};
 const paceCol=p=>p==null?'flatc':(p>=1.10?'pos':(p<0.95?'neg':'flatc'));
 
-function bars(m25,m26,completeM){
-  const W=560,H=150,m={t:16,r:8,b:20,l:38},iw=W-m.l-m.r,ih=H-m.t-m.b;
-  const max=Math.max(...m25,...m26,1)*1.1;
-  const gw=iw/12, bw=gw*0.34;
-  const y=v=>m.t+ih-(v/max)*ih;
+function bars(m25,m26,completeM){   // 월별 추세선 (2025 vs 2026)
+  const W=560,H=150,m={t:16,r:10,b:20,l:38},iw=W-m.l-m.r,ih=H-m.t-m.b;
+  const max=Math.max(...m25,...m26.slice(0,completeM),1)*1.1;
+  const x=mo=>m.l+(mo-1)/11*iw, y=v=>m.t+ih-(v/max)*ih;
   let s='<svg viewBox="0 0 '+W+' '+H+'">';
   for(let i=0;i<=3;i++){const gy=m.t+ih*(i/3);s+='<line x1="'+m.l+'" y1="'+gy+'" x2="'+(W-m.r)+'" y2="'+gy+'" stroke="#243149" stroke-dasharray="2 3"/>';
     s+='<text class="tx" x="'+(m.l-6)+'" y="'+(gy+3)+'" text-anchor="end">'+Math.round(max*(1-i/3)/1e6)+'M</text>';}
-  for(let i=0;i<12;i++){const cx=m.l+gw*i+gw/2;
-    s+='<rect x="'+(cx-bw-1)+'" y="'+y(m25[i])+'" width="'+bw+'" height="'+(m.t+ih-y(m25[i]))+'" rx="2" fill="#546178"/>';
-    const partial=(i+1)>completeM;
-    s+='<rect x="'+(cx+1)+'" y="'+y(m26[i])+'" width="'+bw+'" height="'+(m.t+ih-y(m26[i]))+'" rx="2" fill="'+(partial?'#f0851f':'#3b82f6')+'" opacity="'+(partial?0.6:1)+'"/>';
-    s+='<text class="tx" x="'+cx+'" y="'+(H-7)+'" text-anchor="middle">'+(i+1)+'</text>';}
+  for(let i=0;i<12;i++) s+='<text class="tx" x="'+x(i+1)+'" y="'+(H-7)+'" text-anchor="middle">'+(i+1)+'</text>';
+  const p25=m25.map((v,i)=>x(i+1)+','+y(v)).join(' ');
+  const p26=m26.slice(0,completeM).map((v,i)=>x(i+1)+','+y(v)).join(' ');
+  s+='<line x1="'+x(completeM)+'" y1="'+m.t+'" x2="'+x(completeM)+'" y2="'+(m.t+ih)+'" stroke="#f0851f" stroke-dasharray="3 3" opacity="0.45"/>';
+  s+='<polyline points="'+p25+'" fill="none" stroke="#546178" stroke-width="2"/>';
+  s+='<polyline points="'+p26+'" fill="none" stroke="#3b82f6" stroke-width="2.5"/>';
+  if(completeM>0) s+='<circle cx="'+x(completeM)+'" cy="'+y(m26[completeM-1])+'" r="3.5" fill="#3b82f6"/>';
   s+='</svg>';return s;
 }
 
@@ -137,7 +138,7 @@ for(const c of D.channels){
    +'<div class="ch-sub">YTD <b>'+M(c.ytd2025)+' → '+M(c.ytd2026)+'</b>'
    +(c.proj2026!=null?' · 2026 예상 <b>'+M(c.proj2026)+'</b> (2025 '+M(c.full2025)+')':'')+'</div>'
    +bars(c.m2025,c.m2026,D.completeMonth)
-   +'<div class="lg"><span><i style="background:#546178"></i>2025</span><span><i style="background:#3b82f6"></i>2026</span><span><i style="background:#f0851f;opacity:0.6"></i>2026 진행중(미완료월)</span></div>'
+   +'<div class="lg"><span><i style="background:#546178;height:3px"></i>2025</span><span><i style="background:#3b82f6;height:3px"></i>2026</span><span style="color:#f0851f">┊ '+D.completeMonthLabel+' 완료</span></div>'
    +'<div class="an"><div class="t">🤖 AI 분석</div>'+c.analysis.map(p=>'<p>'+p+'</p>').join('')+'</div>'
    +'</div>';
 }
