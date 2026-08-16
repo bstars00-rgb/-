@@ -81931,6 +81931,40 @@ function renderPace() {
    +s.topAccel.map(function(c){return '<span style="font-size:0.8rem;font-weight:700;padding:5px 11px;border-radius:20px;background:rgba(52,211,153,0.12);border:1px solid rgba(52,211,153,0.4);color:#6ee7b7">▲ '+c.name+' '+pc(c.pace)+'</span>';}).join('')
    +s.topDecline.map(function(c){return '<span style="font-size:0.8rem;font-weight:700;padding:5px 11px;border-radius:20px;background:rgba(248,113,113,0.12);border:1px solid rgba(248,113,113,0.4);color:#fca5a5">▼ '+c.name+' '+pc(c.pace)+'</span>';}).join('')
    +'</div></div>';
+  // ── 전체 통합 누적 추세선 + 연말 예상 ──
+  (function(){
+    const t25=new Array(12).fill(0), t26=new Array(12).fill(0);
+    P.channels.forEach(function(c){ for(let i=0;i<12;i++){ t25[i]+=c.m2025[i]||0; t26[i]+=c.m2026[i]||0; } });
+    const c25=[],c26=[]; let a=0,b=0;
+    for(let i=0;i<12;i++){a+=t25[i];c25.push(a);}
+    for(let i=0;i<P.completeMonth;i++){b+=t26[i];c26.push(b);}
+    const paceT=s.totalPace||1;
+    const proj=c25.map(function(v){return v*paceT;});   // 연말 예상 누적 = 2025누적×페이스
+    const cm=P.completeMonth;
+    const W=1120,H=250,mg={t:20,r:150,b:26,l:66},iw=W-mg.l-mg.r,ih=H-mg.t-mg.b;
+    const mx=Math.max(c25[11]||0, proj[11]||0, 1)*1.06;
+    const x=mo=>mg.l+mo/12*iw, y=v=>mg.t+ih-(v/mx)*ih;
+    let g='<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:auto">';
+    for(let i=0;i<=4;i++){const gy=mg.t+ih*(i/4);g+='<line x1="'+mg.l+'" y1="'+gy+'" x2="'+(W-mg.r)+'" y2="'+gy+'" stroke="#243149" stroke-dasharray="2 3"/><text x="'+(mg.l-8)+'" y="'+(gy+4)+'" text-anchor="end" fill="#7f93b3" font-size="12">'+M(mx*(1-i/4))+'</text>';}
+    for(let i=0;i<12;i++) g+='<text x="'+x(i+1)+'" y="'+(H-8)+'" text-anchor="middle" fill="#7f93b3" font-size="12">'+(i+1)+'월</text>';
+    g+='<line x1="'+x(cm)+'" y1="'+mg.t+'" x2="'+x(cm)+'" y2="'+(mg.t+ih)+'" stroke="#f0851f" stroke-dasharray="3 3" opacity="0.5"/>';
+    const p25=[x(0)+','+y(0)].concat(c25.map((v,i)=>x(i+1)+','+y(v))).join(' ');
+    const p26=[x(0)+','+y(0)].concat(c26.map((v,i)=>x(i+1)+','+y(v))).join(' ');
+    const pp=[x(cm)+','+y(c26[c26.length-1])]; for(let mo=cm+1;mo<=12;mo++) pp.push(x(mo)+','+y(proj[mo-1]));
+    g+='<polyline points="'+p25+'" fill="none" stroke="#546178" stroke-width="2.5"/>';
+    g+='<polyline points="'+pp.join(' ')+'" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-dasharray="6 5" opacity="0.65"/>';
+    g+='<polyline points="'+p26+'" fill="none" stroke="#3b82f6" stroke-width="3"/>';
+    g+='<circle cx="'+x(12)+'" cy="'+y(c25[11])+'" r="4" fill="#546178"/><text x="'+(x(12)+9)+'" y="'+(y(c25[11])+4)+'" fill="#94a3b8" font-size="12.5" font-weight="700">2025 '+M(c25[11])+'</text>';
+    g+='<circle cx="'+x(12)+'" cy="'+y(proj[11])+'" r="4.5" fill="#3b82f6"/><text x="'+(x(12)+9)+'" y="'+(y(proj[11])+4)+'" fill="#60a5fa" font-size="12.5" font-weight="800">2026 예상 '+M(proj[11])+'</text>';
+    g+='<circle cx="'+x(cm)+'" cy="'+y(c26[c26.length-1])+'" r="4" fill="#3b82f6"/>';
+    g+='</svg>';
+    H+='<div style="background:#16203a;border:1px solid #2a3752;border-radius:18px;padding:20px 22px;margin-bottom:16px">'
+     +'<div style="font-size:1.1rem;font-weight:800;color:#f4f8ff;margin-bottom:3px">📈 전체 통합 누적 추세선 — 2025 vs 2026 + 연말 예상</div>'
+     +'<div style="font-size:0.84rem;color:#93a6c6;margin-bottom:12px">체크아웃 기준 · 1월 0부터 누적 · '+P.completeMonthLabel+'까지 실적(실선) + 페이스 기반 연말 예상(점선) → <b style="color:#60a5fa">'+M(proj[11])+'</b></div>'
+     +g
+     +'<div style="display:flex;gap:20px;font-size:0.8rem;color:#93a6c6;margin-top:8px;flex-wrap:wrap"><span><i style="display:inline-block;width:16px;height:3px;background:#546178;vertical-align:middle;margin-right:5px"></i>2025 누적</span><span><i style="display:inline-block;width:16px;height:3px;background:#3b82f6;vertical-align:middle;margin-right:5px"></i>2026 실적</span><span><i style="display:inline-block;width:16px;height:0;border-top:3px dashed #3b82f6;opacity:0.7;vertical-align:middle;margin-right:5px"></i>2026 예상</span></div>'
+     +'</div>';
+  })();
   H+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">';
   for(const c of P.channels){
     H+='<div style="background:#16203a;border:1px solid #2a3752;border-radius:16px;padding:18px 20px">'
