@@ -81941,12 +81941,12 @@ function renderPace() {
     const paceT=s.totalPace||1;
     const proj=c25.map(function(v){return v*paceT;});   // 연말 예상 누적 = 2025누적×페이스
     const cm=P.completeMonth;
-    const W=1120,H=250,mg={t:20,r:150,b:26,l:66},iw=W-mg.l-mg.r,ih=H-mg.t-mg.b;
+    const W=1120,HT=250,mg={t:20,r:150,b:26,l:66},iw=W-mg.l-mg.r,ih=HT-mg.t-mg.b;
     const mx=Math.max(c25[11]||0, proj[11]||0, 1)*1.06;
     const x=mo=>mg.l+mo/12*iw, y=v=>mg.t+ih-(v/mx)*ih;
-    let g='<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:auto">';
+    let g='<svg viewBox="0 0 '+W+' '+HT+'" style="width:100%;height:auto">';
     for(let i=0;i<=4;i++){const gy=mg.t+ih*(i/4);g+='<line x1="'+mg.l+'" y1="'+gy+'" x2="'+(W-mg.r)+'" y2="'+gy+'" stroke="#243149" stroke-dasharray="2 3"/><text x="'+(mg.l-8)+'" y="'+(gy+4)+'" text-anchor="end" fill="#7f93b3" font-size="12">'+M(mx*(1-i/4))+'</text>';}
-    for(let i=0;i<12;i++) g+='<text x="'+x(i+1)+'" y="'+(H-8)+'" text-anchor="middle" fill="#7f93b3" font-size="12">'+(i+1)+'월</text>';
+    for(let i=0;i<12;i++) g+='<text x="'+x(i+1)+'" y="'+(HT-8)+'" text-anchor="middle" fill="#7f93b3" font-size="12">'+(i+1)+'월</text>';
     g+='<line x1="'+x(cm)+'" y1="'+mg.t+'" x2="'+x(cm)+'" y2="'+(mg.t+ih)+'" stroke="#f0851f" stroke-dasharray="3 3" opacity="0.5"/>';
     const p25=[x(0)+','+y(0)].concat(c25.map((v,i)=>x(i+1)+','+y(v))).join(' ');
     const p26=[x(0)+','+y(0)].concat(c26.map((v,i)=>x(i+1)+','+y(v))).join(' ');
