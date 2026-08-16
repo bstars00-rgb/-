@@ -81981,7 +81981,7 @@ function renderDailyPace(mo) {
    +avail.map(function(m){return '<button onclick="renderDailyPace('+m+')" style="padding:6px 13px;font-size:13px;font-weight:700;border-radius:999px;border:1px solid '+(m===_dpMonth?'#8b5cf6':'#475569')+';background:'+(m===_dpMonth?'linear-gradient(135deg,#8b5cf6,#6366f1)':'#1e293b')+';color:'+(m===_dpMonth?'#fff':'#cbd5e1')+';cursor:pointer">'+DP.monthLabels[m-1]+'</button>';}).join('')
    +'</div></div>';
   const isCur=_dpMonth===DP.asOfMonth;
-  H+='<div style="font-size:0.86rem;color:#93a6c6;margin-bottom:14px">'+DP.monthLabels[_dpMonth-1]+' — '+(isCur?('올해 <b style="color:#dbe6f7">'+DP.asOfDay+'일까지</b> 진척, 작년 같은 날 대비 페이스':'월 전체 누적 비교')+' (부킹데이트 기준)')+'</div>';
+  H+='<div style="font-size:0.86rem;color:#93a6c6;margin-bottom:14px">'+DP.monthLabels[_dpMonth-1]+' — '+(isCur?('올해 <b style="color:#dbe6f7">'+DP.asOfDay+'일까지</b> 진척, 작년 같은 날 대비 페이스'):'월 전체 누적 비교')+' (부킹데이트 기준)</div>';
   const cards=DP.channels.map(function(c){return {c:c, mm:c.months[_dpMonth-1]};}).filter(function(x){return x.mm && (x.mm.mtd26>0||x.mm.mtd25>0);}).sort(function(a,b){return b.mm.mtd26-a.mm.mtd26;});
   H+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">';
   for(const {c,mm} of cards){
