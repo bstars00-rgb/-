@@ -178,7 +178,26 @@ H+='<div class="top"><div><h1>데일리 부킹 트렌드'+(d.source==='ellis-mcp
  +'<div class="asof">데이터 기준일 <b>'+L.date+' ('+L.dow+')</b><br>알럿 기준일 <b>'+d.refDate+'</b>'
  +'<br><span style="font-size:0.72rem">생성 '+String(d.generated).slice(0,16).replace('T',' ')+'</span></div></div>';
 
-// ══ 1. 오늘의 액션 알럿 ══
+// ══ 1. KPI (어제 실적) — 페이지 최상단 ══
+H+='<section><h2>'+(d.todayOpen?'오늘 진행 중 ('+L.date.slice(5)+' '+L.dow+')':'어제 실적')+'</h2>'
+ +(d.todayOpen?'<div class="sub" style="margin:-8px 0 12px">기준일이 진행 중인 당일이라 아래 전일 대비 증감은 아직 확정치가 아닙니다.</div>':'')
+ +'<div class="grid-kpi" style="margin-top:0">'
+ +kpi('총 예약 접수('+L.date.slice(5)+')',F(L.bookings)+'건','취소 포함 · 전일 '+F(P.bookings)+'건',d.dod.bookings)
+ +kpi('취소',F(L.cancelled)+'건','취소율 '+L.cxlPct+'% · 전일 '+P.cxlPct+'% (증감 %p)',d.dod.cxlPct,true)
+ +kpi('실현 예약',F(L.net)+'건','취소 제외 · 전일 '+F(P.net)+'건',d.dod.net)
+ +kpi('룸나잇',F(L.rn),'실현 기준 · 전일 '+F(P.rn),d.dod.rn)
+ +kpi('TTV',wonS(L.ttv),'실현 기준 · 전일 '+wonS(P.ttv),d.dod.ttv)
+ +(d.hasMargin?kpi('Profit(매출)',wonS(L.margin),'실현 기준 · 전일 '+wonS(P.margin),d.dod.margin)
+              +kpi('마진율',L.marginPct+'%','전일 '+P.marginPct+'% (증감 %p)',d.dod.marginPct):'')
+ +kpi('ADR',wonS(L.adr),'실현 기준 · 전일 '+wonS(P.adr),d.dod.adr)
+ +(!d.hasMargin&&d.wow?kpi('전주 동요일 대비',gs(d.wow.dodBookings),d.wow.date.slice(5)+' '+F(d.wow.bookings)+'건',d.wow.dodBookings):'')
+ +'</div>';
+H+='<div class="sub" style="margin-top:10px">'+d.windowDays+'일 누계 <b style="color:#cbd5e1">'+F(d.totals.bookings)+'건</b> · 실현 '+F(d.totals.live)+'건 · TTV '+wonS(d.totals.ttvWin)
+ +(d.hasMargin?' · 마진 '+wonS(d.totals.marginWin)+'('+d.totals.marginPct+'%)':'')
+ +' · 일평균 '+F(d.avgDaily)+'건 · 피크 '+d.peakDay.date.slice(5)+' '+F(d.peakDay.bookings)+'건</div>';
+H+='<div class="dq">📥 수집 '+F(d.dataQuality.collected)+'건 중 테스트 예약 '+F(d.dataQuality.test)+'건('+d.dataQuality.testPct+'%)을 제외한 <b style="color:#cbd5e1">'+F(d.dataQuality.used)+'건</b>으로 집계했습니다 · '+esc(d.dataQuality.note)+'</div></section>';
+
+// ══ 2. 오늘의 액션 알럿 ══
 H+='<section><h2 class="'+(A.P1?'red':'')+'">🚨 오늘의 액션 — 처리 필요 건</h2>';
 H+='<div class="sevbar">'
  +(A.P1?'<div class="sevchip s-p1"><b>'+F(A.p1Bookings)+'</b> P1 · 즉시 처리 ('+A.P1+'개 항목)</div>'
@@ -236,29 +255,11 @@ if(!d.alerts.length){
 }
 H+='</section>';
 
-// ══ 2. AI 인사이트 ══
+// ══ 3. AI 인사이트 ══
 H+='<section><h2 class="vio">🧠 AI 인사이트</h2><div class="card ins"><ul>'
  +d.insights.map(i=>'<li class="'+i.tone+'">'+esc(i.text)+'</li>').join('')
  +'</ul></div></section>';
 
-// ══ 3. KPI ══
-H+='<section><h2>'+(d.todayOpen?'오늘 진행 중 ('+L.date.slice(5)+' '+L.dow+')':'어제 실적')+'</h2>'
- +(d.todayOpen?'<div class="sub" style="margin:-8px 0 12px">기준일이 진행 중인 당일이라 아래 전일 대비 증감은 아직 확정치가 아닙니다.</div>':'')
- +'<div class="grid-kpi" style="margin-top:0">'
- +kpi('총 예약 접수('+L.date.slice(5)+')',F(L.bookings)+'건','취소 포함 · 전일 '+F(P.bookings)+'건',d.dod.bookings)
- +kpi('취소',F(L.cancelled)+'건','취소율 '+L.cxlPct+'% · 전일 '+P.cxlPct+'% (증감 %p)',d.dod.cxlPct,true)
- +kpi('실현 예약',F(L.net)+'건','취소 제외 · 전일 '+F(P.net)+'건',d.dod.net)
- +kpi('룸나잇',F(L.rn),'실현 기준 · 전일 '+F(P.rn),d.dod.rn)
- +kpi('TTV',wonS(L.ttv),'실현 기준 · 전일 '+wonS(P.ttv),d.dod.ttv)
- +(d.hasMargin?kpi('Profit(매출)',wonS(L.margin),'실현 기준 · 전일 '+wonS(P.margin),d.dod.margin)
-              +kpi('마진율',L.marginPct+'%','전일 '+P.marginPct+'% (증감 %p)',d.dod.marginPct):'')
- +kpi('ADR',wonS(L.adr),'실현 기준 · 전일 '+wonS(P.adr),d.dod.adr)
- +(!d.hasMargin&&d.wow?kpi('전주 동요일 대비',gs(d.wow.dodBookings),d.wow.date.slice(5)+' '+F(d.wow.bookings)+'건',d.wow.dodBookings):'')
- +'</div>';
-H+='<div class="sub" style="margin-top:10px">'+d.windowDays+'일 누계 <b style="color:#cbd5e1">'+F(d.totals.bookings)+'건</b> · 실현 '+F(d.totals.live)+'건 · TTV '+wonS(d.totals.ttvWin)
- +(d.hasMargin?' · 마진 '+wonS(d.totals.marginWin)+'('+d.totals.marginPct+'%)':'')
- +' · 일평균 '+F(d.avgDaily)+'건 · 피크 '+d.peakDay.date.slice(5)+' '+F(d.peakDay.bookings)+'건</div>';
-H+='<div class="dq">📥 수집 '+F(d.dataQuality.collected)+'건 중 테스트 예약 '+F(d.dataQuality.test)+'건('+d.dataQuality.testPct+'%)을 제외한 <b style="color:#cbd5e1">'+F(d.dataQuality.used)+'건</b>으로 집계했습니다 · '+esc(d.dataQuality.note)+'</div></section>';
 
 // inv=true: 값이 내려가는 게 좋은 지표(취소 등) — 화살표·수치는 그대로 두고 색만 뒤집는다.
 function kpi(lb,v,sub,delta,inv){
