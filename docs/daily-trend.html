@@ -246,7 +246,7 @@ H+='<section><h2>'+(d.todayOpen?'오늘 진행 중 ('+L.date.slice(5)+' '+L.dow+
  +(d.todayOpen?'<div class="sub" style="margin:-8px 0 12px">기준일이 진행 중인 당일이라 아래 전일 대비 증감은 아직 확정치가 아닙니다.</div>':'')
  +'<div class="grid-kpi" style="margin-top:0">'
  +kpi('총 예약 접수('+L.date.slice(5)+')',F(L.bookings)+'건','취소 포함 · 전일 '+F(P.bookings)+'건',d.dod.bookings)
- +kpi('취소',F(L.cancelled)+'건','취소율 '+L.cxlPct+'% · 전일 '+P.cxlPct+'%',d.dod.cxlPct)
+ +kpi('취소',F(L.cancelled)+'건','취소율 '+L.cxlPct+'% · 전일 '+P.cxlPct+'% (증감 %p)',d.dod.cxlPct,true)
  +kpi('실현 예약',F(L.net)+'건','취소 제외 · 전일 '+F(P.net)+'건',d.dod.net)
  +kpi('룸나잇',F(L.rn),'실현 기준 · 전일 '+F(P.rn),d.dod.rn)
  +kpi('TTV',wonS(L.ttv),'실현 기준 · 전일 '+wonS(P.ttv),d.dod.ttv)
@@ -260,8 +260,9 @@ H+='<div class="sub" style="margin-top:10px">'+d.windowDays+'일 누계 <b style
  +' · 일평균 '+F(d.avgDaily)+'건 · 피크 '+d.peakDay.date.slice(5)+' '+F(d.peakDay.bookings)+'건</div>';
 H+='<div class="dq">📥 수집 '+F(d.dataQuality.collected)+'건 중 테스트 예약 '+F(d.dataQuality.test)+'건('+d.dataQuality.testPct+'%)을 제외한 <b style="color:#cbd5e1">'+F(d.dataQuality.used)+'건</b>으로 집계했습니다 · '+esc(d.dataQuality.note)+'</div></section>';
 
-function kpi(lb,v,sub,delta){
-  return '<div class="kpi"><div class="lb">'+lb+'</div><div class="v">'+v+'</div><div class="d '+gc(delta)+'">'+(delta>0?'▲':delta<0?'▼':'—')+' '+gs(delta)+' <span style="color:#8ba0bd;font-weight:600">· '+sub+'</span></div></div>';
+// inv=true: 값이 내려가는 게 좋은 지표(취소 등) — 화살표·수치는 그대로 두고 색만 뒤집는다.
+function kpi(lb,v,sub,delta,inv){
+  return '<div class="kpi"><div class="lb">'+lb+'</div><div class="v">'+v+'</div><div class="d '+gc(inv?-delta:delta)+'">'+(delta>0?'▲':delta<0?'▼':'—')+' '+gs(delta)+' <span style="color:#8ba0bd;font-weight:600">· '+sub+'</span></div></div>';
 }
 
 // ══ 4. 기간 추이 ══
