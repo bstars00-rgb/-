@@ -155,7 +155,9 @@ const D = {"generated":"2026-08-22T04:37:27.054Z","asof":"2026-08-21","refDate":
 const F=n=>Number(Math.round(n)).toLocaleString('en-US');
 const CUR=D.currency==='JPY'?'¥':'₩';
 const won=n=>CUR+F(n);
-const wonS=n=>Math.abs(n)>=1e8?CUR+(n/1e8).toFixed(1)+'억':Math.abs(n)>=1e4?CUR+F(n/1e4)+'만':CUR+F(n);
+// 10만 미만은 그대로 쓴다. 엔화는 원화보다 자릿수가 한 자리 작아 1만에서 '만'으로 접으면
+// ADR(≈1.5만엔) 같은 값이 "2만"으로 반올림돼 정밀도가 사라진다.
+const wonS=n=>Math.abs(n)>=1e8?CUR+(n/1e8).toFixed(1)+'억':Math.abs(n)>=1e5?CUR+F(Math.round(n/1e4))+'만':CUR+F(Math.round(n));
 const gs=v=>(v>0?'+':'')+v+'%';
 const gc=v=>v>1.5?'pos':(v<-1.5?'neg':'flat');
 const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
