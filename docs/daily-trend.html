@@ -42,6 +42,16 @@
   .badge{display:inline-block;font-size:0.7rem;font-weight:800;padding:3px 9px;border-radius:20px;margin-left:8px;vertical-align:middle}
   .badge.live{background:rgba(52,211,153,0.14);color:#34d399;border:1px solid rgba(52,211,153,0.4)}
   .badge.samp{background:rgba(240,133,31,0.14);color:#fbbf24;border:1px solid rgba(240,133,31,0.4)}
+  /* ── 메인 탭 ── */
+  .mtabs{display:flex;gap:6px;flex-wrap:wrap;margin:22px 0 4px;border-bottom:1px solid #243149;padding-bottom:0}
+  .mtab{font:inherit;cursor:pointer;padding:10px 18px;border:none;background:none;color:#8ba0bd;
+    font-size:0.98rem;font-weight:800;border-bottom:3px solid transparent;margin-bottom:-1px;
+    transition:color .12s,border-color .12s;white-space:nowrap}
+  .mtab:hover{color:#dbe6f7}
+  .mtab.on{color:#bfdbfe;border-bottom-color:#60a5fa}
+  .mtab:focus-visible{outline:2px solid #60a5fa;outline-offset:-2px;border-radius:6px}
+  .mpanel>section:first-child{margin-top:22px}
+  @media(max-width:720px){.mtab{padding:9px 12px;font-size:0.9rem}}
   /* ── 시간대별 국가 추이 (범례 + 차트) ── */
   .hb{display:grid;grid-template-columns:180px 1fr;gap:18px;align-items:start}
   .lg{display:flex;flex-direction:column;gap:9px;padding-top:6px}
@@ -193,6 +203,7 @@ const wonS=n=>Math.abs(n)>=1e8?CUR+(n/1e8).toFixed(1)+'억':Math.abs(n)>=1e5?CUR
 const gs=v=>(v>0?'+':'')+v+'%';
 const gc=v=>v>1.5?'pos':(v<-1.5?'neg':'flat');
 const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function TM(k){return '<!--@@'+k+'@@-->';}
 const KO={Japan:'일본',Korea:'한국',Vietnam:'베트남',Taiwan:'대만',Thailand:'태국','Hong Kong':'홍콩',Singapore:'싱가포르',Malaysia:'말레이시아',Indonesia:'인도네시아',Macao:'마카오',China:'중국',Philippines:'필리핀',Others:'기타'};
 const FLAG={Japan:'🇯🇵',Korea:'🇰🇷',Vietnam:'🇻🇳',Taiwan:'🇹🇼',Thailand:'🇹🇭','Hong Kong':'🇭🇰',Singapore:'🇸🇬',Malaysia:'🇲🇾',Indonesia:'🇮🇩',Macao:'🇲🇴',China:'🇨🇳',Philippines:'🇵🇭',Others:'🌏'};
 const stCls=s=>/confirm/i.test(s)?'ok':/unavailable|cancel request/i.test(s)?'bad':/pending|request/i.test(s)?'warn':'';
@@ -212,6 +223,7 @@ H+='<div class="top"><div><h1>데일리 부킹 트렌드'+(d.source==='ellis-mcp
  +'<div class="asof">데이터 기준일 <b>'+L.date+' ('+L.dow+')</b><br>알럿 기준일 <b>'+d.refDate+'</b>'
  +'<br><span style="font-size:0.72rem">생성 '+String(d.generated).slice(0,16).replace('T',' ')+'</span></div></div>';
 
+H+=TM('overview');
 // ══ 1. KPI (어제 실적) — 페이지 최상단 ══
 H+='<section><h2>'+(d.todayOpen?'오늘 진행 중 ('+L.date.slice(5)+' '+L.dow+')':'어제 실적')+'</h2>'
  +(d.todayOpen?'<div class="sub" style="margin:-8px 0 12px">기준일이 진행 중인 당일이라 아래 전일 대비 증감은 아직 확정치가 아닙니다.</div>':'')
@@ -232,6 +244,7 @@ H+='<div class="sub" style="margin-top:10px">'+d.windowDays+'일 누계 <b style
 H+='<div class="dq">📥 수집 '+F(d.dataQuality.collected)+'건 중 테스트 예약 '+F(d.dataQuality.test)+'건('+d.dataQuality.testPct+'%)을 제외한 <b style="color:#cbd5e1">'+F(d.dataQuality.used)+'건</b>으로 집계했습니다 · '+esc(d.dataQuality.note)+'</div></section>';
 
 // ══ 2. AI 인사이트 ══
+H+=TM('overview');
 H+='<section><h2 class="red">🎯 반드시 처리할 3가지</h2>'
  +'<div class="must">'
  +(d.mustDo||[]).map(m=>'<div class="mcard '+m.sev.toLowerCase()+'">'
@@ -243,6 +256,7 @@ H+='<section><h2 class="red">🎯 반드시 처리할 3가지</h2>'
    +'</div>').join('')
  +'</div></section>';
 
+H+=TM('overview');
 H+='<section><h2 class="vio">🧠 AI 인사이트</h2><div class="card ins"><ul>'
  +d.insights.map(i=>'<li class="'+i.tone+'">'+esc(i.text)+'</li>').join('')
  +'</ul></div></section>';
@@ -253,6 +267,7 @@ function kpi(lb,v,sub,delta,inv){
   return '<div class="kpi"><div class="lb">'+lb+'</div><div class="v">'+v+'</div><div class="d '+gc(inv?-delta:delta)+'">'+(delta>0?'▲':delta<0?'▼':'—')+' '+gs(delta)+' <span style="color:#8ba0bd;font-weight:600">· '+sub+'</span></div></div>';
 }
 
+H+=TM('action');
 // ══ 3. 오늘의 액션 알럿 ══
 H+='<section><h2 class="'+(A.P1?'red':'')+'">🚨 오늘의 액션 — 처리 필요 건</h2>';
 H+='<div class="sevbar">'
@@ -312,10 +327,12 @@ if(!d.alerts.length){
 H+='</section>';
 
 
+H+=TM('trend');
 // ══ 4. 기간 추이 ══
 H+='<section><h2>일별 예약 추이 ('+d.windowDays+'일)</h2><div class="card"><div id="ch-days"></div>'
  +'<div class="sub" style="margin-top:8px;font-size:0.82rem"><span style="color:#3b82f6">■</span> 실현 &nbsp; <span style="color:#64748b">■</span> 취소 &nbsp; <span style="color:#f0851f">■</span> 기준일</div></div></section>';
 
+H+=TM('trend');
 // ══ 4-2. 어제 시간대별 국가 예약 추이 ══
 (function(){
   var HB=d.hourlyByCountry; if(!HB||!HB.series.length) return;
@@ -348,6 +365,7 @@ H+='<section><h2>일별 예약 추이 ('+d.windowDays+'일)</h2><div class="card
    +'<div class="hbc"><svg viewBox="0 0 '+W+' '+Hh+'" preserveAspectRatio="xMidYMid meet">'+g+'</svg></div></div></div></section>';
 })();
 
+H+=TM('trend');
 // ══ 4-3. 어제 시간대별 금액(TTV·매입·마진) ══
 (function(){
   var M=d.hourlyMoney; if(!M) return;
@@ -391,6 +409,7 @@ H+='<section><h2>일별 예약 추이 ('+d.windowDays+'일)</h2><div class="card
    +'<svg viewBox="0 0 '+W+' '+Hh+'" preserveAspectRatio="xMidYMid meet">'+g+'</svg></div></section>';
 })();
 
+H+=TM('quality');
 // ══ 5. 예약 상태 + 리드타임 ══
 H+='<section><h2>예약 품질 지표 <span style="font-size:0.82rem;font-weight:700;color:#93a6c6">· 어제('+L.date.slice(5)+') 부킹 기준</span></h2><div class="two">';
 // 상태 믹스
@@ -423,6 +442,7 @@ function tile(lb,v,n,color){
   return '<div class="tile"><div class="lb">'+lb+'</div><div class="v" style="color:'+(color||'#fff')+'">'+v+'</div><div class="n">'+n+'</div></div>';
 }
 
+H+=TM('mix');
 // ══ 6. 국가별 ══
 H+='<section><h2>국가별 실적</h2>'
  +'<div class="sub" style="margin:-8px 0 12px">기준일·전일·추이는 실현(취소 제외) 건수, '+d.windowDays+'일 지표는 총 접수 → 취소 → 실현 순으로 분해했습니다.</div>'
@@ -430,6 +450,7 @@ H+='<section><h2>국가별 실적</h2>'
  +d.byCountry.map(c=>'<tr><td>'+(FLAG[c.country]||'🌏')+' '+esc(KO[c.country]||c.country)+'</td><td style="text-align:right;font-weight:700">'+F(c.today)+'</td><td style="text-align:right;color:#93a6c6">'+F(c.prev)+'</td><td style="text-align:right" class="'+gc(c.dod)+'">'+gs(c.dod)+'</td><td style="text-align:right;color:#93a6c6">'+F(c.grossWin)+'</td><td style="text-align:right;color:#93a6c6">'+F(c.cxlWin)+'</td><td style="text-align:right" class="'+(c.cxlPct>=30?'neg':'')+'">'+c.cxlPct+'%</td><td style="text-align:right;font-weight:700">'+F(c.totalWin)+'</td><td style="text-align:right">'+wonS(c.ttvWin)+'</td><td style="text-align:right">'+wonS(c.marginWin)+'</td><td style="text-align:right" class="'+(c.marginPct<5?'neg':'')+'">'+c.marginPct+'%</td><td style="text-align:right;color:#93a6c6">'+wonS(c.adr)+'</td><td>'+spark(c.spark,110,26,'#60a5fa')+'</td></tr>').join('')
  +'</tbody></table></div></section>';
 
+H+=TM('mix');
 // ══ 7. 채널별 ══
 H+='<section><h2>채널(고객사)별 현황 · Top 30</h2>'
  +'<div class="sub" style="margin:-8px 0 12px">어제('+L.date.slice(5)+') 실적과 전일 대비(DoD)를 기준으로 정렬했습니다. 점유율은 전사 실현 TTV 대비입니다.</div>'
@@ -485,12 +506,41 @@ function rankSection(id,title,data,nameHead){
   });
   return h+'</section>';
 }
+H+=TM('rank');
 H+=rankSection('city','국가별 Top 20 도시',d.topCities,'도시');
+H+=TM('rank');
 H+=rankSection('hotel','국가별 Top 20 호텔',d.topHotels,'호텔');
 
 H+='<div class="foot">데이터 소스: '+(d.source==='ellis-mcp'?'ELLIS MCP (get_hotel_bookings)':'processed booking-date 파일 (샘플/폴백)')+' · 부킹데이트 기준 · 금액은 '+(D.currency==='JPY'?'JPY(사내 기준 통화)':'KRW')+' 환산 · 취소건은 실현 RN/TTV/마진 집계에서 제외 · 테스트 예약(TEST 호텔/채널) 제외<br>'
  +'알럿은 최근 '+d.windowDays+'일 내 <b>생성된</b> 예약이 대상입니다 — 그 이전에 접수된 예약의 임박 체크인은 잡히지 않습니다 · 게스트 개인정보 미포함 · 매일 07:00 KST 자동 갱신 · CONFIDENTIAL</div>';
-document.getElementById('app').innerHTML=H;
+// ── 탭 조립 ──
+// H에 심어둔 <!--@@key@@--> 마커로 잘라 탭별 패널로 재조립한다.
+// 마커 앞부분(헤더 등)은 항상 보이는 고정 영역.
+var TABDEF=[['overview','요약'],['action','액션'],['trend','추이'],['quality','품질'],['mix','국가·채널'],['rank','도시·호텔']];
+(function(){
+  var parts=H.split(/<!--@@([a-z]+)@@-->/);
+  var head=parts[0], bucket={};
+  for(var i=1;i<parts.length;i+=2){ var k=parts[i]; bucket[k]=(bucket[k]||'')+(parts[i+1]||''); }
+  var avail=TABDEF.filter(function(t){return (bucket[t[0]]||'').trim().length;});
+  var bar='<div class="mtabs">'+avail.map(function(t,i){
+    return '<button type="button" class="mtab'+(i?'':' on')+'" data-t="'+t[0]+'">'+t[1]+'</button>';}).join('')+'</div>';
+  var panels=avail.map(function(t,i){
+    return '<div class="mpanel" data-t="'+t[0]+'"'+(i?' hidden':'')+'>'+bucket[t[0]]+'</div>';}).join('');
+  document.getElementById('app').innerHTML=head+bar+panels;
+  var saved=null; try{saved=localStorage.getItem('dt-tab');}catch(e){}
+  function show(k){
+    var any=false;
+    document.querySelectorAll('.mtab').forEach(function(b){var on=b.dataset.t===k;b.classList.toggle('on',on);if(on)any=true;});
+    if(!any) return false;
+    document.querySelectorAll('.mpanel').forEach(function(x){x.hidden=(x.dataset.t!==k);});
+    try{localStorage.setItem('dt-tab',k);}catch(e){}
+    return true;
+  }
+  document.querySelectorAll('.mtab').forEach(function(b){
+    b.addEventListener('click',function(){ show(b.dataset.t); window.scrollTo({top:0,behavior:'smooth'}); });
+  });
+  if(saved) show(saved);
+})();
 
 // 국가 탭 전환 (도시/호텔 랭킹). 그룹(data-g)별로 독립 동작.
 document.querySelectorAll('.tab').forEach(function(b){
