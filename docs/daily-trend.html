@@ -409,14 +409,14 @@ H+=TM('trend');
   g+=poly(M.selling,YL,'#fbbf24',2);
   g+=poly(M.buying,YL,'#2dd4bf',2);
   g+=poly(M.margin,YR,'#fb923c',2.2);
-  var T=M.totals;
+  var MT=M.totals;   // 주의: 전역 T()는 번역 함수라 이름을 겹치면 안 된다
   H+='<section><h2>'+T('secHourMoney')+'</h2>'
    +'<div class="sub" style="margin:-8px 0 12px">'+M.date+' 실현 기준 · 전 국가 합계 · 마진은 <b style="color:#fb923c">오른쪽 축</b></div>'
    +'<div class="card"><div class="tiles" style="margin:0 0 16px">'
-   +tile(T('mSelling'),wonS(T.selling),F(T.rn)+' 룸나잇','#fbbf24')
-   +tile(T('mBuying'),wonS(T.buying),T('mBuyingSub'),'#2dd4bf')
-   +tile(T('mMargin'),wonS(T.margin),'TTV의 '+T.marginPct+'%','#fb923c')
-   +tile(T('mMarginPerRn'),wonS(T.rn?Math.round(T.margin/T.rn):0),T('mRnSub'),'#cbd5e1')
+   +tile(T('mSelling'),wonS(MT.selling),F(MT.rn)+' '+T('unitNight'),'#fbbf24')
+   +tile(T('mBuying'),wonS(MT.buying),T('mBuyingSub'),'#2dd4bf')
+   +tile(T('mMargin'),wonS(MT.margin),T('mMarginSub',{v:MT.marginPct}),'#fb923c')
+   +tile(T('mMarginPerRn'),wonS(MT.rn?Math.round(MT.margin/MT.rn):0),T('mRnSub'),'#cbd5e1')
    +'</div>'
    +'<div class="lg" style="flex-direction:row;gap:16px;padding:0 0 10px">'
    +'<div class="lgi"><span class="dot" style="background:#fbbf24"></span><span class="ln">TTV(판매가)</span></div>'
