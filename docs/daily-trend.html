@@ -193,8 +193,8 @@ const wonS=n=>Math.abs(n)>=1e8?CUR+(n/1e8).toFixed(1)+'억':Math.abs(n)>=1e5?CUR
 const gs=v=>(v>0?'+':'')+v+'%';
 const gc=v=>v>1.5?'pos':(v<-1.5?'neg':'flat');
 const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const KO={Japan:'일본',Korea:'한국',Vietnam:'베트남',Taiwan:'대만',Thailand:'태국','Hong Kong':'홍콩',Others:'기타'};
-const FLAG={Japan:'🇯🇵',Korea:'🇰🇷',Vietnam:'🇻🇳',Taiwan:'🇹🇼',Thailand:'🇹🇭','Hong Kong':'🇭🇰',Others:'🌏'};
+const KO={Japan:'일본',Korea:'한국',Vietnam:'베트남',Taiwan:'대만',Thailand:'태국','Hong Kong':'홍콩',Singapore:'싱가포르',Malaysia:'말레이시아',Indonesia:'인도네시아',Macao:'마카오',China:'중국',Philippines:'필리핀',Others:'기타'};
+const FLAG={Japan:'🇯🇵',Korea:'🇰🇷',Vietnam:'🇻🇳',Taiwan:'🇹🇼',Thailand:'🇹🇭','Hong Kong':'🇭🇰',Singapore:'🇸🇬',Malaysia:'🇲🇾',Indonesia:'🇮🇩',Macao:'🇲🇴',China:'🇨🇳',Philippines:'🇵🇭',Others:'🌏'};
 const stCls=s=>/confirm/i.test(s)?'ok':/unavailable|cancel request/i.test(s)?'bad':/pending|request/i.test(s)?'warn':'';
 
 function spark(vals,w,h,color){
