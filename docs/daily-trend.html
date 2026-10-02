@@ -62,6 +62,31 @@
   .mtab:focus-visible{outline:2px solid #60a5fa;outline-offset:-2px;border-radius:6px}
   .mpanel>section:first-child{margin-top:22px}
   @media(max-width:720px){.mtab{padding:9px 12px;font-size:0.9rem}}
+  /* ── 30초 요약 히어로 · 접기 ── */
+  @media(min-width:721px){.mtabs{position:sticky;top:0;z-index:20;background:#0d1524;padding-top:6px}}
+  .hero{margin-top:22px;border-radius:22px;border:1px solid #3a4d78;background:linear-gradient(135deg,#1b2d57,#14203c 60%);padding:26px 30px;box-shadow:0 18px 50px -24px rgba(0,0,0,0.9)}
+  .hero-k{font-size:0.95rem;font-weight:800;color:#93c5fd;letter-spacing:.02em}
+  .hero-main{display:flex;gap:34px;align-items:center;flex-wrap:wrap;margin-top:10px}
+  .hero-big{font-size:3.6rem;font-weight:900;color:#fff;letter-spacing:-0.035em;line-height:1}
+  .hero-big small{font-size:1.15rem;font-weight:800;color:#b9c8e2;margin-left:8px;letter-spacing:0}
+  .hero-sub{margin-top:8px;font-size:1.02rem;color:#dbe6f7;font-weight:600}
+  .hero-chips{display:flex;gap:12px;flex-wrap:wrap;margin-left:auto}
+  .hchip{min-width:150px;padding:13px 17px;border-radius:15px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.09)}
+  .hchip .lb{font-size:0.8rem;color:#93a6c6;font-weight:700}
+  .hchip .v{font-size:1.5rem;font-weight:900;color:#fff;margin-top:3px;letter-spacing:-0.02em}
+  .hchip .d{font-size:0.82rem;font-weight:800;margin-top:2px}
+  .hero-act{margin-top:20px;padding:15px 18px;border-radius:14px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;font-size:1.02rem;font-weight:700}
+  .hero-act.bad{background:rgba(239,68,68,0.13);border:1px solid rgba(248,113,113,0.45);color:#fecaca}
+  .hero-act.ok{background:rgba(52,211,153,0.11);border:1px solid rgba(52,211,153,0.4);color:#a7f3d0}
+  .hero-act button{margin-left:auto;font:inherit;font-weight:800;font-size:0.9rem;cursor:pointer;padding:8px 16px;border-radius:10px;border:1px solid #60a5fa;background:rgba(59,130,246,0.2);color:#dbeafe}
+  .hero-act button:hover{background:rgba(59,130,246,0.35)}
+  details.fold{border:1px solid #2a3752;border-radius:16px;background:#131c33}
+  details.fold>summary{cursor:pointer;list-style:none;padding:15px 20px;font-weight:800;color:#b9c8e2;font-size:1rem;display:flex;align-items:center;gap:10px}
+  details.fold>summary::-webkit-details-marker{display:none}
+  details.fold>summary::after{content:'펼치기 ▾';margin-left:auto;font-size:0.82rem;color:#60a5fa}
+  details.fold[open]>summary::after{content:'접기 ▴'}
+  details.fold>.fbody{padding:0 20px 20px}
+  @media(max-width:720px){.hero{padding:20px 18px}.hero-big{font-size:2.8rem}.hero-chips{margin-left:0;width:100%}.hchip{flex:1;min-width:0;padding:11px 12px}.hchip .v{font-size:1.15rem}.hero-sub{font-size:0.95rem}}
   /* ── 시간대별 국가 추이 (범례 + 차트) ── */
   .hb{display:grid;grid-template-columns:180px 1fr;gap:18px;align-items:start}
   .lg{display:flex;flex-direction:column;gap:9px;padding-top:6px}
@@ -272,8 +297,25 @@ H+='<div class="top"><div><h1>'+T('pageTitle')+''+(d.source==='ellis-mcp'?'<span
  +'<br><span style="font-size:0.72rem">'+T('generatedLabel')+' '+String(d.generated).slice(0,16).replace('T',' ')+'</span>'+'<div class="langs">'+LANGS.map(function(l){return '<button type="button" class="lang'+(l[0]===LANG?' on':'')+'" data-l="'+l[0]+'">'+l[1]+'</button>';}).join('')+'</div>'+'</div></div>';
 
 H+=TM('overview');
+// ══ 0. 30초 요약 히어로 ══
+Object.assign(I18N.ko,{heroK:'어제 ({d}) 한눈에',heroUnit:'건 실현 예약',heroAllKpi:'전체 지표 보기 (접수·취소·룸나잇·ADR 등)',heroMoreIns:'인사이트 더 보기 ({n}건)',heroGo:'처리 목록 보기 →',heroOk:'✅ 긴급 처리 건 없음 — 오늘은 모니터링만 하면 됩니다'});
+(function(){
+  var avg=d.avgDaily, vs=avg?Math.round((L.net/avg-1)*100):null;
+  var ar=function(v){return v>0?'▲':v<0?'▼':'—';};
+  var line=T('heroK',{d:''}) && '전일 대비 <b class="'+gc(d.dod.net)+'">'+ar(d.dod.net)+' '+gs(d.dod.net)+'</b>'
+    +(vs!=null?' · 7일 평균('+F(avg)+UC()+')보다 <b class="'+gc(vs)+'">'+(vs>=0?'+':'')+vs+'%</b>':'');
+  var chips='<div class="hchip"><div class="lb">'+T('kpiTtv')+'</div><div class="v">'+wonS(L.ttv)+'</div><div class="d '+gc(d.dod.ttv)+'">'+ar(d.dod.ttv)+' '+gs(d.dod.ttv)+'</div></div>'
+    +(d.hasMargin?'<div class="hchip"><div class="lb">'+T('kpiMarginPct')+'</div><div class="v">'+L.marginPct+'%</div><div class="d" style="color:#93a6c6">'+T('kpiProfit')+' '+wonS(L.margin)+'</div></div>':'')
+    +'<div class="hchip"><div class="lb">'+T('kpiCancel')+'</div><div class="v">'+L.cxlPct+'%</div><div class="d" style="color:#93a6c6">'+F(L.cancelled)+UC()+'</div></div>';
+  var p1=d.alerts.filter(function(a){return a.sev==='P1';});
+  var act=p1.length
+    ? '<div class="hero-act bad"><span>🔴 오늘 즉시 처리 · '+p1.map(function(a){return esc(AL(a,'t').split(' (')[0])+' <b>'+F(a.count)+AU(a)+'</b>';}).join(' / ')+'</span><button type="button" data-goto="action">'+T('heroGo')+'</button></div>'
+    : '<div class="hero-act ok"><span>'+T('heroOk')+'</span></div>';
+  H+='<section class="hero"><div class="hero-k">'+T('heroK',{d:L.date.slice(5)+' '+DOW(L.date)})+'</div><div class="hero-main"><div><div class="hero-big">'+F(L.net)+'<small>'+T('heroUnit')+'</small></div><div class="hero-sub">'+line+'</div></div><div class="hero-chips">'+chips+'</div></div>'+act+'</section>';
+})();
+H+=TM('overview');
 // ══ 1. KPI (어제 실적) — 페이지 최상단 ══
-H+='<section><h2>'+(d.todayOpen?T('secToday')+' ('+L.date.slice(5)+' '+DOW(L.date)+')':T('secYesterday'))+'</h2>'
+H+='<section><details class="fold"><summary>'+T('heroAllKpi')+'</summary><div class="fbody">'
  +(d.todayOpen?'<div class="sub" style="margin:-8px 0 12px">'+T('todayOpenNote')+'</div>':'')
  +'<div class="grid-kpi" style="margin-top:0">'
  +kpi(T('kpiGross')+'('+L.date.slice(5)+')',F(L.bookings)+UC(),T('subInclCancel',{v:F(P.bookings)}),d.dod.bookings)
@@ -290,7 +332,7 @@ H+='<div class="sub" style="margin-top:10px">'+T('winSummary',{n:d.windowDays,b:
  +(d.hasMargin?T('winMargin',{m:wonS(d.totals.marginWin),p:d.totals.marginPct}):'')
  +T('winAvgPeak',{a:F(d.avgDaily),pd:d.peakDay.date.slice(5),pb:F(d.peakDay.bookings)})+'</div>';
 H+='<div class="dq">'+T('dqLine',{c:F(d.dataQuality.collected),t:F(d.dataQuality.test),p:d.dataQuality.testPct,u:F(d.dataQuality.used)})
- +(d.dataQuality.cmpReady===false?T('dqNoCmp',{n:d.dataQuality.cmpDays,f:d.dataQuality.cmpFilled}):'')+'</div></section>';
+ +(d.dataQuality.cmpReady===false?T('dqNoCmp',{n:d.dataQuality.cmpDays,f:d.dataQuality.cmpFilled}):'')+'</div></div></details></section>';
 
 // ══ 2. AI 인사이트 ══
 H+=TM('overview');
@@ -307,8 +349,8 @@ H+='<section><h2 class="red">'+T('secMust')+'</h2>'
 
 H+=TM('overview');
 H+='<section><h2 class="vio">'+T('secInsight')+'</h2><div class="card ins"><ul>'
- +d.insights.map(i=>'<li class="'+i.tone+'">'+esc(INS(i))+'</li>').join('')
- +'</ul></div></section>';
+ +d.insights.slice(0,3).map(i=>'<li class="'+i.tone+'">'+esc(INS(i))+'</li>').join('')
+ +'</ul>'+(d.insights.length>3?'<details class="fold" style="margin-top:12px"><summary>'+T('heroMoreIns',{n:d.insights.length-3})+'</summary><div class="fbody"><ul>'+d.insights.slice(3).map(i=>'<li class="'+i.tone+'">'+esc(INS(i))+'</li>').join('')+'</ul></div></details>':'')+'</div></section>';
 
 
 // inv=true: 값이 내려가는 게 좋은 지표(취소 등) — 화살표·수치는 그대로 두고 색만 뒤집는다.
@@ -623,6 +665,7 @@ var TABDEF=[['overview',T('tabOverview')],['action',T('tabAction')],['trend',T('
   document.querySelectorAll('.lang').forEach(function(b){
     b.addEventListener('click',function(){ try{localStorage.setItem('dt-lang',b.dataset.l);}catch(e){} location.reload(); });
   });
+  document.querySelectorAll('[data-goto]').forEach(function(b){b.addEventListener('click',function(){show(b.dataset.goto);window.scrollTo({top:0,behavior:'smooth'});});});
   if(saved) show(saved);
 })();
 
