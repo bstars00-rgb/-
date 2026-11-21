@@ -338,7 +338,7 @@
   <!-- Tab Navigation (Top Level) -->
   <div class="px-6 mt-4 flex gap-0 border-b border-gray-700 overflow-x-auto no-print" id="tabNav">
     <div class="tab-btn active" data-tab="tabStats" data-i18n-html="navStats">📊 통계</div>
-    <div class="tab-btn" data-tab="tabOnboarding" data-i18n-html="navOnboarding">온보딩</div>
+    <div class="tab-btn" data-tab="tabOnboarding" data-i18n-html="navOnboarding">온보딩</div><div class="tab-btn" data-tab="tabMarketplace">🛒 마켓플레이스</div>
   </div>
 
   <!-- Sub-Tab Nav (only visible when Statistics group is active) -->
@@ -1512,7 +1512,491 @@
 
   <!-- ═══════ TAB Hotel: 호텔별 분석 ═══════ -->
   
-  <div id="tabHotel" class="tab-panel p-6 space-y-4">
+  <div id="tabMarketplace" class="tab-panel"><style>
+.mkt{background:#0d1424;color:#e8eefc;font-family:'Segoe UI','Malgun Gothic',system-ui,sans-serif;padding:22px 26px;min-height:100%;box-sizing:border-box}
+.mkt *{box-sizing:border-box}
+.mkt-head{display:block;margin-bottom:18px}
+.mkt-title{font-size:26px;font-weight:800;letter-spacing:-.3px}
+.mkt-meta{color:#93a6c6;font-size:13px;margin-top:6px}
+.mkt-meta b{color:#e8eefc}
+.mkt-sec{background:#141d33;border:1px solid #243149;border-radius:14px;padding:18px 20px;margin:0 0 16px}
+.mkt-h2{font-size:17px;font-weight:800;margin:0 0 12px;color:#f4f8ff}
+.mkt-h2 .n{color:#60a5fa;margin-right:7px}
+.mkt-h3{font-size:14px;font-weight:700;color:#dce6fb;margin:0 0 8px}
+.mkt-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.mkt-kpi{background:#182341;border:1px solid #243149;border-radius:12px;padding:12px 14px}
+.mkt-kpi-l{font-size:12.5px;color:#93a6c6;font-weight:600;min-height:17px}
+.mkt-kpi-v{font-size:28px;font-weight:800;margin:4px 0 2px;color:#fff}
+.mkt-kpi-u{font-size:14px;color:#93a6c6;font-weight:600}
+.mkt-kpi-s{font-size:11.5px;color:#6b7f9e}
+.mkt-chip{display:inline-block;font-size:10.5px;font-weight:700;padding:1px 7px;border-radius:10px;vertical-align:middle;margin-left:4px}
+.mkt-tbl{width:100%;border-collapse:collapse;font-size:13px}
+.mkt-tbl th{color:#93a6c6;font-size:11.5px;font-weight:600;text-align:center;padding:7px 8px;border-bottom:2px solid #243149;white-space:nowrap}
+.mkt-tbl td{text-align:center;padding:7px 8px;border-bottom:1px solid #243149;color:#e8eefc}
+.mkt-tbl tbody tr:hover{background:#182341}
+.mkt-overdue{background:#ef444412}
+.mkt-overdue:hover{background:#ef444422}
+.mkt-defs td{font-size:12px;color:#93a6c6;line-height:1.5}
+.mkt-grid4{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.mkt-stat{background:#182341;border:1px solid #243149;border-radius:12px;padding:12px 14px}
+.mkt-stat-l{font-size:12px;color:#93a6c6;font-weight:600}
+.mkt-stat-v{font-size:24px;font-weight:800;margin:3px 0;color:#fff}
+.mkt-stat-s{font-size:11px;color:#6b7f9e}
+.mkt-legend,.mkt-sub2{font-size:11.5px;color:#6b7f9e;margin-top:8px}
+.mkt-filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px}
+.mkt-in{background:#182341;border:1px solid #243149;color:#e8eefc;border-radius:8px;padding:7px 10px;font-size:12.5px;outline:none}
+.mkt-in::placeholder{color:#6b7f9e}
+.mkt-two{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.mkt-ul,.mkt-ol{margin:0;padding-left:18px;font-size:12.5px;color:#93a6c6;line-height:1.7}
+@media(max-width:820px){.mkt-two{grid-template-columns:1fr}.mkt{padding:16px}}
+</style><div class="mkt" id="mktRoot">
+  <div class="mkt-head">
+    <div class="mkt-title">🛒 2027 마켓플레이스 확장 트래커</div>
+    <div class="mkt-meta">기준일 <b>2026-11-21</b> · 현재 <b>1Q</b> <span style="color:#38bdf8">(2027 시작 전)</span> · 부킹 데이터 <b>2026-03-28 ~ 2026-11-13</b> · 환율 <b>8.3574</b> <span style="color:#f0851f">임시</span> · 갱신 2026-11-21 03:07</div>
+  </div>
+  <div class="mkt-sec"><div class="mkt-h2"><span class="n">①</span>KPI — 분기 목표 대비 (커머셜 2027 OKR)</div><div class="mkt-kpis"><div class="mkt-kpi">
+      <div class="mkt-kpi-l">마켓 파트너 수</div>
+      <div class="mkt-kpi-v">0<span class="mkt-kpi-u"> / 60곳</span></div>
+      <div class="mkt-kpi-s"><span style="color:#38bdf8">● 2027 시작 전</span> · 1Q 목표</div>
+    </div><div class="mkt-kpi">
+      <div class="mkt-kpi-l">첫 예약률</div>
+      <div class="mkt-kpi-v">0<span class="mkt-kpi-u"> / 30%</span></div>
+      <div class="mkt-kpi-s"><span style="color:#38bdf8">● 2027 시작 전</span> · 1Q 목표</div>
+    </div><div class="mkt-kpi">
+      <div class="mkt-kpi-l">활성 파트너</div>
+      <div class="mkt-kpi-v">0<span class="mkt-kpi-u"> / 18곳</span></div>
+      <div class="mkt-kpi-s"><span style="color:#38bdf8">● 2027 시작 전</span> · 1Q 목표</div>
+    </div><div class="mkt-kpi">
+      <div class="mkt-kpi-l">서드파티 활성</div>
+      <div class="mkt-kpi-v">0<span class="mkt-kpi-u"> / 18곳</span></div>
+      <div class="mkt-kpi-s"><span style="color:#38bdf8">● 2027 시작 전</span> · 1Q 목표 · <span style="color:#f0851f">p.08=60 불일치</span></div>
+    </div><div class="mkt-kpi">
+      <div class="mkt-kpi-l">마켓 일 부킹</div>
+      <div class="mkt-kpi-v">0<span class="mkt-kpi-u"> / 24건/일</span></div>
+      <div class="mkt-kpi-s"><span style="color:#38bdf8">● 2027 시작 전</span> · 1Q 목표</div>
+    </div><div class="mkt-kpi">
+      <div class="mkt-kpi-l">마켓 TTV(분기) <span class="mkt-chip" style="background:#f0851f22;color:#f0851f;border:1px solid #f0851f55">제안</span></div>
+      <div class="mkt-kpi-v">0<span class="mkt-kpi-u"> / 4억</span></div>
+      <div class="mkt-kpi-s"><span style="color:#38bdf8">● 2027 시작 전</span> · 1Q 목표</div>
+    </div><div class="mkt-kpi">
+      <div class="mkt-kpi-l">서드파티 TTV(분기)</div>
+      <div class="mkt-kpi-v">0<span class="mkt-kpi-u"> / 4억</span></div>
+      <div class="mkt-kpi-s"><span style="color:#38bdf8">● 2027 시작 전</span> · 1Q 목표</div>
+    </div></div></div>
+  <div class="mkt-sec"><div class="mkt-h2"><span class="n">②</span>분기 경로 — 목표 vs 실적</div><svg viewBox="0 0 520 150" style="width:100%;max-width:560px;height:auto"><rect x="18" y="106.37037037037037" width="14" height="19.629629629629633" rx="2" fill="#3b82f6"/><rect x="36" y="120.11111111111111" width="14" height="5.888888888888886" rx="2" fill="#22c55e"/><text x="34" y="142" text-anchor="middle" fill="#93a6c6" font-size="12">1Q</text><text x="25" y="101.37037037037037" text-anchor="middle" fill="#60a5fa" font-size="11" font-weight="700">60</text><text x="43" y="115.11111111111111" text-anchor="middle" fill="#22c55e" font-size="11" font-weight="700">18</text><rect x="168.66666666666666" y="80.19753086419753" width="14" height="45.80246913580247" rx="2" fill="#3b82f6"/><rect x="186.66666666666666" y="112.25925925925927" width="14" height="13.740740740740733" rx="2" fill="#22c55e"/><text x="184.66666666666666" y="142" text-anchor="middle" fill="#93a6c6" font-size="12">2Q</text><text x="175.66666666666666" y="75.19753086419753" text-anchor="middle" fill="#60a5fa" font-size="11" font-weight="700">140</text><text x="193.66666666666666" y="107.25925925925927" text-anchor="middle" fill="#22c55e" font-size="11" font-weight="700">42</text><rect x="319.3333333333333" y="54.02469135802468" width="14" height="71.97530864197532" rx="2" fill="#3b82f6"/><rect x="337.3333333333333" y="104.4074074074074" width="14" height="21.592592592592595" rx="2" fill="#22c55e"/><text x="335.3333333333333" y="142" text-anchor="middle" fill="#93a6c6" font-size="12">3Q</text><text x="326.3333333333333" y="49.02469135802468" text-anchor="middle" fill="#60a5fa" font-size="11" font-weight="700">220</text><text x="344.3333333333333" y="99.4074074074074" text-anchor="middle" fill="#22c55e" font-size="11" font-weight="700">66</text><rect x="470" y="27.851851851851848" width="14" height="98.14814814814815" rx="2" fill="#3b82f6"/><rect x="488" y="96.55555555555556" width="14" height="29.444444444444443" rx="2" fill="#22c55e"/><text x="486" y="142" text-anchor="middle" fill="#93a6c6" font-size="12">4Q</text><text x="477" y="22.851851851851848" text-anchor="middle" fill="#60a5fa" font-size="11" font-weight="700">300</text><text x="495" y="91.55555555555556" text-anchor="middle" fill="#22c55e" font-size="11" font-weight="700">90</text></svg>
+    <div class="mkt-legend"><span style="color:#60a5fa">■</span> 파트너 수(누적 목표) &nbsp; <span style="color:#22c55e">■</span> 활성 목표 &nbsp; <span style="color:#6b7f9e">— 실적선은 2027 시작 후 표시</span></div></div>
+  <div class="mkt-sec"><div class="mkt-h2"><span class="n">③</span>지역별</div><table class="mkt-tbl"><thead><tr><th style="text-align:left">지역 · 담당</th><th>1Q 목표</th><th>2027 가입</th><th>활성</th><th>기존 계정</th><th>상태</th></tr></thead><tbody><tr>
+      <td style="text-align:left">중화권(HK·TW) TA — Grace</td>
+      <td>50곳</td>
+      <td>0</td><td>1</td><td>1</td>
+      <td><span style="color:#38bdf8">2027 시작 전</span></td>
+    </tr><tr>
+      <td style="text-align:left">한국 마켓 — Aiden(한국 대행)</td>
+      <td><span style="color:#64748b">목표 없음 — 확인 필요</span></td>
+      <td>0</td><td>7</td><td>16</td>
+      <td>—</td>
+    </tr><tr>
+      <td style="text-align:left">인도네시아·베트남 — Jay Pan <span class="mkt-chip" style="background:#eab30822;color:#eab308;border:1px solid #eab30855">미배정</span></td>
+      <td><span style="color:#64748b">목표 없음 — 확인 필요</span></td>
+      <td>0</td><td>0</td><td>4</td>
+      <td>—</td>
+    </tr><tr>
+      <td style="text-align:left">기타(인도·SG·MY·유럽 신규) — Aiden(채용 전) <span class="mkt-chip" style="background:#eab30822;color:#eab308;border:1px solid #eab30855">미배정</span></td>
+      <td><span style="color:#64748b">목표 없음 — 확인 필요</span></td>
+      <td>0</td><td>0</td><td>9</td>
+      <td>—</td>
+    </tr></tbody></table></div>
+  <div class="mkt-sec"><div class="mkt-h2"><span class="n">④</span>담당별 퍼널</div><table class="mkt-tbl"><thead><tr><th style="text-align:left">담당</th><th>리드</th><th>접촉</th><th>가입</th><th>첫 예약</th><th>활성</th><th>이탈</th><th>체이스 경과</th><th>액션 없음</th></tr></thead><tbody><tr><td style="text-align:left">Grace</td><td><span style="color:#6b7f9e">·</span></td><td><span style="color:#6b7f9e">·</span></td><td><span style="color:#6b7f9e">·</span></td><td><span style="color:#6b7f9e">·</span></td><td>1</td><td><span style="color:#6b7f9e">·</span></td><td>0</td><td>1</td></tr><tr><td style="text-align:left">Jay Pan</td><td>1</td><td>2</td><td>3</td><td><span style="color:#6b7f9e">·</span></td><td><span style="color:#6b7f9e">·</span></td><td><span style="color:#6b7f9e">·</span></td><td>0</td><td>4</td></tr><tr><td style="text-align:left">Aiden(한국 대행)</td><td><span style="color:#6b7f9e">·</span></td><td><span style="color:#6b7f9e">·</span></td><td>7</td><td>3</td><td>7</td><td><span style="color:#6b7f9e">·</span></td><td>0</td><td>16</td></tr><tr><td style="text-align:left">Aiden(총괄·채용 전)</td><td><span style="color:#6b7f9e">·</span></td><td>8</td><td>5</td><td><span style="color:#6b7f9e">·</span></td><td><span style="color:#6b7f9e">·</span></td><td><span style="color:#6b7f9e">·</span></td><td><span style="color:#ef4444;font-weight:700">1</span></td><td>9</td></tr></tbody></table></div>
+  <div class="mkt-sec"><div class="mkt-h2"><span class="n">⑤</span>파트너</div><div class="mkt-filters">
+      <input id="mktSearch" class="mkt-in" placeholder="파트너 검색…" oninput="mktFilter()">
+      <select id="mktRegion" class="mkt-in" onchange="mktFilter()"><option value="">지역 전체</option><option value="한국">한국</option><option value="중화권">중화권</option><option value="기타">기타</option><option value="인니·베트남">인니·베트남</option></select>
+      <select id="mktOwner" class="mkt-in" onchange="mktFilter()"><option value="">담당 전체</option><option value="Aiden(한국 대행)">Aiden(한국 대행)</option><option value="Grace">Grace</option><option value="Aiden(총괄·채용 전)">Aiden(총괄·채용 전)</option><option value="Jay Pan">Jay Pan</option></select>
+      <select id="mktStage" class="mkt-in" onchange="mktFilter()"><option value="">단계 전체</option><option value="첫 예약">첫 예약</option><option value="활성">활성</option><option value="가입">가입</option><option value="접촉">접촉</option><option value="리드">리드</option></select>
+      <select id="mktType" class="mkt-in" onchange="mktFilter()"><option value="">유형 전체</option><option value="확인 필요">확인 필요</option><option value="TA">TA</option><option value="TMC">TMC</option></select>
+      <span id="mktCount" class="mkt-sub2"></span>
+    </div>
+    <div style="overflow-x:auto"><table class="mkt-tbl" id="mktPTable"><thead><tr>
+      <th style="text-align:left">파트너</th><th>국가</th><th>지역</th><th>단계</th><th>담당</th><th style="text-align:right">누적 예약</th><th style="text-align:right">누적 TTV</th><th>체이스</th><th style="text-align:left">다음 액션</th>
+    </tr></thead><tbody><tr class="mkt-prow" data-region="한국" data-owner="Aiden(한국 대행)" data-stage="첫 예약" data-type="확인 필요" data-name="gc company (여기어때)">
+      <td style="text-align:left">GC Company (여기어때)</td>
+      <td>한국</td><td>한국</td>
+      <td><span style="color:#60a5fa;font-weight:600">첫 예약</span></td>
+      <td>Aiden(한국 대행)</td>
+      <td style="text-align:right">19</td>
+      <td style="text-align:right">₩0.06억</td>
+      <td><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:left"><span style="color:#6b7f9e">—</span></td>
+    </tr><tr class="mkt-prow" data-region="한국" data-owner="Aiden(한국 대행)" data-stage="활성" data-type="확인 필요" data-name="airtel.com(에어텔닷컴)">
+      <td style="text-align:left">airtel.com(에어텔닷컴)</td>
+      <td>한국</td><td>한국</td>
+      <td><span style="color:#22c55e;font-weight:600">활성</span></td>
+      <td>Aiden(한국 대행)</td>
+      <td style="text-align:right">205</td>
+      <td style="text-align:right">₩0.76억</td>
+      <td><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:left"><span style="color:#6b7f9e">—</span></td>
+    </tr><tr class="mkt-prow" data-region="한국" data-owner="Aiden(한국 대행)" data-stage="활성" data-type="확인 필요" data-name="hana tour_jp team">
+      <td style="text-align:left">Hana Tour_JP Team</td>
+      <td>한국</td><td>한국</td>
+      <td><span style="color:#22c55e;font-weight:600">활성</span></td>
+      <td>Aiden(한국 대행)</td>
+      <td style="text-align:right">84</td>
+      <td style="text-align:right">₩0.46억</td>
+      <td><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:left"><span style="color:#6b7f9e">—</span></td>
+    </tr><tr class="mkt-prow" data-region="한국" data-owner="Aiden(한국 대행)" data-stage="활성" data-type="확인 필요" data-name="onlinetour">
+      <td style="text-align:left">Onlinetour</td>
+      <td>한국</td><td>한국</td>
+      <td><span style="color:#22c55e;font-weight:600">활성</span></td>
+      <td>Aiden(한국 대행)</td>
+      <td style="text-align:right">64</td>
+      <td style="text-align:right">₩0.20억</td>
+      <td><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:left"><span style="color:#6b7f9e">—</span></td>
+    </tr><tr class="mkt-prow" data-region="한국" data-owner="Aiden(한국 대행)" data-stage="활성" data-type="확인 필요" data-name="modetour network">
+      <td style="text-align:left">Modetour Network</td>
+      <td>한국</td><td>한국</td>
+      <td><span style="color:#22c55e;font-weight:600">활성</span></td>
+      <td>Aiden(한국 대행)</td>
+      <td style="text-align:right">36</td>
+      <td style="text-align:right">₩0.14억</td>
+      <td><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:left"><span style="color:#6b7f9e">—</span></td>
+    </tr><tr class="mkt-prow" data-region="중화권" data-owner="Grace" data-stage="활성" data-type="확인 필요" data-name="kkday">
+      <td style="text-align:left">KKDAY</td>
+      <td>대만</td><td>중화권</td>
+      <td><span style="color:#22c55e;font-weight:600">활성</span></td>
+      <td>Grace</td>
+      <td style="text-align:right">41</td>
+      <td style="text-align:right">₩0.31억</td>
+      <td><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:left"><span style="color:#6b7f9e">—</span></td>
+    </tr><tr class="mkt-prow" data-region="한국" data-owner="Aiden(한국 대행)" data-stage="가입" data-type="확인 필요" data-name="the hyundai travel">
+      <td style="text-align:left">The Hyundai Travel <span class="mkt-chip" style="background:#eab30822;color:#eab308;border:1px solid #eab30855">매칭 미확인</span></td>
+      <td>한국</td><td>한국</td>
+      <td><span style="color:#93a6c6;font-weight:600">가입</span></td>
+      <td>Aiden(한국 대행)</td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:left"><span style="color:#6b7f9e">—</span></td>
+    </tr><tr class="mkt-prow" data-region="한국" data-owner="Aiden(한국 대행)" data-stage="활성" data-type="확인 필요" data-name="white windmill tour">
+      <td style="text-align:left">White Windmill Tour</td>
+      <td>한국</td><td>한국</td>
+      <td><span style="color:#22c55e;font-weight:600">활성</span></td>
+      <td>Aiden(한국 대행)</td>
+      <td style="text-align:right">35</td>
+      <td style="text-align:right">₩0.19억</td>
+      <td><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:left"><span style="color:#6b7f9e">—</span></td>
+    </tr><tr class="mkt-prow" data-region="한국" data-owner="Aiden(한국 대행)" data-stage="가입" data-type="확인 필요" data-name="goodtimetour">
+      <td style="text-align:left">goodtimetour <span class="mkt-chip" style="background:#eab30822;color:#eab308;border:1px solid #eab30855">매칭 미확인</span></td>
+      <td>한국</td><td>한국</td>
+      <td><span style="color:#93a6c6;font-weight:600">가입</span></td>
+      <td>Aiden(한국 대행)</td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:left"><span style="color:#6b7f9e">—</span></td>
+    </tr><tr class="mkt-prow" data-region="한국" data-owner="Aiden(한국 대행)" data-stage="가입" data-type="확인 필요" data-name="geumson tour">
+      <td style="text-align:left">Geumson Tour <span class="mkt-chip" style="background:#eab30822;color:#eab308;border:1px solid #eab30855">매칭 미확인</span></td>
+      <td>한국</td><td>한국</td>
+      <td><span style="color:#93a6c6;font-weight:600">가입</span></td>
+      <td>Aiden(한국 대행)</td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:left"><span style="color:#6b7f9e">—</span></td>
+    </tr><tr class="mkt-prow" data-region="한국" data-owner="Aiden(한국 대행)" data-stage="활성" data-type="확인 필요" data-name="centum golf inc.">
+      <td style="text-align:left">Centum Golf Inc.</td>
+      <td>한국</td><td>한국</td>
+      <td><span style="color:#22c55e;font-weight:600">활성</span></td>
+      <td>Aiden(한국 대행)</td>
+      <td style="text-align:right">7</td>
+      <td style="text-align:right">₩0.04억</td>
+      <td><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:left"><span style="color:#6b7f9e">—</span></td>
+    </tr><tr class="mkt-prow" data-region="한국" data-owner="Aiden(한국 대행)" data-stage="첫 예약" data-type="확인 필요" data-name="ilbonman">
+      <td style="text-align:left">Ilbonman</td>
+      <td>한국</td><td>한국</td>
+      <td><span style="color:#60a5fa;font-weight:600">첫 예약</span></td>
+      <td>Aiden(한국 대행)</td>
+      <td style="text-align:right">2</td>
+      <td style="text-align:right">₩0.01억</td>
+      <td><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:left"><span style="color:#6b7f9e">—</span></td>
+    </tr><tr class="mkt-prow" data-region="한국" data-owner="Aiden(한국 대행)" data-stage="첫 예약" data-type="확인 필요" data-name="vectorcom">
+      <td style="text-align:left">VECTORCOM</td>
+      <td>한국</td><td>한국</td>
+      <td><span style="color:#60a5fa;font-weight:600">첫 예약</span></td>
+      <td>Aiden(한국 대행)</td>
+      <td style="text-align:right">1</td>
+      <td style="text-align:right">₩0.00억</td>
+      <td><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:left"><span style="color:#6b7f9e">—</span></td>
+    </tr><tr class="mkt-prow" data-region="한국" data-owner="Aiden(한국 대행)" data-stage="활성" data-type="확인 필요" data-name="chalet korea">
+      <td style="text-align:left">CHALET KOREA</td>
+      <td>한국</td><td>한국</td>
+      <td><span style="color:#22c55e;font-weight:600">활성</span></td>
+      <td>Aiden(한국 대행)</td>
+      <td style="text-align:right">10</td>
+      <td style="text-align:right">₩0.04억</td>
+      <td><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:left"><span style="color:#6b7f9e">—</span></td>
+    </tr><tr class="mkt-prow" data-region="한국" data-owner="Aiden(한국 대행)" data-stage="가입" data-type="확인 필요" data-name="여행작가 박은하">
+      <td style="text-align:left">여행작가 박은하 <span class="mkt-chip" style="background:#eab30822;color:#eab308;border:1px solid #eab30855">매칭 미확인</span></td>
+      <td>한국</td><td>한국</td>
+      <td><span style="color:#93a6c6;font-weight:600">가입</span></td>
+      <td>Aiden(한국 대행)</td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:left"><span style="color:#6b7f9e">—</span></td>
+    </tr><tr class="mkt-prow" data-region="한국" data-owner="Aiden(한국 대행)" data-stage="가입" data-type="확인 필요" data-name="(주)스트리밍하우스">
+      <td style="text-align:left">(주)스트리밍하우스 <span class="mkt-chip" style="background:#eab30822;color:#eab308;border:1px solid #eab30855">매칭 미확인</span></td>
+      <td>한국</td><td>한국</td>
+      <td><span style="color:#93a6c6;font-weight:600">가입</span></td>
+      <td>Aiden(한국 대행)</td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:left"><span style="color:#6b7f9e">—</span></td>
+    </tr><tr class="mkt-prow" data-region="한국" data-owner="Aiden(한국 대행)" data-stage="가입" data-type="확인 필요" data-name="hyundai dream tour">
+      <td style="text-align:left">Hyundai Dream Tour <span class="mkt-chip" style="background:#eab30822;color:#eab308;border:1px solid #eab30855">매칭 미확인</span></td>
+      <td>한국</td><td>한국</td>
+      <td><span style="color:#93a6c6;font-weight:600">가입</span></td>
+      <td>Aiden(한국 대행)</td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:left"><span style="color:#6b7f9e">—</span></td>
+    </tr><tr class="mkt-prow" data-region="기타" data-owner="Aiden(총괄·채용 전)" data-stage="접촉" data-type="확인 필요" data-name="lets sees tour &amp; travels">
+      <td style="text-align:left">Lets sees tour &amp; travels <span class="mkt-chip" style="background:#eab30822;color:#eab308;border:1px solid #eab30855">매칭 미확인</span></td>
+      <td>인도</td><td>기타</td>
+      <td><span style="color:#93a6c6;font-weight:600">접촉</span></td>
+      <td>Aiden(총괄·채용 전)</td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:left"><span style="color:#6b7f9e">—</span></td>
+    </tr><tr class="mkt-prow" data-region="인니·베트남" data-owner="Jay Pan" data-stage="가입" data-type="확인 필요" data-name="chudu24">
+      <td style="text-align:left">chudu24 <span class="mkt-chip" style="background:#eab30822;color:#eab308;border:1px solid #eab30855">매칭 미확인</span></td>
+      <td>베트남</td><td>인니·베트남</td>
+      <td><span style="color:#93a6c6;font-weight:600">가입</span></td>
+      <td>Jay Pan</td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:left"><span style="color:#6b7f9e">—</span></td>
+    </tr><tr class="mkt-prow" data-region="인니·베트남" data-owner="Jay Pan" data-stage="접촉" data-type="확인 필요" data-name="travelotels tourism tour">
+      <td style="text-align:left">Travelotels Tourism Tour <span class="mkt-chip" style="background:#eab30822;color:#eab308;border:1px solid #eab30855">매칭 미확인</span></td>
+      <td>베트남</td><td>인니·베트남</td>
+      <td><span style="color:#93a6c6;font-weight:600">접촉</span></td>
+      <td>Jay Pan</td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:left"><span style="color:#6b7f9e">—</span></td>
+    </tr><tr class="mkt-prow" data-region="기타" data-owner="Aiden(총괄·채용 전)" data-stage="가입" data-type="확인 필요" data-name="meidi travel">
+      <td style="text-align:left">Meidi Travel <span class="mkt-chip" style="background:#eab30822;color:#eab308;border:1px solid #eab30855">매칭 미확인</span></td>
+      <td></td><td>기타</td>
+      <td><span style="color:#93a6c6;font-weight:600">가입</span></td>
+      <td>Aiden(총괄·채용 전)</td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:left"><span style="color:#6b7f9e">—</span></td>
+    </tr><tr class="mkt-prow" data-region="기타" data-owner="Aiden(총괄·채용 전)" data-stage="가입" data-type="확인 필요" data-name="skyline travel">
+      <td style="text-align:left">Skyline Travel <span class="mkt-chip" style="background:#eab30822;color:#eab308;border:1px solid #eab30855">매칭 미확인</span></td>
+      <td>싱가포르</td><td>기타</td>
+      <td><span style="color:#93a6c6;font-weight:600">가입</span></td>
+      <td>Aiden(총괄·채용 전)</td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:left"><span style="color:#6b7f9e">—</span></td>
+    </tr><tr class="mkt-prow" data-region="기타" data-owner="Aiden(총괄·채용 전)" data-stage="가입" data-type="확인 필요" data-name="his (sg) travel">
+      <td style="text-align:left">HIS (SG) Travel <span class="mkt-chip" style="background:#eab30822;color:#eab308;border:1px solid #eab30855">매칭 미확인</span></td>
+      <td>싱가포르</td><td>기타</td>
+      <td><span style="color:#93a6c6;font-weight:600">가입</span></td>
+      <td>Aiden(총괄·채용 전)</td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:left"><span style="color:#6b7f9e">—</span></td>
+    </tr><tr class="mkt-prow" data-region="기타" data-owner="Aiden(총괄·채용 전)" data-stage="접촉" data-type="확인 필요" data-name="airelated travel">
+      <td style="text-align:left">AIRELATED TRAVEL <span class="mkt-chip" style="background:#eab30822;color:#eab308;border:1px solid #eab30855">매칭 미확인</span></td>
+      <td>싱가포르</td><td>기타</td>
+      <td><span style="color:#93a6c6;font-weight:600">접촉</span></td>
+      <td>Aiden(총괄·채용 전)</td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:left"><span style="color:#6b7f9e">—</span></td>
+    </tr><tr class="mkt-prow" data-region="기타" data-owner="Aiden(총괄·채용 전)" data-stage="접촉" data-type="확인 필요" data-name="asian classic travels">
+      <td style="text-align:left">ASIAN CLASSIC TRAVELS <span class="mkt-chip" style="background:#eab30822;color:#eab308;border:1px solid #eab30855">매칭 미확인</span></td>
+      <td>싱가포르</td><td>기타</td>
+      <td><span style="color:#93a6c6;font-weight:600">접촉</span></td>
+      <td>Aiden(총괄·채용 전)</td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:left"><span style="color:#6b7f9e">—</span></td>
+    </tr><tr class="mkt-prow" data-region="기타" data-owner="Aiden(총괄·채용 전)" data-stage="가입" data-type="확인 필요" data-name="jtb (outbound) retail">
+      <td style="text-align:left">JTB (Outbound) Retail <span class="mkt-chip" style="background:#eab30822;color:#eab308;border:1px solid #eab30855">매칭 미확인</span></td>
+      <td>싱가포르</td><td>기타</td>
+      <td><span style="color:#93a6c6;font-weight:600">가입</span></td>
+      <td>Aiden(총괄·채용 전)</td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:left"><span style="color:#6b7f9e">—</span></td>
+    </tr><tr class="mkt-prow" data-region="기타" data-owner="Aiden(총괄·채용 전)" data-stage="접촉" data-type="확인 필요" data-name="goto travel">
+      <td style="text-align:left">GOTO TRAVEL <span class="mkt-chip" style="background:#eab30822;color:#eab308;border:1px solid #eab30855">매칭 미확인</span></td>
+      <td>싱가포르</td><td>기타</td>
+      <td><span style="color:#93a6c6;font-weight:600">접촉</span></td>
+      <td>Aiden(총괄·채용 전)</td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:left"><span style="color:#6b7f9e">—</span></td>
+    </tr><tr class="mkt-prow" data-region="기타" data-owner="Aiden(총괄·채용 전)" data-stage="접촉" data-type="확인 필요" data-name="asian classic travels (malaysia)">
+      <td style="text-align:left">ASIAN CLASSIC TRAVELS (Malaysia) <span class="mkt-chip" style="background:#eab30822;color:#eab308;border:1px solid #eab30855">매칭 미확인</span></td>
+      <td>말레이시아</td><td>기타</td>
+      <td><span style="color:#93a6c6;font-weight:600">접촉</span></td>
+      <td>Aiden(총괄·채용 전)</td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:left"><span style="color:#6b7f9e">—</span></td>
+    </tr><tr class="mkt-prow" data-region="한국" data-owner="Aiden(한국 대행)" data-stage="가입" data-type="확인 필요" data-name="compass free">
+      <td style="text-align:left">Compass Free <span class="mkt-chip" style="background:#eab30822;color:#eab308;border:1px solid #eab30855">매칭 미확인</span></td>
+      <td>한국(한국어 소통, 추정)</td><td>한국</td>
+      <td><span style="color:#93a6c6;font-weight:600">가입</span></td>
+      <td>Aiden(한국 대행)</td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:left">사업자등록증 확인 후 계정 활성화·테스트 사이트 안내</td>
+    </tr><tr class="mkt-prow" data-region="기타" data-owner="Aiden(총괄·채용 전)" data-stage="접촉" data-type="TA" data-name="blueberry travels">
+      <td style="text-align:left">Blueberry Travels <span class="mkt-chip" style="background:#eab30822;color:#eab308;border:1px solid #eab30855">매칭 미확인</span></td>
+      <td>인도</td><td>기타</td>
+      <td><span style="color:#93a6c6;font-weight:600">접촉</span></td>
+      <td>Aiden(총괄·채용 전)</td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:left">가입·활성화 여부 확인, 미가입이면 가입 독려 메일(9/10 안내 후 무접촉)</td>
+    </tr><tr class="mkt-prow mkt-overdue" data-region="기타" data-owner="Aiden(총괄·채용 전)" data-stage="접촉" data-type="확인 필요" data-name="booknow">
+      <td style="text-align:left">BookNow <span class="mkt-chip" style="background:#eab30822;color:#eab308;border:1px solid #eab30855">매칭 미확인</span></td>
+      <td>싱가포르</td><td>기타</td>
+      <td><span style="color:#93a6c6;font-weight:600">접촉</span></td>
+      <td>Aiden(총괄·채용 전)</td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td><span style="color:#ef4444;font-weight:700">경과 22일</span></td>
+      <td style="text-align:left">테스트 계정 피드백 확인 → API 연동·계약 안내</td>
+    </tr><tr class="mkt-prow" data-region="인니·베트남" data-owner="Jay Pan" data-stage="리드" data-type="확인 필요" data-name="bukatravel">
+      <td style="text-align:left">Bukatravel <span class="mkt-chip" style="background:#eab30822;color:#eab308;border:1px solid #eab30855">매칭 미확인</span></td>
+      <td>인도네시아</td><td>인니·베트남</td>
+      <td><span style="color:#93a6c6;font-weight:600">리드</span></td>
+      <td>Jay Pan</td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:left">연락처 확인 후 회사 소개 메일 발송(API 또는 마켓플레이스 제안)</td>
+    </tr><tr class="mkt-prow" data-region="기타" data-owner="Aiden(총괄·채용 전)" data-stage="접촉" data-type="확인 필요" data-name="onetouch &amp; travel">
+      <td style="text-align:left">OneTouch &amp; Travel <span class="mkt-chip" style="background:#eab30822;color:#eab308;border:1px solid #eab30855">매칭 미확인</span></td>
+      <td>러시아</td><td>기타</td>
+      <td><span style="color:#93a6c6;font-weight:600">접촉</span></td>
+      <td>Aiden(총괄·채용 전)</td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:left">테스트 계정 사용 여부·등록 의사 확인, 등록 시 서류·결제 조건 안내 준비</td>
+    </tr><tr class="mkt-prow" data-region="인니·베트남" data-owner="Jay Pan" data-stage="접촉" data-type="TMC" data-name="bizitrip(bgtrip)">
+      <td style="text-align:left">Bizitrip(BGTRIP) <span class="mkt-chip" style="background:#eab30822;color:#eab308;border:1px solid #eab30855">매칭 미확인</span></td>
+      <td>베트남</td><td>인니·베트남</td>
+      <td><span style="color:#93a6c6;font-weight:600">접촉</span></td>
+      <td>Jay Pan</td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:left">연동 방식(API/마켓플레이스) 결정</td>
+    </tr><tr class="mkt-prow" data-region="기타" data-owner="Aiden(총괄·채용 전)" data-stage="가입" data-type="확인 필요" data-name="wabi travel">
+      <td style="text-align:left">Wabi Travel <span class="mkt-chip" style="background:#eab30822;color:#eab308;border:1px solid #eab30855">매칭 미확인</span></td>
+      <td>일본(한국 지사 직함, 소재 확인 필요)</td><td>기타</td>
+      <td><span style="color:#93a6c6;font-weight:600">가입</span></td>
+      <td>Aiden(총괄·채용 전)</td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:left">OP의 재예약 가능 여부 회신 확인 → 연동 vs 마켓플레이스 결정(월 30건 목표)</td>
+    </tr><tr class="mkt-prow" data-region="인니·베트남" data-owner="Jay Pan" data-stage="가입" data-type="확인 필요" data-name="gotadi (hn)">
+      <td style="text-align:left">Gotadi (HN) <span class="mkt-chip" style="background:#eab30822;color:#eab308;border:1px solid #eab30855">매칭 미확인</span></td>
+      <td>베트남</td><td>인니·베트남</td>
+      <td><span style="color:#93a6c6;font-weight:600">가입</span></td>
+      <td>Jay Pan</td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:left"><span style="color:#6b7f9e">—</span></td>
+    </tr><tr class="mkt-prow" data-region="인니·베트남" data-owner="Jay Pan" data-stage="가입" data-type="확인 필요" data-name="momo (portal 계정)">
+      <td style="text-align:left">MoMo (Portal 계정) <span class="mkt-chip" style="background:#eab30822;color:#eab308;border:1px solid #eab30855">매칭 미확인</span></td>
+      <td>베트남</td><td>인니·베트남</td>
+      <td><span style="color:#93a6c6;font-weight:600">가입</span></td>
+      <td>Jay Pan</td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:right"><span style="color:#6b7f9e">—</span></td>
+      <td><span style="color:#6b7f9e">—</span></td>
+      <td style="text-align:left"><span style="color:#6b7f9e">—</span></td>
+    </tr></tbody></table></div></div>
+  <div class="mkt-sec"><div class="mkt-h2"><span class="n">⑥</span>주간 추이 (2026 기준선)</div><svg viewBox="0 0 900 140" style="width:100%;height:auto"><polyline points="30,81.4017595307918 56.25,84.45161290322581 82.5,75.30205278592376 108.75,78.35190615835776 135,96.65102639296188 161.25,90.55131964809385 187.5,93.60117302052785 213.75,90.55131964809385 240,99.7008797653959 266.25,81.4017595307918 292.5,90.55131964809385 318.75,78.35190615835776 345,69.20234604105572 371.25,72.25219941348973 397.5,78.35190615835776 423.75,75.30205278592376 450,75.30205278592376 476.25,44.803519061583586 502.5,23.454545454545453 528.75,38.70381231671554 555,84.45161290322581 581.25,60.052785923753675 607.5,35.65395894428153 633.75,87.50146627565982 660,57.00293255131966 686.25,87.50146627565982 712.5,57.00293255131966 738.75,84.45161290322581 765,63.10263929618769 791.25,93.60117302052785 817.5,72.25219941348973 843.75,69.20234604105572 870,78.35190615835776" fill="none" stroke="#3b82f6" stroke-width="2.5"/><text x="30" y="134" text-anchor="middle" fill="#6b7f9e" font-size="10">03-28</text><text x="135" y="134" text-anchor="middle" fill="#6b7f9e" font-size="10">04-25</text><text x="240" y="134" text-anchor="middle" fill="#6b7f9e" font-size="10">05-23</text><text x="345" y="134" text-anchor="middle" fill="#6b7f9e" font-size="10">06-20</text><text x="450" y="134" text-anchor="middle" fill="#6b7f9e" font-size="10">07-18</text><text x="555" y="134" text-anchor="middle" fill="#6b7f9e" font-size="10">08-15</text><text x="660" y="134" text-anchor="middle" fill="#6b7f9e" font-size="10">09-12</text><text x="765" y="134" text-anchor="middle" fill="#6b7f9e" font-size="10">10-10</text><text x="870" y="134" text-anchor="middle" fill="#6b7f9e" font-size="10">11-07</text></svg>
+    <div class="mkt-sub2">2026 기준선(기존 계정) · 주 33개 · 합계 474건 · ₩2.11억 <span style="color:#f0851f">(환율 임시 8.3574)</span> · 2027 주간 실적은 시작 후 표시</div></div>
+  <div class="mkt-sec"><div class="mkt-h2"><span class="n">⑦</span>개발 의존 · 막힌 일</div><table class="mkt-tbl"><thead><tr><th style="text-align:left">항목</th><th>구분</th><th style="text-align:left">KPI</th><th>필요 시점</th><th>개발 일정</th><th>상태</th><th style="text-align:left">다음 액션</th><th>담당</th></tr></thead><tbody><tr><td style="text-align:left">마켓플레이스 셀프 온보딩 · 언어팩 · PG (통합 개발)</td><td><span class="mkt-chip" style="background:#3b82f622;color:#3b82f6;border:1px solid #3b82f655">개발 의존</span></td>
+      <td style="text-align:left">마켓 파트너 60 → 300곳 (1Q 모집)</td><td>26.12~3월</td><td>4월~10월 (통합 개발)</td>
+      <td><span style="color:#ef4444;font-weight:700">● 늦음</span></td><td style="text-align:left">1Q 60곳 모집 방식(수기 가입 병행 여부)을 개발팀과 정하기</td><td>GSM · Grace · 한국</td></tr><tr><td style="text-align:left">B2C 사이트 서드파티 노출 규칙</td><td><span class="mkt-chip" style="background:#3b82f622;color:#3b82f6;border:1px solid #3b82f655">개발 의존</span></td>
+      <td style="text-align:left">서드파티 B2C 몫(연 10억, CSO님 B2C 20억 안)</td><td>1월~6월</td><td>로드맵에 없음</td>
+      <td><span style="color:#64748b;font-weight:700">● 확인</span></td><td style="text-align:left">개발 담당·시점 정하기</td><td>GSM · 서드파티</td></tr><tr><td style="text-align:left">Shiji · TGX 스위치 연동</td><td><span class="mkt-chip" style="background:#3b82f622;color:#3b82f6;border:1px solid #3b82f655">개발 의존</span></td>
+      <td style="text-align:left">서드파티 TTV 4억(1Q)</td><td>26.12~1월</td><td>26.12~3월</td>
+      <td><span style="color:#22c55e;font-weight:700">● 맞음</span></td><td style="text-align:left">일정대로 진행 확인</td><td>GSM · 서드파티</td></tr><tr><td style="text-align:left">추가 스위치 공급사 연동 (1곳당 2~3주)</td><td><span class="mkt-chip" style="background:#3b82f622;color:#3b82f6;border:1px solid #3b82f655">개발 의존</span></td>
+      <td style="text-align:left">서드파티 TTV 7억(2Q) → 13억(4Q)</td><td>4월~9월</td><td>1월 결정 후 공수 요청</td>
+      <td><span style="color:#64748b;font-weight:700">● 확인</span></td><td style="text-align:left">1월 스위치 결정 후 개발 공수 요청</td><td>GSM · 서드파티</td></tr><tr><td style="text-align:left">위안화 정산 (TMC 계약 전제)</td><td><span class="mkt-chip" style="background:#64748b22;color:#64748b;border:1px solid #64748b55">참고(TMC)</span></td>
+      <td style="text-align:left">중화권 TMC (마켓 직접 KPI는 아님)</td><td>26.12~3월</td><td>ELLIS 정산 · 시점 미정</td>
+      <td><span style="color:#64748b;font-weight:700">● 확인</span></td><td style="text-align:left">정산 시점을 개발과 확인</td><td>GSM · Grace</td></tr><tr><td style="text-align:left">마켓플레이스 PG(엑심베이) 계약 검토와 이관</td><td><span class="mkt-chip" style="background:#ef444422;color:#ef4444;border:1px solid #ef444455">막힌 일</span></td>
+      <td style="text-align:left">셀프 온보딩 결제(PG)</td><td>1Q 전</td><td>확인 필요</td>
+      <td><span style="color:#ef4444;font-weight:700">● 막힘</span></td><td style="text-align:left">PG 계약서 검토(Sangho) → 이관 결정(CSO) → 마켓 팝업 공지(Aiden)</td><td>Aiden · CSO · Sangho</td></tr><tr><td style="text-align:left">가입 자동 안내 메일 (사업자등록증 요청 · 활성화 안내)</td><td><span class="mkt-chip" style="background:#3b82f622;color:#3b82f6;border:1px solid #3b82f655">개발 의존</span></td>
+      <td style="text-align:left">가입 → 활성 전환 속도(수기 처리 부담)</td><td>1Q 모집 전</td><td>미배정(확인 필요)</td>
+      <td><span style="color:#eab308;font-weight:700">● 미배정</span></td><td style="text-align:left">명세서를 PD에 전달하고 개발 시점 정하기</td><td>Aiden · PD</td></tr><tr><td style="text-align:left">활성 정의 · 가입 후 단계 측정 (PG · 활성 정의 이니셔티브)</td><td><span class="mkt-chip" style="background:#64748b22;color:#64748b;border:1px solid #64748b55">정의</span></td>
+      <td style="text-align:left">활성 90곳(첫 예약 30%)</td><td>3Q 전</td><td>확인 필요</td>
+      <td><span style="color:#64748b;font-weight:700">● 확인</span></td><td style="text-align:left">활성 기준 기간·예약 건수 정의 확정(정의 시트와 함께)</td><td>Aiden</td></tr></tbody></table></div>
+  <div class="mkt-sec"><div class="mkt-h2"><span class="n">⑧</span>2026 기준선</div><div class="mkt-grid4">
+    <div class="mkt-stat"><div class="mkt-stat-l">기존 계정</div><div class="mkt-stat-v">30곳</div><div class="mkt-stat-s">Dotbiz+Portal(2026 이전)</div></div>
+    <div class="mkt-stat"><div class="mkt-stat-l">활성(임시)</div><div class="mkt-stat-v">8곳</div><div class="mkt-stat-s">최근 8주 내 1건</div></div>
+    <div class="mkt-stat"><div class="mkt-stat-l">기간 예약 / 일평균</div><div class="mkt-stat-v">474건</div><div class="mkt-stat-s">2.05건/일 · 231일</div></div>
+    <div class="mkt-stat"><div class="mkt-stat-l">연환산 TTV</div><div class="mkt-stat-v">₩3.33억</div><div class="mkt-stat-s">vs 4Q 목표 87억 · <span style="color:#ef4444">격차</span></div></div>
+  </div>
+  <div class="mkt-sub2" style="margin-top:8px">기간 2026-03-28 ~ 2026-11-13 · 매칭 11곳 · 기간 TTV ₩2.11억 <span style="color:#f0851f">(환율 임시 8.3574)</span> · 나머지 19곳은 판매처명 매칭 미확인</div></div>
+  <div class="mkt-sec"><div class="mkt-h2"><span class="n">＊</span>정의 · 출처 · 확인 필요</div><div class="mkt-two">
+    <div><div class="mkt-h3" style="color:#ef4444">⚠ 확인 필요 — 리스크·불일치 (8장)</div><ul class="mkt-ul"><li>개발 의존이 늦다: 셀프 온보딩·언어팩·PG 필요 12~3월인데 개발 4~10월(덱 p.17). 1Q 60곳 모집 방식 미정</li><li>기준선 격차: 기존 계정 연환산 ₩3.3억(일 2.1건) vs 4Q 목표 ₩87억·일 120건</li><li>1Q 파트너 60곳 vs 지역 합계 50곳(중화권 50·한국 없음) — 차이 10</li><li>서드파티 활성 파트너: p.08=60 vs p.14=90</li><li>서드파티 TTV 분기 합 34억 vs 연 36억(2억 차)</li><li>한국 API 4/7/10곳(p.10) vs 3/6/10곳(p.26)</li><li>활성 정의가 덱에 없음 — 임시 &quot;최근 8주 내 1건&quot; 적용</li><li>TTV 기준 차이: 이 트래커=부킹일, 덱 KR1=투숙(취소 후)</li><li>환율 8.3574는 임시값</li><li>파트너 300곳에 2026 이전 기존 계정 포함 여부 불명</li><li>인니·베트남·기타 지역은 덱에 마켓 목표 없음</li></ul></div>
+    <div><div class="mkt-h3" style="color:#f0851f">❓ 결정 필요 (11장 · Aiden)</div><ol class="mkt-ol"><li>입력 방식: 엑셀을 3.CRM에 교체(기본안)로 시작할지 / 팀원 직접 입력 시 SharePoint</li><li>활성 정의: 최근 8주 내 1건 임시 유지 여부</li><li>파트너 300곳에 기존 계정 포함 여부</li><li>노출 범위: 파트너별 TTV·누적예약을 게이트 페이지에 둘지 / 합계만</li><li>환율 확정값, TTV 기준(부킹일 vs 투숙)</li><li>덱 불일치 해소(#3~#6) 기준 숫자</li><li>인니·베트남·기타 지역 목표 설정 여부</li><li>게시: index·links 링크 추가 / 주간 Teams 요약 첨부</li></ol></div>
+  </div>
+  <div class="mkt-h3" style="margin-top:18px">📖 정의 · 출처</div>
+  <div style="overflow-x:auto"><table class="mkt-tbl mkt-defs"><thead><tr><th style="text-align:left">용어</th><th style="text-align:left">정의</th><th style="text-align:left">근거·상태</th></tr></thead><tbody><tr><td style="text-align:left;white-space:nowrap;font-weight:600;color:#e8eefc">마켓플레이스</td><td style="text-align:left">셀프 온보딩 TA·에이전트가 쓰는 B2B 판매 사이트. 외부에 보일 수 있는 이름은 &quot;마켓플레이스&quot;로 통일.</td><td style="text-align:left;color:#6b7f9e">규칙</td></tr><tr><td style="text-align:left;white-space:nowrap;font-weight:600;color:#e8eefc">파트너 수 (KPI)</td><td style="text-align:left">파트너목록에서 가입일이 2027-01-01 이후인 행의 누적 수(이탈 포함).</td><td style="text-align:left;color:#6b7f9e">덱 KR3 &quot;셀프 온보딩 TA·에이전트 수&quot;. 기존 계정(2026 이전)을 300곳에 포함하는지는 덱에 없음 → 확인 필요</td></tr><tr><td style="text-align:left;white-space:nowrap;font-weight:600;color:#e8eefc">첫 예약률</td><td style="text-align:left">2027 가입 파트너 중 첫 예약일이 있는 비율.</td><td style="text-align:left;color:#6b7f9e">덱 p.05·23: 30%</td></tr><tr><td style="text-align:left;white-space:nowrap;font-weight:600;color:#e8eefc">활성</td><td style="text-align:left">단계 = 활성인 파트너. 임시 기준: 데이터 기간 내 최근 8주 안에 확정+예약 건이 1건 이상(CRM의 &quot;최근 8주&quot; 관례).</td><td style="text-align:left;color:#6b7f9e">덱에 정의 없음 — 3Q 이니셔티브 &quot;활성 정의&quot;(p.08). 확인 필요</td></tr><tr><td style="text-align:left;white-space:nowrap;font-weight:600;color:#e8eefc">단계</td><td style="text-align:left">리드(후보 발굴) → 접촉(연락·안내·테스트 계정) → 가입(계정 보유) → 첫 예약 → 활성 → 이탈.</td><td style="text-align:left;color:#6b7f9e">제안 정의</td></tr><tr><td style="text-align:left;white-space:nowrap;font-weight:600;color:#e8eefc">유형</td><td style="text-align:left">TA / 에이전트 / TMC / 소형 OTA. 분류 근거가 없으면 &quot;확인 필요&quot;.</td><td style="text-align:left;color:#6b7f9e">기존 계정은 분류 근거가 없어 전부 확인 필요</td></tr><tr><td style="text-align:left;white-space:nowrap;font-weight:600;color:#e8eefc">TTV</td><td style="text-align:left">이 시트의 실적: REPORT 부킹 CSV, 부킹일 기준, 확정+예약, JPY (~2026-11-13). 덱 KR1 TTV는 투숙(취소 후) 기준.</td><td style="text-align:left;color:#6b7f9e">기준 차이 → 확인 필요. 억원 환산은 대시보드 B4 환율(임시값)</td></tr><tr><td style="text-align:left;white-space:nowrap;font-weight:600;color:#e8eefc">마켓 일 부킹</td><td style="text-align:left">예약일 기준(취소 전) 건수. 덱 이니셔티브 값 24 → 56 → 88 → 120건/일.</td><td style="text-align:left;color:#6b7f9e">v3 모델 기준 표기</td></tr><tr><td style="text-align:left;white-space:nowrap;font-weight:600;color:#e8eefc">서드파티 TTV</td><td style="text-align:left">ELLIS 부킹 데이터에 공급 경로 구분이 없어 주간 로그에 수기로 입력(마켓+B2C).</td><td style="text-align:left;color:#6b7f9e">확인 필요</td></tr><tr><td style="text-align:left;white-space:nowrap;font-weight:600;color:#e8eefc">제안값</td><td style="text-align:left">덱에 없어 계산으로 만든 분기 중간값. 분기목표 시트에서 주황 칸으로 표시.</td><td style="text-align:left;color:#6b7f9e">규칙</td></tr><tr><td style="text-align:left;white-space:nowrap;font-weight:600;color:#e8eefc">담당 규칙</td><td style="text-align:left">한국 = Aiden 대행 · 중화권 = Grace · 인도네시아·베트남 = Jay Pan · 그 밖(인도·SG·MY·유럽 신규) = Aiden(채용 전).</td><td style="text-align:left;color:#6b7f9e">Jane(휴직)·Ben·Bryant(퇴사)·Nathan(항공팀)은 라우팅에 넣지 않음</td></tr><tr><td style="text-align:left;white-space:nowrap;font-weight:600;color:#e8eefc">데이터 출처</td><td style="text-align:left">덱 OKR/OMH_2027_커머셜_OKR_로드맵_팀개인OKR_전체_KO_2026-11-19.pptx · reports/OMH_2027_공급판매_아구맞추기_v3_2026-11-18.xlsx · OMH-CRM · docs/TASKS.md · 채널 CRM 스냅샷 2026-07-11 · REPORT 부킹 CSV</td><td style="text-align:left;color:#6b7f9e">원본은 수정하지 않음</td></tr><tr><td style="text-align:left;white-space:nowrap;font-weight:600;color:#e8eefc">매주 갱신 방법</td><td style="text-align:left">① 토요일 부킹 xlsx 업로드 후 `cd Desktop\REPORT &amp;&amp; node scripts/preprocess.js` ② `python -I scripts/gen-marketplace-tracker.py --refresh &lt;이 파일&gt;`로 부킹 기반 칸(누적 예약·TTV·최근 예약일·주간 예약/TTV) 갱신 ③ `powershell -File scripts/recalc-xlsx.ps1 -Path &lt;이 파일&gt;`로 Excel 재계산·오류 0건 확인·저장 ④ 파트너목록에서 단계·날짜·다음 액션·체이스 날짜 입력 ⑤ 주간 로그 활성 수 스냅샷·서드파티 TTV 입력 ⑥ 대시보드 상태 색 확인 (②~③은 파일을 Excel에서 닫은 상태에서 실행)</td><td style="text-align:left;color:#6b7f9e">수기 입력 칸은 갱신 스크립트가 건드리지 않음</td></tr></tbody></table></div></div>
+</div><script>
+function mktFilter(){
+  var q=(document.getElementById('mktSearch').value||'').toLowerCase();
+  var r=document.getElementById('mktRegion').value, o=document.getElementById('mktOwner').value, s=document.getElementById('mktStage').value, t=document.getElementById('mktType').value;
+  var rows=document.querySelectorAll('#mktPTable tbody tr'), shown=0;
+  rows.forEach(function(row){
+    var ok=(!q||row.dataset.name.indexOf(q)>=0)&&(!r||row.dataset.region===r)&&(!o||row.dataset.owner===o)&&(!s||row.dataset.stage===s)&&(!t||row.dataset.type===t);
+    row.style.display=ok?'':'none'; if(ok)shown++;
+  });
+  var c=document.getElementById('mktCount'); if(c)c.textContent=shown+' / '+rows.length+'곳';
+}
+document.addEventListener('DOMContentLoaded',mktFilter);
+if(document.readyState!=='loading')mktFilter();
+</script></div><div id="tabHotel" class="tab-panel p-6 space-y-4">
     <!-- 📝 Hotel Insight (auto-generated) -->
     <div class="card p-5 border-l-4 border-purple-500 bg-gradient-to-br from-purple-500/5 to-transparent" id="hotelInsightCard">
       <div class="flex items-center justify-between mb-3">
