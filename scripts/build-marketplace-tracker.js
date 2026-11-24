@@ -116,6 +116,12 @@ const before2027 = AS_OF < '2027-01-01';
 const curQ = before2027 ? 1 : (new Date(AS_OF + 'T00:00:00').getMonth() / 3 | 0) + 1;
 const qi = curQ - 1;
 
+// ── 마켓플레이스 로스터 (제로베이스) ──
+// 파트너 명단은 2027 프로그램 가입 확정분만 센다. seed의 join_quarter(2027 가입 분기) 또는
+// join_date가 MARKET_START 이후인 파트너만 로스터. 시작 전인 현재는 0곳(빈 로스터).
+// seed의 37곳은 2026 기존 계정/모집중 스냅샷이라 ⑧ 2026 기준선에만 참조로 남는다.
+const roster = before2027 ? [] : partners.filter(p => p.join_quarter || (p.join_date && d10(p.join_date) >= MARKET_START));
+
 // ── baseline (2026 기존 계정) ──
 const existing = partners.filter(p => p.kind === '기존');
 const periodBk = existing.reduce((s, p) => { const w = p.ellis_seller_name ? BOOK.win[p.ellis_seller_name] : null; return s + (w ? w.bk : 0); }, 0);
@@ -200,14 +206,15 @@ function quarterPath() {
 function regionTable() {
   const rows = RT.map(r => {
     const regionKey = r.region.startsWith('중화권') ? '중화권' : r.region.startsWith('한국') ? '한국' : r.region.startsWith('인도네시아') ? '인니·베트남' : '기타';
-    const exist = partners.filter(p => p.region === regionKey && p.kind === '기존').length;
-    const active = partners.filter(p => p.region === regionKey && p.stage === '활성').length;
+    const exist = partners.filter(p => p.region === regionKey && p.kind === '기존').length;   // 2026 기준선(참조)
+    const joined = roster.filter(p => p.region === regionKey).length;                          // 2027 가입(제로베이스)
+    const active = roster.filter(p => p.region === regionKey && p.stage === '활성').length;    // 2027 활성
     const tgt = r.q[qi];
     const noTgt = tgt == null;
     return `<tr>
       <td style="text-align:left">${esc(r.region)}${propBadge(r.kind)}</td>
       <td>${noTgt ? `<span style="color:${C.gray}">목표 없음 — 확인 필요</span>` : fmtInt(tgt) + '곳'}</td>
-      <td>0</td><td>${active}</td><td>${exist}</td>
+      <td>${joined}</td><td>${active}</td><td>${exist}</td>
       <td>${noTgt ? '—' : `<span style="color:${C.preBlue}">2027 시작 전</span>`}</td>
     </tr>`;
   }).join('');
@@ -219,7 +226,7 @@ function ownerFunnel() {
   const stages = ['리드', '접촉', '가입', '첫 예약', '활성', '이탈'];
   const head = `<tr><th style="text-align:left">담당</th>${stages.map(s => `<th>${s}</th>`).join('')}<th>체이스 경과</th><th>액션 없음</th></tr>`;
   const rows = owners.map(o => {
-    const ps = partners.filter(p => p.owner === o);
+    const ps = roster.filter(p => p.owner === o);   // 제로베이스: 2027 로스터 기준(현재 0)
     const cells = stages.map(s => { const n = ps.filter(p => p.stage === s).length; return `<td>${n || '<span style="color:' + C.mut + '">·</span>'}</td>`; }).join('');
     const overdue = ps.filter(p => p._chaseOverdue != null).length;
     const noAction = ps.filter(p => !p.next_action).length;
@@ -229,7 +236,7 @@ function ownerFunnel() {
 }
 
 function partnerTable() {
-  const rows = partners.map(p => {
+  const rows = roster.map(p => {
     const over = p._chaseOverdue != null;
     const stageCol = p.stage === '활성' ? C.green : p.stage === '이탈' ? C.red : p.stage === '첫 예약' ? C.blueL : C.sub;
     return `<tr class="mkt-prow${over ? ' mkt-overdue' : ''}" data-region="${esc(p.region)}" data-owner="${esc(p.owner)}" data-stage="${esc(p.stage)}" data-type="${esc(p.type)}" data-name="${esc((p.name || '').toLowerCase())}">
@@ -244,7 +251,8 @@ function partnerTable() {
     </tr>`;
   }).join('');
   const opt = (arr) => arr.map(v => `<option value="${esc(v)}">${esc(v)}</option>`).join('');
-  const regions = [...new Set(partners.map(p => p.region))], owners = [...new Set(partners.map(p => p.owner))], stagesU = [...new Set(partners.map(p => p.stage))], types = [...new Set(partners.map(p => p.type))];
+  const regions = [...new Set(roster.map(p => p.region))], owners = [...new Set(roster.map(p => p.owner))], stagesU = [...new Set(roster.map(p => p.stage))], types = [...new Set(roster.map(p => p.type))];
+  const bodyRows = rows || `<tr><td colspan="9" style="padding:26px;color:${C.mut};text-align:center">2027 마켓플레이스 파트너 모집 전 — 등록 <b style="color:${C.ink}">0곳</b>. 가입이 확정되면 여기에 누적됩니다. <span style="color:${C.sub}">(2026 기존 ${existing.length}곳은 ⑧ 기준선 참조)</span></td></tr>`;
   return `<div class="mkt-filters">
       <input id="mktSearch" class="mkt-in" placeholder="파트너 검색…" oninput="mktFilter()">
       <select id="mktRegion" class="mkt-in" onchange="mktFilter()"><option value="">지역 전체</option>${opt(regions)}</select>
@@ -255,7 +263,7 @@ function partnerTable() {
     </div>
     <div style="overflow-x:auto"><table class="mkt-tbl" id="mktPTable"><thead><tr>
       <th style="text-align:left">파트너</th><th>국가</th><th>지역</th><th>단계</th><th>담당</th><th style="text-align:right">누적 예약</th><th style="text-align:right">누적 TTV</th><th>체이스</th><th style="text-align:left">다음 액션</th>
-    </tr></thead><tbody>${rows}</tbody></table></div>`;
+    </tr></thead><tbody>${bodyRows}</tbody></table></div>`;
 }
 
 function weeklyTrend() {
@@ -367,12 +375,14 @@ const SCRIPT = `
 function mktFilter(){
   var q=(document.getElementById('mktSearch').value||'').toLowerCase();
   var r=document.getElementById('mktRegion').value, o=document.getElementById('mktOwner').value, s=document.getElementById('mktStage').value, t=document.getElementById('mktType').value;
-  var rows=document.querySelectorAll('#mktPTable tbody tr'), shown=0;
+  var rows=document.querySelectorAll('#mktPTable tbody tr'), shown=0, total=0;
   rows.forEach(function(row){
+    if(!row.dataset.name){ return; }  // 빈 상태(제로베이스) 행은 집계·필터 제외
+    total++;
     var ok=(!q||row.dataset.name.indexOf(q)>=0)&&(!r||row.dataset.region===r)&&(!o||row.dataset.owner===o)&&(!s||row.dataset.stage===s)&&(!t||row.dataset.type===t);
     row.style.display=ok?'':'none'; if(ok)shown++;
   });
-  var c=document.getElementById('mktCount'); if(c)c.textContent=shown+' / '+rows.length+'곳';
+  var c=document.getElementById('mktCount'); if(c)c.textContent=shown+' / '+total+'곳';
 }
 document.addEventListener('DOMContentLoaded',mktFilter);
 if(document.readyState!=='loading')mktFilter();
